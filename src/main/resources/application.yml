@@ -1,0 +1,34 @@
+server:
+  port: 8888
+
+spring:
+  output:
+    ansi:
+      enabled: always
+  thymeleaf:
+    cache: false
+    check-template-location: true
+    prefix: classpath:/templates/
+    suffix: .html
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@jambo_medium?TNS_ADMIN=/Users/nonoro/db/3p/wallet
+#    url: jdbc:oracle:thin:@localhost:1521:XE
+    username: ADMIN
+    password: Jambo123456!
+  jpa:
+    hibernate:
+      ddl-auto: create
+    generate-ddl: false
+    show-sql: true
+    database: oracle
+#    database-platform: org.hibernate.dialect.Oracle10gDialect
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+logging:
+  level:
+    org:
+      hibernate: debug
