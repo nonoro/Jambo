@@ -8,6 +8,7 @@ class ProjectJamboApplicationTests {
 
     @Test
     void contextLoads() {
+
     }
 
 }

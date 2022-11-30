@@ -22,11 +22,10 @@ spring:
     password: Jambo123456!
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: create-drop
     generate-ddl: false
     show-sql: true
     database: oracle
-#    database-platform: org.hibernate.dialect.Oracle10gDialect
     database-platform: org.hibernate.dialect.Oracle10gDialect
 logging:
   level:
