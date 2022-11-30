@@ -1,4 +1,4 @@
-package jambo.mvc.domain.board.enumType;
+package jambo.mvc.domain.board.type;
 
 public enum Category {
     STUDY_BOARD("스터디게시판"),

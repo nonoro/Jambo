@@ -13,6 +13,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 public class ImgFile {
     @Id
+    @Column(name = "img_file_id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "img_seq")
     @SequenceGenerator(name = "img_seq", allocationSize = 1, sequenceName = "img_seq")
     private Long id;
@@ -22,5 +23,4 @@ public class ImgFile {
     private Board board;
 
     private String fileName;
-
 }

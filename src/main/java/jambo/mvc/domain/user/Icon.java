@@ -13,6 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Icon {
     @Id
+    @Column(name = "icon_id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "icon_seq")
     @SequenceGenerator(name = "icon_seq", sequenceName = "icon_seq", allocationSize = 1)
     private Long id;

@@ -17,6 +17,7 @@ import javax.persistence.*;
 @Table(name = "board_comment")
 public class Comment {
     @Id
+    @Column(name = "comment_id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "comment_seq")
     @SequenceGenerator(name = "comment_seq", sequenceName = "comment_seq", allocationSize = 1)
     private Long id;
@@ -29,7 +30,5 @@ public class Comment {
     @JoinColumn(name = "user_id")
     private User writer;
 
-    @Enumerated(EnumType.STRING)
-    private CommentState commentState;
-
+    private boolean isReported;
 }

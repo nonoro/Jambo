@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 public class Note {
     @Id
+    @Column(name = "note_id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "note_seq")
     @SequenceGenerator(name = "note_seq", sequenceName = "note_seq", allocationSize = 1)
     private Long id;
@@ -29,5 +30,4 @@ public class Note {
     private String content;
 
     private LocalDateTime sentTime;
-
 }

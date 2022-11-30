@@ -1,9 +1,6 @@
 package jambo.mvc.domain.user;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -12,8 +9,8 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@ToString
 public class IconShop {
-
     @Id
     @Column(name = "icon_shop_id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "icon_shop_seq")
@@ -24,7 +21,5 @@ public class IconShop {
 
     private String description;
 
-    private Long price;
-
-
+    private int price;
 }

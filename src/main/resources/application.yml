@@ -21,12 +21,14 @@ spring:
 #    url: jdbc:oracle:thin:@jambo_medium?TNS_ADMIN=/Users/anhyogyeong/Edu/Wallet_jambo # 효경
 #    url: jdbc:oracle:thin:@jambo_medium?TNS_ADMIN=/Users/kent/db/Wallet_jambo # 연아
 #    url: jdbc:oracle:thin:@jambo_medium?TNS_ADMIN=/Users/dyrlqhffo/Edu/Wallet_jambo # 용식
-#    url: jdbc:oracle:thin:@localhost:1521:XE
-    username: ADMIN
-    password: Jambo123456!
+    url: jdbc:oracle:thin:@localhost:1521:XE
+#    username: ADMIN
+#    password: Jambo123456!
+    username: scott
+    password: TIGER
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: none
     generate-ddl: false
     show-sql: true
     database: oracle
@@ -34,4 +36,5 @@ spring:
 logging:
   level:
     org:
-      hibernate: debug
+      hibernate: info
+

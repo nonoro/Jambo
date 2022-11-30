@@ -1,10 +1,9 @@
 package jambo.mvc.domain.board;
 
-import jambo.mvc.domain.board.enumType.BoardState;
-import jambo.mvc.domain.board.enumType.Category;
+import jambo.mvc.domain.board.type.Category;
 import jambo.mvc.domain.user.User;
 import lombok.Getter;
-import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -31,7 +30,7 @@ public abstract class Board {
 
     private int recommendation;
 
-    @CreationTimestamp
+    @CreatedDate
     private LocalDateTime writeDate;
 
     @OneToMany(mappedBy = "board")
@@ -39,12 +38,7 @@ public abstract class Board {
 
     private int views;
 
-    private BoardState boardState;
+    private boolean isReported;
 
     private Category category;
-
-
-
-
-
 }

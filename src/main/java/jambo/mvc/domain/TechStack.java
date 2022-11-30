@@ -17,8 +17,8 @@ import java.util.stream.Collectors;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TechStack {
-
     @Id
+    @Column(name = "tech_stack_id")
     @GeneratedValue
     private Long id;
 

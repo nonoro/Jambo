@@ -1,4 +1,4 @@
-package jambo.mvc.domain.user.enumType;
+package jambo.mvc.domain.user.type;
 
 public enum Authority {
     USER("유저"),

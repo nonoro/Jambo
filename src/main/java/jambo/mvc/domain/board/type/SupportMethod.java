@@ -1,4 +1,4 @@
-package jambo.mvc.domain.board.enumType;
+package jambo.mvc.domain.board.type;
 
 public enum SupportMethod {
     OPEN_KAKAO_TALK("오픈카톡"),

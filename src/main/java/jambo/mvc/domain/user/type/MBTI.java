@@ -1,6 +1,4 @@
-package jambo.mvc.domain.user.enumType;
-
-import lombok.Getter;
+package jambo.mvc.domain.user.type;
 
 public enum MBTI {
     ISFJ,

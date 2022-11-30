@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Corporation {
     @Id
+    @Column(name = "corporation_id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "corporation_seq")
     @SequenceGenerator(name = "corporation_seq", sequenceName = "corporation_seq", allocationSize = 1)
     private Long id;
@@ -26,7 +28,7 @@ public class Corporation {
 
     private String name;
 
-    @CreationTimestamp
+    @CreatedDate
     private LocalDateTime joinDate;
 
     private String mainIcon;

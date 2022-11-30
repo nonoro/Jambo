@@ -1,9 +1,7 @@
 package jambo.mvc.domain.board;
 
 import jambo.mvc.domain.TechStack;
-import jambo.mvc.domain.board.enumType.StaffState;
-import jambo.mvc.domain.board.enumType.StudyLocation;
-import jambo.mvc.domain.board.enumType.SupportMethod;
+import jambo.mvc.domain.board.type.SupportMethod;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -20,10 +18,10 @@ public class StudyBoard extends Board {
 
     @Enumerated(EnumType.STRING)
     private SupportMethod supportMethod;
-    @Enumerated(EnumType.STRING)
-    private StudyLocation studyLocation;
-    @Enumerated(EnumType.STRING)
-    private StaffState staffState;
+
+    private boolean isOnline;
+
+    private boolean isRecruiting;
 
     private LocalDateTime startDate;
 }

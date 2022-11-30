@@ -15,6 +15,7 @@ import javax.persistence.*;
 @Setter
 public class Point {
     @Id
+    @Column(name = "point_id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "point_seq")
     @SequenceGenerator(name = "point_seq", sequenceName = "point_seq", allocationSize = 1)
     private Long id;
@@ -22,6 +23,6 @@ public class Point {
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
-    private Long totalPoint;
-    private Long available_point;
+    private int totalPoint;
+    private int available_point;
 }
