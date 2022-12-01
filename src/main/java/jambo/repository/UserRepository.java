@@ -8,4 +8,11 @@ import java.util.List;
 
 public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findByMbti(MBTI mbti);
+
+
+    /**
+     * 아이디 중복체크
+     */
+    boolean existsByEmail(String email);
+
 }
