@@ -1,4 +1,4 @@
-package jambo.mvc.domain.user;
+package jambo.domain.user;
 
 import lombok.*;
 

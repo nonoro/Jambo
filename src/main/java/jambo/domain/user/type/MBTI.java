@@ -1,4 +1,4 @@
-package jambo.mvc.domain.user.type;
+package jambo.domain.user.type;
 
 public enum MBTI {
     ISFJ,
@@ -17,4 +17,8 @@ public enum MBTI {
     ENFJ,
     ENTJ,
     NOTHTING;
+
+    public static MBTI mapping(String mbti) {
+        return MBTI.valueOf(mbti.toUpperCase());
+    }
 }

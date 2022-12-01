@@ -1,6 +1,4 @@
-package jambo.mvc.domain.board;
-
-import jambo.mvc.domain.board.Board;
+package jambo.domain.board;
 
 import javax.persistence.Entity;
 

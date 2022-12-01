@@ -1,6 +1,5 @@
-package jambo.mvc.domain.board;
+package jambo.domain.user;
 
-import jambo.mvc.domain.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,4 +29,5 @@ public class Note {
     private String content;
 
     private LocalDateTime sentTime;
+
 }

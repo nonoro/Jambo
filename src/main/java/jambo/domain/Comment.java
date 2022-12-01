@@ -1,7 +1,7 @@
-package jambo.mvc.domain;
+package jambo.domain;
 
-import jambo.mvc.domain.board.Board;
-import jambo.mvc.domain.user.User;
+import jambo.domain.board.Board;
+import jambo.domain.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

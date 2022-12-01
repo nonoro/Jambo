@@ -1,8 +1,10 @@
-package jambo.mvc.domain.board;
+package jambo.domain.board;
 
-import jambo.mvc.domain.board.type.Category;
-import jambo.mvc.domain.user.User;
+import jambo.domain.board.type.Category;
+import jambo.domain.user.User;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
@@ -13,6 +15,8 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn
 @Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public abstract class Board {
     @Id
     @Column(name = "board_id")
@@ -33,7 +37,7 @@ public abstract class Board {
     @CreatedDate
     private LocalDateTime writeDate;
 
-    @OneToMany(mappedBy = "board")
+    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
     private List<ImgFile> imgFiles;
 
     private int views;
@@ -41,4 +45,16 @@ public abstract class Board {
     private boolean isReported;
 
     private Category category;
+
+    public Board(User user, String title, String content, int recommendation, LocalDateTime writeDate, List<ImgFile> imgFiles, int views, boolean isReported, Category category) {
+        this.user = user;
+        this.title = title;
+        this.content = content;
+        this.recommendation = recommendation;
+        this.writeDate = writeDate;
+        this.imgFiles = imgFiles;
+        this.views = views;
+        this.isReported = isReported;
+        this.category = category;
+    }
 }
