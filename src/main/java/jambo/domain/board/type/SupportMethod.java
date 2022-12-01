@@ -14,4 +14,8 @@ public enum SupportMethod {
     public String getName() {
         return name;
     }
+
+    public static SupportMethod mapping(String supportMethod) {
+        return SupportMethod.valueOf(supportMethod);
+    }
 }

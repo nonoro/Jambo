@@ -5,7 +5,9 @@ import jambo.domain.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -17,6 +19,8 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Setter
+@EntityListeners(AuditingEntityListener.class)
 public abstract class Board {
     @Id
     @Column(name = "board_id")
@@ -46,15 +50,19 @@ public abstract class Board {
 
     private Category category;
 
-    public Board(User user, String title, String content, int recommendation, LocalDateTime writeDate, List<ImgFile> imgFiles, int views, boolean isReported, Category category) {
+
+    public Board(User user, String title, String content, List<String> imgFiles, String category) {
         this.user = user;
         this.title = title;
         this.content = content;
-        this.recommendation = recommendation;
-        this.writeDate = writeDate;
-        this.imgFiles = imgFiles;
-        this.views = views;
-        this.isReported = isReported;
-        this.category = category;
+        this.imgFiles = ImgFile.of(imgFiles);
+        this.category = Category.mapping(category);
+    }
+
+    public void setImgFiles(List<String> imgFiles) {
+        List<ImgFile> boardImgFiles = ImgFile.of(imgFiles);
+        this.imgFiles = boardImgFiles;
+
+        boardImgFiles.forEach(imgFile -> imgFile.setBoard(this));
     }
 }

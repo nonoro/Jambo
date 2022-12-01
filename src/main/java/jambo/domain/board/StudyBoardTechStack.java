@@ -1,7 +1,6 @@
 package jambo.domain.board;
 
 import jambo.domain.TechStack;
-import jambo.domain.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,17 +9,16 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 @Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class BoardTechStack {
+public class StudyBoardTechStack {
     @Id
     @Column(name = "board_tech_join_id")
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "board_tech_join_id_seq")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -31,13 +29,13 @@ public class BoardTechStack {
     @JoinColumn(name = "tech_stack_id")
     private TechStack techStack;
 
-    public BoardTechStack(TechStack techStack) {
+    public StudyBoardTechStack(TechStack techStack) {
         this.techStack = techStack;
     }
 
-    public static List<BoardTechStack> of(List<TechStack> techStacks) {
+    public static List<StudyBoardTechStack> of(List<TechStack> techStacks) {
         return techStacks.stream()
-                .map(BoardTechStack::new)
+                .map(StudyBoardTechStack::new)
                 .collect(Collectors.toList());
     }
 

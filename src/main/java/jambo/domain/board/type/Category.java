@@ -17,4 +17,8 @@ public enum Category {
     public String getName() {
         return name;
     }
+
+    public static Category mapping(String category) {
+        return Category.valueOf(category);
+    }
 }
