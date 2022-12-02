@@ -1,9 +1,6 @@
 package jambo.domain.user;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 @Entity
@@ -14,8 +11,8 @@ import javax.persistence.*;
 public class Icon {
     @Id
     @Column(name = "icon_id")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "icon_seq")
-    @SequenceGenerator(name = "icon_seq", sequenceName = "icon_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "icon_id_seq")
+    @SequenceGenerator(name = "icon_id_seq", sequenceName = "icon_id_seq")
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -26,4 +23,8 @@ public class Icon {
     @JoinColumn(name = "icon_shop_id")
     private IconShop iconShop;
 
+    public Icon(User user, IconShop iconShop) {
+        this.user = user;
+        this.iconShop = iconShop;
+    }
 }

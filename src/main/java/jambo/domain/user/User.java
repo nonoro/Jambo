@@ -2,10 +2,7 @@ package jambo.domain.user;
 
 import jambo.domain.TechStack;
 import jambo.domain.user.type.MBTI;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -21,6 +18,7 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "user_jambo")
 @EntityListeners(AuditingEntityListener.class)
+@ToString
 public class User {
     @Id
     @Column(name = "user_id")
@@ -47,7 +45,7 @@ public class User {
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
     private Point point;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
     private List<Icon> icons;
 
     @OneToMany(mappedBy = "sendUser", cascade = CascadeType.ALL)
@@ -64,6 +62,8 @@ public class User {
         this.phone = phone;
         this.mbti = MBTI.mapping(mbti);
     }
+
+
 
     public void setTechStacks(List<TechStack> techStacks) {
         List<UserTechStack> newUserTechStacks = UserTechStack.of(techStacks);
