@@ -3,6 +3,7 @@ package jambo.domain;
 import jambo.domain.user.User;
 import jambo.domain.user.type.MBTI;
 import jambo.dto.UserJoinDTO;
+import jambo.repository.ImgFileRepository;
 import jambo.repository.TechStackRepository;
 import jambo.repository.UserRepository;
 import org.junit.jupiter.api.Test;

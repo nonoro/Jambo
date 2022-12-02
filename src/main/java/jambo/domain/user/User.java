@@ -67,8 +67,8 @@ public class User {
 
     public void setTechStacks(List<TechStack> techStacks) {
         List<UserTechStack> newUserTechStacks = UserTechStack.of(techStacks);
-
         this.userTechStacks = newUserTechStacks;
+
         newUserTechStacks.forEach(userTechStack -> userTechStack.setUser(this));
     }
 }

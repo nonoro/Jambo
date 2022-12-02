@@ -1,6 +1,6 @@
 package jambo.domain;
 
-import jambo.domain.board.BoardTechStack;
+import jambo.domain.board.StudyBoardTechStack;
 import jambo.domain.user.UserTechStack;
 import lombok.*;
 
@@ -27,7 +27,7 @@ public class TechStack {
 
     @ToString.Exclude
     @OneToMany(mappedBy = "techStack")
-    private List<BoardTechStack> boardTechStacks;
+    private List<StudyBoardTechStack> studyBoardTechStacks;
 
     public TechStack(String techStackName) {
         this.techStackName = techStackName;
