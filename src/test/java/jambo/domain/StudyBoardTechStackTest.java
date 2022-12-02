@@ -3,6 +3,7 @@ package jambo.domain;
 import jambo.domain.board.Board;
 import jambo.domain.board.ImgFile;
 import jambo.domain.board.StudyBoard;
+import jambo.domain.board.type.Category;
 import jambo.domain.user.User;
 import jambo.dto.StudyBoardDTO;
 import jambo.dto.UserJoinDTO;
@@ -70,11 +71,11 @@ public class StudyBoardTechStackTest {
 
         StudyBoardDTO newStudyBoard = new StudyBoardDTO(user, "안녕하세요", "너무너무 재미있어요"
                 ,imgFile, 6, "3개월"
-                , "OPEN_KAKAO_TALK", true, true, "2022-12-19" , "STUDY_BOARD"
+                , "오픈카톡", true, true, "2022-12-19" , "스터디게시판"
                 );
 
         StudyBoard studyBoard = newStudyBoard.toEntity();
-
+        System.out.println("studyBoard.getCategory() = " + studyBoard.getCategory());
         studyBoard.setTechStacks(techStacks2);
         studyBoard.setImgFiles(imgFile);
 
@@ -87,4 +88,8 @@ public class StudyBoardTechStackTest {
                 .collect(Collectors.toList());
     }
 
+    @Test
+    public void mappingTest() {
+        Category.mapping("스터디게시판");
+    }
 }

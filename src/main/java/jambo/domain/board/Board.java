@@ -48,6 +48,7 @@ public abstract class Board {
 
     private boolean isReported;
 
+    @Enumerated(EnumType.STRING)
     private Category category;
 
 
