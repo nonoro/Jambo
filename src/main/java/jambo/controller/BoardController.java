@@ -1,11 +1,13 @@
 package jambo.controller;
 
+import jambo.domain.Comment;
 import jambo.domain.board.Board;
 import jambo.domain.board.NormalBoard;
 import jambo.domain.board.type.Category;
 import jambo.domain.user.User;
 import jambo.dto.NormalBoardDTO;
 import jambo.service.BoardService;
+import jambo.service.CommentService;
 import jambo.service.FileService;
 import jambo.service.PaginationService;
 import lombok.RequiredArgsConstructor;
@@ -40,6 +42,8 @@ public class BoardController {
 
     private final PaginationService paginationService;
 
+    private final CommentService commentService;
+
     @RequestMapping("/list")
     private String list(@RequestParam Category category, Model model, @PageableDefault(size = 10, direction = Sort.Direction.DESC) Pageable pageable){
 
@@ -61,6 +65,8 @@ public class BoardController {
         model.addAttribute("savePath", fileService.getUrlPath());
         model.addAttribute("authUser", user);
 
+        List<Comment> dbComments = commentService.findCommentsByBoardId(id);
+        model.addAttribute("comments", dbComments);
         return "Board/BoardRead";
     }
     /**

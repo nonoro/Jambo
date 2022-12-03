@@ -1,5 +1,7 @@
 package jambo.domain.board;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jambo.domain.Comment;
 import jambo.domain.board.type.Category;
 import jambo.domain.user.User;
 import lombok.AllArgsConstructor;
@@ -61,5 +63,14 @@ public abstract class Board {
         this.title = title;
         this.content = content;
         this.category = category;
+    }
+
+    //추가해도 되나?
+    @JsonIgnoreProperties({"board"})
+    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
+    private List<Comment> commentList;
+
+    //생성자 하나도 추가함.
+    public Board(Long id, User user, String title, String content, List<Recommendation> recommendation, LocalDateTime writeDate, int views, boolean isReported, Category category) {
     }
 }
