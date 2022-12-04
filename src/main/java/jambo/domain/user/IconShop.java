@@ -13,6 +13,7 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
+@Where(clause = "quantity > 0")
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
