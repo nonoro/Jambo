@@ -63,8 +63,6 @@ public class User {
         this.mbti = MBTI.mapping(mbti);
     }
 
-
-
     public void setTechStacks(List<TechStack> techStacks) {
         List<UserTechStack> newUserTechStacks = UserTechStack.of(techStacks);
         this.userTechStacks = newUserTechStacks;

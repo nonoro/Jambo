@@ -1,12 +1,10 @@
 package jambo.domain.user;
 
 import jambo.domain.TechStack;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,9 +32,7 @@ public class UserTechStack {
     }
 
     public static List<UserTechStack> of(List<TechStack> techStacks) {
-        return techStacks.stream()
-                .map(UserTechStack::new)
-                .collect(Collectors.toList());
+        return techStacks.stream().map(UserTechStack::new).collect(Collectors.toList());
     }
 
     public void setUser(User user) {

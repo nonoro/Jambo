@@ -3,6 +3,7 @@ package jambo.dto;
 import jambo.domain.user.Icon;
 import jambo.domain.user.IconShop;
 import lombok.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.util.List;
@@ -19,7 +20,14 @@ public class IconShopDTO {
 
     private int price;
 
+    private int quantity;
+
+    private MultipartFile file;
+
     public IconShop toEntity() {
-        return new IconShop(name, description, price);
+        IconShop iconShop = new IconShop(name, description, price, quantity);
+        return iconShop;
     }
+
+
 }
