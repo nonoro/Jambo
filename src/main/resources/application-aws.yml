@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    url: # 주소
+    username: admin
+    password: admin
+
+file:
+  path: /img/
