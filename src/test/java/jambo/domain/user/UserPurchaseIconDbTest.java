@@ -10,7 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -39,7 +38,5 @@ public class UserPurchaseIconDbTest {
 
         User findUser = userRepository.findById(saveUser.getId()).get();
         assertThat(findUser.getIcons().get(0).getIconShop()).isEqualTo(icon);
-
-
     }
 }

@@ -29,7 +29,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @Transactional
-@Commit
 public class IconShopTest {
     @Autowired
     private IconShopRepository iconShopRepository;
