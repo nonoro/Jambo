@@ -23,5 +23,18 @@ public class Point {
     @JoinColumn(name = "user_id")
     private User user;
     private int totalPoint;
-    private int available_point;
+    private int availablePoint;
+
+    public Point(int totalPoint, int availablePoint) {
+        this.totalPoint = totalPoint;
+        this.availablePoint = availablePoint;
+    }
+
+    public void use(int point) {
+        if (availablePoint < point) {
+            throw new IllegalArgumentException("포인트가 부족합니다.");
+        }
+
+        availablePoint -= point;
+    }
 }

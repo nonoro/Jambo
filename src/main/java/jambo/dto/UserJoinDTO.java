@@ -1,15 +1,15 @@
 package jambo.dto;
 
 import jambo.domain.user.User;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
+@ToString
+@Setter
 public class UserJoinDTO {
     private String email;
     private String password;

@@ -1,15 +1,11 @@
 package jambo.domain.board;
 
 import jambo.domain.TechStack;
-import jambo.domain.board.Board;
-import jambo.domain.board.ImgFile;
-import jambo.domain.board.StudyBoard;
 import jambo.domain.board.type.Category;
 import jambo.domain.user.User;
 import jambo.dto.StudyBoardDTO;
 import jambo.dto.UserJoinDTO;
 import jambo.repository.BoardRepository;
-import jambo.repository.ImgFileRepository;
 import jambo.repository.TechStackRepository;
 import jambo.repository.UserRepository;
 import org.junit.jupiter.api.Test;
@@ -18,7 +14,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.security.Principal;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -36,10 +31,6 @@ public class StudyBoardTechStackTest {
 
     @Autowired
     private TechStackRepository techStackRepository;
-
-    @Autowired
-    private ImgFileRepository imgFileRepository;
-
 
     @Test
     public void saveBoardTest() {
@@ -66,19 +57,16 @@ public class StudyBoardTechStackTest {
         User user = userRepository.findById(1L).orElse(null);
         List<String> studyBoardTechStack = List.of("Java", "C", "Python");
 
-        List<String> imgFile = List.of("apple", "egg", "photo");
-
         List<TechStack> techStacks2 = techStackRepository.findAllByTechStackNameIn(studyBoardTechStack);
 
-        StudyBoardDTO newStudyBoard = new StudyBoardDTO(user, "안녕하세요", "너무너무 재미있어요"
-                ,imgFile, 6, "3개월"
-                , "오픈카톡", true, true, "2022-12-19" , "스터디게시판"
+        StudyBoardDTO newStudyBoard = new StudyBoardDTO(user, "안녕하세요", "너무너무 재미있어요",
+                 6, "3개월"
+                , "오픈카톡", "오프라인", "2022-12-19" , "스터디게시판"
                 );
 
         StudyBoard studyBoard = newStudyBoard.toEntity();
         System.out.println("studyBoard.getCategory() = " + studyBoard.getCategory());
         studyBoard.setTechStacks(techStacks2);
-        studyBoard.setImgFiles(imgFile);
 
         boardRepository.save(studyBoard);
     }

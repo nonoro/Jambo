@@ -2,7 +2,6 @@ package jambo.service;
 
 import jambo.config.WebConfig;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -16,7 +15,7 @@ public class FileService {
 
     private final WebConfig webConfig;
 
-    public String saveFile(MultipartFile file) {
+    public String upload(MultipartFile file) {
         String fileName = getFileName(file);
 
         try {

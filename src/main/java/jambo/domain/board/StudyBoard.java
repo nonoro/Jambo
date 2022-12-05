@@ -31,17 +31,16 @@ public class StudyBoard extends Board {
 
     private boolean isOnline;
 
-    private boolean isRecruiting;
+    private boolean isRecruiting = true;
 
     private String startDate;
 
-    public StudyBoard(User user, String title, String content, List<String> imgFiles, String category, int numberOfRecruits, String period, String supportMethod ,boolean isOnline, boolean isRecruiting, String startDate) {
-        super(user, title, content, imgFiles, category);
+    public StudyBoard(User user, String title, String content, String category, int numberOfRecruits, String period, String supportMethod ,boolean isOnline, String startDate) {
+        super(user, title, content, category);
         this.numberOfRecruits = numberOfRecruits;
         this.period = period;
         this.supportMethod = SupportMethod.mapping(supportMethod);
         this.isOnline = isOnline;
-        this.isRecruiting = isRecruiting;
         this.startDate = startDate;
     }
 

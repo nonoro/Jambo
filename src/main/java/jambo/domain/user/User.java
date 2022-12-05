@@ -42,11 +42,11 @@ public class User {
     @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
     private List<UserTechStack> userTechStacks = new ArrayList<>();
 
-    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Point point;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
-    private List<Icon> icons;
+    private List<Icon> icons = new ArrayList<>();
 
     @OneToMany(mappedBy = "sendUser", cascade = CascadeType.ALL)
     private List<Note> notes;
@@ -68,5 +68,32 @@ public class User {
         this.userTechStacks = newUserTechStacks;
 
         newUserTechStacks.forEach(userTechStack -> userTechStack.setUser(this));
+    }
+
+    public User(String email, String password, String name, String nickName, String phone, MBTI mbti, Point point) {
+        this.email = email;
+        this.password = password;
+        this.name = name;
+        this.nickName = nickName;
+        this.phone = phone;
+        this.mbti = mbti;
+        this.point = point;
+    }
+
+    public void setPoint(Point point) {
+        this.point = point;
+        point.setUser(this);
+    }
+
+    public void buy(IconShop iconShop) {
+        Icon newIcon = new Icon(this, iconShop);
+
+        point.use(iconShop.getPrice());
+        iconShop.decreaseQty();
+        icons.add(newIcon);
+    }
+
+    public int getAvailablePoint() {
+        return point.getAvailablePoint();
     }
 }

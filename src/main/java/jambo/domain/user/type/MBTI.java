@@ -1,8 +1,8 @@
 package jambo.domain.user.type;
 
 public enum MBTI {
-    ISFJ,
     ISTJ,
+    ISFJ,
     ISTP,
     INFJ,
     INTJ,
