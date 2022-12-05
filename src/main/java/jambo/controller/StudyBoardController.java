@@ -1,21 +1,17 @@
 package jambo.controller;
 
 
-import com.google.gson.JsonObject;
+import jambo.domain.board.Board;
 import jambo.dto.StudyBoardDTO;
 import jambo.service.StudyBoardService;
-import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletRequestWrapper;
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.UUID;
+import java.util.List;
 
 @Controller
 @RequestMapping("/StudyBoard")
@@ -25,26 +21,41 @@ public class StudyBoardController {
     private StudyBoardService service;
 
     @RequestMapping("/StudyBoardMain")
-    public String main(){
+    public String main(Model model) {
+        List<Board> boards = service.selectAll();
+        model.addAttribute("list", boards);
 
         return "/StudyBoard/StudyBoardMain";
     }
 
     @RequestMapping("/StudyBoardWrite")
-    public String openWriteForm(){
+    public String openWriteForm() {
 
         return "/StudyBoard/StudyBoardWriteForm";
     }
 
     @RequestMapping("/insert")
-    public String studyBoardInsert(StudyBoardDTO studyBoardDTO) throws IOException{
+    public String studyBoardInsert(StudyBoardDTO studyBoardDTO) throws IOException {
 
         service.insert(studyBoardDTO);
         System.out.println("con studyBoardDTO = " + studyBoardDTO);
 
-        return "index";
+        return "StudyBoard/StudyBoardMain";
     }
 
+    @RequestMapping("/read/{id}")
+    public ModelAndView read(@PathVariable Long id, String flag) {
+        boolean state = flag == null ? true : false;
+        Board dbBoard = service.read(id, state);
+        return new ModelAndView("StudyBoard/StudyBoardRead", "board", dbBoard);
+
+    }
+
+    @RequestMapping("/recommend/{id}")
+    private String recommend(@PathVariable Long id){
+        service.recommend(id);
+        return "redirect:/StudyBoard/read/"+id;
+    }
 
 
 }
