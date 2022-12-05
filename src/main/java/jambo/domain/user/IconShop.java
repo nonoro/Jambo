@@ -51,4 +51,8 @@ public class IconShop {
         this.price = price;
         this.quantity = quantity;
     }
+
+    public void decreaseQty() {
+        quantity -= 1;
+    }
 }
