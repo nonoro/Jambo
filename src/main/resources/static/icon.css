@@ -1,0 +1,130 @@
+.shopContainer {
+    /* background-color: black; */
+    width: 100%;
+    margin: 100px auto 0 auto;
+    display: flex;
+}
+
+.shopMain {
+    width: 1360px;
+}
+
+.iconList {
+    width: 313px;
+    border: 1px solid rgb(219, 206, 206);
+    border-collapse: collapse;
+    margin: 0 0 2px 5px;
+}
+
+.iconList img {
+    width: 40px;
+    height: 40px;
+    margin-top: 10px 0 0;
+    border: 4px solid gainsboro;
+}
+
+.img {
+    width: 100%;
+    height: 40px;
+    display: flex;
+}
+
+.name {
+    margin-left: 7px;
+    width: 100%;
+    padding-top: 10px;
+    font-weight: bolder;
+}
+
+.describe {
+    background-color: whitesmoke;
+    margin: 15px 0 7px 0;
+}
+
+.iconContainer {
+    display: flex; flex-wrap: wrap;
+}
+
+.shopCore{
+    width: 400px;
+    height: 100%;
+    border: 1px solid rgb(219, 206, 206); 
+    border-collapse: collapse;
+}
+
+.myInformation {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top: 20px
+}
+
+.myInformation img {
+    width: 150px;
+    height: 150px;
+    border-radius: 30px;
+}
+
+.shopWrap {
+    position: relative;
+    width: 1360px;
+    margin: 0 auto;
+}
+
+.shopHeader {
+    position: relative;
+    z-index: 1;
+}
+
+.shopMenu {
+    top: 16px;
+    right: 20px;
+    height: 33px;
+}
+
+.shopMenu li {
+    position: relative;
+    float: left;
+    margin: 0;
+}
+
+.shopMenu ul {
+    list-style: none;
+    padding: 0;
+}
+
+.shopMenu li :first-child {
+    margin-right: 10px;
+}
+
+.shopMenu a {
+    font-size: 20px;
+    text-decoration: none;
+    background-color: #52c2bf;
+    color: white;
+    padding: 5px;
+    border-radius: 10px 10px 0px 0px ;
+}
+
+.shopNavy {
+    background-color: whitesmoke;
+    padding: 10px;
+}
+
+.leftContainer {
+    /* background-color: red; */
+    width: 395.29px;
+}
+
+.rightContainer {
+    /* background-color: blue; */
+    width: 395.29px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    font-family: 'Apple SD Gothic Neo','Malgun Gothic','맑은 고딕',arial,sans-serif;
+}
+

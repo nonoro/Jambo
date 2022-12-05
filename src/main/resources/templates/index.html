@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Main index page</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="/assets/img/jamboLogo.ico" rel="icon">
+    <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: Baker - v4.9.1
+    * Template URL: https://bootstrapmade.com/baker-free-onepage-bootstrap-theme/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+
+    <style>
+
+        body {
+            font-family: Arial;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        img {
+            vertical-align: middle;
+        }
+
+        .main_container {
+            width: 100%;
+        }
+
+        .main_container .mySlides img {
+            vertical-align: middle;
+            height: 550px;
+        }
+
+        .column img {
+            height: 90px;
+        }
+
+        /* Position the image container (needed to position the left and right arrows) */
+        .container {
+            position: relative;
+        }
+
+        /* Hide the images by default */
+        .mySlides {
+            display: none;
+            padding-top: 60px;
+        }
+
+        /* Add a pointer when hovering over the thumbnail images */
+        .cursor {
+            cursor: pointer;
+        }
+
+        /* Next & previous buttons */
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 30%;
+            width: auto;
+            padding: 16px;
+            margin-top: -50px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .prev {
+            cursor: pointer;
+            position: absolute;
+            top: 30%;
+            width: auto;
+            padding: 200px 10px;
+            margin-top: -50px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+            padding: 200px 10px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover,
+        .next:hover {
+            background-color: rgb(252 218 77);;
+        }
+
+        /* Number text (1/3 etc) */
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+
+        /* Container for image text */
+        .caption-container {
+            text-align: center;
+            background-color: #fff;
+            padding: 5px;
+            color: white;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Six columns side by side */
+        .column {
+            float: left;
+            width: 16.66%;
+        }
+
+        /* Add a transparency effect for thumnbail images */
+        .demo {
+            opacity: 0.6;
+        }
+
+        .active,
+        .demo:hover {
+            opacity: 1;
+        }
+
+        .container {
+            max-width: 80%;
+            padding: 0px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!--헤더-->
+<header th:replace="../templates/Baker/common/header.html ::header">
+</header>
+
+<main id="main">
+
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients section-bg">
+        <div class="container">
+
+        </div>
+    </section><!-- End Clients Section -->
+
+    <!--Slideshow header-->
+    <div class="main_container">
+        <div class="mySlides">
+            <div class="text">
+                <img src="/assets/img/main/main1.png" style="width:100%">
+                <div class="centered"> 어서오세요! JAMBO입니다 :)</div>
+            </div>
+        </div>
+
+        <div class="mySlides">
+            <img src="/assets/img/main/main2.png" style="width:100%">
+            <div class="top-left">함께 배우는 즐거움!<p>스터디 모임</p></div>
+        </div>
+
+        <div class="mySlides">
+            <img src="/assets/img/main/main3.png" style="width:100%">
+            <div class="top-right">으샤으샤!</div>
+        </div>
+
+        <div class="mySlides">
+            <img src="/assets/img/main/main4.png" style="width:100%">
+            <div class="bottom-right">JAMBO와 함께라면 <p>넌 할 수 있어!</p></div>
+        </div>
+
+        <div class="mySlides">
+            <img src="/assets/img/main/main5.png" style="width:100%">
+            <div class="centered-5"> 다양한 게시글을 경험해보세요.</div>
+        </div>
+
+        <div class="mySlides">
+            <img src="/assets/img/main/main6.png" style="width:100%">
+            <div class="top-right-6">열심히 하는 자에겐 <p>기업 pick 기회가!</p></div>
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">❮</a>
+        <a class="next" onclick="plusSlides(1)">❯</a>
+
+        <div class="caption-container">
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <img class="demo cursor" src="/assets/img/main/main1.png" style="width:100%" onclick="currentSlide(1)"
+                     alt="The Woods">
+
+            </div>
+            <div class="column">
+                <img class="demo cursor" src="/assets/img/main/main2.png" style="width:100%" onclick="currentSlide(2)"
+                     alt="Cinque Terre">
+            </div>
+            <div class="column">
+                <img class="demo cursor" src="/assets/img/main/main3.png" style="width:100%" onclick="currentSlide(3)"
+                     alt="Mountains and fjords">
+            </div>
+            <div class="column">
+                <img class="demo cursor" src="/assets/img/main/main4.png" style="width:100%" onclick="currentSlide(4)"
+                     alt="Northern Lights">
+            </div>
+            <div class="column">
+                <img class="demo cursor" src="/assets/img/main/main5.png" style="width:100%" onclick="currentSlide(5)"
+                     alt="Nature and sunrise">
+            </div>
+            <div class="column">
+                <img class="demo cursor" src="/assets/img/main/main6.png" style="width:100%" onclick="currentSlide(6)"
+                     alt="Snowy Mountains">
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+
+            <div class="section-title">
+                <h2></h2>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 d-flex justify-content-center">
+                    <ul id="portfolio-flters">
+                        <li data-filter="*" class="filter-active">All</li>
+                        <li data-filter=".filter-app">프론트엔드</li>
+                        <li data-filter=".filter-card">백엔드</li>
+                        <li data-filter=".filter-web">모바일</li>
+                        <li data-filter=".filter-etc">기타</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row portfolio-container">
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="width:100px;">
+                    <img src="/assets/img/portfolio/javascript.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="width:100px;">
+                    <img src="/assets/img/portfolio/typescript.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="width:100px;">
+                    <img src="/assets/img/portfolio/react.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="width:100px;">
+                    <img src="/assets/img/portfolio/vue.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="width:100px;">
+                    <img src="/assets/img/portfolio/svelte.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="width:100px;">
+                    <img src="/assets/img/portfolio/nextjs.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="width:100px;">
+                    <img src="/assets/img/portfolio/nodejs.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="width:100px;">
+                    <img src="/assets/img/portfolio/java.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="width:100px;">
+                    <img src="/assets/img/portfolio/spring.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="width:100px;">
+                    <img src="/assets/img/portfolio/go.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="width:100px;">
+                    <img src="/assets/img/portfolio/nestjs.svg" class="img-fluid" alt="">
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-web" style="width:100px;">
+                    <img src="/assets/img/portfolio/kotlin.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="width:100px;">
+                    <img src="/assets/img/portfolio/express.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="width:100px;">
+                    <img src="/assets/img/portfolio/mysql.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="width:100px;">
+                    <img src="/assets/img/portfolio/mongodb.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="width:100px;">
+                    <img src="/assets/img/portfolio/python.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="width:100px;">
+                    <img src="/assets/img/portfolio/django.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="width:100px;">
+                    <img src="/assets/img/portfolio/php.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="width:100px;">
+                    <img src="/assets/img/portfolio/graphql.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="width:100px;">
+                    <img src="/assets/img/portfolio/firebase.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-web" style="width:100px;">
+                    <img src="/assets/img/portfolio/flutter.svg" class="img-fluid" alt="">
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-web" style="width:100px;">
+                    <img src="/assets/img/portfolio/swift.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-web" style="width:100px;">
+                    <img src="/assets/img/portfolio/reactnative.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-web" style="width:100px;">
+                    <img src="/assets/img/portfolio/unity.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-etc" style="width:100px;">
+                    <img src="/assets/img/portfolio/aws.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-etc" style="width:100px;">
+                    <img src="/assets/img/portfolio/kubernetes.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-etc" style="width:100px;">
+                    <img src="/assets/img/portfolio/docker.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-etc" style="width:100px;">
+                    <img src="/assets/img/portfolio/git.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-etc" style="width:100px;">
+                    <img src="/assets/img/portfolio/figma.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-etc" style="width:100px;">
+                    <img src="/assets/img/portfolio/zeplin.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-etc" style="width:100px;">
+                    <img src="/assets/img/portfolio/jest.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-etc" style="width:100px;">
+                    <img src="/assets/img/portfolio/c.svg" class="img-fluid" alt="">
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Portfolio Section -->
+
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team section-bg">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Team</h2>
+                <p>잠보 개발자 5명을 소개합니다.</p>
+            </div>
+
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                    <div class="member">
+                        <div class="member-img">
+                            <img src="/assets/img/team/team1.gif" class="img-fluid" alt="">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h4>권규정</h4>
+                            <span>Kwon Gyujeong</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                    <div class="member">
+                        <div class="member-img">
+                            <img src="/assets/img/team/team2.gif" class="img-fluid" alt="">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h4>강연아</h4>
+                            <span>Kang Yeona</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                    <div class="member">
+                        <div class="member-img">
+                            <img src="/assets/img/team/team3.gif" class="img-fluid" alt="">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h4>고종영</h4>
+                            <span>Ko Jongyeong</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                    <div class="member">
+                        <div class="member-img">
+                            <img src="/assets/img/team/team4.gif" class="img-fluid" alt="">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h4>엄용식</h4>
+                            <span>Um Yongsik</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+                    <div class="member">
+                        <div class="member-img">
+                            <img src="/assets/img/team/team5.gif" class="img-fluid" alt="">
+                            <div class="social">
+                                <a href=""><i class="bi bi-twitter"></i></a>
+                                <a href=""><i class="bi bi-facebook"></i></a>
+                                <a href=""><i class="bi bi-instagram"></i></a>
+                            </div>
+                        </div>
+                        <div class="member-info">
+                            <h4>안효경</h4>
+                            <span>An Hyogyeong</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Team Section -->
+
+    <!-- ======= Frequently Asked Questions Section ======= -->
+    <section id="faq" class="faq section-bg">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Ask JamBo</h2>
+                <p>잠보에게 궁금한 점을 물어보세요.</p>
+            </div>
+
+            <div class="faq-list">
+                <ul>
+                    <li data-aos="fade-up">
+                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse"
+                                                                       data-bs-target="#faq-list-1">비회원으로 이용이 가능한가요? <i
+                            class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                        <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
+                            <p>
+                                비회원으로 검색을 하거나 조회 정도의 제한적인 기능은 이용이 가능하십니다. 다만 참여나 개설 등은 회원가입 후 가능합니다.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li data-aos="fade-up" data-aos-delay="100">
+                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
+                                                                       data-bs-target="#faq-list-2" class="collapsed">개인정보를
+                        보여주고 싶지 않습니다. 비공개가 가능한가요? <i class="bx bx-chevron-down icon-show"></i><i
+                                class="bx bx-chevron-up icon-close"></i></a>
+                        <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
+                            <p>
+                                잠보에서는 민감정보 (이메일,전화번호 및 기타정보) 등을 공개/비공개 선택 가능하도록 하고 있습니다. 안심하셔도 됩니다.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li data-aos="fade-up" data-aos-delay="200">
+                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
+                                                                       data-bs-target="#faq-list-3" class="collapsed">회원정보수정은
+                        어디서 하나요? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+                        <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
+                            <p>
+                                회원 정보는 마이페이지에서 수정이 가능합니다.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li data-aos="fade-up" data-aos-delay="300">
+                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
+                                                                       data-bs-target="#faq-list-4" class="collapsed">프로젝트에
+                        참여하고 싶습니다. <i class="bx bx-chevron-down icon-show"></i><i
+                                class="bx bx-chevron-up icon-close"></i></a>
+                        <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
+                            <p>
+                                프로젝트의 참여 여부는 프로젝트의 리더가 판단합니다. 지원하기를 누르시면, 프로젝트 리더가 확인하여 승인 시 프로젝트에 참여가 가능합니다.
+                            </p>
+                        </div>
+                    </li>
+
+                    <li data-aos="fade-up" data-aos-delay="400">
+                        <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse"
+                                                                       data-bs-target="#faq-list-5" class="collapsed">포인트를
+                        지급받고 싶습니다. <i class="bx bx-chevron-down icon-show"></i><i
+                                class="bx bx-chevron-up icon-close"></i></a>
+                        <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
+                            <p>
+                                포인트는 게시글 작성, 댓글, 좋아요, 프로젝트 및 모임 참여 등의 활동으로 지급이 가능합니다. 활발한 활동 부탁드립니다.
+                            </p>
+                        </div>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </section><!-- End Frequently Asked Questions Section -->
+
+</main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<footer th:replace="../templates/Baker/common/footer.html ::footer">
+</footer>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
+
+    <!-- Vendor JS Files -->
+    <script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets/vendor/php-email-form/validate.js"></script>
+
+    <!--Slideshow header-->
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("demo");
+            let captionText = document.getElementById("caption");
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            captionText.innerHTML = dots[slideIndex - 1].alt;
+        }
+    </script>
+
+    <!-- Template Main JS File -->
+    <script src="/assets/js/main.js"></script>
+
+    <script>
+        function myFunction() {
+            var element = document.body;
+            element.classList.toggle("dark-mode");
+        }
+    </script>
+
+</body>
+
+</html>

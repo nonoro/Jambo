@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/resources/joinStyle.css"/>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,600,0,0"/>
+    <title>Jambo 회원가입</title>
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+            integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+
+        function ChangeValue() {
+            let stackName = document.getElementById("stack");
+            let stackValue = stackName.value;
+
+            $("#stack").find("[value=" + stackValue + "]").remove();
+
+            $("#myStack").after("<span class='stack' id='" + stackValue + "'>" + stackValue + "<input type='button'  class='stackBtn' value='Delete'/>" +
+                "<input type='text' name='userTechStacks' value='" + stackValue + "' hidden></span>");
+        }
+
+        $(function () {
+
+            $(document).on("click", "input[value=Delete]", function () {
+                let id = $(this).parent().attr("id");
+
+                $(this).parent().remove();
+
+                $("#stackDefault").next().html("<option value='" + id + "'>" + id + "</option>");
+
+            });
+
+        })
+
+        function usernameCheck() {
+            let email = $("#email").val();
+            if (email == "") {
+                alert("아이디를 입력해주세요! 필수항목입니당!")
+                $("email").focus();
+                return false;
+            }
+            if (!email.includes('@')) {
+                alert("이메일 형식으로 가입 가능합니다.")
+                $("email").focus();
+                return false;
+            }
+            $.ajax({
+                type: "get",
+                url: "/user/idcheckAjax",
+                data: {"email": email},
+                dataType: "JSON",
+
+                success: function (result) {
+                    if (result.result == "0") {
+                        if (confirm("이 아이디는 사용 가능합니다. \n사용하시겠습니까?")) {
+                            // usernameOverlapCheck = 1;
+                            $("#email").attr("readonly", true);
+                            $("#usernameOverlay").attr("disabled", true);
+                            $("#usernameOverlay").css("display", "none");
+                        }
+                        return false;
+                    } else if (result.result == "1") {
+                        alert("이미 사용중인 아이디입니다.");
+                        $("#username").focus();
+                    } else {
+                        alert("success이지만 result 값이 undefined 잘못됨");
+                    }
+                },
+                error: function (request, status, error) {
+                    alert("ajax 실행 실패");
+                    alert("code:" + request.status + "\n" + "error :" + error);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<div class="login-card-container">
+    <div class="login-card">
+        <div class="login-card-logo">
+            <img src="/resources/jamboLogo.png" alt="logo" width="100px">
+        </div>
+        <div class="login-card-header">
+            <h1>회원가입</h1>
+            <div>회원가입을 통해 Jambo 에서<br> 더 많은 서비스를 즐겨보세요!</div>
+        </div>
+
+<!--        <form class="login-card-form" action="/user/join" method="post">-->
+        <form class="login-card-form" th:action="@{/user/join}" method="post">
+            <!-- 타입리프 부분 추가  post 방식으로 하려면-->
+<!--            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">-->
+
+            <div class="form-item">
+                <span class="form-item-icon material-symbols-rounded">mail</span>
+                <input type="email" placeholder="아이디를 입력해주세요! (이메일 형식)" id="email" name="email"
+                       autofocus required>
+                <input type="button" id="usernameOverlay" onclick="usernameCheck()" value="중복 체크"/>
+            </div>
+            <div class="form-item">
+                <span class="form-item-icon material-symbols-rounded">lock</span>
+                <input type="password" placeholder="비밀번호를 입력하세요." name="password"
+                       required>
+            </div>
+            <div class="form-item">
+                <span class="form-item-icon material-symbols-rounded">Egg</span>
+                <input type="text" placeholder="이름" id="name" name="name"
+                       autofocus required>
+            </div>
+            <div class="form-item">
+                <span class="form-item-icon material-symbols-rounded">Star</span>
+                <input type="text" placeholder="닉네임(별명)" name="nickName"
+                       autofocus required>
+            </div>
+            <div class="form-item">
+                <span class="form-item-icon material-symbols-rounded">Call</span>
+                <input type="text" placeholder="핸드폰 번호" name="phone"
+                       autofocus required>
+            </div>
+            <div class="form-item">
+                <span class="form-item-icon material-symbols-rounded">Group</span>
+                <select name="mbti">
+                    <option value="0" disabled selected>MBTI</option>
+                    <option value="ISTJ">ISTJ</option>
+                    <option value="ISTP">ISTP</option>
+                    <option value="ESTP">ESTP</option>
+                    <option value="ESTJ">ESTJ</option>
+                    <option value="ISFJ">ISFJ</option>
+                    <option value="ISFP">ISFP</option>
+                    <option value="ESFP">ESFP</option>
+                    <option value="INFJ">INFJ</option>
+                    <option value="INFP">INFP</option>
+                    <option value="ENFP">ENFP</option>
+                    <option value="ENFJ">ENFJ</option>
+                    <option value="INTJ">INTJ</option>
+                    <option value="INTP">INTP</option>
+                    <option value="ENTP">ENTP</option>
+                    <option value="ENTJ">ENTJ</option>
+                    <option value="nothing">없음</option>
+                </select>
+            </div>
+
+            <div class="form-item">
+                <span class="form-item-icon material-symbols-rounded">Group</span>
+                <select name="stack" id="stack" onchange="ChangeValue()">
+                    <option value="0" selected id="stackDefault">기술스택</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="TypeScript">TypeScript</option>
+                    <option value="React">React</option>
+                    <option value="Vue">Vue</option>
+                    <option value="Nodejs">Nodejs</option>
+                    <option value="Spring">Spring</option>
+                    <option value="Java">Java</option>
+                    <option value="Nextjs">Nextjs</option>
+                    <option value="Express">Express</option>
+                    <option value="Go">Go</option>
+                    <option value="C">C</option>
+                    <option value="Python">Python</option>
+                    <option value="Django">Django</option>
+                    <option value="Swift">Swift</option>
+                    <option value="Kotlin">Kotlin</option>
+                    <option value="MySQL">MySQL</option>
+                    <option value="MongoDB">MongoDB</option>
+                    <option value="php">php</option>
+                    <option value="GraphQL">GraphQL</option>
+                    <option value="Firebase">Firebase</option>
+                    <option value="Unity">Unity</option>
+                    <option value="Flutter">Flutter</option>
+                    <option value="AWS">AWS</option>
+                    <option value="Kubernetes">Kubernetes</option>
+                    <option value="Docker">Docker</option>
+                    <option value="Git">Git</option>
+                    <option value="Figma">Figma</option>
+                    <option value="Zeplin">Zeplin</option>
+                </select>
+            </div>
+            <div>
+                <h5>나의 기술 스택</h5>
+                <p/>
+                <span id="myStack"> </span>
+            </div>
+            <button type="submit">회원가입</button>
+            <button type="reset">취소</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
