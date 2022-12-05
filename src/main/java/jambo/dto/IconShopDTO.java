@@ -25,9 +25,7 @@ public class IconShopDTO {
     private MultipartFile file;
 
     public IconShop toEntity() {
-        IconShop iconShop = new IconShop(name, description, price, quantity);
+        IconShop iconShop = new IconShop(name, price, quantity);
         return iconShop;
     }
-
-
 }

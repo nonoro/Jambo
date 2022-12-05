@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.persistence.RollbackException;
 import java.util.List;
 
 @Controller
@@ -52,11 +53,9 @@ public class IconController {
     public String registerIcon(IconShopDTO iconShopDTO) { // upload는 첨부된 파일의 정보를 가지고있는 객체
         log.debug("업로드 요청");
 
-        String fileName = fileService.saveFile(iconShopDTO.getFile());
+        String fileName = fileService.upload(iconShopDTO.getFile());
 
-        IconShop iconShop = iconShopDTO.toEntity();
-        iconShop.setFileName(fileName);
-        iconService.save(iconShop);
+        iconService.save(fileName, iconShopDTO);
 
         return "redirect:shop";
     }

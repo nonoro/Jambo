@@ -65,52 +65,12 @@ public class IconShopTest {
 //        UserBuyIconDTO userBuyIconDTO = new UserBuyIconDTO("kkk@naver.com", "elephant1.gif");
         UserBuyIconDTO userBuyIconDTO = new UserBuyIconDTO("qqq@naver.com", "elephant1.gif");
         User user = userRepository.findByEmail(userBuyIconDTO.getEmail());
-        IconShop icon = iconShopRepository.findByName(userBuyIconDTO.getIconName());
+        IconShop icon = iconShopRepository.findByName(userBuyIconDTO.getIconName()).get();
         Icon purchasedIcon = new Icon(user, icon);
 
         purchasedIcon.setUser(user);
         purchasedIcon.setIconShop(icon);
 
         iconRepository.save(purchasedIcon);
-    }
-
-    @DisplayName("병신개쓰레기 페이징처리 테스트")
-    @Test
-    @Disabled
-    public void pagingTest() {
-        int currentPage = 12;
-        int pageSize = 2;
-        int blockCount = 3;
-        boolean exitLoop = false;
-        Pageable page = PageRequest.of(currentPage - 1, pageSize, Sort.Direction.DESC, "id");
-
-        String actual = "";
-
-        Page<IconShop> iconShops = iconShopRepository.findAllByOrderBySaveDateDesc(page);
-
-        int totalPages = iconShops.getTotalPages();
-
-        int tmp = (currentPage - 1) % blockCount;
-        int startPage = currentPage - tmp;
-
-        if (startPage - blockCount > 0) {
-            actual += "<";
-        }
-
-        for (int i = startPage; i <= ((startPage - 1) + blockCount); i++) {
-            if ((i - 1) >= totalPages) {
-                exitLoop = true;
-            }
-            if (!exitLoop) {
-                actual += i;
-            }
-        }
-
-        if (startPage + blockCount <= totalPages) {
-            actual += ">";
-        }
-        System.out.println("totalPages = " + totalPages);
-
-        assertThat(actual).isEqualTo("<101112");
     }
 }
