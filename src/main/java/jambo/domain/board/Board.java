@@ -41,9 +41,6 @@ public abstract class Board {
     @CreatedDate
     private LocalDateTime writeDate;
 
-    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
-    private List<ImgFile> imgFiles;
-
     private int views;
 
     private boolean isReported;
@@ -52,18 +49,11 @@ public abstract class Board {
     private Category category;
 
 
-    public Board(User user, String title, String content, List<String> imgFiles, String category) {
+    public Board(User user, String title, String content, String category) {
         this.user = user;
         this.title = title;
         this.content = content;
-        this.imgFiles = ImgFile.of(imgFiles);
         this.category = Category.mapping(category);
     }
 
-    public void setImgFiles(List<String> imgFiles) {
-        List<ImgFile> boardImgFiles = ImgFile.of(imgFiles);
-        this.imgFiles = boardImgFiles;
-
-        boardImgFiles.forEach(imgFile -> imgFile.setBoard(this));
-    }
 }

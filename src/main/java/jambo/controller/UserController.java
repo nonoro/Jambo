@@ -40,12 +40,7 @@ public class UserController {
 
     @RequestMapping("/join")
     public String join(UserJoinDTO userJoinDTO){
-
         System.out.println("join con userJoinDTO :"+userJoinDTO.toString());
-//        User user= userJoinDTO.toEntity();
-//        System.out.println("user con user = " + user.toString());
-
-
         userService.join(userJoinDTO);
         return "redirect:/user/preJoinForm";
     }

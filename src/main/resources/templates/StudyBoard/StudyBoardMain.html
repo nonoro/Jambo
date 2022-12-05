@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Main index page</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="/assets/img/jamboLogo.ico" rel="icon">
+    <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+
+    <!-- =======================================================
+    * Template Name: Baker - v4.9.1
+    * Template URL: https://bootstrapmade.com/baker-free-onepage-bootstrap-theme/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
+
+    <style>
+
+        body {
+            font-family: Arial;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        img {
+            vertical-align: middle;
+        }
+
+        .main_container {
+            width: 100%;
+        }
+
+        .main_container .mySlides img {
+            vertical-align: middle;
+            height: 550px;
+        }
+
+        .column img {
+            height: 90px;
+        }
+
+        /* Position the image container (needed to position the left and right arrows) */
+        .container {
+            position: relative;
+        }
+
+        /* Hide the images by default */
+        .mySlides {
+            display: none;
+            padding-top: 60px;
+        }
+
+        /* Add a pointer when hovering over the thumbnail images */
+        .cursor {
+            cursor: pointer;
+        }
+
+        /* Next & previous buttons */
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 30%;
+            width: auto;
+            padding: 16px;
+            margin-top: -50px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        .prev {
+            cursor: pointer;
+            position: absolute;
+            top: 30%;
+            width: auto;
+            padding: 200px 10px;
+            margin-top: -50px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+            padding: 200px 10px;
+        }
+
+        /* On hover, add a black background color with a little bit see-through */
+        .prev:hover,
+        .next:hover {
+            background-color: rgb(252 218 77);;
+        }
+
+        /* Number text (1/3 etc) */
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+
+        /* Container for image text */
+        .caption-container {
+            text-align: center;
+            background-color: #fff;
+            padding: 5px;
+            color: white;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        /* Six columns side by side */
+        .column {
+            float: left;
+            width: 16.66%;
+        }
+
+        /* Add a transparency effect for thumnbail images */
+        .demo {
+            opacity: 0.6;
+        }
+
+        .active,
+        .demo:hover {
+            opacity: 1;
+        }
+
+        .container {
+            max-width: 80%;
+            padding: 0px;
+        }
+    </style>
+</head>
+
+<body>
+
+<!--헤더-->
+<header th:replace="../templates/Baker/common/header.html ::header">
+</header>
+
+<main id="main">
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients section-bg">
+        <div class="container">
+
+        </div>
+    </section><!-- End Clients Section -->
+
+    <!--Slideshow header-->
+    <div class="main_container">
+        <div class="mySlides">
+            <div class="text">
+            </div>
+        </div>
+
+        <div class="caption-container">
+        </div>
+
+        <div class="row">
+            <div class="column">
+            </div>
+        </div>
+    </div>
+
+<!--    -->
+    <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <a href="/StudyBoard/StudyBoardWrite" >글쓰기 </a>
+            <div class="section-title">
+                <h2>스터디 그룹 게시판</h2>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12 d-flex justify-content-center">
+                    <ul id="portfolio-flters">
+                        <li data-filter="*" class="filter-active">All</li>
+                        <li data-filter=".filter-app">프론트엔드</li>
+                        <li data-filter=".filter-card">백엔드</li>
+                        <li data-filter=".filter-web">모바일</li>
+                        <li data-filter=".filter-etc">기타</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row portfolio-container">
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="width:100px;">
+                    <img src="/assets/img/portfolio/javascript.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="width:100px;">
+                    <img src="/assets/img/portfolio/typescript.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="width:100px;">
+                    <img src="/assets/img/portfolio/react.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="width:100px;">
+                    <img src="/assets/img/portfolio/vue.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="width:100px;">
+                    <img src="/assets/img/portfolio/svelte.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-app" style="width:100px;">
+                    <img src="/assets/img/portfolio/nextjs.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="width:100px;">
+                    <img src="/assets/img/portfolio/nodejs.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="width:100px;">
+                    <img src="/assets/img/portfolio/java.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="width:100px;">
+                    <img src="/assets/img/portfolio/spring.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="width:100px;">
+                    <img src="/assets/img/portfolio/go.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="width:100px;">
+                    <img src="/assets/img/portfolio/nestjs.svg" class="img-fluid" alt="">
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-web" style="width:100px;">
+                    <img src="/assets/img/portfolio/kotlin.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="width:100px;">
+                    <img src="/assets/img/portfolio/express.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="width:100px;">
+                    <img src="/assets/img/portfolio/mysql.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="width:100px;">
+                    <img src="/assets/img/portfolio/mongodb.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="width:100px;">
+                    <img src="/assets/img/portfolio/python.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="width:100px;">
+                    <img src="/assets/img/portfolio/django.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="width:100px;">
+                    <img src="/assets/img/portfolio/php.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="width:100px;">
+                    <img src="/assets/img/portfolio/graphql.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-card" style="width:100px;">
+                    <img src="/assets/img/portfolio/firebase.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-web" style="width:100px;">
+                    <img src="/assets/img/portfolio/flutter.svg" class="img-fluid" alt="">
+                </div>
+
+                <div class="col-lg-4 col-md-6 portfolio-item filter-web" style="width:100px;">
+                    <img src="/assets/img/portfolio/swift.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-web" style="width:100px;">
+                    <img src="/assets/img/portfolio/reactnative.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-web" style="width:100px;">
+                    <img src="/assets/img/portfolio/unity.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-etc" style="width:100px;">
+                    <img src="/assets/img/portfolio/aws.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-etc" style="width:100px;">
+                    <img src="/assets/img/portfolio/kubernetes.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-etc" style="width:100px;">
+                    <img src="/assets/img/portfolio/docker.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-etc" style="width:100px;">
+                    <img src="/assets/img/portfolio/git.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-etc" style="width:100px;">
+                    <img src="/assets/img/portfolio/figma.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-etc" style="width:100px;">
+                    <img src="/assets/img/portfolio/zeplin.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-etc" style="width:100px;">
+                    <img src="/assets/img/portfolio/jest.svg" class="img-fluid" alt="">
+                </div>
+                <div class="col-lg-4 col-md-6 portfolio-item filter-etc" style="width:100px;">
+                    <img src="/assets/img/portfolio/c.svg" class="img-fluid" alt="">
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Portfolio Section -->
+
+<!-- 여기에 입력 -->
+
+    여기에 게시글 리스트가 나옵니다
+
+<!---->
+</main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<footer th:replace="../templates/Baker/common/footer.html ::footer">
+</footer>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
+
+    <!-- Vendor JS Files -->
+    <script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="/assets/vendor/php-email-form/validate.js"></script>
+
+    <!--Slideshow header-->
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let i;
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("demo");
+            let captionText = document.getElementById("caption");
+            if (n > slides.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            captionText.innerHTML = dots[slideIndex - 1].alt;
+        }
+    </script>
+
+    <!-- Template Main JS File -->
+    <script src="/assets/js/main.js"></script>
+
+    <script>
+        function myFunction() {
+            var element = document.body;
+            element.classList.toggle("dark-mode");
+        }
+    </script>
+
+</body>
+
+</html>

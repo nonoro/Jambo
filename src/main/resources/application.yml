@@ -37,4 +37,6 @@ logging:
   level:
     org:
       hibernate: info
-
+file:
+  urlPath: /jong
+  path: /Users/jy/finalJambo/Jambo/src/main/resources/fileupload/
