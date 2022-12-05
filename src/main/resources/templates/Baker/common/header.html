@@ -7,7 +7,7 @@
 <header id="header" class="fixed-top header-transparent" th:fragment="header">
   <div class="container d-flex align-items-center justify-content-between">
 
-    <h1 class="logo"><a href="/"><img src="assets/img/logo.png" alt="" class="img-fluid"></a></h1>
+    <h1 class="logo"><a href="/"><img src="/assets/img/logo.png" alt="" class="img-fluid"></a></h1>
     <!-- Uncomment below if you prefer to use an image logo -->
     <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -19,20 +19,19 @@
           <ul>
             <li><a href="#">정보 게시판</a></li>
             <li><a href="#">자유 게시판</a></li>
-            <li><a href="#">소작모</a></li>
-            <li><a href="#">바보</a></li>
+            <li><a th:href="@{/board/list}">소작모</a></li>
           </ul>
         </li>
         <li>
           <button onclick="myFunction()" class="dark">다크모드</button>
         </li>
         <li><a class="nav-link scrollto active" href="#hero">공지사항</a></li>
-        <li><a class="nav-link scrollto" href="#about"><img src="assets/img/bell.png" alt="bell" width="40px"></a></li>
-        <li class="dropdown"><a href="#"><img src="assets/img/footprint.png" alt="" width="30px"><i class="bi bi-chevron-down"></i></a>
+        <li><a class="nav-link scrollto" href="#about"><img src="/assets/img/bell.png" alt="bell" width="40px"></a></li>
+        <li class="dropdown"><a href="#"><img src="/assets/img/footprint.png" alt="" width="30px"><i class="bi bi-chevron-down"></i></a>
           <ul>
             <li><a href="#">내 작성글</a></li>
             <li><a href="#">참여 스터디</a></li>
-            <li><a href="#">마이페이지</a></li>
+            <li><a th:href="@{mypage/mypageList}">마이페이지</a></li>
             <li><a href="#">로그아웃</a></li>
           </ul>
         </li>
