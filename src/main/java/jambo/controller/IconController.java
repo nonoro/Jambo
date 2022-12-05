@@ -33,7 +33,7 @@ public class IconController {
 
     private final UserRepository userRepository;
 
-    @RequestMapping("/shop")
+    @GetMapping("/shop")
     public String showIconShop(Model model, String keyWord, @PageableDefault(size = 3, direction = Sort.Direction.DESC) Pageable pageable) {
         Long userId = 1L;
         User user = userRepository.findById(userId).get();
