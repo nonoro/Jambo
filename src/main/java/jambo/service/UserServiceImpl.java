@@ -7,7 +7,6 @@ import jambo.dto.UserJoinDTO;
 import jambo.repository.TechStackRepository;
 import jambo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 

@@ -44,6 +44,10 @@ dependencies {
     implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
     implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
 
+    /*파일 업로드 관련 설정*/
+    implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
+    implementation group: 'com.google.code.gson', name: 'gson', version: '2.10'
+    implementation group: 'commons-fileupload', name: 'commons-fileupload', version: '1.4'
 }
 
 tasks.named('test') {

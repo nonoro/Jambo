@@ -33,6 +33,7 @@ logging:
   level:
     org:
       hibernate: info
+
     jambo:
       controller: debug
 file:

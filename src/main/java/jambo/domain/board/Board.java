@@ -33,10 +33,11 @@ public abstract class Board {
     private User user;
 
     private String title;
-
+    @Column(length=1000)
     private String content;
 
-    private int recommendation;
+    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
+    private List<Recommendation> recommendation;
 
     @CreatedDate
     private LocalDateTime writeDate;
