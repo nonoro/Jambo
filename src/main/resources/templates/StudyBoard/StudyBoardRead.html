@@ -192,7 +192,9 @@
 
     <!-- 끝-->
 
+    <!--신고버튼 layer popup 처리-->
 
+    <!--신고버튼 layer popup 처리-->
 
 </head>
 
@@ -251,13 +253,13 @@
                     <dl>
                         <dt>모집인원</dt>
                         <dt>
-
+                            <span th:text="${board.numberOfRecruits}">명</span>
                         </dt>
                     </dl>
                     <dl>
                         <dt>스터디 시작일</dt>
                         <dt>
-
+                            <span th:text="${board.startDate}"></span>
                         </dt>
                     </dl>
                 </div>
@@ -285,7 +287,7 @@
                     <dl>
                         <dt>조회수</dt>
                         <dt>
-
+                            <span th:text="${board.views}"></span>
                         </dt>
                     </dl>
                 </div>
@@ -320,7 +322,8 @@
                 <a th:href="@{'/StudyBoard/recommend/'+${board.id}}" class="on">추천
                      : <span th:text="${board.recommendation}"></span>
                 </a>
-            </div>
+                <button type="button" class="btn btn-danger" onclick="openPop()">신고하기</button>
+
         </div>
 
     </div>

@@ -2,6 +2,7 @@ package jambo.controller;
 
 
 import jambo.domain.board.Board;
+import jambo.domain.board.StudyBoard;
 import jambo.dto.StudyBoardDTO;
 import jambo.service.StudyBoardService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ public class StudyBoardController {
 
     @RequestMapping("/StudyBoardMain")
     public String main(Model model) {
-        List<Board> boards = service.selectAll();
+        List<StudyBoard> boards = service.selectAll();
         model.addAttribute("list", boards);
 
         return "/StudyBoard/StudyBoardMain";
@@ -46,7 +47,7 @@ public class StudyBoardController {
     @RequestMapping("/read/{id}")
     public ModelAndView read(@PathVariable Long id, String flag) {
         boolean state = flag == null ? true : false;
-        Board dbBoard = service.read(id, state);
+        StudyBoard dbBoard = service.read(id, state);
         return new ModelAndView("StudyBoard/StudyBoardRead", "board", dbBoard);
 
     }

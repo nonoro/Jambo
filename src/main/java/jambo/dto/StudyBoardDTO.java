@@ -38,8 +38,6 @@ public class StudyBoardDTO {
 
     private String isOnline;
 
-
-
     private String category;
 
     private String startDate;

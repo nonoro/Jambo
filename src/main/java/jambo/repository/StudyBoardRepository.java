@@ -1,7 +1,6 @@
 package jambo.repository;
 
 
-import jambo.domain.board.Board;
 import jambo.domain.board.StudyBoard;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -11,18 +10,17 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface StudyBoardRepository extends JpaRepository<Board, Long> {
+public interface StudyBoardRepository extends JpaRepository<StudyBoard, Long> {
 
     /**
      * 스터디게시판 모든 글 조회
      */
-    List<Board> findBoardsByCategory(String category);
+    List<StudyBoard> findAll();
 
     /**
      * 스터디 게시판 글 상세조회
      */
-    Board findBoardById(Long id);
-
+    StudyBoard findStudyBoardById(Long id);
     /**
      * 조회수 증가
      */
