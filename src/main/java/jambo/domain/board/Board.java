@@ -11,6 +11,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -35,7 +36,8 @@ public abstract class Board {
     @Column(length=1000)
     private String content;
 
-    private int recommendation;
+    @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
+    private List<Recommendation> recommendation;
 
     @CreatedDate
     private LocalDateTime writeDate;

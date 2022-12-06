@@ -1,6 +1,7 @@
 package jambo.domain.user;
 
 import jambo.domain.TechStack;
+import jambo.domain.board.Recommendation;
 import jambo.domain.user.type.MBTI;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -55,6 +56,9 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Alarm> alarms;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Recommendation> recommendation;
 
     public User(String email, String password, String name, String nickName, String phone, String mbti) {
         this.email = email;

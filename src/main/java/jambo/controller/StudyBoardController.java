@@ -52,11 +52,11 @@ public class StudyBoardController {
 
     }
 
-    @RequestMapping("/recommend/{id}")
-    private String recommend(@PathVariable Long id){
-        service.recommend(id);
-        return "redirect:/StudyBoard/read/"+id;
-    }
+//    @RequestMapping("/recommend/{id}")
+//    private String recommend(@PathVariable Long id){
+//        service.recommend(id);
+//        return "redirect:/StudyBoard/read/"+id;
+//    }
 
 
 }

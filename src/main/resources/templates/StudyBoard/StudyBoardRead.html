@@ -267,21 +267,23 @@
                     <dl>
                         <dt>모집방법</dt>
                         <dt>
-
+                            <span th:text="${board.supportMethod}"></span>
                         </dt>
                     </dl>
                     <dl>
                         <dt>온라인/오프라인</dt>
                         <dt>
-
+                            <span th:text="${board.online}"></span>
+                            <span th:if="${board.online == 'false'}">온라인</span>
+                            <span th:if="${board.online == 'true'}">오프라인</span>
                         </dt>
                     </dl>
                 </div>
                 <div class="info">
                     <dl>
-                        <dt>모집방법</dt>
+                        <dt>스터디 운용기간</dt>
                         <dt>
-
+                            <span th:text="${board.period}"></span>
                         </dt>
                     </dl>
                     <dl>

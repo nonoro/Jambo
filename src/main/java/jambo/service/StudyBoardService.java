@@ -44,7 +44,7 @@ public class StudyBoardService {
         return studyBoardRepository.findStudyBoardById(id);
     }
 
-    public void recommend(Long id){
-        studyBoardRepository.recommend(id);
-    }
+//    public void recommend(Long id){
+//        studyBoardRepository.recommend(id);
+//    }
 }
