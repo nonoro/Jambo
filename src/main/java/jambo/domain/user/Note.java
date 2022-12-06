@@ -1,9 +1,6 @@
 package jambo.domain.user;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -16,6 +13,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @EntityListeners(AuditingEntityListener.class)
+@ToString
 public class Note {
     @Id
     @Column(name = "note_id")
@@ -23,9 +21,7 @@ public class Note {
     @SequenceGenerator(name = "note_seq", sequenceName = "note_seq", allocationSize = 1)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User sendUser;
+    private String sendUser;
 
     private String receiveUser;
 
