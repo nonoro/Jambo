@@ -24,8 +24,8 @@ spring:
     url: jdbc:oracle:thin:@localhost:1521:XE
 #    username: ADMIN
 #    password: Jambo123456!
-    username: c##scott
-    password: TIGER
+    username: system
+    password: 4758
   jpa:
     hibernate:
       ddl-auto: none
