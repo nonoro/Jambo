@@ -17,15 +17,16 @@
         <li><a class="nav-link scrollto active" href="/StudyBoard/StudyBoardMain">스터디</a></li>
         <li class="dropdown"><a href="#">게시판&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
           <ul>
-            <li><a href="#">정보 게시판</a></li>
-            <li><a href="#">자유 게시판</a></li>
-            <li><a th:href="@{/board/list}">소작모</a></li>
+            <li><a th:href="@{/board/list(category='FREE_BOARD')}">자유 게시판</a></li>
+            <li><a th:href="@{/board/list(category='INFORMATION_BOARD')}">정보 게시판</a></li>
+            <li><a th:href="@{/board/list(category='CONTEST_BOARD')}">소작모</a></li>
+            <li><a th:href="@{/board/list(category='EVENT_BOARD')}">행사게시판</a></li>
           </ul>
         </li>
         <li>
           <button onclick="myFunction()" class="dark">다크모드</button>
         </li>
-        <li><a class="nav-link scrollto active" href="#hero">공지사항</a></li>
+        <li><a class="nav-link scrollto active" th:href="@{/board/list(category='NOTICE_BOARD')}">공지사항</a></li>
         <li><a class="nav-link scrollto" href="#about"><img src="/assets/img/bell.png" alt="bell" width="40px"></a></li>
         <li class="dropdown"><a href="#"><img src="/assets/img/footprint.png" alt="" width="30px"><i class="bi bi-chevron-down"></i></a>
           <ul>
