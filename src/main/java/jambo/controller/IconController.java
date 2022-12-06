@@ -44,12 +44,12 @@ public class IconController {
         model.addAttribute("pageNumbers", pageNumbers);
         model.addAttribute("savePath", fileService.getUrlPath());
         model.addAttribute("user", userResponseDTO);
-        return "icon/showIconShop";
+        return "iconShop/showIconShop";
     }
 
     @GetMapping("/register")
     public String registerForm() {
-        return "icon/registerForm";
+        return "iconShop/registerForm";
     }
 
     @PostMapping("/register")
@@ -83,7 +83,7 @@ public class IconController {
         model.addAttribute("icons", icons);
         model.addAttribute("savePath", fileService.getUrlPath());
         model.addAttribute("user", userResponseDTO);
-        return "icon/myIcon";
+        return "iconShop/myIcon";
     }
 
     @PostMapping("/{iconId}")
