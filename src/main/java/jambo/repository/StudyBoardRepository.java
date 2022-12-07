@@ -20,12 +20,7 @@ public interface StudyBoardRepository extends JpaRepository<StudyBoard, Long> {
      * 스터디 게시판 글 상세조회
      */
     StudyBoard findStudyBoardById(Long id);
-    /**
-     * 조회수 증가
-     */
-    @Query("update Board b set b.views = b.views + 1 where b.id = ?1")
-    @Modifying
-    void updateViews(Long id);
+
 
 
     /**

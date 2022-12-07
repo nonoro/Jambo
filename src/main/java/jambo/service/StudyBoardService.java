@@ -38,13 +38,8 @@ public class StudyBoardService {
     public StudyBoard read(Long id, boolean state){
 
         if(state) {//조회수 증가
-            studyBoardRepository.updateViews(id);
+            boardRepository.updateViews(id);
         }
-
         return studyBoardRepository.findStudyBoardById(id);
     }
-
-//    public void recommend(Long id){
-//        studyBoardRepository.recommend(id);
-//    }
 }

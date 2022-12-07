@@ -70,7 +70,7 @@
     <div class="notice">
     <div class="board_title">
         <h4 class="mini_h"><img src="/board/img/home.png" class="home_img" alt="home" style="width: 29px;"> > 공지사항</h4>
-        <img src="/board/img/free.png" class="notice_img" alt="notice" style="width: 1080px;">
+        <img src="/board/img/contest.png" class="notice_img" alt="notice" style="width: 1080px;">
     </div>
     <div id="notice_wrap">
         <div id="right">
@@ -80,42 +80,28 @@
                     
                     <table class="noticeTbe">
                         <tr>
-                        <th class="n_th"><input type ="checkbox"></th> <!--체크박스-->
-                        <th class="n_th">번호</th>
                         <th class="n_th">제목</th>
                         <th class="n_th">글쓴이</th>
                         <th class="n_th">작성일</th>
-                        <th class="n_th">조회</th>
+                        <th class="n_th">조회수</th>
                         </tr>
 
                         <tr class="n_tr" th:each="board : ${list}">
-                            <td class="n_td">
-                                <input type ="checkbox">
-                            </td>
-                            <td class="n_td">1</td>
-                            <td class="n_td"><a href="#" class="n_a">
+                            <td class="n_td"><a th:href="@{'/board/read/'+${board.id}}" class="n_a">
                                 <span th:text="${board.title}"></span>
                             </a></td>
                             <td class="n_td">user01</td>
                             <td class="n_td">
-                                <span th:text="${board.content}"></span>
+                                <span th:text="${#temporals.format(board.writeDate, 'yyyy-MM-dd HH:mm')}"></span>
                             </td>
-                            <td class="n_td">1</td>
-                        </tr>
-
-
-                        <tr class="n_tr">
-                            <td class="n_td"><input type ="checkbox"></td>
-                            <td class="n_td">1</td>
-                            <td class="n_td"><a href="#" class="n_a">공지사항 제목</a></td>
-                            <td class="n_td">user02</td>
-                            <td class="n_td">2022-01-01</td>
-                            <td class="n_td">1</td>
+                            <td class="n_td">
+                                <span th:text="${board.views}"></span>
+                            </td>
                         </tr>
                     </table>
 
                 </div>
-
+                <a th:href="@{'/board/write}" >글쓰기 </a>
                 
                 
                 <!--side 부분-->
