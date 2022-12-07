@@ -63,7 +63,7 @@ public class IconShopTest {
     public void buyUserIcon() {
 //        UserBuyIconDTO userBuyIconDTO = new UserBuyIconDTO("kkk@naver.com", "elephant1.gif");
         UserBuyIconDTO userBuyIconDTO = new UserBuyIconDTO("qqq@naver.com", "elephant1.gif");
-        User user = userRepository.findByEmail(userBuyIconDTO.getEmail());
+        User user = userRepository.findByEmail(userBuyIconDTO.getEmail()).get();
         IconShop icon = iconShopRepository.findByName(userBuyIconDTO.getIconName()).get();
         Icon purchasedIcon = new Icon(user, icon);
 
