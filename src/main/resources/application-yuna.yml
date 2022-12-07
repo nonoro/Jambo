@@ -1,6 +1,11 @@
 spring:
   datasource:
-    url: jdbc:oracle:thin:@jambo_medium?TNS_ADMIN=/Users/kent/db/Wallet_jambo
-    username: ADMIN
-    password: Jambo123456!
-
+    #    url: jdbc:oracle:thin:@jambo_medium?TNS_ADMIN=/Users/jy/Desktop/edu/Wallet_jambo
+    #    username: ADMIN
+    #    password: Jambo123456!
+    url: jdbc:oracle:thin:@localhost:1521:XE
+    username: system
+    password: 4758
+file:
+  urlPath: /yuna
+  path: /Users/kent/Jambo/src/main/resources/fileupload/

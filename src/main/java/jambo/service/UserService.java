@@ -3,6 +3,7 @@ package jambo.service;
 
 
 import jambo.domain.user.User;
+import jambo.domain.user.UserTechStack;
 import jambo.dto.UserJoinDTO;
 
 import java.util.HashMap;
@@ -19,4 +20,9 @@ public interface UserService {
      * 회원가입
      */
     Long join(UserJoinDTO userJoinDTO);
+
+    /**
+     * 마이페이지
+     */
+    User myPage(String userEmail);
 }

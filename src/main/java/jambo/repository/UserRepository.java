@@ -12,4 +12,9 @@ public interface UserRepository extends JpaRepository<User, Long> {
     User findByEmail(String email);
 
     boolean existsByEmail(String email);
+
+    /**
+     * 해당 유저(email)의 모든 정보 조회
+     */
+    User findUserByEmail(String email);
 }

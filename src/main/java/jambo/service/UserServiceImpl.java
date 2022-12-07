@@ -42,4 +42,16 @@ public class UserServiceImpl implements UserService{
 
         return userRep.save(user).getId();
     }
+
+    @Override
+    public User myPage(String userEmail) {
+
+        return userRep.findUserByEmail(userEmail);
+    }
+
+//    @Override
+//    public UserTechStack techStack(long id) {
+
+//        return userRep.findById();
+//    }
 }

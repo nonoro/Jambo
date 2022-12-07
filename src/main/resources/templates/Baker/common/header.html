@@ -25,13 +25,13 @@
         <li>
           <button onclick="myFunction()" class="dark">다크모드</button>
         </li>
-        <li><a class="nav-link scrollto active" href="#hero">공지사항</a></li>
+        <li><a class="nav-link scrollto active" th:href="@{board/notice}">공지사항</a></li>
         <li><a class="nav-link scrollto" href="#about"><img src="/assets/img/bell.png" alt="bell" width="40px"></a></li>
         <li class="dropdown"><a href="#"><img src="/assets/img/footprint.png" alt="" width="30px"><i class="bi bi-chevron-down"></i></a>
           <ul>
             <li><a href="#">내 작성글</a></li>
             <li><a href="#">참여 스터디</a></li>
-            <li><a th:href="@{mypage/mypageList}">마이페이지</a></li>
+            <li><a th:href="@{/user/myPage}">마이페이지</a></li>
             <li><a href="#">로그아웃</a></li>
           </ul>
         </li>

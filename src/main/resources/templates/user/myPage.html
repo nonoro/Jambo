@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+        .container {
+            margin: auto;
+            font-family: "Poppins", Arial, san-serif;
+            line-height: 1.4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f9f9f9;
+            height: 100%;
+        }
+
+        .card {
+            background: #fff url("https://storage.googleapis.com/chydlx/codepen/minimalist-profile-card/card-bg.jpg") top -10% center no-repeat;
+            background-size: contain;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px -5px rgba(60, 60, 60, 0.2);
+            text-align: center;
+            padding: 30px 60px;
+        }
+        .card img {
+            background-color: #dddfe6;
+            height: 120px;
+            width: 120px;
+            border-radius: 50%;
+            margin: auto auto 15px;
+            display: block;
+        }
+        .card h1 {
+            font-size: 25px;
+            margin: 10px auto 0;
+            letter-spacing: 1px;
+        }
+
+        .card .button {
+            display: block;
+            text-decoration: none;
+            background: #3b70fc;
+            color: #f9f9f9;
+            padding: 12px;
+            border: none;
+            border-radius: 25px;
+            margin-top: 30px;
+            font-size: 16px;
+            font-weight: 700;
+            min-width: 100px;
+            transition: 0.2s;
+        }
+        .card .button span {
+            font-size: 20px;
+            line-height: 1;
+            vertical-align: top;
+        }
+        .card .button:hover {
+            background: #1856fb;
+        }
+
+        /*테이블*/
+        table{ border-collapse : collapse; }  /*이중선 제거*/
+        th,td{
+            width: 200px;
+            height: 50px;
+
+            border: 0.1px solid #000;
+        }
+
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="card">
+        <img th:src="@{${savePath} + '/' + ${myPage.mainEmotion}}">
+        <h1><span th:text="${myPage.nickName}"></span></h1>
+        <table>
+            <tr>
+                <td colspan="2">
+                    이름 : <span th:text="${myPage.name}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    이메일 : <span th:text="${myPage.email}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    핸드폰 : <span th:text="${myPage.phone}"></span>
+                </td>
+            <tr>
+            <tr>
+                <td>
+                    MBTI : <span th:text="${myPage.mbti}"></span>
+                </td>
+                <td style="text-align: center">
+
+                    <span><img src="/assets/img/jamboLogo.ico" style="width:25px; height: 25px;"></span>
+                    <span th:text="${myPage.getAvailablePoint}" style="position: relative; transform: translate(-50%, -50%); "></span>
+
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><a th:href="@{/note/list}">Message</a></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    Skills : <span th:text="${TechStacks}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2"><span th:text="${#temporals.format(myPage.joinDate, 'yyyy-MM-dd')}"></span></td>
+            <tr>
+            <tr>
+                <td><a href="#">회원정보 수정</a></td>
+                <td><a href="/">이전으로 돌아가기</a></td>
+            </tr>
+        </table>
+
+    </div>
+</div>
+</body>
+</html>
