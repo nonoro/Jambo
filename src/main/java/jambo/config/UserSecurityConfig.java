@@ -27,9 +27,9 @@ public class UserSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/icon/shop")
+                .antMatchers("/board/write")
                 .hasRole("USER")
-                .antMatchers("/")
+                .antMatchers("/icon/register")
                 .hasRole("ADMIN")
                 .and()
                 .formLogin()

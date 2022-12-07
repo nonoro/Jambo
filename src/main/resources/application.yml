@@ -21,14 +21,14 @@ spring:
     password: TIGER
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
     show-sql: true
     database: oracle
     database-platform: org.hibernate.dialect.Oracle10gDialect
     defer-datasource-initialization: true
-#  sql:
-#    init:
-#      mode: always
+  sql:
+    init:
+      mode: always
 logging:
   level:
     org:

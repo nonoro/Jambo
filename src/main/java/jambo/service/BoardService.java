@@ -40,15 +40,15 @@ public class BoardService {
         if(state) {//조회수 증가
             boardRepository.updateViews(id);
         }
-        return normalBoardRepository.findNormalBoardById(id);
+        NormalBoard normalBoardById = normalBoardRepository.findNormalBoardById(id);
+        return normalBoardById;
     }
 
 //    public void insert(NormalBoard normalBoard){
 //        boardRepository.save(normalBoard);
 //    }
 
-    public void insert(NormalBoardDTO normalBoardDTO, String userEmail){
-        User user = userRepository.findByEmail(userEmail).get();
+    public void insert(NormalBoardDTO normalBoardDTO, User user){
         NormalBoard normalBoard = normalBoardDTO.toEntity(user);
         boardRepository.save(normalBoard);
     }

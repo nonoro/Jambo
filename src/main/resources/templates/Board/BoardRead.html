@@ -113,7 +113,9 @@
                 <div class="title">
                     <dl>
                         <dt>작성자</dt>
-                        <dt>user</dt>
+                        <dt>
+                            <span th:text="${board.user.getName()}"></span>
+                        </dt>
                     </dl>
                 </div>
                 <div class="info">

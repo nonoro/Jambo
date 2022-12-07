@@ -10,7 +10,6 @@ import lombok.Setter;
 @Getter
 @Setter
 public class NormalBoardDTO {
-//    private String email;
     private String title;
     private String content;
     private Category category;

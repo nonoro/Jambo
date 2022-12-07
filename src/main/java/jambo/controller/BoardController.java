@@ -2,6 +2,7 @@ package jambo.controller;
 
 import jambo.domain.board.NormalBoard;
 import jambo.domain.board.type.Category;
+import jambo.domain.user.User;
 import jambo.dto.NormalBoardDTO;
 import jambo.dto.StudyBoardDTO;
 import jambo.service.BoardService;
@@ -9,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -17,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
 
 
@@ -66,9 +69,8 @@ public class BoardController {
 //    }
 
     @RequestMapping("/insert")
-    public String studyBoardInsert(NormalBoardDTO normalBoardDTO, Authentication authenticationUser) throws IOException {
-        String userEmail = (String) authenticationUser.getPrincipal();
-        boardService.insert(normalBoardDTO, userEmail);
+    public String studyBoardInsert(NormalBoardDTO normalBoardDTO, @AuthenticationPrincipal User user) throws IOException {
+        boardService.insert(normalBoardDTO, user);
         return "redirect:/board/list?category="+normalBoardDTO.getCategory();
     }
 }
