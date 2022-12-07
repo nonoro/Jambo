@@ -19,7 +19,6 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "user_jambo")
 @EntityListeners(AuditingEntityListener.class)
-@ToString
 public class User {
     @Id
     @Column(name = "user_id")

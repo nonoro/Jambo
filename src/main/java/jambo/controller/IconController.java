@@ -35,7 +35,7 @@ public class IconController {
 
     @GetMapping("/shop")
     public String showIconShop(Model model, String keyWord, @PageableDefault(size = 3, direction = Sort.Direction.DESC) Pageable pageable) {
-        Long userId = 1L;
+        Long userId = 2000L;
         User user = userRepository.findById(userId).get();
         UserResponseDTO userResponseDTO = UserResponseDTO.from(user);
         Page<IconShop> icons = iconService.showIconShop(keyWord, pageable);
@@ -65,7 +65,7 @@ public class IconController {
 
     @PostMapping("/buy/{iconId}")
     public String buy(@PathVariable Long iconId, Pageable pageable) {
-        Long userId = 1L;
+        Long userId = 2000L;
         log.debug("구매 아이콘 아이디 = {}", iconId);
         iconService.buy(userId, iconId);
         return "redirect:/icon/shop?page=" + pageable.getPageNumber();
@@ -73,7 +73,7 @@ public class IconController {
 
     @GetMapping
     public String icon(Model model) {
-        Long userId = 1L;
+        Long userId = 2000L;
         User user = userRepository.findById(userId).get();
         UserResponseDTO userResponseDTO = UserResponseDTO.from(user);
         List<IconShop> icons = iconService.getIcons(userId);
@@ -88,7 +88,7 @@ public class IconController {
 
     @PostMapping("/{iconId}")
     public String icon(@PathVariable Long iconId, Model model) {
-        Long userId = 1L;
+        Long userId = 2000L;
         User user = iconService.changeIcon(userId, iconId);
         return "redirect:/icon";
     }

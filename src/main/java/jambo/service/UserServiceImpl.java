@@ -1,9 +1,12 @@
 package jambo.service;
 
 
+import jambo.domain.Authority;
 import jambo.domain.TechStack;
 import jambo.domain.user.User;
+import jambo.dto.LoginDTO;
 import jambo.dto.UserJoinDTO;
+import jambo.repository.AuthorityRepository;
 import jambo.repository.TechStackRepository;
 import jambo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +18,15 @@ import java.util.HashMap;
 import java.util.List;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService{
     @Autowired
     private UserRepository userRep;
     @Autowired
     private TechStackRepository techStackRepository;
+
+    @Autowired
+    private AuthorityRepository authorityRepository;
 
     @Override
     public HashMap<String, Object> userEmailOverlap(String email) {
@@ -39,6 +46,7 @@ public class UserServiceImpl implements UserService{
             List<TechStack> techStacks = techStackRepository.findAllByTechStackNameIn(userTechStacks);
             user.setTechStacks(techStacks);
         }
+        authorityRepository.save(new Authority(user.getEmail(), "ROLE_USER"));
 
         return userRep.save(user).getId();
     }
