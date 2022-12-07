@@ -2,8 +2,11 @@ package jambo.service;
 
 import jambo.domain.board.NormalBoard;
 import jambo.domain.board.type.Category;
+import jambo.domain.user.User;
+import jambo.dto.NormalBoardDTO;
 import jambo.repository.BoardRepository;
 import jambo.repository.NormalBoardRepository;
+import jambo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +22,8 @@ public class BoardService {
 
     @Autowired
     private NormalBoardRepository normalBoardRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     /**
      * 카테고리에 맞는 전체 NormalBoard 검색
@@ -36,5 +41,15 @@ public class BoardService {
             boardRepository.updateViews(id);
         }
         return normalBoardRepository.findNormalBoardById(id);
+    }
+
+//    public void insert(NormalBoard normalBoard){
+//        boardRepository.save(normalBoard);
+//    }
+
+    public void insert(NormalBoardDTO normalBoardDTO, String userEmail){
+        User user = userRepository.findByEmail(userEmail).get();
+        NormalBoard normalBoard = normalBoardDTO.toEntity(user);
+        boardRepository.save(normalBoard);
     }
 }

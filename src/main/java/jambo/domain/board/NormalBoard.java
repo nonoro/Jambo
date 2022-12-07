@@ -17,8 +17,8 @@ public class NormalBoard extends Board {
     public NormalBoard() {
     }
 
-    public NormalBoard(User user, String title, String content, String category) {
-        super(user, title, content, category);
+    public NormalBoard(User user,String title, String content, Category category) {
+        super(user,title, content, category);
     }
 
     public NormalBoard(Long id, User user, String title, String content, List<Recommendation> recommendation, LocalDateTime writeDate, int views, boolean isReported, Category category) {

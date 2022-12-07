@@ -36,138 +36,7 @@
     * License: https://bootstrapmade.com/license/
     ======================================================== -->
 
-    <style>
-
-        body {
-            font-family: Arial;
-            margin: 0;
-        }
-
-        * {
-            box-sizing: border-box;
-        }
-
-        img {
-            vertical-align: middle;
-        }
-
-        .main_container {
-            width: 100%;
-        }
-
-        .main_container .mySlides img {
-            vertical-align: middle;
-            height: 550px;
-        }
-
-        .column img {
-            height: 90px;
-        }
-
-        /* Position the image container (needed to position the left and right arrows) */
-        .container {
-            position: relative;
-        }
-
-        /* Hide the images by default */
-        .mySlides {
-            display: none;
-            padding-top: 60px;
-        }
-
-        /* Add a pointer when hovering over the thumbnail images */
-        .cursor {
-            cursor: pointer;
-        }
-
-        /* Next & previous buttons */
-        .next {
-            cursor: pointer;
-            position: absolute;
-            top: 30%;
-            width: auto;
-            padding: 16px;
-            margin-top: -50px;
-            color: white;
-            font-weight: bold;
-            font-size: 20px;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
-            -webkit-user-select: none;
-        }
-
-        .prev {
-            cursor: pointer;
-            position: absolute;
-            top: 30%;
-            width: auto;
-            padding: 200px 10px;
-            margin-top: -50px;
-            color: white;
-            font-weight: bold;
-            font-size: 20px;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
-            -webkit-user-select: none;
-        }
-
-        /* Position the "next button" to the right */
-        .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-            padding: 200px 10px;
-        }
-
-        /* On hover, add a black background color with a little bit see-through */
-        .prev:hover,
-        .next:hover {
-            background-color: rgb(252 218 77);;
-        }
-
-        /* Number text (1/3 etc) */
-        .numbertext {
-            color: #f2f2f2;
-            font-size: 12px;
-            padding: 8px 12px;
-            position: absolute;
-            top: 0;
-        }
-
-        /* Container for image text */
-        .caption-container {
-            text-align: center;
-            background-color: #fff;
-            padding: 5px;
-            color: white;
-        }
-
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-        /* Six columns side by side */
-        .column {
-            float: left;
-            width: 16.66%;
-        }
-
-        /* Add a transparency effect for thumnbail images */
-        .demo {
-            opacity: 0.6;
-        }
-
-        .active,
-        .demo:hover {
-            opacity: 1;
-        }
-
-        .container {
-            max-width: 80%;
-            padding: 0px;
-        }
-    </style>
+    <link href="/board/css/board.css" rel="stylesheet">
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,600,0,0"/>
     <link rel="stylesheet" href="/studyBoard/studyBoard.css"/>
@@ -192,33 +61,6 @@
 
     <!-- 끝-->
 
-
-    <!-- 기술스택 관련 js -->
-    <script type="text/javascript">
-
-        function ChangeValue() {
-            let stackName = document.getElementById("stack");
-            let stackValue = stackName.value;
-
-            $("#stack").find("[value=" + stackValue + "]").remove();
-
-            $("#myStack").after("<span class='stack' id='" + stackValue + "'>" + stackValue + "<input type='button'  class='stackBtn' value='Delete'/>" +
-                "<input type='text' name='userTechStacks' value='" + stackValue + "' hidden></span>");
-        }
-
-        $(function () {
-
-            $(document).on("click", "input[value=Delete]", function () {
-                let id = $(this).parent().attr("id");
-
-                $(this).parent().remove();
-
-                $("#stackDefault").next().html("<option value='" + id + "'>" + id + "</option>");
-
-            });
-
-        });
-    </script>
 
 </head>
 
@@ -256,18 +98,15 @@
 
 
 
-
     <!---->
 
 
     <div class="board_wrap">
         <div class="board_title">
-            <strong>스터디 모집 게시글 작성</strong>
-            <p>여기는 스터디 게시판입니다.</p>
+            <strong>게시글 작성</strong>
+            <p>게시글을 작성해주세요!</p>
         </div>
-        <form method="post" class="board-form" th:action="@{/StudyBoard/insert}">
-            <input type="text" name="category" value="스터디게시판" hidden>
-            <input type="text" name="category" value="모집중" hidden>
+        <form method="post" class="board-form" th:action="@{/board/insert}">
         <div class="board_write_wrap">
             <div class="board_write">
                 <div class="title">
@@ -278,119 +117,20 @@
                 </div>
                 <div class="info">
                     <dl>
-                        <dt>모집인원</dt>
+                        <dt>작성자</dt>
                         <dt>
-                            <select name="numberOfRecruits">
-                            <option value="0" selected disabled>모집인원</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                        </select>
+                            <span>user</span>
                         </dt>
                     </dl>
                     <dl>
-                        <dt>스터디 시작일</dt>
+                        <dt>카테고리</dt>
                         <dt>
-                            <input type="date" name="startDate">
-                        </dt>
-                    </dl>
-                </div>
-                <div class="info">
-                    <dl>
-                        <dt>모집방법</dt>
-                        <dt>
-                            <select name="supportMethod">
+                            <select name="category">
                                 <option value="0" selected disabled>선택해주세요</option>
-                                <option value="오픈카톡">오픈카톡</option>
-                                <option value="네이버폼">네이버폼</option>
-                                <option value="이메일">이메일</option>
-                                <option value="없음">없음</option>
+                                <option value="FREE_BOARD">자유게시판</option>
+                                <option value="INFORMATION_BOARD">정보게시판</option>
                             </select>
                         </dt>
-                    </dl>
-                    <dl>
-                        <dt>온라인/오프라인</dt>
-                        <dt>
-                            <select name="isOnline">
-                                <option value="none" selected disabled>선택해주세요</option>
-                                <option value="오프라인">오프라인</option>
-                                <option value="온라인">온라인</option>
-                            </select>
-                        </dt>
-                    </dl>
-                </div>
-                <div class="info">
-                    <dl>
-                        <dt>프로젝트<br>기술스택</dt>
-                        <dt>
-                            <div>
-                                <select name="stack" id="stack" onchange="ChangeValue()">
-                                    <option value="0" selected id="stackDefault">선택해주세요</option>
-                                    <option value="JavaScript">JavaScript</option>
-                                    <option value="TypeScript">TypeScript</option>
-                                    <option value="React">React</option>
-                                    <option value="Vue">Vue</option>
-                                    <option value="Nodejs">Nodejs</option>
-                                    <option value="Spring">Spring</option>
-                                    <option value="Java">Java</option>
-                                    <option value="Nextjs">Nextjs</option>
-                                    <option value="Express">Express</option>
-                                    <option value="Go">Go</option>
-                                    <option value="C">C</option>
-                                    <option value="Python">Python</option>
-                                    <option value="Django">Django</option>
-                                    <option value="Swift">Swift</option>
-                                    <option value="Kotlin">Kotlin</option>
-                                    <option value="MySQL">MySQL</option>
-                                    <option value="MongoDB">MongoDB</option>
-                                    <option value="php">php</option>
-                                    <option value="GraphQL">GraphQL</option>
-                                    <option value="Firebase">Firebase</option>
-                                    <option value="Unity">Unity</option>
-                                    <option value="Flutter">Flutter</option>
-                                    <option value="AWS">AWS</option>
-                                    <option value="Kubernetes">Kubernetes</option>
-                                    <option value="Docker">Docker</option>
-                                    <option value="Git">Git</option>
-                                    <option value="Figma">Figma</option>
-                                    <option value="Zeplin">Zeplin</option>
-                                </select>
-                            </div>
-                        </dt>
-                    </dl>
-                    <dl>
-                        <dt>스터디 운용기간</dt>
-                        <dt>
-                            <select name="period">
-                                <option value="0" >선택해주세요</option>
-                                <option value="1개월">1개월</option>
-                                <option value="2개월">2개월</option>
-                                <option value="3개월">3개월</option>
-                                <option value="4개월">4개월</option>
-                                <option value="5개월">5개월</option>
-                                <option value="6개월">6개월</option>
-                                <option value="7개월">7개월</option>
-                                <option value="8개월">8개월</option>
-                                <option value="9개월">9개월</option>
-                                <option value="10개월">10개월</option>
-                                <option value="11개월">11개월</option>
-                                <option value="12개월">12개월</option>
-                                <option value="1년 이상">1년 이상</option>
-                            </select>
-                        </dt>
-                    </dl>
-                </div>
-
-                <div class="title">
-                    <dl>
-                        <span id="myStack"> </span>
                     </dl>
                 </div>
                 <div class="cont">
@@ -400,7 +140,7 @@
 
             <div class="bt_wrap">
                 <input type="submit" value="글작성" class="on" id="submit">
-                <a href="list.html">취소</a>
+                <input type="reset" value="글작성" class="on" id="reset">
             </div>
         </div>
         </form>
