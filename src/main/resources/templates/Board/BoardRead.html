@@ -114,7 +114,9 @@
                     <dl>
                         <dt>작성자</dt>
                         <dt>
-                            <span th:text="${board.user.getName()}"></span>
+                            <img src="">
+                            <img th:src="@{${savePath} + '/' + ${board.user.getMainEmotion()}}" style="width: 30px; height: 30px">
+                            <span th:text="${board.user.getNickName()}"></span>
                         </dt>
                     </dl>
                 </div>

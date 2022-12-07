@@ -1,17 +1,20 @@
 package jambo.service;
 
+import jambo.domain.board.Board;
 import jambo.domain.board.NormalBoard;
 import jambo.domain.board.type.Category;
+import jambo.domain.user.Point;
 import jambo.domain.user.User;
 import jambo.dto.NormalBoardDTO;
 import jambo.repository.BoardRepository;
 import jambo.repository.NormalBoardRepository;
 import jambo.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
 
 @Service
 @Transactional
@@ -19,7 +22,6 @@ public class BoardService {
 
     @Autowired
     private BoardRepository boardRepository;
-
     @Autowired
     private NormalBoardRepository normalBoardRepository;
     @Autowired
@@ -28,9 +30,8 @@ public class BoardService {
     /**
      * 카테고리에 맞는 전체 NormalBoard 검색
      * */
-    public List<NormalBoard> findAll(Category category){
-
-        return normalBoardRepository.findAllByCategory(category);
+    public Page<Board> findAll(Category category, Pageable page){
+        return boardRepository.serachByCategory(category, page);
     }
 
     /**
@@ -44,12 +45,11 @@ public class BoardService {
         return normalBoardById;
     }
 
-//    public void insert(NormalBoard normalBoard){
-//        boardRepository.save(normalBoard);
-//    }
-
     public void insert(NormalBoardDTO normalBoardDTO, User user){
         NormalBoard normalBoard = normalBoardDTO.toEntity(user);
         boardRepository.save(normalBoard);
+        user.addPoint(30);
+
+        userRepository.save(user);
     }
 }

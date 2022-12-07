@@ -47,3 +47,34 @@ insert into tech_stack values (25, 'Docker');
 insert into tech_stack values (26, 'Git');
 insert into tech_stack values (27, 'Figma');
 insert into tech_stack values (28, 'Zeplin');
+
+-- insert into board values ('NormalBoard',1,'CONTEST_BOARD','d',0,'123',0,sysdate,1);
+-- insert into board values ('NormalBoard',2,'CONTEST_BOARD','d',0,'123',0,sysdate,1);
+-- insert into board values ('NormalBoard',2,'CONTEST_BOARD','d',0,'12',0,sysdate,1);
+-- insert into board values ('NormalBoard',4,'CONTEST_BOARD','d',0,'123',0,sysdate,1);
+-- insert into board values ('NormalBoard',5,'CONTEST_BOARD','d',0,'123',0,sysdate,1);
+-- insert into board values ('NormalBoard',6,'CONTEST_BOARD','d',0,'123',0,sysdate,1);
+-- insert into board values ('NormalBoard',7,'CONTEST_BOARD','d',0,'123',0,sysdate,1);
+-- insert into board values ('NormalBoard',8,'CONTEST_BOARD','d',0,'123',0,sysdate,1);
+-- insert into board values ('NormalBoard',9,'CONTEST_BOARD','d',0,'123',0,sysdate,1);
+-- insert into board values ('NormalBoard',10,'CONTEST_BOARD','d',0,'123',0,sysdate,1);
+-- insert into board values ('NormalBoard',11,'CONTEST_BOARD','d',0,'123',0,sysdate,1);
+-- insert into board values ('NormalBoard',12,'CONTEST_BOARD','d',0,'123',0,sysdate,1);
+-- insert into board values ('NormalBoard',13,'CONTEST_BOARD','d',0,'123',0,sysdate,1);
+
+
+
+-- insert into normal_board values (1);
+-- insert into normal_board values (2);
+-- insert into normal_board values (3);
+-- insert into normal_board values (4);
+-- insert into normal_board values (5);
+-- insert into normal_board values (6);
+-- insert into normal_board values (7);
+-- insert into normal_board values (8);
+-- insert into normal_board values (9);
+-- insert into normal_board values (10);
+-- insert into normal_board values (11);
+-- insert into normal_board values (12);
+-- insert into normal_board values (13);
+

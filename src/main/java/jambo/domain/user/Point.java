@@ -37,4 +37,8 @@ public class Point {
 
         availablePoint -= point;
     }
+    public void add(int point){
+        availablePoint += point;
+        totalPoint += point;
+    }
 }

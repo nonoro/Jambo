@@ -3,6 +3,7 @@ package jambo.service;
 
 import jambo.domain.Authority;
 import jambo.domain.TechStack;
+import jambo.domain.user.Point;
 import jambo.domain.user.User;
 import jambo.dto.LoginDTO;
 import jambo.dto.UserJoinDTO;
@@ -42,6 +43,7 @@ public class UserServiceImpl implements UserService{
         userJoinDTO.setPassword(passwordEncoder.encode(userJoinDTO.getPassword()));
         List<String> userTechStacks = userJoinDTO.getUserTechStacks();
         User user = userJoinDTO.toEntity();
+        user.setPoint(new Point(0,0));
         if(userTechStacks!=null) {
             List<TechStack> techStacks = techStackRepository.findAllByTechStackNameIn(userTechStacks);
             user.setTechStacks(techStacks);

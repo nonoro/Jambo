@@ -51,12 +51,4 @@ public class StudyBoardController {
         return new ModelAndView("StudyBoard/StudyBoardRead", "board", dbBoard);
 
     }
-
-//    @RequestMapping("/recommend/{id}")
-//    private String recommend(@PathVariable Long id){
-//        service.recommend(id);
-//        return "redirect:/StudyBoard/read/"+id;
-//    }
-
-
 }

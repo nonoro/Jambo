@@ -37,7 +37,7 @@ public class User {
     @CreatedDate
     private LocalDateTime joinDate;
 
-    private String mainEmotion = "2a459a5.png";
+    private String mainEmotion = "66b9eb3.gif";
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
     private List<UserTechStack> userTechStacks = new ArrayList<>();
@@ -98,5 +98,10 @@ public class User {
 
     public int getAvailablePoint() {
         return point.getAvailablePoint();
+    }
+
+    public User addPoint(int rewardPoint) {
+        point.add(rewardPoint);
+        return this;
     }
 }
