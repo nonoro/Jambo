@@ -54,11 +54,11 @@ public class UserController {
     @RequestMapping("/join")
     public String join(UserJoinDTO userJoinDTO) {
         userService.join(userJoinDTO);
-        return "redirect:/user/preJoinForm";
+        return "index";
     }
 
     @RequestMapping("/loginForm")
-    public String loginForm(Model model, @AuthenticationPrincipal User securityUser) {
+    public String loginForm() {
         return "/user/loginForm";
     }
 

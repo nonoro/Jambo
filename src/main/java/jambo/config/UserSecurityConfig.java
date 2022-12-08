@@ -49,12 +49,7 @@ public class UserSecurityConfig extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true)
                 .deleteCookies("JSESSIONID")
                 .and();
-//        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
-    }
-
-    @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers("/user/joinForm");
+        http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
     }
 
     @Override
