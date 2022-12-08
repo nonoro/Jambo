@@ -1,25 +1,29 @@
 package jambo.controller;
 
+import jambo.domain.board.Board;
 import jambo.domain.board.NormalBoard;
 import jambo.domain.board.type.Category;
 import jambo.domain.user.User;
 import jambo.dto.NormalBoardDTO;
-import jambo.dto.StudyBoardDTO;
 import jambo.service.BoardService;
+import jambo.service.FileService;
+import jambo.service.PaginationService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.neo4j.Neo4jProperties;
-import org.springframework.security.core.Authentication;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
-import java.security.Principal;
 import java.util.List;
 
 
@@ -29,24 +33,32 @@ import java.util.List;
 public class BoardController {
     @Autowired
     private BoardService boardService;
+    @Autowired
+    private FileService fileService;
+    @Autowired
+    private PaginationService paginationService;
 
     @RequestMapping("/list")
-    private String list(@RequestParam Category category, Model model){
-        log.debug("들우옴!");
-        System.out.println("con category"+category);
-        List<NormalBoard> boards = boardService.findAll(category);
-        System.out.println("보드 사이즈 con"+boards.size());
+    private String list(@RequestParam Category category, Model model, @PageableDefault(size = 10, direction = Sort.Direction.DESC) Pageable pageable){
+
+        Page<Board> boards = boardService.findAll(category, pageable);
+        List<Integer> pageNumbers = paginationService.pagination(pageable.getPageNumber(), boards.getTotalPages());
         model.addAttribute("list", boards);
+        model.addAttribute("pageNumbers", pageNumbers);
+        model.addAttribute("savePath", fileService.getUrlPath());
         return "Board/"+category;
     }
     /**
      * 게시글 상세보기 + 조회수 증가
      * */
     @RequestMapping("/read/{id}")
-    public String read(@PathVariable Long id, String flag, Model model) {
+    public String read(@PathVariable Long id, String flag, Model model, @AuthenticationPrincipal User user) {
         boolean state = flag == null ? true : false;
         NormalBoard dbBoard = boardService.read(id, state);
         model.addAttribute("board", dbBoard);
+        model.addAttribute("savePath", fileService.getUrlPath());
+        model.addAttribute("authUser", user);
+
         return "Board/BoardRead";
     }
     /**
@@ -60,17 +72,19 @@ public class BoardController {
     /**
      * 게시글 작성 DB 에 넣기
      * */
-//    @RequestMapping("/insert")
-//    public String studyBoardInsert(NormalBoard normalBoard, Category category) throws IOException {
-//        normalBoard.setCategory(category);
-//        boardService.insert(normalBoard);
-//        System.out.println("con normalBoard = " + normalBoard);
-//        return "redirect:/board/list?category="+category;
-//    }
-
     @RequestMapping("/insert")
     public String studyBoardInsert(NormalBoardDTO normalBoardDTO, @AuthenticationPrincipal User user) throws IOException {
         boardService.insert(normalBoardDTO, user);
         return "redirect:/board/list?category="+normalBoardDTO.getCategory();
+    }
+
+    /**
+     * 게시글 삭제 기능
+     * */
+    @GetMapping("/delete/{id}")
+    public String boardDelete(@PathVariable Long id) {
+
+        boardService.delete(id);
+        return "index";
     }
 }

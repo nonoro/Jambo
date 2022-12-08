@@ -1,6 +1,5 @@
 package jambo.service;
 
-import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -10,7 +9,7 @@ import java.util.stream.IntStream;
 @Service
 public class PaginationService {
 
-    private final static int BLOCK_SIZE = 4;
+    private final static int BLOCK_SIZE = 5;
 
     public List<Integer> pagination(int currentPageNumber, int totalPageCount) {
         int startPage = Math.max(currentPageNumber - (BLOCK_SIZE / 2), 0);

@@ -69,7 +69,7 @@
     <!--공지사항 부분-->
     <div class="notice">
     <div class="board_title">
-        <h4 class="mini_h"><img src="/board/img/home.png" class="home_img" alt="home" style="width: 29px;"> > 공지사항</h4>
+        <h4 class="mini_h"><img src="/board/img/home.png" class="home_img" alt="home" style="width: 29px;"> 행사게시판 </h4>
         <img src="/board/img/free.png" class="notice_img" alt="notice" style="width: 1080px;">
     </div>
     <div id="notice_wrap">
@@ -90,7 +90,10 @@
                             <td class="n_td"><a th:href="@{'/board/read/'+${board.id}}" class="n_a">
                                 <span th:text="${board.title}"></span>
                             </a></td>
-                            <td class="n_td">user01</td>
+                            <td class="n_td">
+                                <img th:src="@{${savePath} + '/' + ${board.user.getMainEmotion()}}" style="width: 30px; height: 30px">
+                                <span th:text="${board.user.getNickName()}"></span>
+                            </td>
                             <td class="n_td">
                                 <span th:text="${#temporals.format(board.writeDate, 'yyyy-MM-dd HH:mm')}"></span>
                             </td>
@@ -101,7 +104,7 @@
                     </table>
 
                 </div>
-
+                <a th:href="@{'/board/write'}">글쓰기 </a>
                 
                 
                 <!--side 부분-->
@@ -126,6 +129,23 @@
         </div>
         </div>
     </div>
+    <nav aria-label="..." style="margin-top: 20px">
+        <ul class="pagination justify-content-center">
+            <li th:class="'page-item' + (${list.number} <= 0 ? ' disabled' : '')">
+                <a class="page-link"
+                   th:href="@{list(page=${list.number - 1}, category='EVENT_BOARD')}"
+                   th:text="'&laquo;'"></a>
+            </li>
+            <th:block th:each="pageNumber : ${pageNumbers}">
+                <li th:class="'page-item' + (${list.number} == ${pageNumber} ? ' active' : '')"><a class="page-link" th:href="@{/board/list(page = ${pageNumber},category='EVENT_BOARD')}" th:text="${pageNumber + 1}"></a></li>
+            </th:block>
+            <li th:class="'page-item' + (${list.number} >= ${list.totalPages - 1} ? ' disabled' : '')">
+                <a class="page-link"
+                   th:text="'&raquo;'"
+                   th:href="@{list(page=${list.number + 1}, category='EVENT_BOARD')}"></a>
+            </li>
+        </ul>
+    </nav>
     <!--div#wrap-->
 
 
