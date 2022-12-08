@@ -8,6 +8,7 @@ import jambo.dto.NormalBoardDTO;
 import jambo.service.BoardService;
 import jambo.service.FileService;
 import jambo.service.PaginationService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -30,13 +31,14 @@ import java.util.List;
 @Controller
 @RequestMapping("/board")
 @Slf4j
+@RequiredArgsConstructor
 public class BoardController {
-    @Autowired
-    private BoardService boardService;
-    @Autowired
-    private FileService fileService;
-    @Autowired
-    private PaginationService paginationService;
+
+    private final BoardService boardService;
+
+    private final FileService fileService;
+
+    private final PaginationService paginationService;
 
     @RequestMapping("/list")
     private String list(@RequestParam Category category, Model model, @PageableDefault(size = 10, direction = Sort.Direction.DESC) Pageable pageable){

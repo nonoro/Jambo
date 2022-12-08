@@ -1,15 +1,21 @@
 package jambo.controller;
 
+import jambo.domain.user.User;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class HomeController {
 
     @GetMapping("/")
-    public String index(){
+    public String index(Model model, @AuthenticationPrincipal User user) {
+        return "index";
+    }
 
-        return "/index";
+    @GetMapping("/error/403")
+    public String error() {
+        return "error/403";
     }
 }

@@ -10,6 +10,7 @@ import jambo.dto.UserJoinDTO;
 import jambo.repository.AuthorityRepository;
 import jambo.repository.TechStackRepository;
 import jambo.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -20,14 +21,14 @@ import java.util.List;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class UserService {
-    @Autowired
-    private UserRepository userRep;
-    @Autowired
-    private TechStackRepository techStackRepository;
 
-    @Autowired
-    private AuthorityRepository authorityRepository;
+    private final UserRepository userRep;
+
+    private final TechStackRepository techStackRepository;
+
+    private final AuthorityRepository authorityRepository;
 
 
     public HashMap<String, Object> userEmailOverlap(String email) {

@@ -278,8 +278,7 @@
 
         </div>
         <div class="form-item">
-
-            <form action="/user/joinForm">
+            <form th:action="@{/user/joinForm}">
                 <input type="checkbox"/>
                 <button type="submit">동의</button>
                 <button type="reset" onclick="javascript:history.back()">취소</button>

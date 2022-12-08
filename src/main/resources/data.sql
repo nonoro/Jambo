@@ -1,80 +1,50 @@
-insert into user_jambo values (2000, 'test@test.com', sysdate, '2a459a5.png', 'ENFP', '권규정', 'nonoro', '1234', '010-3349-3187');
---insert into user_jambo values (2001, 'test1@test.com', sysdate, '2a459a5.png', 'ENFP', '권규정', 'nonoro', '1234', '010-3349-3187')
-insert into admin values (2001, 'test1@test.com', sysdate,'권규정', 'nonoro', '1234');
+--insert into user_jambo values (2000, 'test@test.com', sysdate, '2a459a5.png', 'ENFP', '권규정', 'nonoro', '1234', '010-3349-3187');
+----insert into user_jambo values (2001, 'test1@test.com', sysdate, '2a459a5.png', 'ENFP', '권규정', 'nonoro', '1234', '010-3349-3187')
+--insert into admin values (2001, 'test1@test.com', sysdate,'권규정', 'nonoro', '1234');
+--
+--insert into Authority values (2000, 'test@test.com', 'ROLE_ADMIN');
+--insert into Authority values (2001, 'test1@test.com', 'ROLE_USER');
+--
+--insert into point values (2000, 10000, 10000, 2000);
 
-insert into Authority values (2000, 'test@test.com', 'ROLE_ADMIN');
-insert into Authority values (2001, 'test1@test.com', 'ROLE_USER');
-
-insert into point values (2000, 10000, 10000, 2000);
-
-insert into icon_shop values (2000, '2a459a5.png', '하마1', 100, 100, sysdate);
-insert into icon_shop values (2001, '0da7a7e.gif', '하마2', 200, 100, sysdate);
-insert into icon_shop values (2003, '0d6158c.gif', '하마3', 300, 100, sysdate);
-insert into icon_shop values (2004, '0d6158c.gif', '하마4', 400, 100, sysdate);
-insert into icon_shop values (2005, '0d6158c.gif', '하마5', 500, 100, sysdate);
-insert into icon_shop values (2006, '0d6158c.gif', '하마6', 600, 100, sysdate);
-insert into icon_shop values (2007, '0d6158c.gif', '하마7', 700, 100, sysdate);
-insert into icon_shop values (2008, '0d6158c.gif', '하마8', 800, 100, sysdate);
-insert into icon_shop values (2009, '0d6158c.gif', '하마9', 900, 100, sysdate);
-insert into icon_shop values (2010, '0d6158c.gif', '하마10', 1000, 100, sysdate);
-insert into icon_shop values (2011, '0d6158c.gif', '하마11', 1100, 100, sysdate);
-
-insert into tech_stack values (1, 'JavaScript');
-insert into tech_stack values (2, 'TypeScript');
-insert into tech_stack values (3, 'React');
-insert into tech_stack values (4, 'Vue');
-insert into tech_stack values (5, 'Nodejs');
-insert into tech_stack values (6, 'Spring');
-insert into tech_stack values (7, 'Java');
-insert into tech_stack values (8, 'Nextjs');
-insert into tech_stack values (9, 'Express');
-insert into tech_stack values (10, 'Go');
-insert into tech_stack values (11, 'C');
-insert into tech_stack values (12, 'Python');
-insert into tech_stack values (13, 'Django');
-insert into tech_stack values (14, 'Swift');
-insert into tech_stack values (15, 'Kotlin');
-insert into tech_stack values (16, 'MySQL');
-insert into tech_stack values (17, 'MongoDB');
-insert into tech_stack values (18, 'php');
-insert into tech_stack values (19, 'GraphQL');
-insert into tech_stack values (20, 'Firebase');
-insert into tech_stack values (21, 'Unity');
-insert into tech_stack values (22, 'Flutter');
-insert into tech_stack values (23, 'AWS');
-insert into tech_stack values (24, 'Kubernetes');
-insert into tech_stack values (25, 'Docker');
-insert into tech_stack values (26, 'Git');
-insert into tech_stack values (27, 'Figma');
-insert into tech_stack values (28, 'Zeplin');
-
--- insert into board values ('NormalBoard',1,'CONTEST_BOARD','d',0,'123',0,sysdate,1);
--- insert into board values ('NormalBoard',2,'CONTEST_BOARD','d',0,'123',0,sysdate,1);
--- insert into board values ('NormalBoard',2,'CONTEST_BOARD','d',0,'12',0,sysdate,1);
--- insert into board values ('NormalBoard',4,'CONTEST_BOARD','d',0,'123',0,sysdate,1);
--- insert into board values ('NormalBoard',5,'CONTEST_BOARD','d',0,'123',0,sysdate,1);
--- insert into board values ('NormalBoard',6,'CONTEST_BOARD','d',0,'123',0,sysdate,1);
--- insert into board values ('NormalBoard',7,'CONTEST_BOARD','d',0,'123',0,sysdate,1);
--- insert into board values ('NormalBoard',8,'CONTEST_BOARD','d',0,'123',0,sysdate,1);
--- insert into board values ('NormalBoard',9,'CONTEST_BOARD','d',0,'123',0,sysdate,1);
--- insert into board values ('NormalBoard',10,'CONTEST_BOARD','d',0,'123',0,sysdate,1);
--- insert into board values ('NormalBoard',11,'CONTEST_BOARD','d',0,'123',0,sysdate,1);
--- insert into board values ('NormalBoard',12,'CONTEST_BOARD','d',0,'123',0,sysdate,1);
--- insert into board values ('NormalBoard',13,'CONTEST_BOARD','d',0,'123',0,sysdate,1);
-
-
-
--- insert into normal_board values (1);
--- insert into normal_board values (2);
--- insert into normal_board values (3);
--- insert into normal_board values (4);
--- insert into normal_board values (5);
--- insert into normal_board values (6);
--- insert into normal_board values (7);
--- insert into normal_board values (8);
--- insert into normal_board values (9);
--- insert into normal_board values (10);
--- insert into normal_board values (11);
--- insert into normal_board values (12);
--- insert into normal_board values (13);
+--insert into icon_shop values (2000, '2a459a5.png', '하마1', 100, 100, sysdate);
+--insert into icon_shop values (2001, '0da7a7e.gif', '하마2', 200, 100, sysdate);
+--insert into icon_shop values (2003, '0d6158c.gif', '하마3', 300, 100, sysdate);
+--insert into icon_shop values (2004, '0d6158c.gif', '하마4', 400, 100, sysdate);
+--insert into icon_shop values (2005, '0d6158c.gif', '하마5', 500, 100, sysdate);
+--insert into icon_shop values (2006, '0d6158c.gif', '하마6', 600, 100, sysdate);
+--insert into icon_shop values (2007, '0d6158c.gif', '하마7', 700, 100, sysdate);
+--insert into icon_shop values (2008, '0d6158c.gif', '하마8', 800, 100, sysdate);
+--insert into icon_shop values (2009, '0d6158c.gif', '하마9', 900, 100, sysdate);
+--insert into icon_shop values (2010, '0d6158c.gif', '하마10', 1000, 100, sysdate);
+--insert into icon_shop values (2011, '0d6158c.gif', '하마11', 1100, 100, sysdate);
+--
+--insert into tech_stack values (1, 'JavaScript');
+--insert into tech_stack values (2, 'TypeScript');
+--insert into tech_stack values (3, 'React');
+--insert into tech_stack values (4, 'Vue');
+--insert into tech_stack values (5, 'Nodejs');
+--insert into tech_stack values (6, 'Spring');
+--insert into tech_stack values (7, 'Java');
+--insert into tech_stack values (8, 'Nextjs');
+--insert into tech_stack values (9, 'Express');
+--insert into tech_stack values (10, 'Go');
+--insert into tech_stack values (11, 'C');
+--insert into tech_stack values (12, 'Python');
+--insert into tech_stack values (13, 'Django');
+--insert into tech_stack values (14, 'Swift');
+--insert into tech_stack values (15, 'Kotlin');
+--insert into tech_stack values (16, 'MySQL');
+--insert into tech_stack values (17, 'MongoDB');
+--insert into tech_stack values (18, 'php');
+--insert into tech_stack values (19, 'GraphQL');
+--insert into tech_stack values (20, 'Firebase');
+--insert into tech_stack values (21, 'Unity');
+--insert into tech_stack values (22, 'Flutter');
+--insert into tech_stack values (23, 'AWS');
+--insert into tech_stack values (24, 'Kubernetes');
+--insert into tech_stack values (25, 'Docker');
+--insert into tech_stack values (26, 'Git');
+--insert into tech_stack values (27, 'Figma');
+--insert into tech_stack values (28, 'Zeplin');
 
