@@ -249,7 +249,7 @@
                                     JANBO : <span th:text="${icon.price}" name="price"></span>&nbsp;&nbsp;&nbsp;수량 : <span th:text="${icon.quantity}" name="quantity"></span><br>
                                     <span>시간 : 무제한</span>
                                 </div>
-                                등록일 : <span th:text="${icon.saveDate}" name="saveDate"></span><br>
+                                등록일 : <span th:text="${#temporals.format(icon.saveDate, 'yyyy-MM-dd HH:mm')}" name="saveDate"></span><br>
                                 <input type="submit" id="purchase" value="대표아이콘설정">
                             </form>
                         </div>

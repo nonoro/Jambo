@@ -249,7 +249,7 @@
                                     JANBO : <span th:text="${icon.price}" name="price"></span>&nbsp;&nbsp;&nbsp;수량 : <span th:text="${icon.quantity}" name="quantity"></span><br>
                                     <span>시간 : 무제한</span>
                                 </div>
-                                등록일 : <span th:text="${icon.saveDate}" name="saveDate"></span><br>
+                                등록일 : <span th:text="${#temporals.format(icon.saveDate, 'yyyy-MM-dd HH:mm')}" name="saveDate"></span><br>
                                 <input type="submit" id="purchase" value="구매">
                             </form>
                         </div>
@@ -267,7 +267,7 @@
                    th:text="'&laquo;'"></a>
             </li>
             <th:block th:each="pageNumber : ${pageNumbers}">
-                <li th:class="'page-item' + (${icons.number} == ${pageNumber} ? ' active' : '')"><a class="page-link" th:href="@{/templates/iconShop/shop(page = ${pageNumber})}" th:text="${pageNumber + 1}"></a></li>
+                <li th:class="'page-item' + (${icons.number} == ${pageNumber} ? ' active' : '')"><a class="page-link" th:href="@{/icon/shop(page = ${pageNumber})}" th:text="${pageNumber + 1}"></a></li>
             </th:block>
             <li th:class="'page-item' + (${icons.number} >= ${icons.totalPages - 1} ? ' disabled' : '')">
                 <a class="page-link"

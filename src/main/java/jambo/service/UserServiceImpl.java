@@ -3,6 +3,7 @@ package jambo.service;
 
 import jambo.domain.Authority;
 import jambo.domain.TechStack;
+import jambo.domain.user.Point;
 import jambo.domain.user.User;
 import jambo.dto.LoginDTO;
 import jambo.dto.UserJoinDTO;
@@ -47,6 +48,7 @@ public class UserServiceImpl implements UserService{
             user.setTechStacks(techStacks);
         }
         authorityRepository.save(new Authority(user.getEmail(), "ROLE_USER"));
+        user.setPoint(new Point(0, 0));
 
         return userRep.save(user).getId();
     }

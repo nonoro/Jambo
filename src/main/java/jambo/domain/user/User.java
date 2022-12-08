@@ -45,7 +45,7 @@ public class User {
     @OneToOne(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Point point;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private List<Icon> icons = new ArrayList<>();
 
     @OneToMany(mappedBy = "sendUser", cascade = CascadeType.ALL)
@@ -99,4 +99,5 @@ public class User {
     public int getAvailablePoint() {
         return point.getAvailablePoint();
     }
+
 }

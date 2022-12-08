@@ -4,6 +4,7 @@ import jambo.domain.user.Icon;
 import jambo.domain.user.IconShop;
 import jambo.domain.user.User;
 import jambo.dto.IconShopDTO;
+import jambo.dto.UserResponseDTO;
 import jambo.repository.IconRepository;
 import jambo.repository.IconShopRepository;
 import jambo.repository.UserRepository;
@@ -45,8 +46,8 @@ public class IconService {
         iconShopRepository.save(iconShop);
     }
 
-    public void buy(Long userId, Long iconId) {
-        User user = userRepository.findById(userId).get();
+    public void buy(User securityUser, Long iconId) {
+        User user = userRepository.findById(securityUser.getId()).get();
         IconShop iconShop = iconShopRepository.findById(iconId).get();
 
         iconRepository.findByUserAndIconShop(user, iconShop)
@@ -57,9 +58,9 @@ public class IconService {
         user.buy(iconShop);
     }
 
-    public List<IconShop> getIcons(Long userId) {
-        User user = userRepository.getReferenceById(userId);
-        List<Icon> icons = iconRepository.findAllByUser(user);
+    public List<IconShop> getIcons(User user) {
+        User referenceById = userRepository.getReferenceById(user.getId());
+        List<Icon> icons = iconRepository.findAllByUser(referenceById);
 
         return iconShopRepository.findByIconsIn(icons);
     }

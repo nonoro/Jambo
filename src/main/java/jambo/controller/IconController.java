@@ -14,10 +14,12 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -34,16 +36,25 @@ public class IconController {
     private final UserRepository userRepository;
 
     @GetMapping("/shop")
-    public String showIconShop(Model model, String keyWord, @PageableDefault(size = 3, direction = Sort.Direction.DESC) Pageable pageable) {
-        Long userId = 2000L;
-        User user = userRepository.findById(userId).get();
+    public String showIconShop(Model model, String keyWord, @PageableDefault(size = 3, direction = Sort.Direction.DESC) Pageable pageable, @AuthenticationPrincipal User securityUser) {
+        int state = 1;
+
+        if (securityUser == null) {
+            state = 0;
+        }
+
+        if (securityUser != null) {
+        User user = userRepository.findById(securityUser.getId()).get();
         UserResponseDTO userResponseDTO = UserResponseDTO.from(user);
         Page<IconShop> icons = iconService.showIconShop(keyWord, pageable);
         List<Integer> pageNumbers = paginationService.pagination(pageable.getPageNumber(), icons.getTotalPages());
+        model.addAttribute("state", state);
         model.addAttribute("icons", icons);
         model.addAttribute("pageNumbers", pageNumbers);
         model.addAttribute("savePath", fileService.getUrlPath());
         model.addAttribute("user", userResponseDTO);
+        }
+
         return "iconShop/showIconShop";
     }
 
@@ -64,19 +75,18 @@ public class IconController {
     }
 
     @PostMapping("/buy/{iconId}")
-    public String buy(@PathVariable Long iconId, Pageable pageable) {
-        Long userId = 2000L;
+    public String buy(@PathVariable Long iconId, Pageable pageable, @AuthenticationPrincipal User securityUser) {
+        log.debug("유저아이디 = {}", securityUser.getId());
         log.debug("구매 아이콘 아이디 = {}", iconId);
-        iconService.buy(userId, iconId);
+        iconService.buy(securityUser, iconId);
         return "redirect:/icon/shop?page=" + pageable.getPageNumber();
     }
 
     @GetMapping
-    public String icon(Model model) {
-        Long userId = 2000L;
-        User user = userRepository.findById(userId).get();
+    public String icon(Model model, @AuthenticationPrincipal User securityUser) {
+        User user = userRepository.findById(securityUser.getId()).get();
         UserResponseDTO userResponseDTO = UserResponseDTO.from(user);
-        List<IconShop> icons = iconService.getIcons(userId);
+        List<IconShop> icons = iconService.getIcons(user);
         log.debug("icons 수 = {}", icons.size());
 
 
@@ -87,9 +97,8 @@ public class IconController {
     }
 
     @PostMapping("/{iconId}")
-    public String icon(@PathVariable Long iconId, Model model) {
-        Long userId = 2000L;
-        User user = iconService.changeIcon(userId, iconId);
+    public String icon(@PathVariable Long iconId, Model model, @AuthenticationPrincipal User user) {
+        iconService.changeIcon(user.getId(), iconId);
         return "redirect:/icon";
     }
 }

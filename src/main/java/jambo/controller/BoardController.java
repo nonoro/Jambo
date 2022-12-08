@@ -32,6 +32,7 @@ public class BoardController {
 
     @RequestMapping("/list")
     private String list(@RequestParam Category category, Model model){
+
         log.debug("들우옴!");
         System.out.println("con category"+category);
         List<NormalBoard> boards = boardService.findAll(category);

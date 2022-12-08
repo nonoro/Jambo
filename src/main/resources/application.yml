@@ -16,31 +16,22 @@ spring:
       max-request-size: 100MB
   datasource:
     driver-class-name: oracle.jdbc.OracleDriver
-#    url: jdbc:oracle:thin:@jambo_medium?TNS_ADMIN=/Users/nonoro/db/3p/wallet # 규정
-#    url: jdbc:oracle:thin:@jambo_medium?TNS_ADMIN=/Users/jy/Desktop/edu/Wallet_jambo # 종영
-    url: jdbc:oracle:thin:@jambo_medium?TNS_ADMIN=/Users/anhyogyeong/Edu/Wallet_jambo # 효경
-#    url: jdbc:oracle:thin:@jambo_medium?TNS_ADMIN=/Users/kent/db/Wallet_jambo # 연아
-#    url: jdbc:oracle:thin:@jambo_medium?TNS_ADMIN=/Users/dyrlqhffo/Edu/Wallet_jambo # 용식
-#    url: jdbc:oracle:thin:@localhost:1521:XE
-    username: ADMIN
-    password: Jambo123456!
-#    username: c##scott
-#    password: TIGER
+    username: c##scott
+    password: TIGER
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: none
     show-sql: true
     database: oracle
     database-platform: org.hibernate.dialect.Oracle10gDialect
-    defer-datasource-initialization: true
-  sql:
-    init:
-      mode: always
+#    defer-datasource-initialization: true
+#  sql:
+#    init:
+#      mode: always
 logging:
   level:
     org:
       hibernate: info
-
     jambo:
       controller: debug
 file:

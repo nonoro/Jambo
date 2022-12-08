@@ -1,45 +1,52 @@
 <!DOCTYPE html>
-<html lang="ko">
-
+<html lang="ko" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <body>
 
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top header-transparent" th:fragment="header">
-  <div class="container d-flex align-items-center justify-content-between">
+    <div class="container d-flex align-items-center justify-content-between">
 
-    <h1 class="logo"><a href="/"><img src="/assets/img/logo.png" alt="" class="img-fluid"></a></h1>
-    <!-- Uncomment below if you prefer to use an image logo -->
-    <!-- <a href="index.html" class="logo"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <h1 class="logo"><a th:href="@{/}"><img src="/assets/img/logo.png" alt="" class="img-fluid"></a></h1>
 
-    <nav id="navbar" class="navbar">
-      <ul>
-        <li class="we"><a class="nav-link scrollto active" href="#hero">WHO WE WRE</a></li>
-        <li><a class="nav-link scrollto active" href="/StudyBoard/StudyBoardMain">스터디</a></li>
-        <li class="dropdown"><a href="#">게시판&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
-          <ul>
-            <li><a th:href="@{/board/list(category='FREE_BOARD')}">자유 게시판</a></li>
-            <li><a th:href="@{/board/list(category='INFORMATION_BOARD')}">정보 게시판</a></li>
-            <li><a th:href="@{/board/list(category='CONTEST_BOARD')}">소작모</a></li>
-            <li><a th:href="@{/board/list(category='EVENT_BOARD')}">행사게시판</a></li>
-          </ul>
-        </li>
-        <li>
-          <button onclick="myFunction()" class="dark">다크모드</button>
-        </li>
-        <li><a class="nav-link scrollto active" th:href="@{/board/list(category='NOTICE_BOARD')}">공지사항</a></li>
-        <li><a class="nav-link scrollto" href="#about"><img src="/assets/img/bell.png" alt="bell" width="40px"></a></li>
-        <li class="dropdown"><a href="#"><img src="/assets/img/footprint.png" alt="" width="30px"><i class="bi bi-chevron-down"></i></a>
-          <ul>
-            <li><a href="#">내 작성글</a></li>
-            <li><a href="#">참여 스터디</a></li>
-            <li><a th:href="@{mypage/mypageList}">마이페이지</a></li>
-            <li><a href="#">로그아웃</a></li>
-          </ul>
-        </li>
-      </ul>
-      <i class="bi bi-list mobile-nav-toggle"></i>
-    </nav><!-- .navbar -->
-  </div>
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li class="we"><a class="nav-link scrollto active" href="#hero">WHO WE WRE</a></li>
+                <li><a class="nav-link scrollto active" href="/StudyBoard/StudyBoardMain">스터디</a></li>
+                <li class="dropdown"><a href="#">게시판&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                    <ul>
+                        <li><a th:href="@{/board/list(category='FREE_BOARD')}">자유 게시판</a></li>
+                        <li><a th:href="@{/board/list(category='INFORMATION_BOARD')}">정보 게시판</a></li>
+                        <li><a th:href="@{/board/list(category='CONTEST_BOARD')}">소작모</a></li>
+                        <li><a th:href="@{/board/list(category='EVENT_BOARD')}">행사게시판</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <button onclick="myFunction()" class="dark">다크모드</button>
+                </li>
+                <li><a class="nav-link scrollto active" th:href="@{/board/list(category='NOTICE_BOARD')}">공지사항</a></li>
+
+                <th:block sec:authorize="!isAuthenticated()">
+                    <li><a class="nav-link scrollto" th:href="@{/user/loginForm}">로그인</a></li>
+                    <li><a class="nav-link scrollto" th:href="@{/user/joinForm}">회원가입</a></li>
+                </th:block>
+                <th:block sec:authorize="isAuthenticated()">
+                <li><a class="nav-link scrollto" href="#about"><img src="/assets/img/bell.png" alt="bell"
+                                                                        width="40px"></a></li>
+                    <li class="dropdown"><a href="#"><img src="/assets/img/footprint.png" alt="" width="30px"><i
+                            class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="#">내 작성글</a></li>
+                            <li><a href="#">참여 스터디</a></li>
+                            <li><a th:href="@{mypage/mypageList}">마이페이지</a></li>
+                            <li><a href="/user/logout">로그아웃</a></li>
+                        </ul>
+                </th:block>
+                </li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+    </div>
 </header><!-- End Header -->
 
 
