@@ -29,6 +29,8 @@ public class Recommendation {
     @JoinColumn(name = "board_id")
     private Board board;
 
-    private boolean recommendCheck;
-
+    public Recommendation(User user, Board board) {
+        this.user = user;
+        this.board = board;
+    }
 }

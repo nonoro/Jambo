@@ -67,7 +67,13 @@
 
     <!--신고버튼 layer popup 처리-->
 
-
+    <!-- 좋아요 버튼 관련 로직 -->
+    <script type="text/javascript">
+        function onlyUserCanRecommend() {
+            alert("좋아요는 회원만 가능합니다");
+        }
+    </script>
+    <!-- 좋아요 버튼 관련 로직 끝 -->
 </head>
 
 <body>
@@ -134,6 +140,8 @@
                                     <a class="on" th:href="@{'/board/delete/'+${board.id}}">삭제</a>
                                 </th:block>
                             </th:block>
+                            추천수 :
+                            <span th:text="${countRecommendation}"></span>
                         </dt>
 
                     </dl>
@@ -146,12 +154,18 @@
             </div>
 
             <div class="bt_wrap">
-                <!--                <a th:href="@{'/StudyBoard/read/'+${board.id}}">-->
-                <!--                <a th:href="@{'/StudyBoard/recommend/'+${board.id}}" class="on">추천-->
-                <a href="#" class="on">추천
-                    <!--                    : <span th:text="${board.recommendation}"></span>-->
-                </a>
+                <th:block th:if="${recommendation != null}">
+                    <a class="on" th:href="@{'/board/recommendDown/'+${board.id}}" style="background-color: #eb463a ;border: none; color: #fef4dd;">종아요 취소😡</a>
+                </th:block>
+                <th:block th:if="${recommendation == null}">
 
+                    <th:block sec:authorize="!isAuthenticated()">
+                    <a class="on" onclick="onlyUserCanRecommend()" style="background-color: #3a3ef9 ;border: none">좋아요👍</a>
+                    </th:block>
+                    <th:block sec:authorize="isAuthenticated()">
+                        <a class="on" th:href="@{'/board/recommendUp/'+${board.id}}" style="background-color: #3a3ef9 ;border: none">좋아요👍</a>
+                    </th:block>
+                </th:block>
 
             </div>
 

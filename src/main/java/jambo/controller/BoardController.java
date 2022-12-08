@@ -2,12 +2,12 @@ package jambo.controller;
 
 import jambo.domain.board.Board;
 import jambo.domain.board.NormalBoard;
+import jambo.domain.board.Recommendation;
 import jambo.domain.board.type.Category;
 import jambo.domain.user.User;
 import jambo.dto.NormalBoardDTO;
-import jambo.service.BoardService;
-import jambo.service.FileService;
-import jambo.service.PaginationService;
+import jambo.repository.UserRepository;
+import jambo.service.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,6 +40,10 @@ public class BoardController {
 
     private final PaginationService paginationService;
 
+    private final RecommendService recommendService;
+
+    private final UserService userService;
+
     @RequestMapping("/list")
     private String list(@RequestParam Category category, Model model, @PageableDefault(size = 10, direction = Sort.Direction.DESC) Pageable pageable){
 
@@ -60,7 +64,11 @@ public class BoardController {
         model.addAttribute("board", dbBoard);
         model.addAttribute("savePath", fileService.getUrlPath());
         model.addAttribute("authUser", user);
-
+        /* 추천수 조회 유무 체크용*/
+        Recommendation recommendation = recommendService.checkRecommendation(user, dbBoard);
+        model.addAttribute("recommendation", recommendation);
+        int countRecommendation = recommendService.countRecommendation(dbBoard);
+        model.addAttribute("countRecommendation",countRecommendation);
         return "Board/BoardRead";
     }
     /**
@@ -89,4 +97,30 @@ public class BoardController {
         boardService.delete(id);
         return "index";
     }
+
+    /**
+     * 수정하기 (예정)
+     * */
+
+    /**
+     * 추천수 증가
+     * * */
+    @GetMapping("/recommendUp/{id}")
+    public String recommendUp(@PathVariable Long id, @AuthenticationPrincipal User user){
+        User dbUser = userService.findUser(user);
+        Board dbBoard = boardService.findBoardById(id);
+        recommendService.recommendUp(dbUser, dbBoard);
+
+        return "redirect:/board/read/" + id+"?flag=1";
+    }
+
+    /**
+     * 추천수 감소
+     * */
+    @GetMapping("/recommendDown/{id}")
+    public String recommendDown(@PathVariable Long id, @AuthenticationPrincipal User user){
+        recommendService.recommendDown(user.getId(), id);
+        return "redirect:/board/read/" + id+"?flag=1";
+    }
+
 }

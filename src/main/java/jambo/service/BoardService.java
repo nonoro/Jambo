@@ -61,4 +61,9 @@ public class BoardService {
         int result = boardRepository.deleteBoardById(id);
         // 예외처리
     }
+
+    public Board findBoardById(Long id){
+
+        return boardRepository.findBoardById(id);
+    }
 }

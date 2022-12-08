@@ -53,4 +53,8 @@ public class UserService {
 
         return userRep.save(user).getId();
     }
+
+    public User findUser(User user){
+        return userRep.findById(user.getId()).get();
+    }
 }
