@@ -4,8 +4,11 @@ import jambo.domain.Comment;
 import jambo.domain.board.Board;
 import jambo.domain.board.NormalBoard;
 import jambo.domain.board.Recommendation;
+import jambo.domain.board.Report;
 import jambo.domain.board.type.Category;
+import jambo.domain.board.type.ReportType;
 import jambo.domain.user.User;
+import jambo.domain.user.type.MBTI;
 import jambo.dto.NormalBoardDTO;
 
 import jambo.service.*;
@@ -52,6 +55,8 @@ public class BoardController {
     private final CommentService commentService;
 
 
+    private final ReportService reportService;
+
     @RequestMapping("/list")
     private String list(@RequestParam Category category, Model model, @PageableDefault(size = 10, direction = Sort.Direction.DESC) Pageable pageable){
 
@@ -78,10 +83,16 @@ public class BoardController {
         model.addAttribute("recommendation", recommendation);
         int countRecommendation = recommendService.countRecommendation(dbBoard);
         model.addAttribute("countRecommendation",countRecommendation);
+<<<<<<< HEAD
 
         List<Comment> dbComments = commentService.findCommentsByBoardId(id);
         model.addAttribute("comments", dbComments);
 
+=======
+        /*신고하기 유무체크*/
+        Report report = reportService.checkReport(user, dbBoard);
+        model.addAttribute("report", report);
+>>>>>>> feature/report
         return "Board/BoardRead";
     }
     /**
@@ -140,9 +151,13 @@ public class BoardController {
     /**
      * 게시글 신고하기
      * */
+
     @RequestMapping("/report/{id}")
-    public String report(@PathVariable Long id, @AuthenticationPrincipal User user){
-        return null;
+    public String report(@PathVariable Long id, @AuthenticationPrincipal User user, String report)
+    {
+        System.out.println("report = " + report);
+        reportService.reportBoardByUser(id, user, ReportType.mapping(report));
+        return "redirect:/board/read/" + id +"?flag=1";
     }
 
 }
