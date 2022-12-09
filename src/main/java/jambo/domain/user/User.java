@@ -6,6 +6,7 @@ import jambo.domain.user.type.MBTI;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+import org.springframework.security.core.parameters.P;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -19,7 +20,6 @@ import java.util.List;
 @AllArgsConstructor
 @Table(name = "user_jambo")
 @EntityListeners(AuditingEntityListener.class)
-@ToString
 public class User {
     @Id
     @Column(name = "user_id")

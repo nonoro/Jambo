@@ -55,4 +55,11 @@ public abstract class Board {
         this.content = content;
         this.category = Category.mapping(category);
     }
+
+    public Board(User user, String title, String content, Category category) {
+        this.user = user;
+        this.title = title;
+        this.content = content;
+        this.category = category;
+    }
 }
