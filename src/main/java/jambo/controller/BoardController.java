@@ -83,16 +83,13 @@ public class BoardController {
         model.addAttribute("recommendation", recommendation);
         int countRecommendation = recommendService.countRecommendation(dbBoard);
         model.addAttribute("countRecommendation",countRecommendation);
-<<<<<<< HEAD
 
         List<Comment> dbComments = commentService.findCommentsByBoardId(id);
         model.addAttribute("comments", dbComments);
 
-=======
         /*신고하기 유무체크*/
         Report report = reportService.checkReport(user, dbBoard);
         model.addAttribute("report", report);
->>>>>>> feature/report
         return "Board/BoardRead";
     }
     /**

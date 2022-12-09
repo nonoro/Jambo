@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Main index page</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+    <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
+    <meta id="_csrf_header" name="_csrf_header" th:content="${_csrf.headerName}"/>
+
+    <!-- Favicons -->
+    <link href="/assets/img/jamboLogo.ico" rel="icon">
+    <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,600,0,0"/>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,600,0,0"/>
+    <link rel="stylesheet" href="/studyBoard/studyBoard.css"/>
+
+    <!--    summber note 관련 테그-->
+
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+    <!--    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>-->
+    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+
+    <!-- include summernote css/js-->
+    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+    <script src="/studyBoard/summerNote/summernote-ko-KR.js"></script>
+
+    <!-- Template Main CSS File -->
+    <link href="/assets/css/style.css" rel="stylesheet">
+    <link href="/board/css/board.css" rel="stylesheet">
+
+    <!-- 새로운폼 css -->
+    <link href="/studyBoard/css/css.css" rel="stylesheet">
+    <link href="/studyBoard/css/style.css" rel="stylesheet">
+
+    <!-- 끝-->
+
+    <!--신고버튼 layer popup 처리-->
+    <style type="text/css">
+        /* btn */
+
+        /* modal */
+        #modal {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            transform: scale(0);
+        }
+
+        #modal .modal-bg {
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        #modal .modal-bg .modal-cont {
+            position: relative;
+            background: #fff;
+            padding: 40px;
+            max-width: 500px;
+            display: inline-block;
+        }
+
+        #modal .modal-bg .modal-cont h2 {
+            font-size: 30px;
+            margin: 0;
+        }
+
+        #modal .modal-bg .modal-cont p {
+            font-size: 18px;
+        }
+
+        #modal .modal-bg .modal-cont .close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 20px;
+            padding: 10px;
+            background: #000;
+            border-radius: 50%;
+        }
+
+        #modal .modal-bg .modal-cont .close svg {
+            width: 24px;
+            fill: #fff;
+            vertical-align: top;
+        }
+
+
+        #modal.one {
+            transform: scaleY(0.01) scaleX(0);
+            animation: unfoldIn 1s cubic-bezier(0.165, 0.85, 0.44, 1) forwards;
+        }
+
+        #modal.one .modal-bg .modal-cont {
+            transform: scale(0);
+            animation: zoomIn 0.5s 0.8s cubic-bezier(0.165, 0.85, 0.44, 1) forwards;
+        }
+
+        #modal.one.out {
+            transform: scale(1);
+            animation: unfoldOut 1s cubic-bezier(0.165, 0.85, 0.44, 1) forwards;
+        }
+
+        #modal.one.out .modal-bg .modal-cont {
+            transform: scale(0);
+            animation: zoomOut 0.5s cubic-bezier(0.165, 0.85, 0.44, 1) forwards;
+        }
+
+        @keyframes unfoldIn {
+            0% {
+                transform: scaleY(0.005) scaleX(0);
+            }
+            50% {
+                transform: scaleY(0.005) scaleX(1);
+            }
+            100% {
+                transform: scaleY(1) scaleX(1);
+            }
+        }
+
+        @keyframes unfoldOut {
+            0% {
+                transform: scaleY(1) scaleX(1);
+            }
+            50% {
+                transform: scaleY(0.005) scaleX(1);
+            }
+            100% {
+                transform: scaleY(0.005) scaleX(0);
+            }
+        }
+
+        @keyframes zoomIn {
+            0% {
+                transform: scale(0);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes zoomOut {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(0);
+            }
+        }
+    </style>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+            integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <!--신고버튼 layer popup 처리-->
+
+    <!-- 좋아요 버튼 관련 로직 -->
+    <script type="text/javascript">
+        function onlyUserCanRecommend() {
+            alert("좋아요는 회원만 가능합니다");
+        }
+        function onlyUserCanReport() {
+            alert("신고하기는 회원만 가능합니다");
+        }
+    </script>
+    <!-- 좋아요 버튼 관련 로직 끝 -->
+</head>
+
+<body>
+
+<!--헤더-->
+<header th:replace="../templates/Baker/common/header.html ::header">
+</header>
+
+<main id="main">
+    <!-- ======= Clients Section ======= -->
+    <section id="clients" class="clients section-bg">
+        <div class="container">
+
+        </div>
+    </section><!-- End Clients Section -->
+
+    <!--Slideshow header-->
+    <div class="main_container">
+        <div class="mySlides">
+            <div class="text">
+            </div>
+        </div>
+
+        <div class="caption-container">
+        </div>
+
+        <div class="row">
+            <div class="column">
+            </div>
+        </div>
+    </div>
+
+    <!--    -->
+
+
+    <!---->
+
+
+    <div class="board_wrap">
+        <div class="board_title">
+            <strong><span th:text="${board.title}"></span></strong>
+        </div>
+        <div class="board_write_wrap">
+            <div class="board_write">
+                <div class="title">
+                    <dl>
+                        <dt style="width: 970px; margin-bottom: 10px">
+                            <img th:src="@{${savePath} + '/' + ${board.user.getMainEmotion()}}"
+                                 style="width: 30px; height: 30px">
+                            <span th:text="${board.user.getNickName()}"></span>
+
+                        </dt>
+                        <dt style="width: 970px;">
+                            <span class="form-item-icon material-symbols-rounded" style="font-size: small">Event</span>
+                            <span th:text="${#temporals.format(board.writeDate, 'yyyy-MM-dd HH:mm')}"></span>
+                            <span class="form-item-icon material-symbols-rounded"
+                                  style="font-size: small">Visibility</span>
+                            <span th:text="${board.views}"></span>
+                            <!--                            <button type="button" class="btn btn-danger" onclick="openPop()">신고하기</button>-->
+                            <span class="form-item-icon material-symbols-rounded"
+                                  style="font-size: small">Warning</span>
+
+                            <th:block th:if="${report != null}">
+                                <span class="btn-wrap">
+                                <a href="#" class="on" style="color: red">이미 신고한 게시글 입니다.</a>
+                            </span>
+                            </th:block>
+                            <th:block th:if="${report == null}">
+                                <th:block sec:authorize="!isAuthenticated()">
+                                     <span class="btn-wrap">
+                                <a href="#" class="on" onclick="onlyUserCanReport()">신고하기</a>
+                                </th:block>
+                                <th:block sec:authorize="isAuthenticated()">
+                                    <span class="btn-wrap" >
+                                <a href="#" class="on" id="btn">신고하기</a>
+                                </th:block>
+                            </th:block>
+
+                            <th:block th:if="${authUser != null}">
+                                <th:block th:if="${board.user.getEmail() == authUser.email}">
+                                    <a class="on">수정</a>
+                                    <a class="on" th:href="@{'/board/delete/'+${board.id}}">삭제</a>
+                                </th:block>
+                            </th:block>
+                            추천수 :
+                            <span th:text="${countRecommendation}"></span>
+                        </dt>
+
+                    </dl>
+                    <hr>
+                </div>
+
+                <div class="cont">
+                    <span th:utext="${board.content}"></span>
+                </div>
+            </div>
+
+            <div class="bt_wrap">
+                <th:block th:if="${recommendation != null}">
+                    <a class="on" th:href="@{'/board/recommendDown/'+${board.id}}"
+                       style="background-color: #eb463a ;border: none; color: #fef4dd;">종아요 취소😡</a>
+                </th:block>
+                <th:block th:if="${recommendation == null}">
+                    <th:block sec:authorize="!isAuthenticated()">
+                        <a class="on" onclick="onlyUserCanRecommend()" style="background-color: #3a3ef9 ;border: none">좋아요👍</a>
+                    </th:block>
+                    <th:block sec:authorize="isAuthenticated()">
+                        <a class="on" th:href="@{'/board/recommendUp/'+${board.id}}"
+                           style="background-color: #3a3ef9 ;border: none">좋아요👍</a>
+                    </th:block>
+                </th:block>
+
+            </div>
+
+        </div>
+        <main class="form-signin" style="width: 1000px; ">
+
+            <div class="card">
+                <div class="card-header">댓글</div><p/>
+                <ul id="reply--box" class="list-group" th:each="comment:${comments}">
+                    <li id="reply--1" class="list-group-item d-flex justify-content-between">
+                        <div>
+                            <img th:src="@{${savePath} + '/' + ${comment.user.getMainEmotion()}}" style="width: 30px; height: 30px">
+                            <span class="text-monospace mr-1"><span class="text-monospace mr-1" th:text="${comment.user.nickName}"></span></span>   <!---->
+                            <span class="text-monospace mr-1"><div th:text="${comment.content}"></div></span>
+                        </div>
+                        <div class="d-flex">
+                            <!--                                <span class="text-monospace mr-1"></span><div class="text-monospace mr-1" th:text="${comment.user.nickName}"></div></span>-->
+                            <th:block th:if="${authUser != null}">
+                                <th:block th:if="${comment.user.email == authUser.email}">
+                                    <!--                                          <a class="on">수정</a><p/>-->
+                                    <a class="on" th:href="@{'/comment/delete/'+${comment.id}}">삭제</a>
+                                </th:block>
+                            </th:block>
+
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <br/>
+            <div class="card mb-2 mt-5">
+                <div class="card-header bg-light">
+                    <i class="fa fa-comment fa"></i> 댓글쓰기
+                </div>
+                <div class="card-body">
+                    <form th:action="@{/comment/insert}" method="post">
+                        <input type="hidden" id="id" th:value="${id}" name="parentId"> <!--boardId, ${board.id}-->
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <textarea class="form-control" id="comment-content" rows="1" name="content" required></textarea>
+                                <button type="submit" id="comment-btn-save" class="btn btn-dark mt-3">등록</button>
+                            </li>
+                        </ul>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+    <p/>
+    <p/>
+
+
+</main><!-- End #main -->
+<div id="modal">
+    <div class="modal-bg">
+        <div class="modal-cont">
+            <h2>신고하기</h2>
+            <p>신고사유를 선택해주세요</p>
+            <form th:action="@{'/board/report/'+${board.id}}" method="post">
+                <input type="radio" name="report" value="욕설">욕설이 적힌 글입니다.<p></p>
+                <input type="radio" name="report" value="명예훼손">타인을 명예훼손하는 글 입니다.<p></p>
+                <input type="radio" name="report" value="광고">광고게시글 입니다.<p></p>
+                <input type="radio" name="report" value="기타">기타 신고 사유<p></p>
+                <button type="submit" class="btn btn-danger" style="margin-left:55px">신고하기</button>
+            </form>
+
+            <a href="#" class="close close1">
+                <svg viewBox="0 0 24 24">
+                    <path d="M14.1,12L22,4.1c0.6-0.6,0.6-1.5,0-2.1c-0.6-0.6-1.5-0.6-2.1,0L12,9.9L4.1,2C3.5,1.4,2.5,1.4,2,2C1.4,2.5,1.4,3.5,2,4.1
+    L9.9,12L2,19.9c-0.6,0.6-0.6,1.5,0,2.1c0.3,0.3,0.7,0.4,1.1,0.4s0.8-0.1,1.1-0.4l7.9-7.9l7.9,7.9c0.3,0.3,0.7,0.4,1.1,0.4
+    s0.8-0.1,1.1-0.4c0.6-0.6,0.6-1.5,0-2.1L14.1,12z"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $("#btn").click(function () {
+        $("#modal").removeAttr("class").addClass("one");
+    });
+
+    $(".close").click(function () {
+        $("#modal").addClass("out");
+    });
+</script>
+
+
+<!-- ======= Footer ======= -->
+<footer th:replace="../templates/Baker/common/footer.html ::footer">
+</footer>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+</a>
+
+<!-- Vendor JS Files -->
+<script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="/assets/vendor/php-email-form/validate.js"></script>
+
+<!--Slideshow header-->
+<script src="/board/board.js"></script>
+
+
+<!-- Template Main JS File -->
+<script src="/assets/js/main.js"></script>
+
+<script>
+    function myFunction() {
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+    }
+</script>
+
+</body>
+
+</html>
