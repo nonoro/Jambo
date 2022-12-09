@@ -61,6 +61,16 @@
 
     <!-- 끝-->
 
+    <script>
+        $(function () {
+            $(document).on("click", "#submit", function () {
+                if ($("[name=category]").val() == "0") {
+                    alert("게시판 카테고리를 선택해주세요!!!")
+                    return false;
+                }
+            });
+        });
+    </script>
 
 </head>
 
@@ -112,15 +122,15 @@
                 <div class="title">
                     <dl>
                         <dt>제목</dt>
-                        <dt><input type="text" placeholder="제목 입력" name="title"></dt>
+                        <dt><input type="text" placeholder="제목 입력" name="title" required></dt>
                     </dl>
                 </div>
                 <div class="title">
                     <dl>
                         <dt>카테고리</dt>
                         <dt>
-                            <select name="category">
-                                <option value="0" selected disabled>선택해주세요</option>
+                            <select name="category" required>
+                                <option value="0" selected>선택해주세요</option>
                                 <option value="FREE_BOARD">자유게시판</option>
                                 <option value="INFORMATION_BOARD">정보게시판</option>
                                 <option value="CONTEST_BOARD">소작모</option>
