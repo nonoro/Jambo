@@ -123,4 +123,12 @@ public class BoardController {
         return "redirect:/board/read/" + id+"?flag=1";
     }
 
+    /**
+     * 게시글 신고하기
+     * */
+    @RequestMapping("/report/{id}")
+    public String report(@PathVariable Long id, @AuthenticationPrincipal User user){
+        return null;
+    }
+
 }

@@ -20,7 +20,7 @@ spring:
     password: TIGER
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: create
     show-sql: true
     database: oracle
     database-platform: org.hibernate.dialect.Oracle10gDialect

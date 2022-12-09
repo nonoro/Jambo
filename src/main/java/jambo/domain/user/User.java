@@ -2,6 +2,8 @@ package jambo.domain.user;
 
 import jambo.domain.TechStack;
 import jambo.domain.board.Recommendation;
+//import jambo.domain.board.Report;
+import jambo.domain.board.Report;
 import jambo.domain.user.type.MBTI;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
@@ -56,6 +58,9 @@ public class User {
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Recommendation> recommendation;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Report> reports;
 
     public User(String email, String password, String name, String nickName, String phone, String mbti) {
         this.email = email;
