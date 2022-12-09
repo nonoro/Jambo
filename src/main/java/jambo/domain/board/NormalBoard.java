@@ -1,5 +1,6 @@
 package jambo.domain.board;
 
+import jambo.domain.Comment;
 import jambo.domain.board.type.Category;
 import jambo.domain.user.User;
 
@@ -21,7 +22,10 @@ public class NormalBoard extends Board {
         super(user,title, content, category);
     }
 
-    public NormalBoard(Long id, User user, String title, String content, List<Recommendation> recommendation, LocalDateTime writeDate, int views, boolean isReported, Category category, List<Report> reports) {
-        super(id, user, title, content, recommendation, writeDate, views, isReported, category , reports);
+    public NormalBoard(Long id, User user, String title, String content, List<Recommendation> recommendation, LocalDateTime writeDate, int views, boolean isReported, Category category, List<Report> reports ,List<Comment> commentList) {
+        super(id, user, title, content, recommendation, writeDate, views, isReported, category , reports, commentList);
+    }
+
+    public NormalBoard(Long id) {
     }
 }

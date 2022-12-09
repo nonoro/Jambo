@@ -6,8 +6,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
@@ -28,7 +30,23 @@ public class Comment {
 
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    private User writer;
+    private User user; //writer
 
-    private boolean isReported;
+    @Column(nullable=false, length = 500)
+    private String content;
+
+    @CreationTimestamp
+    private LocalDateTime regDate;
+
+    public void save(Board board, User user) {
+        this.board = board;
+        this.user = user;
+    }
+
+
+
+//    @CreationTimestamp
+//    private LocalDateTime regDate;
+
+//    private boolean isReported;
 }
