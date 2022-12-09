@@ -217,6 +217,7 @@
 
             });
 
+            $(document).on("click", "")
         });
     </script>
 
@@ -273,15 +274,15 @@
                 <div class="title">
                     <dl>
                         <dt>제목</dt>
-                        <dt><input type="text" placeholder="제목 입력" name="title"></dt>
+                        <dt><input type="text" placeholder="제목 입력" name="title" required></dt>
                     </dl>
                 </div>
                 <div class="info">
                     <dl>
                         <dt>모집인원</dt>
                         <dt>
-                            <select name="numberOfRecruits">
-                            <option value="0" selected disabled>모집인원</option>
+                            <select name="numberOfRecruits" required>
+                            <option value="">모집인원</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>
@@ -298,7 +299,7 @@
                     <dl>
                         <dt>스터디 시작일</dt>
                         <dt>
-                            <input type="date" name="startDate">
+                            <input type="date" name="startDate" required>
                         </dt>
                     </dl>
                 </div>
@@ -306,8 +307,8 @@
                     <dl>
                         <dt>모집방법</dt>
                         <dt>
-                            <select name="supportMethod">
-                                <option value="0" selected disabled>선택해주세요</option>
+                            <select name="supportMethod" required>
+                                <option value="">선택해주세요</option>
                                 <option value="오픈카톡">오픈카톡</option>
                                 <option value="네이버폼">네이버폼</option>
                                 <option value="이메일">이메일</option>
@@ -318,8 +319,8 @@
                     <dl>
                         <dt>온라인/오프라인</dt>
                         <dt>
-                            <select name="isOnline">
-                                <option value="none" selected disabled>선택해주세요</option>
+                            <select name="isOnline" required>
+                                <option value="">선택해주세요</option>
                                 <option value="오프라인">오프라인</option>
                                 <option value="온라인">온라인</option>
                             </select>
@@ -331,8 +332,8 @@
                         <dt>프로젝트<br>기술스택</dt>
                         <dt>
                             <div>
-                                <select name="stack" id="stack" onchange="ChangeValue()">
-                                    <option value="0" selected id="stackDefault">선택해주세요</option>
+                                <select name="stack" id="stack" onchange="ChangeValue()" required>
+                                    <option value="0" id="stackDefault">선택해주세요</option>
                                     <option value="JavaScript">JavaScript</option>
                                     <option value="TypeScript">TypeScript</option>
                                     <option value="React">React</option>
@@ -368,8 +369,8 @@
                     <dl>
                         <dt>스터디 운용기간</dt>
                         <dt>
-                            <select name="period">
-                                <option value="0" >선택해주세요</option>
+                            <select name="period" required>
+                                <option value="" >선택해주세요</option>
                                 <option value="1개월">1개월</option>
                                 <option value="2개월">2개월</option>
                                 <option value="3개월">3개월</option>

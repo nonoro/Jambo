@@ -101,4 +101,10 @@ public class IconController {
         iconService.changeIcon(user.getId(), iconId);
         return "redirect:/icon";
     }
+
+    @ExceptionHandler(IllegalArgumentException.class)
+    public String exception(IllegalArgumentException exception, Model model) {
+        model.addAttribute("errorMessage", exception.getMessage());
+        return "error/iconError";
+    }
 }

@@ -17,7 +17,7 @@ public enum MBTI {
     ESTP,
     ENFJ,
     ENTJ,
-    NOTHTING;
+    NOTHING;
 
     public static MBTI mapping(String mbti) {
         return MBTI.valueOf(mbti.toUpperCase());
