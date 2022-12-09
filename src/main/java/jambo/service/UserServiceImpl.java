@@ -1,12 +1,15 @@
 package jambo.service;
 
 
+import jambo.domain.Authority;
 import jambo.domain.TechStack;
+import jambo.domain.user.Point;
 import jambo.domain.user.User;
+import jambo.dto.LoginDTO;
 import jambo.dto.UserJoinDTO;
-import jambo.repository.TechStackRepository;
-import jambo.repository.UserRepository;
+import jambo.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -15,12 +18,19 @@ import java.util.HashMap;
 import java.util.List;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService{
     @Autowired
     private UserRepository userRep;
     @Autowired
     private TechStackRepository techStackRepository;
+    @Autowired
+    private NormalBoardRepository normalBoardRepository;
+    @Autowired
+    private AuthorityRepository authorityRepository;
 
+    @Autowired
+    private PointRepository pointRepository;
     @Override
     public HashMap<String, Object> userEmailOverlap(String email) {
         HashMap<String, Object> map = new HashMap<>();
@@ -39,19 +49,18 @@ public class UserServiceImpl implements UserService{
             List<TechStack> techStacks = techStackRepository.findAllByTechStackNameIn(userTechStacks);
             user.setTechStacks(techStacks);
         }
+        authorityRepository.save(new Authority(user.getEmail(), "ROLE_USER"));
+        user.setPoint(new Point(0, 0));
 
         return userRep.save(user).getId();
     }
 
     @Override
-    public User myPage(String userEmail) {
+    public User myPage(Long id) {
 
-        return userRep.findUserByEmail(userEmail);
+//        normalBoardRepository.findNormalBoardByUserId();
+        return userRep.findUserById(id);
     }
 
-//    @Override
-//    public UserTechStack techStack(long id) {
 
-//        return userRep.findById();
-//    }
 }

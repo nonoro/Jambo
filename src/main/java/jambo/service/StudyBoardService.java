@@ -5,6 +5,7 @@ import jambo.domain.board.Board;
 
 
 import jambo.domain.board.StudyBoard;
+import jambo.domain.user.User;
 import jambo.dto.StudyBoardDTO;
 import jambo.repository.BoardRepository;
 import jambo.repository.StudyBoardRepository;
@@ -24,8 +25,9 @@ public class StudyBoardService {
     @Autowired
     private BoardRepository boardRepository;
 
-    public void insert(StudyBoardDTO studyBoardDTO){
+    public void insert(StudyBoardDTO studyBoardDTO, User user){
         Board board = studyBoardDTO.toEntity();
+        board.setUser(user);
         boardRepository.save(board);
     }
 
@@ -38,13 +40,15 @@ public class StudyBoardService {
     public StudyBoard read(Long id, boolean state){
 
         if(state) {//조회수 증가
-            studyBoardRepository.updateViews(id);
+            boardRepository.updateViews(id);
         }
-
         return studyBoardRepository.findStudyBoardById(id);
     }
 
-//    public void recommend(Long id){
-//        studyBoardRepository.recommend(id);
-//    }
+    /**
+     * 내가쓴 모든 StudyBoard 조회
+     */
+    public List<StudyBoard> showStudyBoard(User user) {
+        return studyBoardRepository.SearchStudyBoardByEmail(user);
+    }
 }
