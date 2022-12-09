@@ -33,7 +33,7 @@ public class UserSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/icon/shop")
                 .hasRole("USER")
                 .antMatchers("/icon/register")
-                .hasRole("USER")
+                .hasRole("ADMIN")
                 .antMatchers("/user/myPage")
                 .hasRole("USER")
                 .and()
