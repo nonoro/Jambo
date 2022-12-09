@@ -18,7 +18,7 @@ public enum ReportType {
         return name;
     }
 
-    private static ReportType mapping(String reportType){
+    public static ReportType mapping(String reportType){
         return Stream.of(ReportType.values()).filter(s -> s.getName().equals(reportType)).findFirst().orElse(ReportType.OTHERS);
     }
 }
