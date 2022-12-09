@@ -3,7 +3,6 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <body>
 
-<!-- ======= Header ======= -->
 <header id="header" class="fixed-top header-transparent" th:fragment="header">
     <div class="container d-flex align-items-center justify-content-between">
 
@@ -38,11 +37,11 @@
                         <ul>
                             <li><a href="#">내 작성글</a></li>
                             <li><a href="#">참여 스터디</a></li>
-                            <li><a th:href="@{mypage/mypageList}">마이페이지</a></li>
+                            <li><a th:href="@{user/myPage}">마이페이지</a></li>
                             <li><a href="/user/logout">로그아웃</a></li>
                         </ul>
+                    </li>
                 </th:block>
-                </li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->

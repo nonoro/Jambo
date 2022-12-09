@@ -3,9 +3,11 @@ package jambo.controller;
 
 import jambo.domain.board.Board;
 import jambo.domain.board.StudyBoard;
+import jambo.domain.user.User;
 import jambo.dto.StudyBoardDTO;
 import jambo.service.StudyBoardService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -36,9 +38,9 @@ public class StudyBoardController {
     }
 
     @RequestMapping("/insert")
-    public String studyBoardInsert(StudyBoardDTO studyBoardDTO) throws IOException {
+    public String studyBoardInsert(StudyBoardDTO studyBoardDTO, @AuthenticationPrincipal User user) throws IOException {
 
-        service.insert(studyBoardDTO);
+        service.insert(studyBoardDTO, user);
         System.out.println("con studyBoardDTO = " + studyBoardDTO);
 
         return "StudyBoard/StudyBoardMain";

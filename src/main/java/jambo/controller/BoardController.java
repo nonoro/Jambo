@@ -85,6 +85,7 @@ public class BoardController {
     @RequestMapping("/insert")
     public String studyBoardInsert(NormalBoardDTO normalBoardDTO, @AuthenticationPrincipal User user) throws IOException {
         boardService.insert(normalBoardDTO, user);
+
         return "redirect:/board/list?category="+normalBoardDTO.getCategory();
     }
 

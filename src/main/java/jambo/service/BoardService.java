@@ -15,6 +15,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 @Service
 @Transactional
@@ -65,5 +66,13 @@ public class BoardService {
     public Board findBoardById(Long id){
 
         return boardRepository.findBoardById(id);
+    }
+
+    /**
+     * 내가쓴 모든 NomalBoard 조회
+     */
+    public List<NormalBoard> showNormalBoard(User user){
+
+        return normalBoardRepository.SearchNomalBoardByEmail(user);
     }
 }

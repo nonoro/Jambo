@@ -2,9 +2,11 @@ package jambo.repository;
 
 
 import jambo.domain.board.StudyBoard;
+import jambo.domain.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 
 import java.util.List;
@@ -21,6 +23,13 @@ public interface StudyBoardRepository extends JpaRepository<StudyBoard, Long> {
      */
     StudyBoard findStudyBoardById(Long id);
 
+
+
+    /**
+     * 내가쓴 모든 StudyBoard 조회
+     */
+    @Query("select b from StudyBoard b where b.user = :user")
+    List<StudyBoard> SearchStudyBoardByEmail(@Param("user") User user);
 
 
     /**

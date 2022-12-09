@@ -18,6 +18,7 @@ public class NoteService {
      * 받은 쪽지함
      */
     public List<Note> selectAll(String email) {
+
         return noteRepository.findNotesByReceiveUser(email);
     }
 
@@ -32,10 +33,10 @@ public class NoteService {
     /**
      * 쪽지 전송
      */
-    public void insert(Note note, String email) {
-        note.setSendUser(email);
+    public void insert(Note note, User user) {
+//        note.setSendUser(note.getSendUser());
+        note.setSendUser(user);
         Note dbNote = noteRepository.save(note);
-        System.out.println("디비노트 출력=" +dbNote+ "💌💌💌💌💌💌💌💌");
     }
 
     /**

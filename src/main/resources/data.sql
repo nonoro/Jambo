@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --insert into user_jambo values (2000, 'test@test.com', sysdate, '2a459a5.png', 'ENFP', '권규정', 'nonoro', '1234', '010-3349-3187');
 ----insert into user_jambo values (2001, 'test1@test.com', sysdate, '2a459a5.png', 'ENFP', '권규정', 'nonoro', '1234', '010-3349-3187')
 --insert into admin values (2001, 'test1@test.com', sysdate,'권규정', 'nonoro', '1234');

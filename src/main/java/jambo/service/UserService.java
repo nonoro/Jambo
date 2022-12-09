@@ -11,7 +11,6 @@ import jambo.repository.AuthorityRepository;
 import jambo.repository.TechStackRepository;
 import jambo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +36,6 @@ public class UserService {
         return map;
     }
 
-
     @Transactional
     public Long join(UserJoinDTO userJoinDTO) {
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
@@ -56,5 +54,9 @@ public class UserService {
 
     public User findUser(User user){
         return userRep.findById(user.getId()).get();
+    }
+
+    public User myPage(Long id) {
+        return userRep.findUserById(id);
     }
 }
