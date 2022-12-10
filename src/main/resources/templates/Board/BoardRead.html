@@ -291,7 +291,7 @@
             <div class="bt_wrap">
                 <th:block th:if="${recommendation != null}">
                     <a class="on" th:href="@{'/board/recommendDown/'+${board.id}}"
-                       style="background-color: #eb463a ;border: none; color: #fef4dd;">종아요 취소😡</a>
+                       style="background-color: #eb463a ;border: none; color: #fef4dd;">좋아요 취소😡</a>
                 </th:block>
                 <th:block th:if="${recommendation == null}">
                     <th:block sec:authorize="!isAuthenticated()">
