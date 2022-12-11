@@ -586,9 +586,9 @@
             <div class="row dashboard-header">
                <div class="col-lg-3 col-md-6">
                   <div class="card dashboard-product">
-                     <span>Products</span>
-                     <h2 class="dashboard-total-products">4500</h2>
-                     <span class="label label-warning">Sales</span>Arriving Today
+                     <span>오늘 가입한 회원 수</span>
+                      <h2 class="dashboard-total-products"><span th:text="${todayJoinUsers}"></span></h2>
+                     <span class="label label-warning">총 회원 수</span><span th:text="${totalUsers}"></span>
                      <div class="side-box">
                         <i class="ti-signal text-warning-color"></i>
                      </div>
@@ -596,9 +596,9 @@
                </div>
                <div class="col-lg-3 col-md-6">
                   <div class="card dashboard-product">
-                     <span>Products</span>
-                     <h2 class="dashboard-total-products">37,500</h2>
-                     <span class="label label-primary">Views</span>View Today
+                     <span>오늘 작성된 스터디 게시글 수</span>
+                      <h2 class="dashboard-total-products"><span th:text="${todayStudyBoards}"></span></h2>
+                     <span class="label label-primary">총 작성된 스터디 수</span><span th:text="${totalStudyBoards}"></span>
                      <div class="side-box ">
                         <i class="ti-gift text-primary-color"></i>
                      </div>
@@ -606,9 +606,9 @@
                </div>
                <div class="col-lg-3 col-md-6">
                   <div class="card dashboard-product">
-                     <span>Products</span>
-                     <h2 class="dashboard-total-products">$<span>30,780</span></h2>
-                     <span class="label label-success">Sales</span>Reviews
+                     <span>오늘 작성된 일반 게시글 수</span>
+                     <h2 class="dashboard-total-products"><span th:text="${todayNormalBoards}"></span></h2>
+                     <span class="label label-success">총 일반 게시글 수</span><span th:text="${totalNormalBoards}"></span>
                      <div class="side-box">
                         <i class="ti-direction-alt text-success-color"></i>
                      </div>
@@ -616,9 +616,9 @@
                </div>
                <div class="col-lg-3 col-md-6">
                   <div class="card dashboard-product">
-                     <span>Products</span>
-                     <h2 class="dashboard-total-products">$<span>30,780</span></h2>
-                     <span class="label label-danger">Sales</span>Reviews
+                     <span>오늘 신고된 게시글 수</span>
+                     <h2 class="dashboard-total-products"><span th:text="${todayReportedBoards}"></span></h2>
+                     <span class="label label-danger">지금까지 신고된 게시글 수</span><span th:text="${totalReportedBoards}"></span>
                      <div class="side-box">
                         <i class="ti-rocket text-danger-color"></i>
                      </div>
