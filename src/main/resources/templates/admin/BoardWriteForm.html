@@ -70,7 +70,7 @@
    <div class="wrapper">
       <!-- Navbar-->
       <header class="main-header-top hidden-print">
-         <a href="index.html" class="logo"><img class="img-fluid able-logo" src="/assets/img/jamboLogo.ico" alt="Theme-logo" style="width: 30px; height: 30px"> 관리자 페이지 </a>
+          <a th:href="@{/admin/adminMain}" class="logo"><img class="img-fluid able-logo" src="/assets/img/jamboLogo.ico" alt="Theme-logo" style="width: 30px; height: 30px"> 관리자 페이지 </a>
          <nav class="navbar navbar-static-top">
             <!-- Sidebar toggle button-->
             <a href="#!" data-toggle="offcanvas" class="sidebar-toggle"></a>
@@ -80,61 +80,11 @@
             <!-- Navbar Right Menu-->
             <div class="navbar-custom-menu f-right">
               <div class="upgrade-button">
-                <a href="#" class="icon-circle txt-white btn btn-sm btn-danger upgrade-button">
+                <a th:href="@{/}" class="icon-circle txt-white btn btn-sm btn-danger upgrade-button">
                     <span>관리자페이지 나가기</span>
                 </a>
               </div>
 
-
-               <!-- search -->
-               <div id="morphsearch" class="morphsearch">
-                  <form class="morphsearch-form">
-
-                     <input class="morphsearch-input" type="search" placeholder="Search..." />
-
-                     <button class="morphsearch-submit" type="submit">Search</button>
-
-                  </form>
-                  <div class="morphsearch-content">
-                     <div class="dummy-column">
-                        <h2>People</h2>
-                        <a class="dummy-media-object" href="#!">
-                           <img class="round" src="http://0.gravatar.com/avatar/81b58502541f9445253f30497e53c280?s=50&d=identicon&r=G" alt="Sara Soueidan" />
-                           <h3>Sara Soueidan</h3>
-                        </a>
-
-                        <a class="dummy-media-object" href="#!">
-                           <img class="round" src="http://1.gravatar.com/avatar/9bc7250110c667cd35c0826059b81b75?s=50&d=identicon&r=G" alt="Shaun Dona" />
-                           <h3>Shaun Dona</h3>
-                        </a>
-                     </div>
-                     <div class="dummy-column">
-                        <h2>Popular</h2>
-                        <a class="dummy-media-object" href="#!">
-                           <img src="/admin/images/avatar-1.png" alt="PagePreloadingEffect" />
-                           <h3>Page Preloading Effect</h3>
-                        </a>
-
-                        <a class="dummy-media-object" href="#!">
-                           <img src="/admin/images/avatar-1.png" alt="DraggableDualViewSlideshow" />
-                           <h3>Draggable Dual-View Slideshow</h3>
-                        </a>
-                     </div>
-                     <div class="dummy-column">
-                        <h2>Recent</h2>
-                        <a class="dummy-media-object" href="#!">
-                           <img src="/admin/images/avatar-1.png" alt="TooltipStylesInspiration" />
-                           <h3>Tooltip Styles Inspiration</h3>
-                        </a>
-                        <a class="dummy-media-object" href="#!">
-                           <img src="/admin/images/avatar-1.png" alt="NotificationStyles" />
-                           <h3>Notification Styles Inspiration</h3>
-                        </a>
-                     </div>
-                  </div>
-                  <!-- /morphsearch-content -->
-                  <span class="morphsearch-close"><i class="icofont icofont-search-alt-1"></i></span>
-               </div>
                <!-- search end -->
             </div>
          </nav>
@@ -146,32 +96,40 @@
             <ul class="sidebar-menu">
 
                 <li class="nav-level">--- 관리자 메뉴</li>
-                <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-briefcase"></i><span> 아이콘 샵 </span><i class="icon-arrow-down"></i></a>
+                <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-briefcase"></i><span> 아이콘 샵 </span><i
+                        class="icon-arrow-down"></i></a>
                     <ul class="treeview-menu">
-                        <li><a class="waves-effect waves-dark" th:href="@{/admin/iconRegister}"><i class="icon-arrow-right"></i> 아이콘 등록하기 </a></li>
-                        <li><a class="waves-effect waves-dark" th:href="@{/icon/shop}"><i class="icon-arrow-right"></i> 등록된 아이콘 리스트 보기 </a></li>
+                        <li><a class="waves-effect waves-dark" th:href="@{/admin/iconRegister}"><i
+                                class="icon-arrow-right"></i> 아이콘 등록하기 </a></li>
+                        <li><a class="waves-effect waves-dark" th:href="@{/icon/shop}"><i class="icon-arrow-right"></i>
+                            등록된 아이콘 리스트 보기 </a></li>
                     </ul>
                 </li>
 
 
-
-                <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-cup"></i><span> 관리자 회원가입 </span><i class="icon-arrow-down"></i></a>
+                <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-cup"></i><span> 관리자 회원가입 </span><i
+                        class="icon-arrow-down"></i></a>
                     <ul class="treeview-menu">
-                        <li><a class="waves-effect waves-dark" href="form-elements-bootstrap.html"><i class="icon-arrow-right"></i> 관리자 회원 가입</a></li>
+                        <li><a class="waves-effect waves-dark" th:href="@{/admin/joinForm}"><i
+                                class="icon-arrow-right"></i> 관리자 회원 가입</a></li>
                     </ul>
                 </li>
 
-                <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-book-open"></i><span> 공지사항 & 소작모 작성</span><i class="icon-arrow-down"></i></a>
+                <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-book-open"></i><span> 공지사항 & 소작모 작성</span><i
+                        class="icon-arrow-down"></i></a>
                     <ul class="treeview-menu">
-                        <li><a class="waves-effect waves-dark" th:href="@{/admin/openWriteForm}"><i class="icon-arrow-right"></i> 공지사항 작성하기 </a></li>
-                        <li><a class="waves-effect waves-dark" th:href="@{/admin/openWriteForm}"><i class="icon-arrow-right"></i> 소작모 글 작성하</a></li>
+                        <li><a class="waves-effect waves-dark" th:href="@{/admin/openWriteForm}"><i
+                                class="icon-arrow-right"></i> 공지사항 작성하기 </a></li>
+                        <li><a class="waves-effect waves-dark" th:href="@{/admin/openWriteForm}"><i
+                                class="icon-arrow-right"></i> 소작모 글 작성하기 </a></li>
                     </ul>
                 </li>
 
-                <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-ban"></i><span> 신고된 게시글 관리 </span><i class="icon-arrow-down"></i></a>
+                <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-ban"></i><span> 신고된 게시글 관리 </span><i
+                        class="icon-arrow-down"></i></a>
                     <ul class="treeview-menu">
-                        <li><a class="waves-effect waves-dark" href="float-chart.html"><i class="icon-arrow-right"></i> Float Charts</a></li>
-                        <li><a class="waves-effect waves-dark" href="morris-chart.html"><i class="icon-arrow-right"></i> Morris Charts</a></li>
+                        <li><a class="waves-effect waves-dark" th:href="@{/admin/ReportPage}"><i class="icon-arrow-right"></i>
+                            신고된 게시글 보기</a></li>
                     </ul>
                 </li>
 
@@ -210,7 +168,9 @@
                                          <div class="title">
                                              <dl>
                                                  <dt>제목</dt>
-                                                 <dt><input type="text" placeholder="제목 입력" name="title"></dt>
+                                                 <dt width="300px">
+                                                     <input type="text" placeholder="제목 입력" name="title" style="width: 300px">
+                                                 </dt>
                                              </dl>
                                          </div>
                                          <div class="title">

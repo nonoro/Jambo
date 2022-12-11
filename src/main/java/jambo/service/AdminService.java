@@ -2,9 +2,12 @@ package jambo.service;
 
 import jambo.domain.Authority;
 import jambo.domain.admin.Admin;
+import jambo.domain.board.Report;
 import jambo.dto.AdminJoinDTO;
 import jambo.repository.*;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -107,5 +110,12 @@ public class AdminService {
      * */
     public int countReportedBoardsByToday(){
         return reportRepository.countByReportDateBetween(startDatetime, endDatetime);
+    }
+
+    /**
+     * 신고 관리 페이지
+     * */
+    public Page<Report> findAll(Pageable page){
+        return reportRepository.findAllByOrderByReportDateDesc(page);
     }
 }

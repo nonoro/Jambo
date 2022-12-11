@@ -5,7 +5,7 @@ Version: 4.9.1
 Version: 4.9.0
   - Updated Bootstrap to version 5.2.1
   - Updated all outdated third party vendor libraries to their latest versions
-  - Improved PHP Email From library to ignore server header responses like 409
+  - Improved PHP Email From library to ignore server src="/MyPage/assetser responses like 409
 
 Version: 4.8.1
   - Fixed the counters issue
