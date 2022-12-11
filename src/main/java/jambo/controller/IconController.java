@@ -39,11 +39,11 @@ public class IconController {
     public String showIconShop(Model model, String keyWord, @PageableDefault(size = 3, direction = Sort.Direction.DESC) Pageable pageable, @AuthenticationPrincipal User securityUser) {
         int state = 1;
 
-        if (securityUser == null) {
-            state = 0;
-        }
+//        if (securityUser == null) {
+//            state = 0;
+//        }
 
-        if (securityUser != null) {
+//        if (securityUser != null) {
         User user = userRepository.findById(securityUser.getId()).get();
         UserResponseDTO userResponseDTO = UserResponseDTO.from(user);
         Page<IconShop> icons = iconService.showIconShop(keyWord, pageable);
@@ -53,7 +53,7 @@ public class IconController {
         model.addAttribute("pageNumbers", pageNumbers);
         model.addAttribute("savePath", fileService.getUrlPath());
         model.addAttribute("user", userResponseDTO);
-        }
+//        }
 
         return "iconShop/showIconShop";
     }

@@ -36,4 +36,10 @@ public class AdminController {
 
         return "/admin/adminMain";
     }
+
+    @GetMapping("/iconRegister")
+    public String openIconRegisterForm(){
+
+        return "/admin/iconRegister";
+    }
 }
