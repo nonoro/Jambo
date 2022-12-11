@@ -1,21 +1,23 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-   <title>Quantum Able Bootstrap 4 Admin Dashboard Template</title>
-   <!-- HTML5 Shim and Respond.js IE9 support of HTML5 elements and media queries -->
-   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-   <!--[if lt IE 9]>
-     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-     <![endif]-->
-
    <meta charset="utf-8">
-   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-   <!-- Favicon icon -->
-   <link rel="shortcut icon" href="/MyPage/assets/images/favicon.png" type="image/x-icon">
-   <link rel="icon" href="/MyPage/assets/images/favicon.ico" type="image/x-icon">
+   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+   <title>MyPage page</title>
+
+   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+   <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+<!--   <meta charset="utf-8">-->
+<!--   <meta http-equiv="X-UA-Compatible" content="IE=edge">-->
+<!--   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">-->
+
+   <!-- Favicons -->
+   <link href="/assets/img/jamboLogo.ico" rel="icon">
+   <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
    <!-- Google font-->
    <link href="/MyPage/https://fonts.googleapis.com/css?family=Ubuntu:400,500,700" rel="stylesheet">
@@ -38,48 +40,99 @@
    <!-- Weather css -->
    <link href="/MyPage/assets/css/svg-weather.css" rel="stylesheet">
 
-
    <!-- Style.css -->
    <link rel="stylesheet" type="text/css" href="/MyPage/assets/css/main.css">
 
    <!-- Responsive.css-->
    <link rel="stylesheet" type="text/css" href="/MyPage/assets/css/responsive.css">
 
-      <style>
-         .user-block-2-actives {
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            width: 250px;
-         }
-         .img-fluid {
-            float: left;
-            margin-right: 6px;
-         }
-         .label-primary {
-            background-color: #000;
-         }
-         .user-block-2 h5 {
-            margin-bottom: 10px;
-            margin-top: 20px;
-         }
-         .main-header {
-            padding: 20px 0 20px 20px;
-            width: 1340px;
-         }
-         .user-block-2-active label {
-            float: right;
-            margin-bottom: 0;
-            padding: 7px;
-         }
+   <!--헤더관련 -->
+   <!-- Vendor CSS Files -->
+<!--   <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">아님-->
+<!--   <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">아님-->
+<!--   <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">아님-->
+<!--   <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">아님-->
+<!--   <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">-->
+   <!-- Template Main CSS File -->
+   <link href="/assets/css/style.css" rel="stylesheet">
+<!--   <link rel="stylesheet"-->
+<!--         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,600,0,0"/>-->
 
-      </style>
+   <style>
+      .user-block-2-actives {
+         margin-bottom: 20px;
+         padding-bottom: 10px;
+         width: 250px;
+      }
+      .img-fluid {
+         float: left;
+         margin-right: 6px;
+      }
+      .label-primary {
+         background-color: #000;
+      }
+      .user-block-2 h5 {
+         margin-bottom: 10px;
+         margin-top: 20px;
+      }
+      .main-header {
+         padding: 20px 0 20px 20px;
+         width: 1340px;
+      }
+      .user-block-2-active label {
+         float: right;
+         margin-bottom: 0;
+         padding: 7px;
+      }
+
+      .photo-table img {
+         width: 22px;
+         margin-bottom: 5px;
+      }
+
+      /*연아 */
+      .overflow {
+         /*display: block;*/
+         /*text-overflow: ellipsis;*/
+         /*white-space: nowrap;*/
+         width: 200px;
+         overflow: hidden;
+         text-overflow: ellipsis;
+         white-space: nowrap;
+         /*text-align: center;*/
+      }
+
+   </style>
 
 </head>
 
 <body class="sidebar-mini fixed">
-<form class="edit form" th:action="@{/user/myPage}" method="post">
+<!--헤더-->
+<header th:replace="../templates/Baker/common/header.html ::header">
+</header>
+<!--<main id="main">-->
+<!--    ======= Clients Section ======= &ndash;&gt;-->
+   <section id="clients" class="clients section-bg">
+      <div class="container">
+      </div>
+   </section><!-- End Clients Section -->
+   <!--Slideshow header-->
+   <div class="main_container">
+      <div class="mySlides">
+         <div class="text">
+         </div>
+      </div>
+      <div class="caption-container">
+      </div>
+      <div class="row">
+         <div class="column">
+         </div>
+      </div>
+   </div>
+
+<form class="edit form" action="/user/myPage" method="post"><input type="hidden" name="_csrf" value="5f64f795-8762-45e5-8889-52c407c4822b"/>
    <div class="wrapper">
-      
+
       <div class="content-wrapper" style="margin: 50px;">
          <!-- Container-fluid starts -->
          <!-- Main content starts -->
@@ -87,17 +140,14 @@
             <div class="row">
                <div class="main-header">
                   <h4>마이페이지</h4>
-                  <button type="button" class="btn btn-primary waves-effect waves-light text-uppercase" style="float: right;">
-                    정보공개여부 on
-                  </button>
                </div>
             </div>
             <!-- 4-blocks row start -->
             <div class="row dashboard-header">
                <div class="col-lg-3 col-md-6">
                   <div class="card dashboard-product">
-                     <span>level</span>
-                     <h2 class="dashboard-total-products"><span th:text="${myPage.level}"></span></h2>
+                     <span>Level</span>
+                     <h1 class="dashboard-total-products"><span th:text="${myPage.level}"></span></h1>
                      <div class="side-box">
                         <i class="ti-signal text-warning-color"></i>
                      </div>
@@ -106,10 +156,10 @@
                <div class="col-lg-3 col-md-6">
                   <div class="card dashboard-product">
                      <span>Point</span>
-                     <h2 class="dashboard-total-products">
-                        <img class="img-fluid" src="/assets/img/jamboLogoPoint.ico" style="width: 30px;">
-                        <span th:text="${myPage.point}">J</span>J
-                     </h2>
+                     <h1 class="dashboard-total-products">
+                        <img class="img-fluid" src="/assets/img/jamboLogo.ico" style="width: 30px;">
+                        <span th:text="${myPage.point}"></span>J
+                     </h1>
                      <div class="side-box ">
                         <i class="ti-gift text-primary-color"></i>
                      </div>
@@ -118,7 +168,7 @@
                <div class="col-lg-3 col-md-6">
                   <div class="card dashboard-product">
                      <span>작성한 게시글</span>
-                     <h2 class="dashboard-total-products"><span th:text="${normalBoardListSize}"></span>개</h2>
+                     <h1 class="dashboard-total-products"><span th:text="${normalBoardListSize}"></span>개</h1>
                      <div class="side-box">
                         <i class="ti-direction-alt text-success-color"></i>
                      </div>
@@ -127,7 +177,7 @@
                <div class="col-lg-3 col-md-6">
                   <div class="card dashboard-product">
                      <span>내가 모집 중인 스터디</span>
-                     <h2 class="dashboard-total-products"><span th:text="${studyBoardListSize}"></span>개</h2>
+                     <h1 class="dashboard-total-products"><span th:text="${studyBoardListSize}"></span>개</h1>
                      <div class="side-box">
                         <i class="ti-rocket text-danger-color"></i>
                      </div>
@@ -141,7 +191,7 @@
                <div class="col-lg-4">
                   <div class="card">
                      <div class="user-block-2">
-                        <img class="img-fluid" th:src="@{${savePath} + '/' + ${myPage.mainEmotion}}" alt="user-header" style="width: 200px; margin-left: 50px">
+                        <img class="img-fluid" th:src="@{${savePath} + '/' + ${myPage.mainEmotion}}" style="width: 200px; margin-left: 50px">
                         <button type="button" class="btn btn-primary waves-effect waves-light text-uppercase">
                            <a th:href="@{/icon/shop}">대표 아이콘 설정</a>
                         </button>
@@ -151,36 +201,32 @@
                      <div class="card-block">
                         <div class="user-block-2-activities">
                            <div class="user-block-2-active">
-                              <i class="icofont icofont-clock-time"></i> MBTI
+                              <i class="icofont icofont-clock-time">MBTI</i>
                               <label class="label label-primary"><span th:text="${myPage.mbti}"></span></label>
                            </div>
                         </div>
                         <div class="user-block-2-activities">
                            <div class="user-block-2-active">
-                              <i class="icofont icofont-users"></i>
-                              Phone
+                              <i class="icofont icofont-users">Phone</i>
                               <label class="label label-primary"><span th:text="${myPage.phone}"></span></label>
                            </div>
                         </div>
                         <div class="user-block-2-activities">
                            <div class="user-block-2-actives">
-                              <p><i class="icofont icofont-ui-user"></i>
-                              Skill
-                              </p>
-<!--                              userStack-->
-                              <span th:each="userStack : ${myPage.userTechStacks}">
-<!--                                 .TechStack.getTechStackName()-->
+                              <i class="icofont icofont-ui-user">Skill</i>
+                              <div>
+                                 <span th:each="userStack : ${myPage.userTechStacks}">
                                  <label class="label label-primary">#<span th:text="${userStack.techStack.getTechStackName()}"></span></label>
                               </span>
+                              </div>
                            </div>
-
                         </div>
                         <div class="text-center">
                            <button type="button" class="btn btn-primary waves-effect waves-light text-uppercase">
-                              <a th:href="@{/note/list}">Message</a>
+                              <a th:href="@{/note/list}">쪽지</a>
                            </button>
                            <button type="button" class="btn btn-primary waves-effect waves-light text-uppercase">
-                              회원정보수정
+                              <a th:href="@{#}">회원정보수정</a>
                            </button>
                         </div>
                      </div>
@@ -189,126 +235,119 @@
                <div class="col-lg-8">
 
                   <!-- 2-1 block start -->
-            <div class="row">
-               <div class="col-xl-8 col-lg-12">
-                  <div class="card">
-                     <div class="card-block">
-                        <div class="table-responsive">
-                           <table class="table m-b-0 photo-table">
-                              <thead>
-                                 <tr class="text-uppercase">
-                                    <th>프로필</th>
-                                    <th>카테고리</th>
-                                    <th>제목</th>
-                                    <th>날짜</th>
-                                 </tr>
-                              </thead>
-                              <tbody>
-                                 <!--normalBoard-->
-                                 <tr th:each="normalBoard : ${normalBoardList}">
-                                    <td>
-                                       <img class="img-fluid img-circle" th:src="@{${savePath} + '/' + ${myPage.mainEmotion}}" alt="User">
-                                       <span th:text="${myPage.nickName}"></span>
-                                    </td>
-                                    <td>
-<!--                                       <a th:href="@{'/StudyBoard/read/'+${board.id}}">-->
-                                       <a th:href="@{/board/list(category=${normalBoard.category})}"><span class="icofont icofont-clock-time" th:text="${normalBoard.category.getName()}"></span></a>
-                                    </td>
-                                    <td>
-                                       <a th:href="@{'/board/read/'+${normalBoard.id}}"><span th:text="${normalBoard.title}"></span></a>
-                                    </td>
-                                    <td>
-                                       <span th:text="${#temporals.format(normalBoard.writeDate, 'yyyy-MM-dd')}"></span>
-<!--                                       <span th:text="${#temporals.format(studyBoardList.writeDate, 'yyyy-MM-dd')}"></span>-->
-                                    </td>
-                                 </tr>
-                                 <!--studyBoard-->
-                                 <tr th:each="studyBoard : ${studyBoardList}">
-                                    <td>
-                                       <img class="img-fluid img-circle" th:src="@{${savePath} + '/' + ${myPage.mainEmotion}}" alt="User">
-                                       <span th:text="${myPage.nickName}"></span>
-                                    </td>
-
-                                    <td>
-                                       <a th:href="@{/StudyBoard/StudyBoardMain}"><span class="icofont icofont-clock-time" th:text="${studyBoard.title}"></span></a>
-                                    </td>
-                                    <td>
-                                       <a th:href="@{'/StudyBoard/read/' +${studyBoard.id}}"><span th:text="${studyBoard.title}"></span></a>
-                                    </td>
-                                    <td>
-                                       <span th:text="${#temporals.format(studyBoard.writeDate, 'yyyy-MM-dd')}"></span>
-                                    </td>
-                                 </tr>
-                              </tbody>
-                           </table>
+                  <div class="row">
+                     <div class="col-xl-8 col-lg-12">
+                        <div class="card">
+                           <div class="card-block">
+                              <div class="table-responsive">
+                                 <table class="table m-b-0 photo-table">
+                                    <thead>
+                                    <tr class="text-uppercase">
+                                       <th>작성 </th>
+                                       <th>카테고리</th>
+                                       <th>제목</th>
+                                       <th>날짜</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <!--normalBoard-->
+                                    <tr th:each="normalBoard : ${normalBoardList}">
+                                       <td>
+                                          <img class="img-fluid img-circle" th:src="@{${savePath} + '/' + ${myPage.mainEmotion}}">
+                                          <span th:text="${myPage.nickName}"></span>
+                                       </td>
+                                       <td class="icofont icofont-clock-time">
+                                          <a th:href="@{/board/list(category=${normalBoard.category})}"><span th:text="${normalBoard.category.getName()}"></span></a>
+                                       </td>
+                                       <td>
+                                          <a th:href="@{'/board/read/'+${normalBoard.id}}"><span th:text="${normalBoard.title}"></span></a>
+                                       </td>
+                                       <td>
+                                          <span th:text="${#temporals.format(normalBoard.writeDate, 'yyyy-MM-dd')}"></span>
+                                       </td>
+                                    </tr>
+                                    </tbody>
+                                    <!--studyBoard-->
+                                    <tr th:each="studyBoard : ${studyBoardList}">
+                                       <td>
+                                          <img class="img-fluid img-circle" th:src="@{${savePath} + '/' + ${myPage.mainEmotion}}">
+                                          <span th:text="${myPage.nickName}"></span>
+                                       </td>
+                                       <td class="icofont icofont-clock-time">
+                                          <a th:href="@{/StudyBoard/StudyBoardMain}"><span>스터디</span></a>
+                                       </td>
+                                       <td>
+                                          <a th:href="@{'/StudyBoard/read/' +${studyBoard.id}}"><span th:text="${studyBoard.title}"></span></a>
+                                       </td>
+                                       <td>
+                                          <span th:text="${#temporals.format(studyBoard.writeDate, 'yyyy-MM-dd')}"></span>
+                                       </td>
+                                    </tr>
+                                 </table>
+                              </div>
+                           </div>
                         </div>
                      </div>
+
                   </div>
-               </div>
-               
-            </div>
-            <!-- 2-1 block end -->
+                  <!-- 2-1 block end -->
 
-
-
-                  
                </div>
             </div>
             <!-- 1-3-block row end -->
 
-            
          </div>
       </div>
    </div>
 </form>
-   <!-- Required Jqurey -->
-   <script src="/assets/plugins/Jquery/dist/jquery.min.js"></script>
-   <script src="/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
-   <script src="/assets/plugins/tether/dist/js/tether.min.js"></script>
+<!-- Required Jqurey -->
+<script src="/assets/plugins/Jquery/dist/jquery.min.js"></script>
+<script src="/assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="/assets/plugins/tether/dist/js/tether.min.js"></script>
 
-   <!-- Required Fremwork -->
-   <script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<!-- Required Fremwork -->
+<script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 
-   <!-- Scrollbar JS-->
-   <script src="/assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
-   <script src="/assets/plugins/jquery.nicescroll/jquery.nicescroll.min.js"></script>
+<!-- Scrollbar JS-->
+<script src="/assets/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+<script src="/assets/plugins/jquery.nicescroll/jquery.nicescroll.min.js"></script>
 
-   <!--classic JS-->
-   <script src="/assets/plugins/classie/classie.js"></script>
+<!--classic JS-->
+<script src="/assets/plugins/classie/classie.js"></script>
 
-   <!-- notification -->
-   <script src="/assets/plugins/notification/js/bootstrap-growl.min.js"></script>
+<!-- notification -->
+<script src="/assets/plugins/notification/js/bootstrap-growl.min.js"></script>
 
-   <!-- Sparkline charts -->
-   <script src="/assets/plugins/jquery-sparkline/dist/jquery.sparkline.js"></script>
+<!-- Sparkline charts -->
+<script src="/assets/plugins/jquery-sparkline/dist/jquery.sparkline.js"></script>
 
-   <!-- Counter js  -->
-   <script src="/assets/plugins/waypoints/jquery.waypoints.min.js"></script>
-   <script src="/assets/plugins/countdown/js/jquery.counterup.js"></script>
+<!-- Counter js  -->
+<script src="/assets/plugins/waypoints/jquery.waypoints.min.js"></script>
+<script src="/assets/plugins/countdown/js/jquery.counterup.js"></script>
 
-   <!-- Echart js -->
-   <script src="/assets/plugins/charts/echarts/js/echarts-all.js"></script>
+<!-- Echart js -->
+<script src="/assets/plugins/charts/echarts/js/echarts-all.js"></script>
 
-   <script src="https://code.highcharts.com/highcharts.js"></script>
-   <script src="https://code.highcharts.com/modules/exporting.js"></script>
-   <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/highcharts-3d.js"></script>
 
-   <!-- custom js -->
-   <script type="text/javascript" src="/assets/js/main.min.js"></script>
-   <script type="text/javascript" src="/assets/pages/dashboard.js"></script>
-   <script type="text/javascript" src="/assets/pages/elements.js"></script>
-   <script src="/assets/js/menu.min.js"></script>
+<!-- custom js -->
+<script type="text/javascript" src="/assets/js/main.min.js"></script>
+<script type="text/javascript" src="/assets/pages/dashboard.js"></script>
+<script type="text/javascript" src="/assets/pages/elements.js"></script>
+<script src="/assets/js/menu.min.js"></script>
 <script>
-var $window = $(window);
-var nav = $('.fixed-button');
-$window.scroll(function(){
-    if ($window.scrollTop() >= 200) {
-       nav.addClass('active');
-    }
-    else {
-       nav.removeClass('active');
-    }
-});
+   var $window = $(window);
+   var nav = $('.fixed-button');
+   $window.scroll(function(){
+      if ($window.scrollTop() >= 200) {
+         nav.addClass('active');
+      }
+      else {
+         nav.removeClass('active');
+      }
+   });
 </script>
 
 </body>
