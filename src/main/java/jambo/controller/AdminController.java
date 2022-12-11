@@ -42,4 +42,13 @@ public class AdminController {
 
         return "/admin/iconRegister";
     }
+
+    /**
+     * 게시글 작성폼 열기
+     * */
+    @RequestMapping("/openWriteForm")
+    public String openWriteForm() {
+
+        return "/admin/BoardWriteForm";
+    }
 }
