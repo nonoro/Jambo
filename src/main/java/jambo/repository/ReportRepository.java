@@ -27,7 +27,6 @@ public interface ReportRepository extends JpaRepository<Report, Long> {
      */
     int countByReportDateBetween(LocalDateTime start, LocalDateTime end);
 
-    //    Page<Board> serachByCategory(@Param("category") Category category, Pageable page);
     Page<Report> findAllByOrderByReportDateDesc(Pageable page);
 
 }

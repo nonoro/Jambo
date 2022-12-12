@@ -86,7 +86,7 @@
                     <ul class="treeview-menu">
                         <li><a class="waves-effect waves-dark" th:href="@{/admin/iconRegister}"><i
                                 class="icon-arrow-right"></i> 아이콘 등록하기 </a></li>
-                        <li><a class="waves-effect waves-dark" th:href="@{/icon/shop}"><i class="icon-arrow-right"></i>
+                        <li><a class="waves-effect waves-dark" th:href="@{/icon/adminShop}"><i class="icon-arrow-right"></i>
                             등록된 아이콘 리스트 보기 </a></li>
                     </ul>
                 </li>
@@ -192,14 +192,14 @@
                             </div>
                         </div>
                         <nav aria-label="..." style="margin-top: 20px">
-                            <ul class="pagination justify-content-center">
+                            <ul class="pagination justify-content-center" style="margin-left:350px">
                                 <li th:class="'page-item' + (${list.number} <= 0 ? ' disabled' : '')">
                                     <a class="page-link"
                                        th:href="@{list(page=${list.number - 1})}"
                                        th:text="'&laquo;'"></a>
                                 </li>
                                 <th:block th:each="pageNumber : ${pageNumbers}">
-                                    <li th:class="'page-item' + (${list.number} == ${pageNumber} ? ' active' : '')"><a class="page-link" th:href="@{/board/list(page = ${pageNumber})}" th:text="${pageNumber + 1}"></a></li>
+                                    <li th:class="'page-item' + (${list.number} == ${pageNumber} ? ' active' : '')"><a class="page-link" th:href="@{/admin/ReportPage(page = ${pageNumber})}" th:text="${pageNumber + 1}"></a></li>
                                 </th:block>
                                 <li th:class="'page-item' + (${list.number} >= ${list.totalPages - 1} ? ' disabled' : '')">
                                     <a class="page-link"

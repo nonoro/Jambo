@@ -3,6 +3,7 @@ package jambo.service;
 import jambo.domain.Authority;
 import jambo.domain.admin.Admin;
 import jambo.domain.board.Report;
+import jambo.domain.user.User;
 import jambo.dto.AdminJoinDTO;
 import jambo.repository.*;
 import lombok.RequiredArgsConstructor;
@@ -51,8 +52,8 @@ public class AdminService {
 
         adminRepository.save(admin);
 
-        authorityRepository.save(new Authority(admin.getEmail(), "ROLE_ADMIN"));
         authorityRepository.save(new Authority(admin.getEmail(), "ROLE_USER"));
+        authorityRepository.save(new Authority(admin.getEmail(), "ROLE_ADMIN"));
 
     }
 
@@ -117,5 +118,12 @@ public class AdminService {
      * */
     public Page<Report> findAll(Pageable page){
         return reportRepository.findAllByOrderByReportDateDesc(page);
+    }
+
+    /**
+     * 유저 정보 조회
+     * */
+    public Page<User> findAllUser(Pageable pageable){
+        return userRepository.findAllByOrderByJoinDateDesc(pageable);
     }
 }

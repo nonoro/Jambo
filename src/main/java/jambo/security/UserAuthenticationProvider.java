@@ -20,6 +20,8 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+import static jambo.domain.admin.QAdmin.admin;
+
 @Service
 @RequiredArgsConstructor
 public class UserAuthenticationProvider implements AuthenticationProvider {
@@ -105,7 +107,12 @@ public class UserAuthenticationProvider implements AuthenticationProvider {
             //UsernamePasswordAuthenticationToken는 Authentication의 자식객체
             //인증완료된 결과로 UsernamePasswordAuthenticationToken를 리턴한다.
             System.out.println("나갑니다!!");
+
+        if (user != null) {
             return new UsernamePasswordAuthenticationToken(user, null, authList);
+        }else {
+            return new UsernamePasswordAuthenticationToken(admin, null, authList);
+        }
         }
 
         /**

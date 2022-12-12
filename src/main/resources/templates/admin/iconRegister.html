@@ -44,21 +44,23 @@
 
    <!-- Responsive.css-->
    <link rel="stylesheet" type="text/css" href="/admin/css/responsive.css">
-    <style>
-        .icon-register {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
+
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,600,0,0"/>
+
+    <style type="text/css">
+        .join {
+            width: 300px;
+            height: 50px;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: 3px solid black;
         }
-        div .icon-register {
-            border-radius: 5px;
-            background-color: #f2f2f2;
-            padding: 20px;
+        #join{
+            margin-left: 15px
         }
+
     </style>
 
 </head>
@@ -102,7 +104,7 @@
                     <ul class="treeview-menu">
                         <li><a class="waves-effect waves-dark" th:href="@{/admin/iconRegister}"><i
                                 class="icon-arrow-right"></i> 아이콘 등록하기 </a></li>
-                        <li><a class="waves-effect waves-dark" th:href="@{/icon/shop}"><i class="icon-arrow-right"></i>
+                        <li><a class="waves-effect waves-dark" th:href="@{/icon/adminShop}"><i class="icon-arrow-right"></i>
                             등록된 아이콘 리스트 보기 </a></li>
                     </ul>
                 </li>
@@ -151,24 +153,33 @@
                </div>
             </div>
 
-               <div class="col-lg-8">
+               <div class="col-lg-8" style="width: 400px;">
                   <div class="card">
                      <div class="card-header">
                         <h5 class="card-header-text">아이콘 등록하기</h5>
                      </div>
                       <form th:action="@{/icon/register}" method="post" enctype="multipart/form-data">
-                          <label for="name">이름</label>
-                          <input type="text" id="name" name="name" placeholder="아이콘 이름을 입력해주세요" class="icon-register">
-
-                          <label for="price">가격</label>
-                          <input type="text" id="price" name="price" placeholder="아이콘 가격을 입력해주세요" class="icon-register">
-
-                          <label for="quantity">수량</label>
-                          <input type="text" id="quantity" name="quantity" placeholder="아이콘 수량을 입력해주세요" class="icon-register">
-
-                          <input type="file" name="file" class="icon-register" id="inputGroupFile01" >
-
-                          <div class="d-grid gap-2 d-md-block">
+                          <div class="form-item">
+                          <span class="form-item-icon material-symbols-rounded" style="margin-left: 15px">Badge</span>
+                          <input type="text" placeholder="아이콘 이름" id="name" name="name"
+                                 autofocus required class="join">
+                          </div>
+                          <div class="form-item">
+                          <span class="form-item-icon material-symbols-rounded" style="margin-left: 15px">Payments</span>
+                          <input type="text" placeholder="아이콘 가격" id="price" name="price"
+                                 autofocus required class="join">
+                          </div>
+                          <div class="form-item">
+                          <span class="form-item-icon material-symbols-rounded" style="margin-left: 15px">Pin</span>
+                          <input type="text" placeholder="아이콘 수량" id="quantity" name="quantity"
+                                 autofocus required class="join">
+                          </div>
+                          <div class="form-item">
+                          <span class="form-item-icon material-symbols-rounded" style="margin-left: 15px">Save</span>
+                          <input type="file" placeholder="아이콘 수량" id="inputGroupFile01" name="file"
+                                 autofocus required class="join">
+                          </div>
+                          <div class="form-item" style="margin-left : 100px">
                               <input type="submit" class="btn btn-primary" value="등록" style="margin-top: 10px">
                               <input onclick="goBack()" type="button" class="btn btn-primary" value="뒤로가기" style="margin-top: 10px">
                           </div>

@@ -34,6 +34,8 @@ public class UserSecurityConfig extends WebSecurityConfigurerAdapter {
 //                .hasRole("USER")
 //                .antMatchers("/icon/register")
 //                .hasRole("ADMIN")
+//                .antMatchers("/admin/*")
+//                .hasRole("ADMIN")
                 .antMatchers("/user/myPage")
                 .hasRole("USER")
                 .and()

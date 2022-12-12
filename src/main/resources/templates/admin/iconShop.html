@@ -45,20 +45,22 @@
    <!-- Responsive.css-->
    <link rel="stylesheet" type="text/css" href="/admin/css/responsive.css">
 
-    <!--섬머노트-->
-
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-    <!--    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>-->
-    <script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-
-    <!-- include summernote css/js-->
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
-    <script src="/studyBoard/summerNote/summernote-ko-KR.js"></script>
-
-    <link href="/studyBoard/css/css.css" rel="stylesheet">
-    <link href="/studyBoard/css/style.css" rel="stylesheet">
+    <style type="text/css">
+        .join {
+            width: 300px;
+            height: 50px;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: 3px solid black;
+        }
+        .shadowbox {
+            width: 15em;
+            margin: 10px 10px 10px 10px;
+            box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+            padding: 10px 10px 10px 10px
+        }
+    </style>
 
 </head>
 
@@ -133,13 +135,13 @@
                     </ul>
                 </li>
 
-                
+
 
             </ul>
          </section>
       </aside>
 
-      <!-- Sidebar chat end-->
+
       <div class="content-wrapper">
          <!-- Container-fluid starts -->
          <!-- Main content starts -->
@@ -149,118 +151,54 @@
                   <h4>Jambo Admin Page</h4>
                </div>
             </div>
-            <!-- 4-blocks row start -->
-
 
                <div class="col-lg-8">
                   <div class="card">
-<!--                     <div class="card-header">-->
-<!--&lt;!&ndash;                        <h5 class="card-header-text">게시글 작성하기</h5>&ndash;&gt;-->
-<!--                     </div>-->
+                     <div class="card-header">
+                        <h5 class="card-header-text">아이콘 리스트</h5>
+                     </div>
+                      <form class="d-flex" role="search" th:action="@{/icon/adminShop}">
+                          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyWord">
+                          <input class="btn btn-outline-success p-2" type="submit" value="검색"></button>
+                      </form>
+
+                      <div class="shadowbox" th:each="icon : ${icons}">
+                          <form>
+                              <div class="img" >
+                                  <img th:src="@{${savePath} + '/' + ${icon.fileName}}" name="fileName" style="width: 30px">
+                                  <span class="name" th:text="${icon.name}"></span>
+                              </div>
+                              <div class="describe">
+                                  가격 : <span th:text="${icon.price}"></span>&nbsp;&nbsp;&nbsp;수량 : <span th:text="${icon.quantity}"></span><br>
+                              </div>
+                              등록일 : <span th:text="${#temporals.format(icon.saveDate, 'yyyy-MM-dd HH:mm')}" name="saveDate"></span><br>
+                          </form>
+                      </div>
+
+
                      <div class="card-block">
-                         <div class="board_wrap" style="width: 100%">
-                             <div class="board_title">
-                                 <strong>관리자 게시글 작성</strong>
-                             </div>
-                             <form method="post" class="board-form" th:action="@{/board/insert}">
-                                 <div class="board_write_wrap">
-                                     <div class="board_write">
-                                         <div class="title">
-                                             <dl>
-                                                 <dt>제목</dt>
-                                                 <dt width="300px">
-                                                     <input type="text" placeholder="제목 입력" name="title" style="width: 300px">
-                                                 </dt>
-                                             </dl>
-                                         </div>
-                                         <div class="title">
-                                             <dl>
-                                                 <dt>카테고리</dt>
-                                                 <dt>
-                                                     <select name="category">
-                                                         <option value="0" selected disabled>선택해주세요</option>
-                                                         <option value="NOTICE_BOARD">공지사항</option>
-                                                         <option value="CONTEST_BOARD">소작모</option>
-                                                         <option value="EVENT_BOARD">행사게시판</option>
-                                                     </select>
-                                                 </dt>
-                                             </dl>
-                                         </div>
-                                         <div class="cont">
-                                             <textarea id="summernote" name="content"></textarea>
-                                         </div>
-                                     </div>
-
-                                     <div class="bt_wrap">
-                                         <input type="submit" value="글작성" class="on" id="submit">
-                                     </div>
-                                 </div>
-                             </form>
-                         </div>
-                         <script>
-                             $('#summernote').summernote({
-                                 height: 150,
-                                 lang: "ko-KR",
-                                 focus: true,
-                                 toolbar: [
-                                     ['style', ['style']],
-                                     ['font', ['bold', 'underline', 'clear']],
-                                     ['color', ['color']],
-                                     ['para', ['ul', 'ol', 'paragraph']],
-                                     ['table', ['table']],
-                                     ['insert', ['link', 'picture']],
-                                     ['view', ['help']]
-                                 ],
-                                 callbacks: { //여기 부분이 이미지를 첨부하는 부분
-                                     onImageUpload: function (files, editor,
-                                                              welEditable) {
-                                         for (var i = files.length - 1; i >= 0; i--) {
-                                             uploadSummernoteImageFile(files[i],
-                                                 this);
-                                         }
-                                     }
-                                 }
-                             });
-
-                             function uploadSummernoteImageFile(file, el) {
-                                 data = new FormData();
-                                 data.append("file", file);
-                                 var token = $("meta[name='_csrf']").attr("content");
-                                 var header = $("meta[name='_csrf_header']").attr("content");
-
-                                 $.ajax({
-                                     beforeSend: function (xhr) {
-                                         xhr.setRequestHeader(header, token);
-                                     },
-                                     data: data,
-                                     type: "POST",
-                                     url: "/uploadSummernoteImageFile",
-                                     contentType: false,
-                                     enctype: 'multipart/form-data',
-                                     processData: false,
-                                     success: function (data) {
-                                         $(el).summernote('editor.insertImage', data.url);
-                                         alert(url);
-
-                                     },
-                                     error: function () {
-                                         alert("ajax 실행 실패");
-                                     }
-                                 });
-                             }
-                         </script>
-
 <!--                        <div id="barchart" style="min-width: 250px; height: 330px; margin: 0 auto"></div>-->
                      </div>
+                      <nav aria-label="..." style="margin-top: 20px; margin-left: 350px;">
+                          <ul class="pagination justify-content-center">
+                              <li th:class="'page-item' + (${icons.number} <= 0 ? ' disabled' : '')">
+                                  <a class="page-link"
+                                     th:href="@{shop(page=${icons.number - 1})}"
+                                     th:text="'&laquo;'"></a>
+                              </li>
+                              <th:block th:each="pageNumber : ${pageNumbers}">
+                                  <li th:class="'page-item' + (${icons.number} == ${pageNumber} ? ' active' : '')"><a class="page-link" th:href="@{/icon/adminShop(page = ${pageNumber})}" th:text="${pageNumber + 1}"></a></li>
+                              </th:block>
+                              <li th:class="'page-item' + (${icons.number} >= ${icons.totalPages - 1} ? ' disabled' : '')">
+                                  <a class="page-link"
+                                     th:text="'&raquo;'"
+                                     th:href="@{shop(page=${icons.number + 1})}"></a>
+                              </li>
+                          </ul>
+                      </nav>
                   </div>
                </div>
 
-            </div>
-            <!-- 1-3-block row end -->
-
-            <!-- 2-1 block start -->
-
-            <!-- 2-1 block end -->
          </div>
          <!-- Main content ends -->
          <!-- Container-fluid ends -->

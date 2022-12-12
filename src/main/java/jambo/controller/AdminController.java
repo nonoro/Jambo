@@ -1,8 +1,10 @@
 package jambo.controller;
 
 import jambo.domain.board.Report;
+import jambo.domain.user.User;
 import jambo.dto.AdminJoinDTO;
 import jambo.service.AdminService;
+import jambo.service.FileService;
 import jambo.service.PaginationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -25,9 +27,10 @@ import java.util.List;
 public class AdminController {
     private final AdminService adminService;
     private final PaginationService paginationService;
+    private final FileService fileService;
 
     @GetMapping("/adminMain")
-    public void openAdminMainPage(Model model){
+    public void openAdminMainPage(Model model, @PageableDefault(size = 5, direction = Sort.Direction.DESC) Pageable pageable){
         int totalUsers = adminService.countUsers();
         int todayJoinUsers = adminService.countUsersByJoinToday();
         int totalNormalBoards = adminService.countNormalBoard();
@@ -46,8 +49,12 @@ public class AdminController {
         model.addAttribute("totalReportedBoards", totalReportedBoards);
         model.addAttribute("todayReportedBoards", todayReportedBoards);
 
-
-//        return "/admin/adminMain";
+        Page<User> dbAllUsers = adminService.findAllUser(pageable);
+        List<Integer> pageNumbers = paginationService.pagination(pageable.getPageNumber(), dbAllUsers.getTotalPages());
+        String dbFile = fileService.getUrlPath();
+        model.addAttribute("list", dbAllUsers);
+        model.addAttribute("savePath", dbFile);
+        model.addAttribute("pageNumbers", pageNumbers);
     }
 
     @GetMapping("/iconRegister")
