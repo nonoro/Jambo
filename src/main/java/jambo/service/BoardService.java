@@ -86,4 +86,19 @@ public class BoardService {
         dbboard.setCategory(normalBoardDTO.getCategory());
         dbboard.setContent(normalBoardDTO.getContent());
     }
+
+    /**
+     * 신고된 게시글 관리자에 의해 리스트에서 숨기기
+     * */
+    public void hideReportedBoard(Long id){
+        Board dbboard = boardRepository.findById(id).orElse(null);
+        dbboard.setReported(true);
+    }
+    /**
+     * 신고된 게시글 관리자에 의해 리스트에서 살리기
+     * */
+    public void liveReportedBoard(Long id) {
+        Board dbboard = boardRepository.findById(id).orElse(null);
+        dbboard.setReported(false);
+    }
 }

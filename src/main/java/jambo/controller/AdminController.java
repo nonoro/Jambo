@@ -3,10 +3,7 @@ package jambo.controller;
 import jambo.domain.board.Report;
 import jambo.domain.user.User;
 import jambo.dto.AdminJoinDTO;
-import jambo.service.AdminService;
-import jambo.service.FileService;
-import jambo.service.PaginationService;
-import jambo.service.UserService;
+import jambo.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,10 +11,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.List;
@@ -29,7 +23,7 @@ public class AdminController {
     private final AdminService adminService;
     private final PaginationService paginationService;
     private final FileService fileService;
-    private final UserService userService;
+    private final BoardService boardService;
 
     @GetMapping("/adminMain")
     public void openAdminMainPage(Model model, @PageableDefault(size = 5, direction = Sort.Direction.DESC) Pageable pageable){
@@ -105,4 +99,26 @@ public class AdminController {
 
         return adminService.adminEmailOverlap(email);
     }
+
+    /**
+     * 신고된 게시글 리스트에서 숨키기 - by 관리자
+     * */
+
+    @GetMapping("/hideBoard/{id}")
+    private String hideReportedBoard(@PathVariable Long id){
+        boardService.hideReportedBoard(id);
+        return "redirect:/admin/ReportPage";
+    }
+
+    /**
+     * 신고된 게시글 리스트에서 살리기 - by 관리자
+     * */
+
+    @GetMapping("/liveBoard/{id}")
+    private String liveReportedBoard(@PathVariable Long id){
+        boardService.liveReportedBoard(id);
+        return "redirect:/admin/ReportPage";
+    }
+
+
 }

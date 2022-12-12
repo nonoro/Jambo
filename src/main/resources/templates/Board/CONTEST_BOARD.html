@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>ContestBoard list page</title>
+    <title>소.작.모</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -243,36 +243,38 @@
                     <div class="board_wrap">
 
                         <table class="noticeTbe">
+                            <tr>
                             <th class="n_th">제목</th>
                             <th class="n_th">작성자</th>
                             <th class="n_th">작성일</th>
-                            <th class="n_th">조회</th>
+                            <th class="n_th">조회수</th>
+                            </tr>
+
                             <tr class="n_tr" th:each="board : ${list}">
-                                <td>
-                                    <a th:href="@{'/board/read/'+${board.id}}" class="n_a">
-                                        <div class="overflow"><span th:text="${board.title}"></span></div>
-                                    </a>
-                                </td>
-                                <td class="n_td">
-                                    <img th:src="@{${savePath} + '/' + ${board.user.getMainEmotion()}}" style="width: 30px; height: 30px">
-                                    <a th:href="@{'/user/prifile/'+${board.id}}" class="n_a"><span th:text="${board.user.getNickName()}"></span></a>
-                                </td>
-                                <td class="n_td">
-                                    <span th:text="${#temporals.format(board.writeDate, 'yyyy-MM-dd HH:mm')}"></span>
-                                </td>
-                                <td class="n_td">
-                                    <span th:text="${board.views}"></span>
-                                </td>
+                                <th:block th:unless="${board.isReported}">
+                                    <td>
+                                        <a th:href="@{'/board/read/'+${board.id}}" class="n_a">
+                                            <div class="overflow"><span th:text="${board.title}"></span></div>
+                                        </a>
+                                    </td>
+                                    <td class="n_td">
+                                        <img th:src="@{${savePath} + '/' + ${board.user.getMainEmotion()}}" style="width: 30px; height: 30px">
+                                        <a th:href="@{'/user/prifile/'+${board.id}}" class="n_a"><span th:text="${board.user.getNickName()}"></span></a>
+                                    </td>
+                                    <td class="n_td">
+                                        <span th:text="${#temporals.format(board.writeDate, 'yyyy-MM-dd HH:mm')}"></span>
+                                    </td>
+                                    <td class="n_td">
+                                        <span th:text="${board.views}"></span>
+                                    </td>
+
+                                </th:block>
+                                <th:block th:if="${board.isReported}">
+                                </th:block>
+
                             </tr>
                         </table>
-                        <div class="n_btn">
-                            <button class="n_bth_s"><a th:href="@{'/board/write'}" class="n_a">글쓰기</a></button>
-                            <button class="n_bth_s">
-                                <a href="javascript:history.back()">
-                                    <span class="form-item-icon material-symbols-rounded">돌아가기</span>
-                                </a>
-                            </button>
-                        </div>
+
                     </div>
 
             </div>

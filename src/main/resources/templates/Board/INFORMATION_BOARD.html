@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +6,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>notice list page</title>
+    <title>정보 게시판</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -26,14 +27,177 @@
 
     <!-- Template Main CSS File -->
     <link href="/assets/css/style.css" rel="stylesheet">
-    <link href="/board/css/board.css" rel="stylesheet">
 
-    <!-- 게시판 조회 기능  -->
-    <script>
+    <!-- =======================================================
+    * Template Name: Baker - v4.9.1
+    * Template URL: https://bootstrapmade.com/baker-free-onepage-bootstrap-theme/
+    * Author: BootstrapMade.com
+    * License: https://bootstrapmade.com/license/
+    ======================================================== -->
 
+    <style>
+        /*다크모드 적용 시*/
+        .dark-mode .n_th {
+            background-color: black;
+            color: #fff;
+        }
+        .dark-mode .n_td {
+            color: #000;
+        }
+        .dark-mode .np {
+            color: #fff;
+        }
+        .dark-mode .mini_h {
+            color: #fff;
+        }
+        .dark-mode .n_bth_s:hover {
+            background: #fdc103;
+            color: #fff;
+        }
 
-    </script>
+        .noticeTbe {
+            width: 95%;
+            margin: 0% 3% 0% 5%;
+            /*text-align: center;*/
+            border: #fff;
+            border-top: 2px solid #000;
+            border-bottom: 2px solid #000;
+        }
 
+        .n_th {
+            height: 50px;
+            font-size: 17px;
+            border-bottom: 2px solid #000;
+            background-color: #f0f8ffb5;
+        }
+        .n_tr {
+            background-color: #fff;
+        }
+        .n_td {
+            background-color: #fff;
+            height: 60px;
+            font-size: 17px;
+        }
+        .np {
+            margin: 10px;
+            font-size: 16px;
+        }
+        .np:hover {
+            color: #fcda4d;
+        }
+    </style>
+    <style>
+        .n_a{
+            text-decoration: none;
+            color: #000;
+        }
+        .n_a:hover{
+            text-decoration: none;
+            color: rgb(252 218 77);
+        }
+        .notice {
+            width: 80%;
+            top: 30px;
+            left: 200px;
+        }
+        #notice_wrap{
+            width: 75%;
+            margin: 0 auto;
+            padding: 50px 0px;
+            display: flex;
+        }
+        #right{
+            max-width: 100%;
+        }
+        #right>#slide {
+            height: 120px;
+            text-align: left;
+            padding: 20px 80px 20px;
+        }
+        .noticeFooter{
+            display: flex; /*flex*/
+        }
+        div#aside{
+            text-align: center;
+            padding-left: 8%;
+        }
+        div#rating{
+            border: 2px solid #c2c3c2;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+        div#tag{
+            border: 2px solid #c2c3c2;
+            padding: 10px;
+            width: 150px;
+        }
+        .n_btn {
+            padding: 3% 0 0 48%;
+        }
+        .n_bth_s {
+            background: #ffffff;
+            border: 2px solid #000;
+            padding: 7px 20px;
+            margin-right: 6px;
+        }
+        .n_bth_s:hover {
+            background: #000;
+            color: #fff;
+        }
+        .slide_mini {
+            font-size: 14px;
+            color: #000;
+        }
+        .mini_h {
+            padding-bottom: 25px;
+            color: #000;
+        }
+    </style>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul, li {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .board_wrap {
+            width: 1000px;
+        }
+
+        .board_title{
+            margin: 10% 0% 0% 16%;
+        }
+
+        .board_title strong {
+            font-size: 3rem;
+        }
+
+        .board_title p {
+            margin-top: 8px;
+            font-size: 20px;
+        }
+
+        /*연아 */
+        .overflow {
+            /*display: block;*/
+            /*text-overflow: ellipsis;*/
+            /*white-space: nowrap;*/
+            width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            /*text-align: center;*/
+        }
+    </style>
 </head>
 
 <body>
@@ -68,73 +232,89 @@
 
     <!--공지사항 부분-->
     <div class="notice">
-    <div class="board_title">
-        <h4 class="mini_h"><img src="/board/img/home.png" class="home_img" alt="home" style="width: 29px;"> 정보 게시판 </h4>
-        <img src="/board/img/infomation.png" class="notice_img" alt="notice" style="width: 1080px;">
-    </div>
-    <div id="notice_wrap">
-        <div id="right">
-            
-            <footer class="noticeFooter">  <!--flex-->
-                <div class="board_wrap">
+        <div class="board_title">
+            <h4 class="mini_h"><img src="/assets/img/page_logo/home.png" class="home_img" alt="home" style="width: 29px;"> Home > 커뮤니티 > 정보게시판</h4>
+            <img src="/assets/img/page_logo/infomation.png" class="notice_img" alt="notice" style="width: 1048px;">
+        </div>
+        <div id="notice_wrap">
+            <div id="right">
 
-                    <table class="noticeTbe">
-                        <tr>
-                            <th class="n_th">제목</th>
-                            <th class="n_th">글쓴이</th>
-                            <th class="n_th">작성일</th>
-                            <th class="n_th">조회수</th>
-                        </tr>
+                <footer class="noticeFooter">  <!--flex-->
+                    <div class="board_wrap">
 
-                        <tr class="n_tr" th:each="board : ${list}">
-                            <td class="n_td"><a th:href="@{'/board/read/'+${board.id}}" class="n_a">
-                                <span th:text="${board.title}"></span>
-                            </a></td>
-                            <td class="n_td">
-                                <img th:src="@{${savePath} + '/' + ${board.user.getMainEmotion()}}" style="width: 30px; height: 30px">
-                                <span th:text="${board.user.getNickName()}"></span>
-                            </td>
-                            <td class="n_td">
-                                <span th:text="${#temporals.format(board.writeDate, 'yyyy-MM-dd HH:mm')}"></span>
-                            </td>
-                            <td class="n_td">
-                                <span th:text="${board.views}"></span>
-                            </td>
-                        </tr>
-                    </table>
+                        <table class="noticeTbe">
+                            <tr>
+                                <th class="n_th">제목</th>
+                                <th class="n_th">작성자</th>
+                                <th class="n_th">작성일</th>
+                                <th class="n_th">조회수</th>
+                            </tr>
+                            <tr class="n_tr" th:each="board : ${list}">
+                                <th:block th:unless="${board.isReported}">
+                                    <td>
+                                        <a th:href="@{'/board/read/'+${board.id}}" class="n_a">
+                                            <div class="overflow"><span th:text="${board.title}"></span></div>
+                                        </a>
+                                    </td>
+                                    <td class="n_td">
+                                        <img th:src="@{${savePath} + '/' + ${board.user.getMainEmotion()}}" style="width: 30px; height: 30px">
+                                        <a th:href="@{'/user/prifile/'+${board.id}}" class="n_a"><span th:text="${board.user.getNickName()}"></span></a>
+                                    </td>
+                                    <td class="n_td">
+                                        <span th:text="${#temporals.format(board.writeDate, 'yyyy-MM-dd HH:mm')}"></span>
+                                    </td>
+                                    <td class="n_td">
+                                        <span th:text="${board.views}"></span>
+                                    </td>
 
-                </div>
-                <a th:href="@{'/board/write'}">글쓰기 </a>
-                
-                
-                <!--side 부분-->
-                <div id="aside">
-                    <div id="rating">
-                        <b>Top 유저</b>
-                        <p class="np">user01</p>
-                        <p class="np">user02</p>
-                        <p class="np">user03</p>
-                        <p class="np">user04</p>
-                        <p class="np">user05</p>
+                                </th:block>
+                                <th:block th:if="${board.isReported}">
+                                </th:block>
+
+                            </tr>
+                        </table>
+                        <div class="n_btn">
+                            <button class="n_bth_s"><a th:href="@{'/board/write'}" class="n_a">글쓰기</a></button>
+                            <button class="n_bth_s">
+                                <a href="javascript:history.back()">
+                                    <span class="form-item-icon material-symbols-rounded">돌아가기</span>
+                                </a>
+                            </button>
+                        </div>
                     </div>
-                    <div id="tag">
-                        <b>인기 태그</b>
-                        <p class="np">#Java</p>
-                        <p class="np">#Spring</p>
-                        <p class="np">#Javascript</p>
-                    </div>
+
+            </div>
+
+
+            <!--side 부분-->
+            <div id="aside">
+                <div id="rating">
+                    <b>Top Lv.회원</b>
+                    <p class="np">권규정</p>
+                    <p class="np">고종영</p>
+                    <p class="np">안효경</p>
+                    <p class="np">엄용식</p>
+                    <p class="np">강연아</p>
                 </div>
+                <div id="tag">
+                    <b>인기 태그</b>
+                    <p class="np">#Java</p>
+                    <p class="np">#Spring</p>
+                    <p class="np">#Javascript</p>
+                </div>
+            </div>
 
             </footer>
         </div>
-        </div>
     </div>
-    <!--div#wrap-->
+    </div>
+
+    <!--페이징 처리-->
     <nav aria-label="..." style="margin-top: 20px">
         <ul class="pagination justify-content-center">
             <li th:class="'page-item' + (${list.number} <= 0 ? ' disabled' : '')">
                 <a class="page-link"
-                   th:href="@{list(page=${list.number - 1}, category='INFORMATION_BOARD')}"
+                   th:href="@{list(page=${list.number - 1}, category='CONTEST_BOARD')}"
                    th:text="'&laquo;'"></a>
             </li>
             <th:block th:each="pageNumber : ${pageNumbers}">
@@ -143,40 +323,75 @@
             <li th:class="'page-item' + (${list.number} >= ${list.totalPages - 1} ? ' disabled' : '')">
                 <a class="page-link"
                    th:text="'&raquo;'"
-                   th:href="@{list(page=${list.number + 1}, category='INFORMATION_BOARD')}"></a>
+                   th:href="@{list(page=${list.number + 1}, category='CONTEST_BOARD')}"></a>
             </li>
         </ul>
     </nav>
+    <!--div#wrap-->
+
 
 </main><!-- End #main -->
 
 <!-- ======= Footer ======= -->
 <footer th:replace="../templates/Baker/common/footer.html ::footer">
 </footer>
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
-        <i class="bi bi-arrow-up-short"></i>
-    </a>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+</a>
 
-    <!-- Vendor JS Files -->
-    <script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="/assets/vendor/php-email-form/validate.js"></script>
+<!-- Vendor JS Files -->
+<script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="/assets/vendor/php-email-form/validate.js"></script>
 
-    <!--Slideshow header-->
-    <script src="/board/board.js"></script>
+<!--Slideshow header-->
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
 
-    <!-- Template Main JS File -->
-    <script src="/assets/js/main.js"></script>
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
 
-    <script>
-        function myFunction() {
-            var element = document.body;
-            element.classList.toggle("dark-mode");
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("demo");
+        let captionText = document.getElementById("caption");
+        if (n > slides.length) {
+            slideIndex = 1
         }
-    </script>
+        if (n < 1) {
+            slideIndex = slides.length
+        }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+    }
+</script>
+
+<!-- Template Main JS File -->
+<script src="/assets/js/main.js"></script>
+
+<script>
+    function myFunction() {
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+    }
+</script>
 
 </body>
 

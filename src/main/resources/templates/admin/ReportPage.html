@@ -162,11 +162,12 @@
                             <div class="table-responsive">
                                 <table class="table m-b-0 photo-table">
                                     <thead>
-                                    <tr class="text-uppercase">
-                                        <th>신고 게시글</th>
+                                    <tr class="text-uppercase" style="text-align: center">
+                                        <th>신고된 게시글</th>
                                         <th>신고한 작성자</th>
                                         <th>신고 사유</th>
                                         <th>신고된 날짜</th>
+                                        <th colspan="2">신고 상태 변경</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -184,6 +185,16 @@
                                         </td>
                                         <td>
                                             <span th:text="${#temporals.format(report.reportDate, 'yy-MM-dd HH:mm')}"></span>
+                                        </td>
+                                        <td>
+                                            <a th:href="@{'/admin/hideBoard/'+${report.board.getId()}}" class="n_a">
+                                                숨기기
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a th:href="@{'/admin/liveBoard/'+${report.board.getId()}}" class="n_a">
+                                                활성
+                                            </a>
                                         </td>
                                     </tr>
 
