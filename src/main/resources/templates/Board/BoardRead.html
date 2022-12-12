@@ -240,7 +240,10 @@
                         <dt style="width: 970px; margin-bottom: 10px">
                             <img th:src="@{${savePath} + '/' + ${board.user.getMainEmotion()}}"
                                  style="width: 30px; height: 30px">
-                            <span th:text="${board.user.getNickName()}"></span>
+
+                            <a class="on" th:href="@{'/user/profile/'+${board.user.getId()}}">
+                                <span th:text="${board.user.getNickName()}"></span>
+                            </a>
 
                         </dt>
                         <dt style="width: 970px;">
