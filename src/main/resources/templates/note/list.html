@@ -182,6 +182,16 @@
       margin-top: 8px;
       font-size: 20px;
     }
+
+    /*연아 */
+    .overflow {
+      width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      /*text-align: center;*/
+    }
+
   </style>
 
   <!--쪽지전송 layer popup 처리-->
@@ -251,6 +261,8 @@
   <script src="https://code.jquery.com/jquery-3.6.1.js"
           integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
 
+
+
 </head>
 
 <body>
@@ -301,10 +313,10 @@
             <table class="noticeTbe">
               <th class="n_th"></th>
               <th class="n_th">보낸 사람</th>
-              <th class="n_th">내용</th>
-              <th class="n_th">날짜</th>
+              <th class="n_th">내    용</th>
+              <th class="n_th">날 짜</th>
               <th class="n_th">&nbsp삭제&nbsp</th>
-              <tr class="n_tr" th:each="note : ${noteList}">
+              <tr class="n_tr" th:each="note : ${notes}">
                 <td class="n_td">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-envelope-heart" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4Zm2-1a1 1 0 0 0-1 1v.217l3.235 1.94a2.76 2.76 0 0 0-.233 1.027L1 5.384v5.721l3.453-2.124c.146.277.329.556.55.835l-3.97 2.443A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.741l-3.968-2.442c.22-.28.403-.56.55-.836L15 11.105V5.383l-3.002 1.801a2.76 2.76 0 0 0-.233-1.026L15 4.217V4a1 1 0 0 0-1-1H2Zm6 2.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z"/>
@@ -312,8 +324,14 @@
                   </svg>
                 </td>
                 <td class="n_td"><a th:href="@{/note/read(noteId=${note.id})}" class="n_a"><span th:text="${note.sendUser.getEmail}"></span></a></td>
-                <td class="n_td"><a th:href="@{/note/read(noteId=${note.id})}" class="n_a"><span th:text="${note.content}"></span></a></td>
-                <td class="n_td"><span th:text="${#temporals.format(note.sentTime, 'yyyy-MM-dd')}"><a href="#" class="n_a"></a></span></td>
+                <td class="n_td">
+                  <div class="overflow">
+                    <a th:href="@{/note/read(noteId=${note.id})}" class="n_a">
+                      <span th:text="${note.content}"></span>
+                    </a>
+                  </div>
+                </td>
+                <td class="n_td"><span th:text="${#temporals.format(note.sentTime, 'yyyy-MM-dd HH:mm')}"><a href="#" class="n_a"></a></span></td>
                 <td class="n_td">
                   <a th:href="@{/note/delete(noteId=${note.id})}" class="n_a">
                     <button type="button" class="btn btn-outline-secondary">
@@ -368,6 +386,27 @@
     $("#modal").addClass("out");
   });
 </script>
+
+<!--페이징 처리-->
+<nav aria-label="..." style="margin-top: 20px">
+  <ul class="pagination justify-content-center">
+    <li th:class="'page-item' + (${notes.number} <= 0 ? ' disabled' : '')">
+      <a class="page-link"
+         th:href="@{list(page=${notes.number - 1})}"
+         th:text="'&laquo;'"></a>
+    </li>
+    <th:block th:each="pageNumber : ${pageNumbers}">
+      <li th:class="'page-item' + (${notes.number} == ${pageNumber} ? ' active' : '')"><a class="page-link" th:href="@{/note/list(page = ${pageNumber})}" th:text="${pageNumber + 1}"></a></li>
+    </th:block>
+    <li th:class="'page-item' + (${notes.number} >= ${notes.totalPages - 1} ? ' disabled' : '')">
+      <a class="page-link"
+         th:text="'&raquo;'"
+         th:href="@{list(page=${notes.number + 1})}"></a>
+    </li>
+  </ul>
+</nav>
+<!--페이징 처리-->
+
 
 <!-- ======= Footer ======= -->
 <footer th:replace="../templates/Baker/common/footer.html ::footer">
