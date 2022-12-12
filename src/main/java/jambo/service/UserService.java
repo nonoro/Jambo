@@ -59,4 +59,6 @@ public class UserService {
     public User myPage(Long id) {
         return userRep.findUserById(id);
     }
+
+
 }

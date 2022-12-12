@@ -27,13 +27,6 @@
     <!-- Template Main CSS File -->
     <link href="/assets/css/style.css" rel="stylesheet">
 
-    <!-- =======================================================
-    * Template Name: Baker - v4.9.1
-    * Template URL: https://bootstrapmade.com/baker-free-onepage-bootstrap-theme/
-    * Author: BootstrapMade.com
-    * License: https://bootstrapmade.com/license/
-    ======================================================== -->
-
     <style>
 
         body {
@@ -166,6 +159,26 @@
             padding: 0px;
         }
     </style>
+    <style>
+        table {
+            border: 0px solid #444444;
+            background-color: rgb(205, 229, 238);
+            padding: 40px;
+            margin-bottom: 100px;
+        }
+
+        td {
+            padding: 40px;
+        }
+
+        .notewrite{
+            width: 100px;
+            margin-left: 46%;
+            margin-bottom: 30px;
+            margin-top: 50px;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -199,31 +212,29 @@
     </div>
 
     <!--========== 쪽지 상세보기  ==========-->
-
-    <section id="contact" class="contact">
-        <div class="container">
-
-            <div class="section-title">
-                <h2>쪽지 상세보기</h2>
-            </div>
-            <div class="col-lg-6">
-                <!--name:보낼값, action:어디로 보낼지 정하는 것-->
-                <form th:action="@{/note/read}" method="post" role="form" class="php-email-form">
-                    <div class="row">
-                        <div class="col-md-6 form-group mt-3 mt-md-0">
-                            보낸 사람 : <span th:text="${note.sendUser}"></span>
-                        </div>
-                    </div>
-                    <!--내용:content-->
-                    <div class="form-group mt-3">
-                        내용 : <span th:text="${note.content}"></span>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </section><!-- End Contact Section -->
-
-
+<!--    <section id="contact" class="contact">-->
+<!--        <div class="container">-->
+<!--            -->
+    <img class="notewrite" src="/assets/img/page_logo/notewrite.png">
+    <form th:action="@{/note/read}" method="post" role="form" class="php-email-form">
+        <table style="margin-left: auto; margin-right: auto;">
+            <tr>
+                <td>
+                    보낸 사람 : <span th:text="${note.sendUser}"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    내용 : <span th:text="${note.content}"></span>
+                </td>
+            </tr>
+        </table>
+    </form>
+    <button class="n_bth_s">
+        <a href="javascript:history.back()">
+            <span class="form-item-icon material-symbols-rounded">돌아가기</span>
+        </a>
+    </button>
     <!--========== 쪽지 상세보기  ==========-->
 
 

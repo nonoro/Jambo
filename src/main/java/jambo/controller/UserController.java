@@ -6,6 +6,7 @@ import jambo.domain.board.StudyBoard;
 import jambo.domain.user.User;
 import jambo.dto.UserJoinDTO;
 import jambo.dto.UserMyPageResponseDTO;
+import jambo.dto.UserResponseDTO;
 import jambo.service.BoardService;
 import jambo.service.FileService;
 
@@ -21,10 +22,7 @@ import org.springframework.security.web.authentication.logout.SecurityContextLog
 import org.springframework.security.web.server.authentication.logout.SecurityContextServerLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -97,18 +95,8 @@ public class UserController {
 
         int nomalBoardListSize = normalBoardList.size();
         int studyBoardListSize = studyBoardList.size();
-        System.out.println("🤬studyBoardListSize🤬 = " + studyBoardListSize);
 
         UserMyPageResponseDTO responseMyPage = UserMyPageResponseDTO.from(dbUser); //이게 무슨 뜻이었지... ㅇㅅ 히
-
-        System.out.println("🤬🤬⚙️⚙getNickName⚙️⚙️🤬🤬🤬  = " + responseMyPage.getNickName());
-        System.out.println("🤬🤬⚙️⚙getName⚙️⚙️🤬🤬🤬  = " + responseMyPage.getName());
-        System.out.println("🤬🤬⚙️⚙getEmail⚙️⚙️🤬🤬🤬  = " + responseMyPage.getEmail());
-        System.out.println("🤬🤬⚙️⚙getPhone⚙️⚙️🤬🤬🤬  = " + responseMyPage.getPhone());
-        System.out.println("🤬🤬⚙️⚙getMbti⚙️⚙️🤬🤬🤬  = " + responseMyPage.getMbti());
-        System.out.println("🤬🤬⚙️⚙getUserTechStacks⚙️⚙️🤬🤬🤬  = " + responseMyPage.getUserTechStacks());
-        System.out.println("🤬🤬⚙️⚙getLevel⚙️⚙️🤬🤬🤬  = " + responseMyPage.getLevel());
-        System.out.println("🤬🤬⚙️⚙getPoint⚙️⚙️🤬🤬🤬  = " + responseMyPage.getPoint());
 
         for (NormalBoard normalBoard : normalBoardList) {
             log.debug("normalBoard = {}", normalBoard);
@@ -124,6 +112,26 @@ public class UserController {
 
         return "user/MyPage";
     }
+
+    //하고 싶은거 : 유저의 닉네임을 누르면 그 닉네임에 맞는 정보가 나옴
+    //일단 유저의 닉네임을 가지고 디비로 감 
+    //디비에서 닉네임에 맞는 아이디를 가지고 나옴 그 아이디에서 값정보 다 들어있기 떄문에 
+    //정보 빼내기 가능  
+
+    @RequestMapping("/profile/{id}")
+    public String profile(Model model, @PathVariable Long id){
+        User dbUser = userService.myPage(id);
+        String dbFile = fileService.getUrlPath();
+        UserMyPageResponseDTO userMyPageResponseDTO = UserMyPageResponseDTO.from(dbUser);
+
+        model.addAttribute("profile", dbUser);
+        model.addAttribute("savePath", dbFile);
+        System.out.println("userResponseDTO = " + userMyPageResponseDTO);
+        
+        return "/user/profile";
+    }
+
+
 
     @RequestMapping("/loginForm")
     public String loginForm() {

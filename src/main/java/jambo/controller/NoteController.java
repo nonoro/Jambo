@@ -3,8 +3,13 @@ package jambo.controller;
 import jambo.domain.user.Note;
 import jambo.domain.user.User;
 import jambo.service.NoteService;
+import jambo.service.PaginationService;
 import jambo.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,16 +25,26 @@ public class NoteController {
 
     private final NoteService noteService;
     private final UserService userService;
+    private final PaginationService paginationService;
 
     /**
      * 받은 쪽지함
      */
+//    @RequestMapping("/list")
+//    public String list(Model model, @AuthenticationPrincipal User user){
+//        String ReceiveUserEmail = user.getEmail();
+//        List<Note> noteList = noteService.selectAll(ReceiveUserEmail);
+//        model.addAttribute("noteList", noteList);
+//
+//        return "note/list";//뷰리턴
+//    }
     @RequestMapping("/list")
-    public String list(Model model, @AuthenticationPrincipal User user){
+    public String list(Model model, @AuthenticationPrincipal User user, @PageableDefault(size = 5, direction = Sort.Direction.DESC) Pageable pageable){
         String ReceiveUserEmail = user.getEmail();
-        List<Note> noteList = noteService.selectAll(ReceiveUserEmail);
-        model.addAttribute("noteList", noteList);
-
+        Page<Note> notes = noteService.selectAll(ReceiveUserEmail, pageable);
+        List<Integer> pageNumbers = paginationService.pagination(pageable.getPageNumber(), notes.getTotalPages());
+        model.addAttribute("notes", notes);
+        model.addAttribute("pageNumbers", pageNumbers);
         return "note/list";//뷰리턴
     }
 

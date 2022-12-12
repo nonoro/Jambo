@@ -8,4 +8,4 @@ spring:
     password: 4758
 file:
   urlPath: /yuna
-  path: /Users/kent/Jambo/src/main/resources/fileupload/
+  path: /Users/kent/finalJambo/Jambo/src/main/resources/fileupload/
