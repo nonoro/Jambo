@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -74,5 +75,15 @@ public class BoardService {
     public List<NormalBoard> showNormalBoard(User user){
 
         return normalBoardRepository.SearchNomalBoardByEmail(user);
+    }
+
+    /**
+     * 게시글 수정
+     * */
+    public void update(NormalBoardDTO normalBoardDTO, Long id){
+        Board dbboard = boardRepository.findById(id).orElse(null);
+        dbboard.setTitle(normalBoardDTO.getTitle());
+        dbboard.setCategory(normalBoardDTO.getCategory());
+        dbboard.setContent(normalBoardDTO.getContent());
     }
 }
