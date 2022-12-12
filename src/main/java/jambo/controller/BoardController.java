@@ -1,6 +1,7 @@
 package jambo.controller;
 
 import jambo.domain.Comment;
+import jambo.domain.admin.Admin;
 import jambo.domain.board.Board;
 import jambo.domain.board.NormalBoard;
 import jambo.domain.board.Recommendation;
@@ -105,6 +106,7 @@ public class BoardController {
      * */
     @RequestMapping("/insert")
     public String studyBoardInsert(NormalBoardDTO normalBoardDTO, @AuthenticationPrincipal User user) throws IOException {
+        System.out.println("normalBoardDTO = " + normalBoardDTO + ", user = " + user);
         boardService.insert(normalBoardDTO, user);
 
         return "redirect:/board/list?category="+normalBoardDTO.getCategory();

@@ -1,8 +1,10 @@
 package jambo.service;
 
 import jambo.domain.Authority;
+import jambo.domain.TechStack;
 import jambo.domain.admin.Admin;
 import jambo.domain.board.Report;
+import jambo.domain.user.Point;
 import jambo.domain.user.User;
 import jambo.dto.AdminJoinDTO;
 import jambo.repository.*;
@@ -17,6 +19,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.HashMap;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -49,11 +52,15 @@ public class AdminService {
         adminJoinDTO.setPassword(passwordEncoder.encode(adminJoinDTO.getPassword()));
 
         Admin admin = adminJoinDTO.toEntity();
+        User adminToUser = adminJoinDTO.toUser();
+
 
         adminRepository.save(admin);
-
         authorityRepository.save(new Authority(admin.getEmail(), "ROLE_USER"));
         authorityRepository.save(new Authority(admin.getEmail(), "ROLE_ADMIN"));
+
+        adminToUser.setPoint(new Point(0,0));
+        userRepository.save(adminToUser);
 
     }
 

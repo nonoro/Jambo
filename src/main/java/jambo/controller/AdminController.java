@@ -6,6 +6,7 @@ import jambo.dto.AdminJoinDTO;
 import jambo.service.AdminService;
 import jambo.service.FileService;
 import jambo.service.PaginationService;
+import jambo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,6 +29,7 @@ public class AdminController {
     private final AdminService adminService;
     private final PaginationService paginationService;
     private final FileService fileService;
+    private final UserService userService;
 
     @GetMapping("/adminMain")
     public void openAdminMainPage(Model model, @PageableDefault(size = 5, direction = Sort.Direction.DESC) Pageable pageable){
