@@ -1,6 +1,7 @@
 package jambo.controller;
 
 import jambo.domain.board.Report;
+import jambo.dto.AdminJoinDTO;
 import jambo.service.AdminService;
 import jambo.service.PaginationService;
 import lombok.RequiredArgsConstructor;
@@ -11,8 +12,11 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -73,5 +77,23 @@ public class AdminController {
         model.addAttribute("list", reports);
         model.addAttribute("pageNumbers", pageNumbers);
 
+    }
+    @GetMapping("/joinForm")
+    public String openAdminJoinForm(){
+        return "/admin/adminJoin";
+    }
+
+    @PostMapping("/join")
+    public String join(AdminJoinDTO adminJoinDTO){
+        adminService.join(adminJoinDTO);
+        return "redirect:/admin/adminMain";
+    }
+
+    @RequestMapping("/idCheckAjax")
+    @ResponseBody
+    public HashMap<String, Object> idCheckAjax(String email) {
+        System.out.println("con : " + email);
+
+        return adminService.adminEmailOverlap(email);
     }
 }

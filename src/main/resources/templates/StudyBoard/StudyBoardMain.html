@@ -343,6 +343,7 @@
                         <p>시작예정일 : <span th:text="${board.startDate}"></span></p>
                         <p>글 작성일 : <span th:text="${#temporals.format(board.writeDate, 'yyyy-MM-dd HH:mm')}"></span></p>
                         <p>조회수 : <span th:text="${board.views}"></span></p>
+                        <p>작성자 : <span th:text="${board.user.getNickName()}"></span></p>
                     </div>
                 </div>
 

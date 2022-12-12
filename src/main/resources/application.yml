@@ -16,6 +16,7 @@ spring:
       max-request-size: 100MB
   datasource:
     driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:XE
     username: c##scott
     password: TIGER
   jpa:
@@ -36,4 +37,4 @@ logging:
       controller: debug
 file:
   urlPath: /img
-  path: /Users/nonoro/finalJambo/projectJambo/src/main/resources/img/
+  path: /Users/jy/finalJambo/Jambo/src/main/resources/img/
