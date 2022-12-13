@@ -2,6 +2,7 @@ package jambo.controller;
 
 import com.google.gson.JsonObject;
 import jambo.config.WebConfig;
+import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,9 +19,9 @@ import java.io.InputStream;
 import java.util.UUID;
 
 @Controller
+@RequiredArgsConstructor
 public class FileUploadController {
-    @Autowired
-    private WebConfig webConfig;
+    private final WebConfig webConfig;
 
     @RequestMapping(value = "/uploadSummernoteImageFile", produces = "application/json; charset=utf8", method = RequestMethod.POST)
     @ResponseBody

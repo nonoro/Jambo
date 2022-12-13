@@ -9,6 +9,7 @@ import jambo.dto.NormalBoardDTO;
 import jambo.repository.BoardRepository;
 import jambo.repository.NormalBoardRepository;
 import jambo.repository.UserRepository;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -20,14 +21,14 @@ import java.util.Optional;
 
 @Service
 @Transactional
+@RequiredArgsConstructor
 public class BoardService {
 
-    @Autowired
-    private BoardRepository boardRepository;
-    @Autowired
-    private NormalBoardRepository normalBoardRepository;
-    @Autowired
-    private UserRepository userRepository;
+    private final BoardRepository boardRepository;
+
+    private final NormalBoardRepository normalBoardRepository;
+
+    private final UserRepository userRepository;
 
     /**
      * 카테고리에 맞는 전체 NormalBoard 검색
@@ -61,7 +62,7 @@ public class BoardService {
      * */
     public void delete(Long id){
         int result = boardRepository.deleteBoardById(id);
-        // 예외처리
+
     }
 
     public Board findBoardById(Long id){

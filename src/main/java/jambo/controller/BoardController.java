@@ -52,7 +52,6 @@ public class BoardController {
     private final UserService userService;
     private final CommentService commentService;
 
-
     private final ReportService reportService;
 
     @RequestMapping("/list")

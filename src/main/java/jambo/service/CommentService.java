@@ -61,14 +61,4 @@ public class CommentService {
         commentRep.deleteById(id);
         return comment;
     }
-
-    /**
-     * 댓글 수정 기능(예정)
-     */
-//    public void update(Long id, Comment comment, User user){
-//        Comment updateComment = commentRep.findById(id).orElseThrow();
-//        updateComment.save(updateComment.getBoard(), user);
-//    }
-
-
 }

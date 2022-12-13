@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.*;
 public class CommentController {
 
     private final CommentService commentService;
-    private final BoardService boardService;
 
 
     /**
@@ -39,7 +38,6 @@ public class CommentController {
     }
 
 
-
     /**
      * 삭제하기
      */
@@ -57,14 +55,6 @@ public class CommentController {
         return "redirect:/StudyBoard/read/"+comment.getBoard().getId()+"?flag=1";
     }
 
-//    /**
-//     * 댓글 수정하기(예정)
-//     */
-//    @RequestMapping("/update")
-//    public String update(Comment comment, Long parentId, @AuthenticationPrincipal User user){
-//        commentService.update(parentId, comment, user);
-//        return "redirect:/board/read/"+parentId+"?flag=1";
-//    }
 
 
 }

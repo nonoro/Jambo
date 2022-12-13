@@ -6,8 +6,6 @@ import jambo.domain.board.StudyBoard;
 import jambo.domain.user.User;
 import jambo.dto.UserJoinDTO;
 import jambo.dto.UserMyPageResponseDTO;
-import jambo.dto.UserResponseDTO;
-import jambo.dto.UserUpdateDTO;
 import jambo.service.BoardService;
 import jambo.service.FileService;
 
@@ -20,7 +18,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
-import org.springframework.security.web.server.authentication.logout.SecurityContextServerLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,29 +28,24 @@ import javax.transaction.Transactional;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/user")
 @Slf4j
 @Transactional
 public class UserController {
 
-    @Autowired
-    private UserService userService;
+    private final UserService userService;
 
-    @Autowired
-    private FileService fileService;
+    private final FileService fileService;
 
-    @Autowired
-    private BoardService boardService;
+    private final BoardService boardService;
 
-    @Autowired
-    private StudyBoardService studyBoardService;
+    private final StudyBoardService studyBoardService;
 
     @RequestMapping("/preJoinForm")
     public void preJoinForm() {
@@ -110,10 +102,6 @@ public class UserController {
         return "user/myPage";
     }
 
-    //하고 싶은거 : 유저의 닉네임을 누르면 그 닉네임에 맞는 정보가 나옴
-    //일단 유저의 닉네임을 가지고 디비로 감 
-    //디비에서 닉네임에 맞는 아이디를 가지고 나옴 그 아이디에서 값정보 다 들어있기 떄문에 정보 빼내기 가능
-
     @RequestMapping("/profile/{id}")
     public String profile(Model model, @PathVariable Long id){
         User dbUser = userService.myPage(id);
@@ -128,7 +116,7 @@ public class UserController {
     }
 
     /**
-     * 회원정보 수정 폼
+     * 회원정보 수정 폼 열기
      */
     @RequestMapping("/openUpdateForm")
     public String updateForm(@AuthenticationPrincipal User user, Model model) {
@@ -139,16 +127,13 @@ public class UserController {
     }
 
     /**
-     * 회원정보 수정 완료
+     * 회원정보 수정 DB 수정
      */
     @RequestMapping("/update")
     public String update(UserJoinDTO userJoinDTO, @AuthenticationPrincipal User user) {
         userService.update(userJoinDTO, user);
-
         return "redirect:/user/myPage";
     }
-
-
 
     @RequestMapping("/loginForm")
     public String loginForm() {

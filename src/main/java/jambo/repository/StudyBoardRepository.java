@@ -17,7 +17,6 @@ public interface StudyBoardRepository extends JpaRepository<StudyBoard, Long> {
     /**
      * 스터디게시판 모든 글 조회
      */
-//    List<StudyBoard> findAll();
     List<StudyBoard> findAllByOrderByWriteDateDesc();
 
 

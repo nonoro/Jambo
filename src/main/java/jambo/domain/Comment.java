@@ -43,10 +43,4 @@ public class Comment {
         this.user = user;
     }
 
-
-
-//    @CreationTimestamp
-//    private LocalDateTime regDate;
-
-//    private boolean isReported;
 }

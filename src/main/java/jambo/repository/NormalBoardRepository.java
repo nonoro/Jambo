@@ -19,8 +19,6 @@ public interface NormalBoardRepository extends JpaRepository<NormalBoard, Long> 
      * */
     List<NormalBoard> findAllByCategory(Category category);
 
-//    List<NormalBoard> findNormalBoardsByCategory(Category category);
-
     /**
      * 보드 상세보기
      * */
@@ -29,7 +27,6 @@ public interface NormalBoardRepository extends JpaRepository<NormalBoard, Long> 
     /**
      * 내가쓴 모든 NomalBoard 조회
      */
-//  SELECT * FROM BOARD WHERE USER_ID ='1';
     @Query("select b from NormalBoard b where b.user = :user")
     List<NormalBoard> SearchNomalBoardByEmail(@Param("user") User user);
 

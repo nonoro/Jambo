@@ -13,19 +13,9 @@ import java.util.List;
 
 public interface NoteRepository extends JpaRepository<Note, Long> {
 
-    //하고 싶은거 받은 시간이 최근인게 제일 위로 왔으면 좋겠음
-    //select * from Note order BY SENT_TIME DESC;
+
     @Query("select n from Note n order by n.sentTime DESC")
     Page<Note> findNotesByReceiveUser(@Param("email")String email, Pageable page); //받은 사람
 
-//    Page<Note> findNotesByReceiveUser(String email, Pageable page); //받은 사람
-
-//    Page<Note> findAllByOrderBySentTimeDesc(Pageable page);
-
-
-//    Page<Note> findAllByOrderBySentTimeIdDesc(Pageable page);
-
     Page<Note> findAllByOrderBySentTimeDesc(String email, Pageable page);
-
-
 }

@@ -30,14 +30,6 @@ public class NoteController {
     /**
      * 받은 쪽지함
      */
-//    @RequestMapping("/list")
-//    public String list(Model model, @AuthenticationPrincipal User user){
-//        String ReceiveUserEmail = user.getEmail();
-//        List<Note> noteList = noteService.selectAll(ReceiveUserEmail);
-//        model.addAttribute("noteList", noteList);
-//
-//        return "note/list";//뷰리턴
-//    }
     @RequestMapping("/list")
     public String list(Model model, @AuthenticationPrincipal User user, @PageableDefault(size = 5, direction = Sort.Direction.DESC) Pageable pageable){
         String ReceiveUserEmail = user.getEmail();

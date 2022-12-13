@@ -6,10 +6,7 @@ import jambo.domain.Authority;
 import jambo.domain.TechStack;
 import jambo.domain.user.Point;
 import jambo.domain.user.User;
-import jambo.domain.user.UserTechStack;
 import jambo.dto.UserJoinDTO;
-import jambo.dto.UserMyPageResponseDTO;
-import jambo.dto.UserUpdateDTO;
 import jambo.repository.AuthorityRepository;
 import jambo.repository.TechStackRepository;
 import jambo.repository.UserRepository;
@@ -19,7 +16,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -54,7 +50,6 @@ public class UserService {
             user.setTechStacks(techStacks);
         }
         authorityRepository.save(new Authority(user.getEmail(), "ROLE_USER"));
-
         return userRep.save(user).getId();
     }
 
@@ -84,7 +79,5 @@ public class UserService {
             List<TechStack> techStacks = techStackRepository.findAllByTechStackNameIn(userTechStacks);
             dbUser.setTechStacks(techStacks);
         }
-//        dbUser.setUserTechStacks(updateDTO.getUserTechStacks());
-
-    }//여기빠져나가는 순간 commit되면서 update
+    }
 }

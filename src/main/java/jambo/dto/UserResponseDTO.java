@@ -1,10 +1,8 @@
 package jambo.dto;
 
-import jambo.domain.user.Point;
 import jambo.domain.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
 
 @Data

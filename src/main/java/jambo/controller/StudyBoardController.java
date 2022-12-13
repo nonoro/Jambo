@@ -9,6 +9,7 @@ import jambo.dto.StudyBoardDTO;
 import jambo.service.CommentService;
 import jambo.service.FileService;
 import jambo.service.StudyBoardService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -20,17 +21,16 @@ import java.io.IOException;
 import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/StudyBoard")
 public class StudyBoardController {
 
-    @Autowired
-    private StudyBoardService service;
+    private final StudyBoardService service;
 
-    @Autowired
-    private CommentService commentService;
+    private final CommentService commentService;
 
-    @Autowired
-    private FileService fileService;
+
+    private final FileService fileService;
 
     @RequestMapping("/StudyBoardMain")
     public String main(Model model) {
@@ -68,6 +68,5 @@ public class StudyBoardController {
         model.addAttribute("boardStacks", boards);
 
         return new ModelAndView("StudyBoard/StudyBoardRead", "board", dbBoard);
-
     }
 }
