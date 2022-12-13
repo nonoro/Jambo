@@ -7,6 +7,7 @@ import jambo.domain.user.User;
 import jambo.dto.UserJoinDTO;
 import jambo.dto.UserMyPageResponseDTO;
 import jambo.dto.UserResponseDTO;
+import jambo.dto.UserUpdateDTO;
 import jambo.service.BoardService;
 import jambo.service.FileService;
 
@@ -26,17 +27,20 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-@RequiredArgsConstructor
 @Controller
 @RequestMapping("/user")
 @Slf4j
+@Transactional
 public class UserController {
 
     @Autowired
@@ -77,13 +81,6 @@ public class UserController {
 
     @RequestMapping("/myPage")
     public String myPage(Model model, @AuthenticationPrincipal User user) {
-//      String userEmail = "test@test.com";
-//      List<String> userRequestTechStacks = List.of("C", "Java", "Python");
-//      String dbEmail = user.getEmail();//로그인한 유저의 이메일
-//      System.out.println("🤬🤬🤬🤬dbEmail🤬🤬🤬🤬  = " + dbEmail);
-//      List<UserTechStack> dbTechStaks = user.getUserTechStacks();
-//      System.out.println("🤬🤬⚙️⚙️️dbTechStaks⚙️⚙️🤬🤬🤬  = " + dbTechStaks);
-//      User dbMyPage = userService.myPage(dbEmail);//여기에 정보 다 들어있다.
 
         Long id = user.getId();
         User dbUser = userService.myPage(id);
@@ -110,13 +107,12 @@ public class UserController {
         model.addAttribute("studyBoardListSize", studyBoardListSize);
         model.addAttribute("studyBoardList", studyBoardList);
 
-        return "user/MyPage";
+        return "user/myPage";
     }
 
     //하고 싶은거 : 유저의 닉네임을 누르면 그 닉네임에 맞는 정보가 나옴
     //일단 유저의 닉네임을 가지고 디비로 감 
-    //디비에서 닉네임에 맞는 아이디를 가지고 나옴 그 아이디에서 값정보 다 들어있기 떄문에 
-    //정보 빼내기 가능  
+    //디비에서 닉네임에 맞는 아이디를 가지고 나옴 그 아이디에서 값정보 다 들어있기 떄문에 정보 빼내기 가능
 
     @RequestMapping("/profile/{id}")
     public String profile(Model model, @PathVariable Long id){
@@ -129,6 +125,27 @@ public class UserController {
         System.out.println("userResponseDTO = " + userMyPageResponseDTO);
         
         return "/user/profile";
+    }
+
+    /**
+     * 회원정보 수정 폼
+     */
+    @RequestMapping("/openUpdateForm")
+    public String updateForm(@AuthenticationPrincipal User user, Model model) {
+        User dbUser = userService.findUser(user);
+        model.addAttribute("userInfo", dbUser);
+
+        return "/user/updateMyInfo";
+    }
+
+    /**
+     * 회원정보 수정 완료
+     */
+    @RequestMapping("/update")
+    public String update(UserJoinDTO userJoinDTO, @AuthenticationPrincipal User user) {
+        userService.update(userJoinDTO, user);
+
+        return "redirect:/user/myPage";
     }
 
 

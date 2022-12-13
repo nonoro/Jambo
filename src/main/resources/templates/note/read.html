@@ -158,27 +158,60 @@
             max-width: 80%;
             padding: 0px;
         }
-    </style>
-    <style>
-        table {
-            border: 0px solid #444444;
-            background-color: rgb(205, 229, 238);
-            padding: 40px;
-            margin-bottom: 100px;
+
+        /*.letter1{*/
+        /*    position: absolute;*/
+        /*    top: 30%;*/
+        /*    left: 50%;*/
+        /*    transform: translate( -50%, -50% );*/
+        /*    width: 200px;*/
+        /*}*/
+
+        .letter2{
+            width: 550px;
+            margin-left: 32%;
+            margin-top: 64px;
+        }
+
+        .sendUser {
+            position: absolute;
+            top: 38%;
+            left: 52%;
+            transform: translate( -50%, -50% );
+            word-wrap: break-word;
+            width: 400px;
+        }
+
+        .sentTime{
+            position: absolute;
+            top: 44%;
+            left: 52%;
+            transform: translate( -50%, -50% );
+            word-wrap: break-word;
+            width: 400px;
+        }
+
+        .content{
+            position: absolute;
+            top: 53%;
+            left: 52%;
+            transform: translate( -50%, -50% );
+            word-wrap: break-word;
+            width: 400px;
         }
 
         td {
-            padding: 40px;
+            word-wrap: break-word;
         }
 
-        .notewrite{
-            width: 100px;
-            margin-left: 46%;
-            margin-bottom: 30px;
-            margin-top: 50px;
+        #back {
+            margin-left: 48%;
+            margin-top: -13%;
         }
 
-    </style>
+
+</style>
+
 </head>
 
 <body>
@@ -215,25 +248,35 @@
 <!--    <section id="contact" class="contact">-->
 <!--        <div class="container">-->
 <!--            -->
-    <img class="notewrite" src="/assets/img/page_logo/notewrite.png">
+<!--    <img class="letter1" src="/assets/img/BoardLogo/letter1.png">-->
+    <img class="letter2" src="/assets/img/BoardLogo/letter2.png">
     <form th:action="@{/note/read}" method="post" role="form" class="php-email-form">
-        <table style="margin-left: auto; margin-right: auto;">
-            <tr>
-                <td>
-                    보낸 사람 : <span th:text="${note.sendUser}"></span>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    내용 : <span th:text="${note.content}"></span>
-                </td>
-            </tr>
-        </table>
+        <div>
+            <table style="margin-left: auto; margin-right: auto;">
+                <tr>
+                    <td>
+                        <div class="sendUser">
+                            <span th:text="${note.sendUser.getNickName()}"></span>(<span th:text="${note.sendUser.getEmail()}"></span>) 님이 내게 쓴 쪽지
+                        </div>
+                    </td>
+                    <td>
+                        <div>
+                            <span class="sentTime" th:text="${#temporals.format(note.sentTime, 'yyyy-MM-dd HH:mm')}"></span>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div>
+                            <span class="content" th:text="${note.content}"></span>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
     </form>
-    <button class="n_bth_s">
-        <a href="javascript:history.back()">
-            <span class="form-item-icon material-symbols-rounded">돌아가기</span>
-        </a>
+    <button id="back" class="btn btn-success">
+        <a href="javascript:history.back()">돌아가기</a>
     </button>
     <!--========== 쪽지 상세보기  ==========-->
 

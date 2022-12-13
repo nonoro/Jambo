@@ -63,7 +63,7 @@
         /* Hide the images by default */
         .mySlides {
             display: none;
-            padding-top: 60px;
+            padding-top: 100px;
         }
 
         /* Add a pointer when hovering over the thumbnail images */
@@ -117,7 +117,7 @@
 
         /* Number text (1/3 etc) */
         .numbertext {
-            color: #f2f2f2;
+            color: white;
             font-size: 12px;
             padding: 8px 12px;
             position: absolute;
@@ -127,7 +127,7 @@
         /* Container for image text */
         .caption-container {
             text-align: center;
-            background-color: #fff;
+            background-color: white;
             padding: 5px;
             color: white;
         }
@@ -161,82 +161,102 @@
     </style>
     <!--프로필카드 스타일-->
     <style>
-    * {
-    box-sizing: border-box;
-    }
+        * {
+            box-sizing: border-box;
+        }
 
-    html,
-    body {
-    height: 100%;
-    }
+        html,
+        body {
+            height: 100%;
+        }
 
-    .container {
-    margin: auto;
-    font-family: "Poppins", Arial, san-serif;
-    line-height: 1.4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f9f9f9;
-    height: 100%;
-    }
+        .container {
+            margin: auto;
+            font-family: "Poppins", Arial, san-serif;
+            line-height: 1.4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            height: 100%;
+        }
 
-    .card {
-    background: #fff url("https://storage.googleapis.com/chydlx/codepen/minimalist-profile-card/card-bg.jpg") top -10% center no-repeat;
-    background-size: contain;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px -5px rgba(60, 60, 60, 0.2);
-    text-align: center;
-    padding: 30px 60px;
-    }
-    .card img {
-    background-color: #dddfe6;
-    height: 120px;
-    width: 120px;
-    border-radius: 50%;
-    margin: auto auto 15px;
-    display: block;
-    }
-    .card h1 {
-    font-size: 25px;
-    margin: 10px auto 0;
-    letter-spacing: 1px;
-    }
+        .card {
+            background: white top -10% center no-repeat;
+            background-size: contain;
+            border-radius: 10px;
+            box-shadow: 0 20px 50px -10px rgba(60, 60, 60, 0.2);
+            text-align: center;
+            padding: 30px 60px;
+        }
 
-    .card .button {
-    display: block;
-    text-decoration: none;
-    background: #3b70fc;
-    color: #f9f9f9;
-    padding: 12px;
-    border: none;
-    border-radius: 25px;
-    /*margin-top: 30px;*/
-    margin: 10px auto;
-    width: 300px;
-    font-size: 16px;
-    font-weight: 700;
-    min-width: 100px;
-    transition: 0.2s;
-    }
+        .card img {
+            background-color: white;
+            height: 120px;
+            width: 120px;
+            border-radius: 50%;
+            margin: auto auto 15px;
+            display: block;
+        }
+        .card h1 {
+            font-size: 25px;
+            margin: 10px auto 0;
+            letter-spacing: 1px;
+        }
 
-    .card .button span {
-    font-size: 20px;
-    line-height: 1;
-    vertical-align: top;
-    }
-    .card .button:hover {
-    background: #1856fb;
-    }
+        .card .button {
+            display: block;
+            text-decoration: none;
+            background: #3b70fc;
+            color: #f9f9f9;
+            padding: 12px;
+            border: none;
+            border-radius: 25px;
+            /*margin-top: 30px;*/
+            margin: 10px auto;
+            width: 300px;
+            font-size: 16px;
+            font-weight: 700;
+            min-width: 100px;
+            transition: 0.2s;
+        }
 
-    /*테이블*/
-    table{ border-collapse : collapse; }  /*이중선 제거*/
-    th,td{
-    width: 200px;
-    height: 50px;
-    text-align: center;
-    border: 0.1px solid #000;
-    }
+        .card .button span {
+            font-size: 20px;
+            line-height: 1;
+            vertical-align: top;
+        }
+        /* .card .button:hover {
+        background: #1856fb;
+        } */
+
+        /*테이블*/
+        table{ border-collapse : collapse; }  /*이중선 제거*/
+        th,td{
+            width: 400px;
+            height: 50px;
+            text-align: center;
+            border: 0px solid #000;
+        }
+
+        /*.container {*/
+        /*    position: absolute;*/
+        /*    top: 50%;*/
+        /*    left: 50%;*/
+        /*    transform: translate( -50%, -50% );*/
+        /*    word-wrap: break-word;*/
+        /*    width: 400px;*/
+        /*}*/
+
+        /*.profile {*/
+        /*    position: absolute;*/
+        /*    top: 50%;*/
+        /*    left: 50%;*/
+        /*    transform: translate( -50%, -50% );*/
+        /*    word-wrap: break-word;*/
+        /*    width: 400px;*/
+        /*}*/
+
     </style>
     <!--프로필카드 스타일-->
 
@@ -272,18 +292,30 @@
 
     <!--    -->
     <!--프로필-->
+<!--    <img class="profile" src="/assets/img/BoardLogo/profile.png">-->
     <div class="container">
         <div class="card">
             <img th:src="@{${savePath} + '/' + ${profile.mainEmotion}}" >
-<!--            <img src="https://storage.googleapis.com/chydlx/codepen/minimalist-profile-card/user-img.jpg" alt="Chyno Deluxe">-->
-            <h1>nickName : <span th:text="${profile.nickName}"></span></h1>
             <table>
                 <tr>
-                    <td colspan="2">email : <span th:text="${profile.email}"></span></td>
+                    <td colspan="2">
+                         <h1><span th:text="${profile.nickName}"></span>(<span th:text="${profile.email}"></span>)</h1>
+                    </td>
                 </tr>
                 <tr>
-                    <td>Lv.  </td>
-                    <td>mbti : <span th:text="${profile.mbti}"></span></td>
+                     <td><h1><span th:text="${profile.mbti}"></span></h1></td>
+                </tr>
+                <tr>
+                    <td colspan="2"><h2>⚙️ Skills ⚙️</h2></td>
+                </tr>
+                <tr>
+                    <td>
+                        <span th:each="userStack : ${profile.userTechStacks}">
+                            <label class="label label-primary">
+                                #<span th:text="${userStack.techStack.getTechStackName()}"></span>,
+                            </label>
+                        </span>
+                    </td>
                 </tr>
                 <tr>
                     <td colspan="2">
@@ -292,17 +324,6 @@
                         </button>
                     </td>
                 </tr>
-                <tr>
-                    <td colspan="2">Skills</td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <div>
-                            <span th:each="userStack : ${profile.userTechStacks}">
-                                 <label class="label label-primary">#<span th:text="${userStack.techStack.getTechStackName()}"></span>.</label>
-                            </span>
-                        </div>
-                    </td>
                 <tr>
                     <td colspan="2">
                         <a href="javascript:history.back()">
@@ -314,17 +335,17 @@
 
         </div>
     </div>
-<!--프로필-->
+    <!--프로필-->
     <!---->
 
 </main><!-- End #main -->
 
 <!-- ======= Footer ======= -->
-<footer th:replace="../templates/Baker/common/footer.html ::footer">
-</footer>
-<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
-    <i class="bi bi-arrow-up-short"></i>
-</a>
+<!--<footer th:replace="../templates/Baker/common/footer.html ::footer">-->
+<!--</footer>-->
+<!--<a href="#" class="back-to-top d-flex align-items-center justify-content-center">-->
+<!--    <i class="bi bi-arrow-up-short"></i>-->
+<!--</a>-->
 
 <!-- Vendor JS Files -->
 <script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>

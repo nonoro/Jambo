@@ -169,6 +169,70 @@
             max-width: 80%;
             padding: 0px;
         }
+
+        /*이미지에 글씨넣기*/
+        .main_image {
+            position: relative;
+        }
+        .main_image_text1 {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate( -50%, -50% );
+        }
+        .main_image_text2 {
+            position: absolute;
+            top: 44%;
+            left: 50%;
+            transform: translate( -50%, -50% );
+        }
+        .main_image_text3 {
+            position: absolute;
+            top: 60%;
+            left: 50%;
+            transform: translate( -50%, -50% );
+        }
+
+        #Click {
+            position: absolute;
+            top: 46%;
+            left: 50%;
+            transform: translate( -50%, -50% );
+            padding: 5px 30px;
+            border-radius: 20px;
+        }
+
+        .iconshop_img_1 {
+            position: absolute;
+            top: 32%;
+            left: 77%;
+            transform: translate( -50%, -50% );
+            width: 100px;
+        }
+        .iconshop_img_2 {
+            position: absolute;
+            top: 55%;
+            left: 85%;
+            transform: translate( -50%, -50% );
+            width: 100px;
+        }
+
+        .iconshop_img_3 {
+            position: absolute;
+            top: 41%;
+            left: 21%;
+            transform: translate( -50%, -50% );
+            width: 100px;
+        }
+
+        .iconshop_img_4 {
+            position: absolute;
+            top: 59%;
+            left: 12%;
+            transform: translate( -50%, -50% );
+            width: 100px;
+        }
+
     </style>
 </head>
 
@@ -204,7 +268,43 @@
     <div class="shopContainer">
         <div class="leftContainer"></div>
         <div class="shopMain">
-            <div class="p-3 mb-4 bg-light text-dark" style="text-align: center; font-size: 30px; width: 100%;">아이콘 샵</div>
+            <!--아이콘 샵 배너-->
+            <div class="main_image">
+                <img src="/assets/img/BoardLogo/icon.png">
+                <div><h4 class="main_image_text1"><strong>포인트로 이모티콘을 구매하여</strong></h4></div>
+                <div><h4 class="main_image_text2"><strong>개성있는 자신의 프로필을 꾸며보세요!</strong></h4></div>
+                <div><h4 class="main_image_text3">포인트를 많이 모을 수록 개성있는 이모티콘을 구매할 수 있습니다.</h4></div>
+                <img class="iconshop_img_1" src="/assets/img/iconshop/0d6158c.gif">
+                <img class="iconshop_img_2" src="/assets/img/iconshop/0da7a7e.gif">
+                <img class="iconshop_img_3" src="/assets/img/iconshop/5-5168-4b4d-849e-204e7dfff7dd.gif">
+                <img class="iconshop_img_4" src="/assets/img/iconshop/66b9eb3.gif">
+            </div>
+
+            <!-- Button trigger modal -->
+            <button type="button"  id="Click" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Point 적립 방법 Click!👾
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">포인트 적립방법</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            게시글 작성 - 30.J<br>
+                            내 게시글 추천받으면 - 5.J<br>
+                            댓글 작성- 5.J<br>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <div class="shopWrap">
                 <div class="shopHeader">
                     <div class="shopMenu">
@@ -215,9 +315,9 @@
                             <li>
                                 <a th:href="@{/icon}" class="active">내 아이콘</a>
                             </li>
-                            <li>
-                                <a th:href="@{/icon/register}" class="active">아이콘 등록</a>
-                            </li>
+<!--                            <li>-->
+<!--                                <a th:href="@{/icon/register}" class="active">아이콘 등록</a>-->
+<!--                            </li>-->
                         </ul>
                     </div>
                 </div>
