@@ -1,5 +1,6 @@
 package jambo.domain.user;
 
+import jambo.domain.Alarm;
 import jambo.domain.TechStack;
 import jambo.domain.board.Recommendation;
 //import jambo.domain.board.Report;
@@ -8,7 +9,6 @@ import jambo.domain.user.type.MBTI;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import org.springframework.security.core.parameters.P;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -51,8 +51,8 @@ public class User {
     @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     private List<Icon> icons = new ArrayList<>();
 
-    @OneToMany(mappedBy = "sendUser", cascade = CascadeType.ALL)
-    private List<Note> notes;
+//    @OneToMany(mappedBy = "sendUser", cascade = CascadeType.ALL)
+//    private List<Note> notes;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Alarm> alarms;
@@ -109,5 +109,10 @@ public class User {
     public User addPoint(int rewardPoint) {
         point.add(rewardPoint);
         return this;
+    }
+
+    @Override
+    public String toString() {
+        return id.toString();
     }
 }

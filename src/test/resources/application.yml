@@ -1,0 +1,40 @@
+server:
+  port: 8888
+
+spring:
+  output:
+    ansi:
+      enabled: always
+  thymeleaf:
+    cache: false
+    check-template-location: true
+    prefix: classpath:/templates/
+    suffix: .html
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+
+  datasource:
+    url: jdbc:oracle:thin:@localhost:1521:XE
+    username: scott
+    password: TIGER
+  jpa:
+    hibernate:
+      ddl-auto: create
+    show-sql: true
+    database: oracle
+    database-platform: org.hibernate.dialect.Oracle10gDialect
+#    defer-datasource-initialization: true
+#  sql:
+#    init:
+#      mode: always
+logging:
+  level:
+    org:
+      hibernate: info
+    jambo:
+      controller: debug
+file:
+  urlPath: /img
+  path: /Users/nonoro/finalJambo/projectJambo/src/main/resources/img/

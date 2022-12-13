@@ -1,13 +1,59 @@
-<!DOCTYPE html>
-<html lang="ko" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-<body>
-
 <header id="header" class="fixed-top header-transparent" th:fragment="header">
+    <!DOCTYPE html>
+    <html lang="ko" xmlns:th="http://www.thymeleaf.org"
+          xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+    <head>
+        <!--        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css">-->
+        <!--        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>-->
+        <!--        <script src="/js/jquery-3.2.1.min.js"></script>-->
+
+        <th:block sec:authorize="isAuthenticated()">
+            <script>
+                function deleteAlarm(id) {
+                    console.log(id);
+                    $(id).remove();
+
+                    console.log(parent);
+                }
+
+                $(function () {
+                    const sse = new EventSource("http://localhost:8888/alarm/subscribe?userId=" + $("#userName").val());
+                    sse.addEventListener('subscribe', (e) => {
+                        const {data: receivedConnectData} = e;
+                        console.log('connect event data: ', receivedConnectData);  // "connected!"
+                    });
+
+                    sse.addEventListener('alarm', (e) => {
+                        const {data: receivedData} = e;
+
+                        let data = JSON.parse(receivedData);
+                        let randomId = Math.random().toString(36).substring(2, 12);
+                        let toastDiv = "";
+
+                        toastDiv += '<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="false" id=' + randomId + '>';
+                        toastDiv += '   <div class="toast-header">';
+                        toastDiv += '       <strong class="me-auto">' + data.title + '</strong>';
+                        toastDiv += '       <small class="text-muted">' + data.createdAt + '</small>';
+                        toastDiv += '       <button type="button" onclick="deleteAlarm(' + randomId + ')" class="btn-close" data-bs-dismiss="toast" aria-label="Close" ></button>';
+                        toastDiv += '   </div>';
+                        toastDiv += '   <div class="toast-body">' + data.body + '</div>';
+                        toastDiv += '</div>';
+
+                        $(".toast-container").append(toastDiv);
+                        $(".toast").toast('show');
+                    });
+                });
+            </script>
+        </th:block>
+    </head>
+    <body>
+
+    <!-- 토스트!! -->
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    </div>
+
     <div class="container d-flex align-items-center justify-content-between">
-
         <h1 class="logo"><a th:href="@{/}"><img src="/assets/img/logo.png" alt="" class="img-fluid"></a></h1>
-
         <nav id="navbar" class="navbar">
             <ul>
                 <li class="we"><a class="nav-link scrollto active" href="#hero">WHO WE WRE</a></li>
@@ -24,16 +70,17 @@
                     <button onclick="myFunction()" class="dark">다크모드</button>
                 </li>
                 <li><a class="nav-link scrollto active" th:href="@{/board/list(category='NOTICE_BOARD')}">공지사항</a></li>
-
                 <th:block sec:authorize="!isAuthenticated()">
                     <li><a class="nav-link scrollto" th:href="@{/user/loginForm}">로그인</a></li>
                     <li><a class="nav-link scrollto" th:href="@{/user/joinForm}">회원가입</a></li>
                 </th:block>
                 <th:block sec:authorize="isAuthenticated()">
-                <li><a class="nav-link scrollto" href="#about"><img src="/assets/img/bell.png" alt="bell"
-                                                                    style="height: 40px; width: 40px"></a></li>
-                    <li class="dropdown"><a href="#"><img src="/assets/img/footprint.png" alt="" style="height: 40px; width: 40px"><i
-                            class="bi bi-chevron-down"></i></a>
+                    <input type="hidden" th:value="${#authentication.name}" id="userName">
+                    <li><a class="nav-link scrollto" href="#about"><img src="/assets/img/bell.png" alt="bell"
+                                                                        style="height: 40px; width: 40px"></a></li>
+                    <li class="dropdown"><a href="#"><img src="/assets/img/footprint.png" alt=""
+                                                          style="height: 40px; width: 40px">
+                        <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a th:href="@{/user/myPage}">마이페이지</a></li>
                             <li><a href="/user/logout">로그아웃</a></li>
@@ -47,8 +94,9 @@
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
     </div>
+    </body>
+    </html>
 </header><!-- End Header -->
 
 
-</body>
-</html>
+

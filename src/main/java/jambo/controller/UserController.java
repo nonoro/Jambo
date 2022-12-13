@@ -1,19 +1,19 @@
 package jambo.controller;
 
 
+import jambo.domain.Alarm;
 import jambo.domain.board.NormalBoard;
 import jambo.domain.board.StudyBoard;
 import jambo.domain.user.User;
 import jambo.dto.UserJoinDTO;
 import jambo.dto.UserMyPageResponseDTO;
-import jambo.service.BoardService;
-import jambo.service.FileService;
+import jambo.service.*;
 
-import jambo.service.StudyBoardService;
-import jambo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,9 +28,12 @@ import javax.transaction.Transactional;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Set;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 @Controller
 @RequiredArgsConstructor
@@ -39,6 +42,8 @@ import java.util.List;
 @Transactional
 public class UserController {
 
+    private static final long SSE_SESSION_TIMEOUT = 30 * 60 * 1000L;
+
     private final UserService userService;
 
     private final FileService fileService;
@@ -46,6 +51,7 @@ public class UserController {
     private final BoardService boardService;
 
     private final StudyBoardService studyBoardService;
+
 
     @RequestMapping("/preJoinForm")
     public void preJoinForm() {
@@ -137,7 +143,7 @@ public class UserController {
 
     @RequestMapping("/loginForm")
     public String loginForm() {
-        return "/user/loginForm";
+        return "user/loginForm";
 
     }
 
@@ -150,4 +156,23 @@ public class UserController {
         return "redirect:/";
     }
 
+    @RequestMapping("/alarm")
+//    @ResponseBody
+    public String findAlarm(@AuthenticationPrincipal User user, Model model) {
+        System.out.println("나왔다");
+        List<Alarm> alarm = userService.findAlarm(user);
+
+        for (Alarm alarm1 : alarm) {
+            if (alarm1.getNote() == null) {
+                System.out.println("alarm1.getAlarmType() = " + alarm1.getAlarmType() + alarm1.getComment());
+            } else {
+                System.out.println("alarm1.getAlarmType() = " + alarm1.getAlarmType() + alarm1.getNote());
+            }
+        }
+
+        model.addAttribute("alarmList", alarm);
+
+        return "Baker/common/header";
+//        return alarm;
+    }
 }

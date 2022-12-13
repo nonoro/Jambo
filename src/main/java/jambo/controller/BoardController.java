@@ -95,7 +95,7 @@ public class BoardController {
     @RequestMapping("/write")
     public String openWriteForm() {
 
-        return "/Board/BoardWriteForm";
+        return "Board/BoardWriteForm";
     }
     /**
      * 게시글 작성 DB 에 넣기

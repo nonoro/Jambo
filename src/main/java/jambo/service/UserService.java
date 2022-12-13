@@ -2,11 +2,13 @@ package jambo.service;
 
 
 
+import jambo.domain.Alarm;
 import jambo.domain.Authority;
 import jambo.domain.TechStack;
 import jambo.domain.user.Point;
 import jambo.domain.user.User;
 import jambo.dto.UserJoinDTO;
+import jambo.repository.AlarmRepository;
 import jambo.repository.AuthorityRepository;
 import jambo.repository.TechStackRepository;
 import jambo.repository.UserRepository;
@@ -30,7 +32,9 @@ public class UserService {
 
     private final AuthorityRepository authorityRepository;
 
+    private final AlarmRepository alarmRepository;
     private final UserTechStackRepository userTechStackRepository;
+
 
     public HashMap<String, Object> userEmailOverlap(String email) {
         HashMap<String, Object> map = new HashMap<>();
@@ -61,6 +65,10 @@ public class UserService {
         return userRep.findUserById(id);
     }
 
+    public List<Alarm> findAlarm(User user) {
+        List<Alarm> byUser = alarmRepository.findByUserAndIsReadOrderByReceivedTimeDesc(user, false);
+        return byUser;
+    }
 
     //기존 회원 정보를 업데이트
     //nickName, mbti, phone, skill

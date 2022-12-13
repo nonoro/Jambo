@@ -1,8 +1,9 @@
 spring:
   datasource:
-    url: # 주소
-    username: admin
-    password: admin
+    url: jdbc:oracle:thin:@jambo_medium?TNS_ADMIN=/home/ec2-user/oracle_wallet
+    username: ADMIN
+    password: Jambo123456!
 
 file:
-  path: /img/
+  urlPath: /img
+  path: /home/ec2-user/img/

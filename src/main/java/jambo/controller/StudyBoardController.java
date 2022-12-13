@@ -32,20 +32,19 @@ public class StudyBoardController {
 
     private final FileService fileService;
 
-    private final BoardService boardService;
 
     @RequestMapping("/StudyBoardMain")
     public String main(Model model) {
         List<StudyBoard> boards = service.selectAll();
         model.addAttribute("list", boards);
         model.addAttribute("savePath", fileService.getUrlPath());
-        return "/StudyBoard/StudyBoardMain";
+        return "StudyBoard/StudyBoardMain";
     }
 
     @RequestMapping("/StudyBoardWrite")
     public String openWriteForm() {
 
-        return "/StudyBoard/StudyBoardWriteForm";
+        return "StudyBoard/StudyBoardWriteForm";
     }
 
     @RequestMapping("/insert")

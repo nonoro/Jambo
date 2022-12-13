@@ -3,9 +3,8 @@ package jambo.service;
 import jambo.domain.Comment;
 import jambo.domain.board.Board;
 import jambo.domain.board.StudyBoard;
-import jambo.domain.board.type.Category;
 import jambo.domain.user.User;
-import jambo.dto.StudyBoardDTO;
+import jambo.dto.AlarmResponse;
 import jambo.repository.BoardRepository;
 import jambo.repository.CommentRepository;
 import jambo.repository.StudyBoardRepository;
@@ -21,32 +20,35 @@ import java.util.List;
 @Service
 public class CommentService {
 
-    private final CommentRepository commentRep;
+    private final CommentRepository commentRepository;
     private final BoardRepository boardRepository;
-
-    private final UserRepository userRepository;
-
     private final StudyBoardRepository studyBoardRepository;
+    private final UserRepository userRepository;
+    private final AlarmService alarmService;
 
     public List<Comment> findCommentsByBoardId(Long id) {
-        return commentRep.findCommentsByBoardIdOrderByRegDate(id);
+        return commentRepository.findCommentsByBoardIdOrderByRegDate(id);
     }
 
-    public void saveComment(Long id, Comment comment, User user) {
-        Board board = boardRepository.findById(id).orElseThrow();
+    public void saveComment(Long boardId, Comment comment, User user) {
+        Board board = boardRepository.findById(boardId).orElseThrow();
         comment.save(board, user);
-        commentRep.save(comment);
+        commentRepository.save(comment);
         /*댓글단 유저에게 포인트 5점 추가*/
         userRepository
                 .findById(user.getId())
                 .orElse(null)
                 .addPoint(5);
+
+        User writer = board.getUser();
+        AlarmResponse response = AlarmResponse.comment(boardId + "번 게시글에 댓글이 달렸습니다.");
+        alarmService.send(writer.getId(), response);
     }
 
-    public void saveStudyBoardComment(Long id, Comment comment, User user){
+    public void saveStudyBoardComment(Long id, Comment comment, User user) {
         StudyBoard studyBoardById = studyBoardRepository.findStudyBoardById(id);
         comment.save(studyBoardById, user);
-        commentRep.save(comment);
+        commentRepository.save(comment);
         /*댓글단 유저에게 포인트 5점 추가*/
         userRepository
                 .findById(user.getId())
@@ -54,11 +56,10 @@ public class CommentService {
                 .addPoint(5);
     }
 
-
     public Comment delete(Long id) {
-        Comment comment = commentRep.findCommentById(id);
+        Comment comment = commentRepository.findCommentById(id);
         comment.getUser().addPoint(-5);
-        commentRep.deleteById(id);
+        commentRepository.deleteById(id);
         return comment;
     }
 }

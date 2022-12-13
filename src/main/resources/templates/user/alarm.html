@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul>
+  <th:block th:each="alarm : ${alarmList}">
+    <th:block th:if="${alarm.note == null}">
+      <li><a th:href="@{'/board/read/' + ${alarm.comment.getBoard().getId()}}" th:text="${'[' + alarm.alarmType + '] ' + alarm.comment.getBoard().getId() + ' 번 게시물에 댓글이 달렸습니다!'}"></a></li>
+    </th:block>
+    <th:block th:if="${alarm.comment == null}">
+      <li><a th:href="@{/note/read(noteId=${alarm.note.getId()}, isRead=true)}" th:text="${'[' + alarm.alarmType + '] ' + alarm.note.getSendUser() + ' 님에게 쪽지가 왔습니다!'}"></a></li>
+    </th:block>
+  </th:block>
+</ul>
+</body>
+</html>

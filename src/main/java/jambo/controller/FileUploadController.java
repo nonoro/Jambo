@@ -45,7 +45,6 @@ public class FileUploadController {
             jsonObject.addProperty("responseCode", "error");
             e.printStackTrace();
         }
-        String a = jsonObject.toString();
-        return a;
+        return jsonObject.toString();
     }
 }

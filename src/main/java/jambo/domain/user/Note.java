@@ -24,7 +24,6 @@ public class Note {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User sendUser;
-
     private String receiveUser;
 
     private String content;
@@ -32,4 +31,9 @@ public class Note {
     @CreatedDate
     private LocalDateTime sentTime;
 
+    public Note(User sendUser, String receiveUser, String content) {
+        this.sendUser = sendUser;
+        this.receiveUser = receiveUser;
+        this.content = content;
+    }
 }

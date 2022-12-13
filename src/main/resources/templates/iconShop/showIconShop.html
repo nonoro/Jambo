@@ -341,14 +341,14 @@
                             </div>
                         </div>
                     </div>
-                    <div style="display: flex; flex-wrap: wrap; width: 960px;">
+                    <div style="display: flex; flex-wrap: wrap; width: 960px; height: 150px">
                         <div class="iconList" th:each="icon : ${icons}">
                             <form th:action="@{'/icon/buy/' + ${icon.id}(page = ${icons.number})}" method="post">
                                 <div class="img">
                                     <img th:src="@{${savePath} + '/' + ${icon.fileName}}" name="fileName"><span class="name" name="name" th:text="${icon.name}"></span>
                                 </div>
                                 <div class="describe">
-                                    JANBO : <span th:text="${icon.price}" name="price"></span>&nbsp;&nbsp;&nbsp;수량 : <span th:text="${icon.quantity}" name="quantity"></span><br>
+                                    JANBO : <span th:text="${icon.price}" name="price"></span>&nbsp;&nbsp;&nbsp;수량 : <span th:text="${icon.quantity}" name="quantity"></span>J<br>
                                     <span>시간 : 무제한</span>
                                 </div>
                                 등록일 : <span th:text="${#temporals.format(icon.saveDate, 'yyyy-MM-dd HH:mm')}" name="saveDate"></span><br>
