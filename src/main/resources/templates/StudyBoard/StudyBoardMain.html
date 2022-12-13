@@ -260,6 +260,18 @@
             max-width: 80%;
             padding: 0px;
         }
+
+        .n_bth_s {
+            background: #f6c344;
+            border: 2px solid #000;
+            padding: 7px 20px;
+            margin-right: 6px;
+            margin-left: 90%;
+        }
+        .n_bth_s:hover {
+            background: #fff;
+            color: #fff;
+        }
     </style>
 </head>
 
@@ -424,14 +436,24 @@
     <!-- ======= Services Section ======= -->
     <section id="services" class="services">
         <div class="studyBoardContainer">
-            <span><a class="studyList_writeBoard" href="/StudyBoard/StudyBoardWrite" >글쓰기 </a></span>
+
+            <span><button class="n_bth_s"><a th:href="@{'/StudyBoard/StudyBoardWrite'}" style="color: black" class="n_a">글쓰기</a></button></span>
             <div class="row">
 
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100" th:each="board : ${list}">
+                    <a th:href="@{'/StudyBoard/read/'+${board.id}}">
                     <div class="icon-box iconbox-blue">
                         <span class="studyList_startDate" th:text="'시작예정일 | ' + ${board.startDate}"></span>
+
                         <a th:href="@{'/StudyBoard/read/'+${board.id}}">
                             <h4><span th:text="${board.title}"></span></h4></a>
+                        <th:block th:unless="${board.isRecruiting}">
+                        <div style="align-items:center; display: flex; justify-content:center;">
+                            <a th:href="@{'/StudyBoard/read/'+${board.id}}">
+                            <img src="/board/img/stamp.png" id="stamp" style="position: absolute; height: 250px">
+                            </a>
+                        </div>
+                        </th:block>
 
                          <div class="icon">
                             <div><img th:src="@{${savePath} + '/' + ${board.user.getMainEmotion()}}" alt="" style="width: 40px; height: 40px" class="rounded-circle"></div>
@@ -446,6 +468,7 @@
                             </span>
                         </div>
                     </div>
+                    </a>
                 </div>
             </div>
 
