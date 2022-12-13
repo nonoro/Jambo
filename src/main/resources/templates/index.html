@@ -1,452 +1,448 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <title>JamBo Index Page</title>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css'>
-    <link href="/index/index.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>JamBo Index Page</title>
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css'>
+  <link href="/index/index.css" rel="stylesheet">
 
-    <!-- 헤더 를 위한-->
-    <link href="/assets/img/jamboLogo.ico" rel="icon">
-    <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <!-- 헤더 를 위한-->
+  <link href="/assets/img/jamboLogo.ico" rel="icon">
+  <link href="/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
-          rel="stylesheet">
-    <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,600,0,0"/>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,600,0,0"/>
 
-    <!-- Vendor CSS Files -->
-    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-    <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-    <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-    <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-    <!-- Template Main CSS File -->
-    <link href="/assets/css/style.css" rel="stylesheet">
+  <!-- Template Main CSS File -->
+  <link href="/assets/css/style.css" rel="stylesheet">
 
 
-    <!--button-->
-    <style>
-        body, html {
-            padding: 0;
-            margin: 0;
-            width: 100%;
-            height: 100%;
-            user-select: none;
-            display: grid;
-        }
 
-        .liquid-button {
-            margin: auto;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .liquid-button {
-            margin: auto;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: -17px;
-            margin-left: 231px;
-        }
-    </style>
-    <style>
-        html, body {
-            padding: 0;
-            margin: 0;
-            width: 100vw;
-            height: 750px;
-            position: relative;
-            overflow: hidden;
-            background: linear-gradient(#123, #111);
-        }
-
-        .snowflake {
-            --size: 1vw;
-            width: var(--size);
-            height: var(--size);
-            background: white;
-            border-radius: 50%;
-            position: absolute;
-            top: -5vh;
-        }
-
-        @keyframes snowfall {
-            0% {
-                transform: translate3d(var(--left-ini), 0, 0);
-            }
-            100% {
-                transform: translate3d(var(--left-end), 110vh, 0);
-            }
-        }
-    </style>
+  <!--button-->
+  <style>
+    body, html {
+      padding: 0;
+      margin: 0;
+      width: 100%;
+      height: 100%;
+      user-select: none;
+      display: grid;
+    }
+    .liquid-button {
+      margin: auto;
+      font-weight: bold;
+      cursor: pointer;
+  }
+  .liquid-button {
+    margin: auto;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: -17px;
+    margin-left: 231px;
+  }
+  </style>
+  <style>
+  html, body {
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 750px;
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(#123, #111);
+  }
+ .snowflake {
+	 --size: 1vw;
+	 width: var(--size);
+	 height: var(--size);
+	 background: white;
+	 border-radius: 50%;
+	 position: absolute;
+	 top: -5vh;
+}
+ @keyframes snowfall {
+	 0% {
+		 transform: translate3d(var(--left-ini), 0, 0);
+	}
+	 100% {
+		 transform: translate3d(var(--left-end), 110vh, 0);
+	}
+}
+  </style>
 
 
 </head>
 <body>
 <header th:replace="../templates/common/header.html ::header"></header>
-<!--snow-->
-<div id="outer">
+  <!--snow-->
+  <div id="outer">
     <div class="snowflakes" aria-hidden="true">
-        <div class="snowflake" style="font-size: 12px"></div>
-        <div class="snowflake" style="font-size: 26px"></div>
-        <div class="snowflake" style="font-size: 28px"></div>
-        <div class="snowflake" style="font-size: 10px"></div>
-        <div class="snowflake" style="font-size: 17px"></div>
-        <div class="snowflake" style="font-size: 22px"></div>
-        <div class="snowflake" style="font-size: 16px"></div>
-        <div class="snowflake" style="font-size: 20px"></div>
-        <div class="snowflake" style="font-size: 28px"></div>
-        <div class="snowflake" style="font-size: 20px"></div>
-        <div class="snowflake" style="font-size: 22px"></div>
-        <div class="snowflake" style="font-size: 10px"></div>
-        <div class="snowflake" style="font-size: 28px"></div>
-        <div class="snowflake" style="font-size: 28px"></div>
-        <div class="snowflake" style="font-size: 10px"></div>
-        <div class="snowflake" style="font-size: 30px"></div>
-        <div class="snowflake" style="font-size: 15px"></div>
-        <div class="snowflake" style="font-size: 20px"></div>
-        <div class="snowflake" style="font-size: 13px"></div>
+      <div class="snowflake" style="font-size: 12px"></div>
+      <div class="snowflake" style="font-size: 26px"></div>
+      <div class="snowflake" style="font-size: 28px"></div>
+      <div class="snowflake" style="font-size: 10px"></div>
+      <div class="snowflake" style="font-size: 17px"></div>
+      <div class="snowflake" style="font-size: 22px"></div>
+      <div class="snowflake" style="font-size: 16px"></div>
+      <div class="snowflake" style="font-size: 20px"></div>
+      <div class="snowflake" style="font-size: 28px"></div>
+      <div class="snowflake" style="font-size: 20px"></div>	
+      <div class="snowflake" style="font-size: 22px"></div>
+      <div class="snowflake" style="font-size: 10px"></div>
+      <div class="snowflake" style="font-size: 28px"></div>
+      <div class="snowflake" style="font-size: 28px"></div>
+      <div class="snowflake" style="font-size: 10px"></div>
+      <div class="snowflake" style="font-size: 30px"></div>
+      <div class="snowflake" style="font-size: 15px"></div>
+      <div class="snowflake" style="font-size: 20px"></div>
+      <div class="snowflake" style="font-size: 13px"></div>
+  </div>
+  <h1>Study group website</h1>
+<!-- partial:index.partial.html -->
+<div class='pages'>
+
+  <input id='one' name='trigger' type='radio'>
+  <input id='two' name='trigger' type='radio'>
+  <input id='three' name='trigger' type='radio'>
+  <input id='four' name='trigger' type='radio'>
+
+  <div class='pages_page'>
+    <div class='pages_page__inner'>
+      <div class='logo'>o(〃'▽'〃)o</div>
+      <div class='pagenumber'>1 2</div>
+      <div class='content'>
+        <div class='content_centers'>
+          <h4 style="font-size: 55px;">Welcome to</h4>
+          <h3 class="h3s">개발자 스터디 모임 </h3>
+        </div>
+      </div>
     </div>
-    <h1>Study group website</h1>
-    <!-- partial:index.partial.html -->
-    <div class='pages'>
+  </div>
+  
 
-        <input id='one' name='trigger' type='radio'>
-        <input id='two' name='trigger' type='radio'>
-        <input id='three' name='trigger' type='radio'>
-        <input id='four' name='trigger' type='radio'>
-
-        <div class='pages_page'>
-            <div class='pages_page__inner'>
-                <div class='logo'>o(〃'▽'〃)o</div>
-                <div class='pagenumber'>1 2</div>
-                <div class='content'>
-                    <div class='content_centers'>
-                        <h4>Welcome to</h4>
-                        <h3 class="h3s">개발자 스터디 모임 </h3>
-                    </div>
-                </div>
-            </div>
+  <div class='pages_page'>
+    <div class='pages_page__inner'>
+      <div class='content'>
+        <div class='content_centerss'>
+          <h4 style="font-size: 55px;">&nbsp;Jambo site !!</h4>
+          <h3 class="h3ss">웹 사이트 "잠보"입니다.</h3>
         </div>
-
-
-        <div class='pages_page'>
-            <div class='pages_page__inner'>
-                <div class='content'>
-                    <div class='content_centerss'>
-                        <h4>&nbsp;Jambo site !!</h4>
-                        <h3 class="h3ss">웹 사이트 "잠보"입니다.</h3>
-                    </div>
-                    <img src="/index/main/ele1.png" class="right" style="height: 145px;">
-                </div>
-                <div class='control next'>
-                    <label for='two'></label>
-                </div>
-
-            </div>
-        </div>
-
-        <div class='pages_page'>
-            <div class='pages_page__inner'>
-                <div class='pagenumber'>2 3</div>
-                <div class='control'>
-                    <label for='one'></label>
-                </div>
-                <div class='content'>
-                    <div class='content_offset'>
-                        <h2>스터디 게시판 📚</h2>
-                        <p>직접 모임을 개설하여 원하는 팀원을 선택할 수 있는</br>동시에 자신이 원하는 조건의 모임을 선택하여 스터디를 참여할 수 있습니다.</p>
-                        <h5>
-                            <a href="#" style="font-size: 13px;"><span class='name'>Study board</span>
-                                <span class='auth'>- 바로 가기</span></a>
-                        </h5>
-                    </div>
-                    <h1>
-                        <span>S</span>
-                        <span>T</span>
-                        <span>U</span>
-                        <span>D</span>
-                        <span>Y</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <br>
-                        <span>B</span>
-                        <span>o</span>
-                        <span>a</span>
-                        <span>r</span>
-                        <span>D</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                    </h1>
-                </div>
-            </div>
-        </div>
-
-        <div class='pages_page'>
-            <div class='pages_page__inner'>
-                <div class='hamburger'>
-                    <div class='hamburger_part'></div>
-                    <div class='hamburger_part'></div>
-                    <div class='hamburger_part'></div>
-                </div>
-                <div class='control next'>
-                    <label for='three'></label>
-                </div>
-                <div class='bg'></div>
-                <div class='footer'>
-                    <i class="fab fa-google-plus-g"></i>
-                    <i class="fas fa-retweet"></i>
-                    <i class="far fa-heart"></i>
-                    <i class="far fa-share-square"></i>
-                </div>
-                <div class='content'>
-                    <div class='content_quote'>
-                        <h5>
-                            <span class="h2_2">자유 게시판 💬</span>
-                            <span class="pp">특정한 주제 없이 자유롭게 글을 쓸 수 있는 공간입니다. 자신의 의견을 자유롭게 이야기해보세요.</span>
-                            <a href="#"><span class='name'>free board -바로 가기</span></a>
-                        </h5>
-                    </div>
-                    <h1>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>f</span>
-                        <span>r</span>
-                        <span>e</span>
-                        <span>e</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>f</span>
-                        <span>r</span>
-                        <span>e</span>
-                        <span>e</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <br>
-                        <span>h</span>
-                        <span>e</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>b</span>
-                        <span>o</span>
-                        <span>a</span>
-                        <span>r</span>
-                        <span>D</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                    </h1>
-                </div>
-            </div>
-        </div>
-
-        <div class='pages_page'>
-            <div class='pages_page__inner'>
-                <div class='pagenumber'>4 5</div>
-                <div class='control'>
-                    <label for='one'></label>
-                </div>
-                <div class='content'>
-                    <div class='content_offsets'>
-                        <h2 class="h2_b">소.작.모 💡</h2>
-                        <p>소소한 작품 공모전에 참여해보세요. 잠보 협업 기업들과의 채용 기회를 얻을 수 있습니다.</p>
-                        <h5>
-                            <a href="#" style="font-size: 13px;"><span class='name'>contest exhibit</span>
-                                <span class='auth'>- 바로 가기</span></a>
-                        </h5>
-                    </div>
-                    <h2 class="h1_con">
-                        <span>c</span>
-                        <span>o</span>
-                        <span>n</span>
-                        <span>t</span>
-                        <span>e</span>
-                        <span>s</span>
-                        <span>t</span>
-                        <span>&nbsp;</span>
-                        <span>e</span>
-                        <span>x</span>
-                        <span>h</span>
-                        <span>i</span>
-                        <span>b</span>
-                        <span>i</span>
-                        <span>t</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                        <span>&nbsp;</span>
-                    </h2>
-                </div>
-                <div class='control'>
-                    <label for='two'></label>
-                </div>
-            </div>
-        </div>
-
-        <div class='pages_page'>
-            <div class='pages_page__inner'>
-                <div class='hamburger'>
-                    <div class='hamburger_part'></div>
-                    <div class='hamburger_part'></div>
-                    <div class='hamburger_part'></div>
-                </div>
-                <div class='control next'>
-                    <label for='four'></label>
-                </div>
-                <div class='bg'></div>
-                <div class='content'>
-                    <div class='content_center right'>
-                        <h4>QnA</h4>
-                        <h2 class="h2_bb">질의응답 📣</h2>
-                        <p>잠보 사이트를 이용하는 데 필요한 정보들이 있는</br>공간입니다. 궁금한 사항들이 모두 모여있으니</br>이곳에서 확인해주세요.</p>
-                        <h5>
-                            <a href="#" style="font-size: 13px;"><span class='name'>QnA</span>
-                                <span class='auth'>- 바로 가기</span></a>
-                        </h5>
-                    </div>
-                </div>
-                <div class='footer'>
-                    <i class="fab fa-google-plus-g"></i>
-                    <i class="fas fa-retweet"></i>
-                    <i class="far fa-heart"></i>
-                    <i class="far fa-share-square"></i>
-                </div>
-            </div>
-        </div>
-
-        <div class='pages_page'>
-            <div class='pages_page__inner'>
-                <div class='pagenumber'>6 7</div>
-                <div class='content'>
-                    <div class='content_section'>
-                        <h2>Emoticon Shop ◡̈⋆</h2>
-                        <p>JamBo의 이모티콘 샵입니다.</br>기본 이모티콘부터 움직이는 애니메이션 이모니콘까지</br>여러가지 종류가 존재합니다. 이모티콘은 다양한 활동을</br>통해 얻은
-                            포인트로 구매가 가능하며, 마이페이지에서</br>보유 포인트를 조회할 수 있습니다.</p>
-                    </div>
-                    <div class='content_section'>
-                        <h2>Animation</h2>
-                        <p>애니메이션 이모티콘 종류입니다.</br>움직이는 이모티콘으로, 활동 Point 2000J로</br>구매 가능합니다.</p>
-                    </div>
-                    <div class='content_section'>
-                        <h2>Basic</h2>
-                        <p>기본 이모티콘 종류입니다.</br>활동 Point 1000J로 구매 가능합니다.</p>
-                    </div>
-                </div>
-                <div class='control'>
-                    <label for='three'></label>
-                </div>
-            </div>
-        </div>
-
-        <div class='pages_page'>
-            <div class='pages_page__inner'>
-                <div class='hamburger'>
-                    <div class='hamburger_part'></div>
-                    <div class='hamburger_part'></div>
-                    <div class='hamburger_part'></div>
-                </div>
-                <div class='bg'></div>
-                <div class='content'>
-                    <div class='content_center2 rights'>
-                        <img src="/index/main/basic_ele.png" class="leftss">
-                        <img src="/index/main/basic_seal.png" class="leftss">
-                        <img src="/index/main/basic_dog.png" class="leftss">
-                        <h5>
-                            <a href="#" class="emg"><span class='name'>Basic</span>
-                                <span class='auth'>Emoticon ></span></a>
-                        </h5>
-                        <img src="/index/main/pig.gif" class="lefts">
-                        <img src="/index/main/rabbit.gif" class="lefts">
-                        <img src="/index/main/dolphin.gif" class="lefts">
-                        <h5>
-                            <a href="#" class="emg"><span class='name'>Animation</span>
-                                <span class='auth'>Emoticon ></span></a>
-                        </h5>
-                    </div>
-                </div>
-                <div class='footer'>
-                    <i class="fab fa-google-plus-g"></i>
-                    <i class="fas fa-retweet"></i>
-                    <i class="far fa-heart"></i>
-                    <i class="far fa-share-square"></i>
-                </div>
-            </div>
-        </div>
+        <img src="/index/main/ele1.png" class="right" style="height: 145px;">
+      </div>
+      <div class='control next'>
+        <label for='two'></label>
+      </div>
 
     </div>
+  </div>
 
-    <!-- partial -->
+  <div class='pages_page'>
+    <div class='pages_page__inner'>
+      <div class='pagenumber'>2 3</div>
+      <div class='control'>
+        <label for='one'></label>
+      </div>
+      <div class='content'>
+        <div class='content_offset'>
+          <h2>스터디 게시판 📚</h2>
+          <p>직접 모임을 개설하여 원하는 팀원을 선택할 수 있는</br>동시에 자신이 원하는 조건의 모임을 선택하여 스터디를 참여할 수 있습니다.</p>
+          <h5>
+            <a href="#" style="font-size: 13px;"><span class='name'>Study board</span>
+            <span class='auth'>- 바로 가기</span></a>
+          </h5>
+        </div>
+        <h1>
+          <span>S</span>
+          <span>T</span>
+          <span>U</span>
+          <span>D</span>
+          <span>Y</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <br>
+          <span>B</span>
+          <span>o</span>
+          <span>a</span>
+          <span>r</span>
+          <span>D</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+        </h1>
+      </div>
+    </div>
+  </div>
+
+  <div class='pages_page'>
+    <div class='pages_page__inner'>
+      <div class='hamburger'>
+        <div class='hamburger_part'></div>
+        <div class='hamburger_part'></div>
+        <div class='hamburger_part'></div>
+      </div>
+      <div class='control next'>
+        <label for='three'></label>
+      </div>
+      <div class='bg'></div>
+      <div class='footer'>
+        <i class="fab fa-google-plus-g"></i>
+        <i class="fas fa-retweet"></i>
+        <i class="far fa-heart"></i>
+        <i class="far fa-share-square"></i>
+      </div>
+      <div class='content'>
+        <div class='content_quote'>
+          <h5>
+            <span class="h2_2">자유 게시판 💬</span>
+            <span class="pp">특정한 주제 없이 자유롭게 글을 쓸 수 있는 공간입니다. 자신의 의견을 자유롭게 이야기해보세요.</span>
+            <a href="#"><span class='name'>free board -바로 가기</span></a>
+          </h5>
+        </div>
+        <h1>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>f</span>
+          <span>r</span>
+          <span>e</span>
+          <span>e</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>f</span>
+          <span>r</span>
+          <span>e</span>
+          <span>e</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <br>
+          <span>h</span>
+          <span>e</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>b</span>
+          <span>o</span>
+          <span>a</span>
+          <span>r</span>
+          <span>D</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+        </h1>
+      </div>
+    </div>
+  </div>
+
+  <div class='pages_page'>
+    <div class='pages_page__inner'>
+      <div class='pagenumber'>4 5</div>
+      <div class='control'>
+        <label for='one'></label>
+      </div>
+      <div class='content'>
+        <div class='content_offsets'>
+          <h2 class="h2_b">소.작.모 💡</h2>
+          <p>소소한 작품 공모전에 참여해보세요. 잠보 협업 기업들과의 채용 기회를 얻을 수 있습니다.</p>
+          <h5>
+            <a href="#" style="font-size: 13px;"><span class='name'>contest exhibit</span>
+            <span class='auth'>- 바로 가기</span></a>
+          </h5>
+        </div>
+        <h2 class="h1_con">
+          <span>c</span>
+          <span>o</span>
+          <span>n</span>
+          <span>t</span>
+          <span>e</span>
+          <span>s</span>
+          <span>t</span>
+          <span>&nbsp;</span>
+          <span>e</span>
+          <span>x</span>
+          <span>h</span>
+          <span>i</span>
+          <span>b</span>
+          <span>i</span>
+          <span>t</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+          <span>&nbsp;</span>
+        </h2>
+      </div>
+      <div class='control'>
+        <label for='two'></label>
+      </div>
+    </div>
+  </div>
+
+  <div class='pages_page'>
+    <div class='pages_page__inner'>
+      <div class='hamburger'>
+        <div class='hamburger_part'></div>
+        <div class='hamburger_part'></div>
+        <div class='hamburger_part'></div>
+      </div>
+      <div class='control next'>
+        <label for='four'></label>
+      </div>
+      <div class='bg'></div>
+      <div class='content'>
+        <div class='content_center right'>
+          <h4>QnA</h4>
+          <h2 class="h2_bb">질의응답 📣</h2>
+          <p>잠보 사이트를 이용하는 데 필요한 정보들이 있는</br>공간입니다. 궁금한 사항들이 모두 모여있으니</br>이곳에서 확인해주세요.</p>
+          <h5>
+            <a href="#" style="font-size: 13px;"><span class='name'>QnA</span>
+            <span class='auth'>- 바로 가기</span></a>
+          </h5>
+        </div>
+      </div>
+      <div class='footer'>
+        <i class="fab fa-google-plus-g"></i>
+        <i class="fas fa-retweet"></i>
+        <i class="far fa-heart"></i>
+        <i class="far fa-share-square"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class='pages_page'>
+    <div class='pages_page__inner'>
+      <div class='pagenumber'>6 7</div>
+      <div class='content'>
+        <div class='content_section'>
+          <h2>Emoticon Shop ◡̈⋆</h2>
+          <p>JamBo의 이모티콘 샵입니다.</br>기본 이모티콘부터 움직이는 애니메이션 이모니콘까지</br>여러가지 종류가 존재합니다. 이모티콘은 다양한 활동을</br>통해 얻은 포인트로 구매가 가능하며, 마이페이지에서</br>보유 포인트를 조회할 수 있습니다.</p>
+        </div>
+        <div class='content_section'>
+          <h2>Animation</h2>
+          <p>애니메이션 이모티콘 종류입니다.</br>움직이는 이모티콘으로, 활동 Point 2000J로</br>구매 가능합니다.</p>
+        </div>
+        <div class='content_section'>
+          <h2>Basic</h2>
+          <p>기본 이모티콘 종류입니다.</br>활동 Point 1000J로 구매 가능합니다.</p>
+        </div>
+      </div>
+      <div class='control'>
+        <label for='three'></label>
+      </div>
+    </div>
+  </div>
+
+  <div class='pages_page'>
+    <div class='pages_page__inner'>
+      <div class='hamburger'>
+        <div class='hamburger_part'></div>
+        <div class='hamburger_part'></div>
+        <div class='hamburger_part'></div>
+      </div>
+      <div class='bg'></div>
+      <div class='content'>
+        <div class='content_center2 rights'>
+          <img src="/index/main/basic_ele.png" class="leftss">
+          <img src="/index/main/basic_seal.png" class="leftss">
+          <img src="/index/main/basic_dog.png" class="leftss">
+          <h5>
+            <a href="#" class="emg"><span class='name'>Basic</span>
+            <span class='auth'>Emoticon ></span></a>
+          </h5>
+          <img src="/index/main/pig.gif" class="lefts">
+          <img src="/index/main/rabbit.gif" class="lefts">
+          <img src="/index/main/dolphin.gif" class="lefts">
+          <h5>
+            <a href="#" class="emg"><span class='name'>Animation</span>
+            <span class='auth'>Emoticon ></span></a>
+          </h5>
+        </div>
+      </div>
+      <div class='footer'>
+        <i class="fab fa-google-plus-g"></i>
+        <i class="fas fa-retweet"></i>
+        <i class="far fa-heart"></i>
+        <i class="far fa-share-square"></i>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- partial -->
     <script src="/index/index.js"></script>
 
-    <!--    헤터를 위한-->
+<!--    헤터를 위한-->
     <script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
     <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
@@ -456,43 +452,44 @@
 
     <!--Slideshow header-->
     <script>
-        let slideIndex = 1;
-        showSlides(slideIndex);
+      let slideIndex = 1;
+      showSlides(slideIndex);
 
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
+      function plusSlides(n) {
+        showSlides(slideIndex += n);
+      }
+
+      function currentSlide(n) {
+        showSlides(slideIndex = n);
+      }
+
+      function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("demo");
+        let captionText = document.getElementById("caption");
+        if (n > slides.length) {
+          slideIndex = 1
         }
-
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
+        if (n < 1) {
+          slideIndex = slides.length
         }
-
-        function showSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("mySlides");
-            let dots = document.getElementsByClassName("demo");
-            let captionText = document.getElementById("caption");
-            if (n > slides.length) {
-                slideIndex = 1
-            }
-            if (n < 1) {
-                slideIndex = slides.length
-            }
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].className += " active";
-            captionText.innerHTML = dots[slideIndex - 1].alt;
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
         }
-
-
-        function button_opacity() {
-            document.getElementById("main").style.opacity = "0.2";
+        for (i = 0; i < dots.length; i++) {
+          dots[i].className = dots[i].className.replace(" active", "");
         }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+      }
+
+
+
+      function button_opacity(){
+        document.getElementById("main").style.opacity="0.2";
+      }
 
     </script>
 
@@ -500,10 +497,10 @@
     <script src="/assets/js/main.js"></script>
 
     <script>
-        function myFunction() {
-            var element = document.body;
-            element.classList.toggle("dark-mode");
-        }
+      function myFunction() {
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+      }
     </script>
 </body>
 </html>
