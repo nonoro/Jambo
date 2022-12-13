@@ -30,6 +30,8 @@ public class UserSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/board/write")
                 .hasRole("USER")
+                .antMatchers("/StudyBoard/StudyBoardWrite")
+                .hasRole("USER")
 //                .antMatchers("/icon/shop")
 //                .hasRole("USER")
 //                .antMatchers("/icon/register")

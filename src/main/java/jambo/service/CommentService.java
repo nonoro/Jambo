@@ -2,11 +2,13 @@ package jambo.service;
 
 import jambo.domain.Comment;
 import jambo.domain.board.Board;
+import jambo.domain.board.StudyBoard;
 import jambo.domain.board.type.Category;
 import jambo.domain.user.User;
 import jambo.dto.StudyBoardDTO;
 import jambo.repository.BoardRepository;
 import jambo.repository.CommentRepository;
+import jambo.repository.StudyBoardRepository;
 import jambo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,8 @@ public class CommentService {
 
     private final UserRepository userRepository;
 
+    private final StudyBoardRepository studyBoardRepository;
+
     public List<Comment> findCommentsByBoardId(Long id) {
         return commentRep.findCommentsByBoardIdOrderByRegDate(id);
     }
@@ -31,6 +35,17 @@ public class CommentService {
     public void saveComment(Long id, Comment comment, User user) {
         Board board = boardRepository.findById(id).orElseThrow();
         comment.save(board, user);
+        commentRep.save(comment);
+        /*댓글단 유저에게 포인트 5점 추가*/
+        userRepository
+                .findById(user.getId())
+                .orElse(null)
+                .addPoint(5);
+    }
+
+    public void saveStudyBoardComment(Long id, Comment comment, User user){
+        StudyBoard studyBoardById = studyBoardRepository.findStudyBoardById(id);
+        comment.save(studyBoardById, user);
         commentRep.save(comment);
         /*댓글단 유저에게 포인트 5점 추가*/
         userRepository
