@@ -7,33 +7,28 @@ import jambo.domain.board.StudyBoard;
 import jambo.domain.user.User;
 import jambo.dto.UserJoinDTO;
 import jambo.dto.UserMyPageResponseDTO;
-import jambo.service.*;
-
+import jambo.service.BoardService;
+import jambo.service.FileService;
+import jambo.service.StudyBoardService;
+import jambo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
-
 import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
-import java.util.concurrent.CopyOnWriteArraySet;
 
 @Controller
 @RequiredArgsConstructor
@@ -118,7 +113,7 @@ public class UserController {
         model.addAttribute("savePath", dbFile);
         System.out.println("userResponseDTO = " + userMyPageResponseDTO);
         
-        return "/user/profile";
+        return "user/profile";
     }
 
     /**
@@ -129,7 +124,7 @@ public class UserController {
         User dbUser = userService.findUser(user);
         model.addAttribute("userInfo", dbUser);
 
-        return "/user/updateMyInfo";
+        return "user/updateMyInfo";
     }
 
     /**

@@ -8,14 +8,10 @@ import jambo.repository.AlarmRepository;
 import jambo.repository.NoteRepository;
 import jambo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
-
-import java.io.IOException;
-import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -52,9 +48,8 @@ public class NoteService {
      * 쪽지 전송
      */
     public void insert(Note note, User user) {
-//        note.setSendUser(note.getSendUser());
         note.setSendUser(user);
-        Note dbNote = noteRepository.save(note);
+        noteRepository.save(note);
 
         String receiveUser = note.getReceiveUser();
 
