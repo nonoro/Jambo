@@ -2,6 +2,7 @@ package jambo.repository;
 
 import jambo.domain.user.User;
 import jambo.domain.user.type.MBTI;
+import jambo.dto.UserUpdateDTO;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.time.LocalDateTime;
