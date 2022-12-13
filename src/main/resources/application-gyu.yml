@@ -6,4 +6,6 @@ spring:
 #    url: jdbc:oracle:thin:@jambo_medium?TNS_ADMIN=/Users/nonoro/db/3p/wallet
 #    username: ADMIN
 #    password: Jambo123456!
-
+file:
+  urlPath: /img
+  path: /Users/nonoro/finalJambo/projectJambo/src/main/resources/img/
