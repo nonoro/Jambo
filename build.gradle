@@ -1,14 +1,7 @@
-buildscript {
-    ext {
-        queryDslVersion = "5.0.0"
-    }
-}
-
 plugins {
     id 'java'
     id 'org.springframework.boot' version '2.7.6'
     id 'io.spring.dependency-management' version '1.0.15.RELEASE'
-    id "com.ewerk.gradle.plugins.querydsl" version "1.0.10"
 }
 
 group = 'com.example'
@@ -38,7 +31,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-security'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-websocket'
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
@@ -49,8 +41,6 @@ dependencies {
     implementation group: 'com.oracle.database.security', name: 'osdt_cert', version: '21.7.0.0'
     implementation group: 'com.oracle.database.security', name: 'oraclepki', version: '21.7.0.0'
     implementation group: 'com.oracle.database.security', name: 'osdt_core', version: '21.7.0.0'
-    implementation "com.querydsl:querydsl-jpa:${queryDslVersion}"
-    implementation "com.querydsl:querydsl-apt:${queryDslVersion}"
 
     /*파일 업로드 관련 설정*/
     implementation group: 'commons-io', name: 'commons-io', version: '2.11.0'
@@ -60,20 +50,4 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
-}
-
-def querydslDir = "$buildDir/generated/querydsl"
-
-querydsl {
-    jpa = true
-    querydslSourcesDir = querydslDir
-}
-sourceSets {
-    main.java.srcDir querydslDir
-}
-configurations {
-    querydsl.extendsFrom compileClasspath
-}
-compileQuerydsl{
-    options.annotationProcessorPath = configurations.querydsl
 }
