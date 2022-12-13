@@ -56,7 +56,7 @@ public class AdminController {
     @GetMapping("/iconRegister")
     public String openIconRegisterForm(){
 
-        return "/admin/iconRegister";
+        return "admin/iconRegister";
     }
 
     /**
@@ -65,7 +65,7 @@ public class AdminController {
     @RequestMapping("/openWriteForm")
     public String openWriteForm() {
 
-        return "/admin/BoardWriteForm";
+        return "admin/BoardWriteForm";
     }
 
     @GetMapping("/ReportPage")
@@ -83,7 +83,7 @@ public class AdminController {
     }
     @GetMapping("/joinForm")
     public String openAdminJoinForm(){
-        return "/admin/adminJoin";
+        return "admin/adminJoin";
     }
 
     @PostMapping("/join")
