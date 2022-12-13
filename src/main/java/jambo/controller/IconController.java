@@ -36,7 +36,7 @@ public class IconController {
     private final UserRepository userRepository;
 
     @GetMapping("/shop")
-    public String showIconShop(Model model, String keyWord, @PageableDefault(size = 3, direction = Sort.Direction.DESC) Pageable pageable, @AuthenticationPrincipal User securityUser) {
+    public String showIconShop(Model model, String keyWord, @PageableDefault(size = 6, direction = Sort.Direction.DESC) Pageable pageable, @AuthenticationPrincipal User securityUser) {
         int state = 1;
 
         if (securityUser == null) {

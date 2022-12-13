@@ -28,13 +28,13 @@ public class StudyBoardController {
         List<StudyBoard> boards = service.selectAll();
         model.addAttribute("list", boards);
 
-        return "/StudyBoard/StudyBoardMain";
+        return "StudyBoard/StudyBoardMain";
     }
 
     @RequestMapping("/StudyBoardWrite")
     public String openWriteForm() {
 
-        return "/StudyBoard/StudyBoardWriteForm";
+        return "StudyBoard/StudyBoardWriteForm";
     }
 
     @RequestMapping("/insert")

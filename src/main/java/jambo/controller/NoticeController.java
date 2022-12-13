@@ -20,6 +20,6 @@ public class NoticeController {
         List<Board> list = noticeService.selectAll(); // list 변수에 결과 값을 담는다
 
 //        model.addAttribute("list", list); // model에 데이터 값을 담는다
-        return "/notice/list"; // Notice/list로 이동
+        return "notice/list"; // Notice/list로 이동
     }
 }

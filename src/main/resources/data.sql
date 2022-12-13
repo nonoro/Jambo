@@ -1,4 +1,4 @@
-
+--
 --insert into icon_shop values (2000, '2a459a5.png', '하마1', 100, 100, sysdate);
 --insert into icon_shop values (2001, '0da7a7e.gif', '하마2', 200, 100, sysdate);
 --insert into icon_shop values (2003, '0d6158c.gif', '하마3', 300, 100, sysdate);
@@ -39,4 +39,4 @@
 --insert into tech_stack values (26, 'Git');
 --insert into tech_stack values (27, 'Figma');
 --insert into tech_stack values (28, 'Zeplin');
-
+--

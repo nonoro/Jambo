@@ -24,7 +24,6 @@ public class Note {
     @ManyToOne(fetch = FetchType.LAZY) //이게 없으면 조인이 안된다고 함, 왜 ManyToOne인가요
     @JoinColumn(name = "user_id") //name을 왜 user_id로 줬을까 sendUser도 있는뎅
     private User sendUser;
-
     private String receiveUser;
 
     private String content;
@@ -32,4 +31,9 @@ public class Note {
     @CreatedDate
     private LocalDateTime sentTime;
 
+    public Note(User sendUser, String receiveUser, String content) {
+        this.sendUser = sendUser;
+        this.receiveUser = receiveUser;
+        this.content = content;
+    }
 }

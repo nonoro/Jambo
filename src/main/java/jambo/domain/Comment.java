@@ -43,9 +43,13 @@ public class Comment {
         this.user = user;
     }
 
+    public Comment(Board board, User user, String content) {
+        this.board = board;
+        this.user = user;
+        this.content = content;
+    }
 
-
-//    @CreationTimestamp
+    //    @CreationTimestamp
 //    private LocalDateTime regDate;
 
 //    private boolean isReported;

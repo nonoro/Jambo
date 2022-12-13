@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -19,7 +20,6 @@ import java.util.List;
 public class NoteController {
 
     private final NoteService noteService;
-    private final UserService userService;
 
     /**
      * 받은 쪽지함
@@ -47,8 +47,7 @@ public class NoteController {
     @PostMapping("/insert")
     public String insert(Note note, @AuthenticationPrincipal User user){
         //보내는 사람은 로그인한 나인거지 그치...
-        User dbUser = userService.myPage(user.getId());
-        noteService.insert(note, dbUser);
+        noteService.insert(note, user);
 
         return "redirect:/note/list";//url리턴 - 리다이렉트 or 포워드(모델)
     }
@@ -57,10 +56,10 @@ public class NoteController {
      * 쪽지 상세보기
      */
     @RequestMapping("/read")
-    public String read(Model model, Long noteId){
+    public String read(Model model, Long noteId, Boolean isRead) {
         Note note = noteService.selectBy(noteId);
         model.addAttribute("note", note);
-        return "/note/read";
+        return "note/read";
     }
 
     /**

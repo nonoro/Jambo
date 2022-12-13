@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class HomeController {
 
     @GetMapping("/")
-    public String index(Model model, @AuthenticationPrincipal User user) {
+    public String index(Model model) {
         return "index";
     }
 
