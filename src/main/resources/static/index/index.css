@@ -274,6 +274,7 @@ img.lefts {
   float: none;
   margin-top: 8%;
   border-radius: 5%;
+  margin-bottom: 10px;
 }
 img.leftss {
   float: none;
@@ -281,8 +282,9 @@ img.leftss {
   background: #fff;
   padding: 14px;
   border-radius: 5%;
+  margin-bottom: 10px;
 }
-a {
+.emg {
   color: #fff;
   text-decoration: none;
   text-shadow: -1px 0 #000, 0 5px #000, 1px 0 1px #000, 0 -1px #000;
@@ -291,12 +293,21 @@ h5:hover {
   color: #fff;
 }
 
+.h5, h5 {
+    font-size: 13px;
+}
+
+.h1, h1 {
+    font-size: 41px;
+}
+
 h1 {
   font-family: "Simpsonfont";
-  font-size: 60px;
+  font-size: 41px;
   text-align: center;
   margin-top: 6vh;
   color: #fff;
+  padding-top: 104px;
 }
 
 .h2_2 {
@@ -334,11 +345,11 @@ img.right {
 .content_centers {
   font-size: 55px;
   padding-left: 36%;
-  padding-top: 26%;
+  padding-top: 42%;
 }
 .content_centerss {
   font-size: 55px;
-  padding: 26% 70% 0 0;
+  padding: 42% 70% 0 0;
 }
 
 .card00 {
@@ -423,15 +434,15 @@ img.right {
 }
 
 .h2_b {
-  font-size: 17px;
-  letter-spacing: 2px;
-  margin: 27px 0 0 0;
-  color: #fff;
+    font-size: 20px;
+    letter-spacing: 2px;
+    margin: 101px 0 9px 0;
+    color: #fff;
 }
 .h2_bb {
-  font-size: 17px;
+  font-size: 19px;
   letter-spacing: 2px;
-  margin: 103px 0 0 0;
+  margin: 100px 0 10px 0;
   color: #fff;
 }
 .h1_con {
@@ -1550,7 +1561,7 @@ body .pages_page__inner .content_center h6:nth-of-type(2) {
 body .pages_page__inner .content_center.right {
   right: auto;
   -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-  left: 24%;
+  left: 23%;
 }
 body .pages_page__inner .content_center.rights {
   right: auto;
@@ -1596,8 +1607,8 @@ body .pages_page__inner .content_quote h5 span.quo:nth-of-type(1) i {
 body .pages_page__inner .content_offset {
   position: absolute;
   width: 280px;
-  top: 301px;
-  left: 48%;
+  top: 306px;
+  left: 47%;
   transform: translateX(-350px);
   color: #fff;
   height: 150px;
@@ -1605,12 +1616,18 @@ body .pages_page__inner .content_offset {
 body .pages_page__inner .content_offsets {
 position: absolute;
 width: 280px;
-top: 283px;
-left: 97%;
+top: 218px;
+left: 94%;
 transform: translateX(-350px);
 color: var(--yellow);
 height: 150px;
 }
+
+body .pages_page__inner .content_offset p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
 body .pages_page__inner .content_offset h2,
 body .pages_page__inner .content_offset p {
   margin: 0;

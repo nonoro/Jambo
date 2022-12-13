@@ -173,5 +173,4 @@ public class BoardController {
         reportService.reportBoardByUser(id, user, ReportType.mapping(report));
         return "redirect:/board/read/" + id +"?flag=1";
     }
-
 }

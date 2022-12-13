@@ -60,4 +60,9 @@ public class StudyBoardService {
     public List<StudyBoard> showStudyBoard(User user) {
         return studyBoardRepository.SearchStudyBoardByEmail(user);
     }
+
+    public void finishedRecruiting(Long id){
+        StudyBoard dbStudyBoard = studyBoardRepository.findStudyBoardById(id);
+        dbStudyBoard.setRecruiting(false);
+    }
 }

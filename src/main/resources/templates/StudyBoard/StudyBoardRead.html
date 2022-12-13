@@ -249,16 +249,23 @@
     <div class="board_wrap">
         <div class="board_title">
             <strong><span th:text="${board.title}"></span></strong>
+            <input type="text" th:value="${board.id}" hidden id="boardId">
         </div>
         <div class="board_write_wrap">
             <div class="board_write">
                 <div class="title">
-                    <dl>
+                    <dl style="font-size: medium">
                         <img th:src="@{${savePath} + '/' + ${board.user.getMainEmotion()}}"
                              style="width: 30px; height: 30px">
                         <a class="on" th:href="@{'/user/profile/'+${board.user.getId()}}">
-                            <dt><span th:text="${board.user.getNickName()}"></span></dt>
+                            <span th:text="${board.user.getNickName()}" style="font-size: medium"></span>
                         </a>
+<!--                        <th:block th:if="${authUser != null}">-->
+<!--                            <th:block th:if="${board.user.getEmail() == authUser.email}">-->
+<!--                                <a class="on" th:href="@{'/board/update/'+${board.id}}">수정</a>-->
+<!--                                <a class="on" th:href="@{'/board/delete/'+${board.id}}">삭제</a>-->
+<!--                            </th:block>-->
+<!--                        </th:block>-->
                     </dl>
                 </div>
                 <div class="info">
@@ -329,9 +336,11 @@
                     <span th:utext="${board.content}"></span>
                 </div>
                 <th:block th:if="${authUser != null}">
+                    <div style="margin: 30px 450px">
                     <th:block th:if="${board.user.getEmail()==authUser.getEmail()}">
-                        <button onclick="button_opacity()" class="btn btn-dark">마감</button>
+                        <button onclick="button_opacity()" class="btn btn-danger">모집 마감</button>
                     </th:block>
+                    </div>
                 </th:block>
 
             </div>
@@ -387,7 +396,10 @@
 
 
 </main><!-- End #main -->
-
+<img src="/board/img/stamp.png" id="stamp" style="visibility: hidden; position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%, -50% );">
 
 <!-- ======= Footer ======= -->
 <footer th:replace="../templates/common/footer.html ::footer">
@@ -442,8 +454,28 @@
 
 
     function button_opacity(){
-        document.getElementById("main").style.opacity="0.2";
+
+
+        let boardId = $("#boardId").val();
+        $.ajax({
+            type: "get",
+            url: "/StudyBoard/finishedRecruiting",
+            data: {"id": boardId},
+            dataType: "JSON",
+
+            success: function (result) {
+                document.getElementById("main").style.opacity="0.2";
+                document.getElementById("stamp").style.visibility='visible';
+            },
+            error: function (request, status, error) {
+                alert("ajax 실행 실패");
+                alert("code:" + request.status + "\n" + "error :" + error);
+            }
+        });
     }
+
+
+
 
 </script>
 

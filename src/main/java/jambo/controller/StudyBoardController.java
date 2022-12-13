@@ -6,6 +6,7 @@ import jambo.domain.board.Board;
 import jambo.domain.board.StudyBoard;
 import jambo.domain.user.User;
 import jambo.dto.StudyBoardDTO;
+import jambo.service.BoardService;
 import jambo.service.CommentService;
 import jambo.service.FileService;
 import jambo.service.StudyBoardService;
@@ -29,8 +30,9 @@ public class StudyBoardController {
 
     private final CommentService commentService;
 
-
     private final FileService fileService;
+
+    private final BoardService boardService;
 
     @RequestMapping("/StudyBoardMain")
     public String main(Model model) {
@@ -56,17 +58,30 @@ public class StudyBoardController {
     }
 
     @RequestMapping("/read/{id}")
-    public ModelAndView read(@PathVariable Long id, String flag, Model model, @AuthenticationPrincipal User user) {
+    public String read(@PathVariable Long id, String flag, Model model, @AuthenticationPrincipal User user) {
         boolean state = flag == null ? true : false;
-        StudyBoard dbBoard = service.read(id, state);
-        List<StudyBoard> boards = service.selectAll();
+//        Board dbBoard = boardService.findBoardById(id);
+        StudyBoard dbStudyBoard = service.read(id, state);
+//        List<StudyBoard> boards = service.selectAll();
 
         List<Comment> commentsByBoardId = commentService.findCommentsByBoardId(id);
         model.addAttribute("comments", commentsByBoardId);
         model.addAttribute("savePath", fileService.getUrlPath());
         model.addAttribute("authUser", user);
-        model.addAttribute("boardStacks", boards);
+        model.addAttribute("board", dbStudyBoard);
+//        model.addAttribute("studyboard", dbStudyBoard);
+//        model.addAttribute("boardStacks", boards);
 
-        return new ModelAndView("StudyBoard/StudyBoardRead", "board", dbBoard);
+        return "StudyBoard/StudyBoardRead";
+    }
+
+    @GetMapping("/finishedRecruiting")
+    @ResponseBody
+    public int finishedRecruiting(Long id){
+        System.out.println("id 들어왓니? = " + id);
+        service.finishedRecruiting(id);
+
+        return 0;
+//        return "redirect:/StudyBoard/StudyBoardMain";
     }
 }
