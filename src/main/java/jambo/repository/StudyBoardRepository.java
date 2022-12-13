@@ -9,6 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 public interface StudyBoardRepository extends JpaRepository<StudyBoard, Long> {
@@ -16,7 +17,8 @@ public interface StudyBoardRepository extends JpaRepository<StudyBoard, Long> {
     /**
      * 스터디게시판 모든 글 조회
      */
-    List<StudyBoard> findAll();
+    List<StudyBoard> findAllByOrderByWriteDateDesc();
+
 
     /**
      * 스터디 게시판 글 상세조회
@@ -32,10 +34,13 @@ public interface StudyBoardRepository extends JpaRepository<StudyBoard, Long> {
     List<StudyBoard> SearchStudyBoardByEmail(@Param("user") User user);
 
 
+   /**
+    * 스터디 게시글 수 조회
+    * */
+   int countBy();
+
     /**
-     * 추천수 증가
+     * 오늘 작성된 게시글 수 조회
      */
-//    @Query("update Board b set b.recommendation = b.recommendation + 1 where b.id = ?1")
-//    @Modifying
-//    void recommend(Long id);
+    int countByWriteDateBetween(LocalDateTime start, LocalDateTime end);
 }

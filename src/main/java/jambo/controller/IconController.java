@@ -39,11 +39,11 @@ public class IconController {
     public String showIconShop(Model model, String keyWord, @PageableDefault(size = 6, direction = Sort.Direction.DESC) Pageable pageable, @AuthenticationPrincipal User securityUser) {
         int state = 1;
 
-        if (securityUser == null) {
-            state = 0;
-        }
+//        if (securityUser == null) {
+//            state = 0;
+//        }
 
-        if (securityUser != null) {
+//        if (securityUser != null) {
         User user = userRepository.findById(securityUser.getId()).get();
         UserResponseDTO userResponseDTO = UserResponseDTO.from(user);
         Page<IconShop> icons = iconService.showIconShop(keyWord, pageable);
@@ -53,7 +53,7 @@ public class IconController {
         model.addAttribute("pageNumbers", pageNumbers);
         model.addAttribute("savePath", fileService.getUrlPath());
         model.addAttribute("user", userResponseDTO);
-        }
+//        }
 
         return "iconShop/showIconShop";
     }
@@ -71,7 +71,10 @@ public class IconController {
 
         iconService.save(fileName, iconShopDTO);
 
-        return "redirect:/icon/shop";
+//        return "redirect:/icon/shop";
+//        return "/admin/adminMain"; // 관리자페이지로 이동
+        return "redirect:/icon/adminShop";
+
     }
 
     @PostMapping("/buy/{iconId}")
@@ -106,5 +109,23 @@ public class IconController {
     public String exception(IllegalArgumentException exception, Model model) {
         model.addAttribute("errorMessage", exception.getMessage());
         return "error/iconError";
+    }
+
+    /**
+     * 관리자 페이지 아이콘 샵 조회
+     * */
+    @GetMapping("/adminShop")
+    public String showAdminIconShop(Model model, String keyWord, @PageableDefault(size = 5, direction = Sort.Direction.DESC) Pageable pageable) {
+        int state = 1;
+
+
+        Page<IconShop> icons = iconService.showIconShop(keyWord, pageable);
+        List<Integer> pageNumbers = paginationService.pagination(pageable.getPageNumber(), icons.getTotalPages());
+        model.addAttribute("state", state);
+        model.addAttribute("icons", icons);
+        model.addAttribute("savePath", fileService.getUrlPath());
+        model.addAttribute("pageNumbers", pageNumbers);
+
+        return "admin/iconShop";
     }
 }

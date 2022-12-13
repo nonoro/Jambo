@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Main index page</title>
+    <title>Jambo!</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
     <meta id="_csrf" name="_csrf" th:content="${_csrf.token}"/>
@@ -174,6 +174,10 @@
                 transform: scale(0);
             }
         }
+
+        .boardtitle_title{
+            font-size: 3rem;
+        }
     </style>
 
 
@@ -196,8 +200,7 @@
 <body>
 
 <!--헤더-->
-<header th:replace="../templates/Baker/common/header.html ::header">
-</header>
+<header th:replace="../templates/common/header.html ::header"></header>
 
 <main id="main">
     <!-- ======= Clients Section ======= -->
@@ -230,7 +233,7 @@
 
 
     <div class="board_wrap">
-        <div class="board_title">
+        <div class="boardtitle_title">
             <strong><span th:text="${board.title}"></span></strong>
         </div>
         <div class="board_write_wrap">
@@ -240,7 +243,10 @@
                         <dt style="width: 970px; margin-bottom: 10px">
                             <img th:src="@{${savePath} + '/' + ${board.user.getMainEmotion()}}"
                                  style="width: 30px; height: 30px">
-                            <span th:text="${board.user.getNickName()}"></span>
+
+                            <a class="on" th:href="@{'/user/profile/'+${board.user.getId()}}">
+                                <span th:text="${board.user.getNickName()}"></span>
+                            </a>
 
                         </dt>
                         <dt style="width: 970px;">
@@ -271,7 +277,7 @@
 
                             <th:block th:if="${authUser != null}">
                                 <th:block th:if="${board.user.getEmail() == authUser.email}">
-                                    <a class="on">수정</a>
+                                    <a class="on" th:href="@{'/board/update/'+${board.id}}">수정</a>
                                     <a class="on" th:href="@{'/board/delete/'+${board.id}}">삭제</a>
                                 </th:block>
                             </th:block>
@@ -291,7 +297,7 @@
             <div class="bt_wrap">
                 <th:block th:if="${recommendation != null}">
                     <a class="on" th:href="@{'/board/recommendDown/'+${board.id}}"
-                       style="background-color: #eb463a ;border: none; color: #fef4dd;">종아요 취소😡</a>
+                       style="background-color: #eb463a ;border: none; color: #fef4dd;">좋아요 취소😡</a>
                 </th:block>
                 <th:block th:if="${recommendation == null}">
                     <th:block sec:authorize="!isAuthenticated()">
@@ -314,7 +320,10 @@
                     <li id="reply--1" class="list-group-item d-flex justify-content-between">
                         <div>
                             <img th:src="@{${savePath} + '/' + ${comment.user.getMainEmotion()}}" style="width: 30px; height: 30px">
-                            <span class="text-monospace mr-1"><span class="text-monospace mr-1" th:text="${comment.user.nickName}"></span></span>   <!---->
+                            <span class="text-monospace mr-1"><span class="text-monospace mr-1" th:text="${comment.user.nickName}"></span></span>
+                            <span th:text="${#temporals.format(comment.regDate,'MM-dd HH:mm')}"></span><!---->
+                            <!--                            <span th:text="${#dates.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss')}"></span>-->
+                            <!--                            <span th:text="${#dates.format(#calendars.createNow(), 'yyyy-MM-dd HH:mm:ss') - #temporals.format(comment.regDate,'yyyy-MM-dd HH:mm:ss')}"></span>-->
                             <span class="text-monospace mr-1"><div th:text="${comment.content}"></div></span>
                         </div>
                         <div class="d-flex">
@@ -331,22 +340,24 @@
                 </ul>
             </div>
             <br/>
-            <div class="card mb-2 mt-5">
-                <div class="card-header bg-light">
-                    <i class="fa fa-comment fa"></i> 댓글쓰기
+            <th:block th:if="${authUser!=null}">
+                <div class="card mb-2 mt-5">
+                    <div class="card-header bg-light">
+                        <i class="fa fa-comment fa"></i> 댓글쓰기
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/comment/insert}" method="post">
+                            <input type="hidden" id="id" th:value="${id}" name="parentId"> <!--boardId, ${board.id}-->
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">
+                                    <textarea class="form-control" id="comment-content" rows="1" name="content" required></textarea>
+                                    <button type="submit" id="comment-btn-save" class="btn btn-dark mt-3">등록</button>
+                                </li>
+                            </ul>
+                        </form>
+                    </div>
                 </div>
-                <div class="card-body">
-                    <form th:action="@{/comment/insert}" method="post">
-                        <input type="hidden" id="id" th:value="${id}" name="parentId"> <!--boardId, ${board.id}-->
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">
-                                <textarea class="form-control" id="comment-content" rows="1" name="content" required></textarea>
-                                <button type="submit" id="comment-btn-save" class="btn btn-dark mt-3">등록</button>
-                            </li>
-                        </ul>
-                    </form>
-                </div>
-            </div>
+            </th:block>
         </main>
     </div>
     <p/>
@@ -389,7 +400,7 @@
 
 
 <!-- ======= Footer ======= -->
-<footer th:replace="../templates/Baker/common/footer.html ::footer">
+<footer th:replace="../templates/common/footer.html ::footer">
 </footer>
 <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
     <i class="bi bi-arrow-up-short"></i>

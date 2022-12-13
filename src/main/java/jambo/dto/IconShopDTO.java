@@ -1,13 +1,8 @@
 package jambo.dto;
 
-import jambo.domain.user.Icon;
 import jambo.domain.user.IconShop;
 import lombok.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import javax.persistence.*;
-import java.util.List;
-
 @Getter
 @Setter
 @NoArgsConstructor

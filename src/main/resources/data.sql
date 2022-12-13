@@ -39,4 +39,3 @@
 --insert into tech_stack values (26, 'Git');
 --insert into tech_stack values (27, 'Figma');
 --insert into tech_stack values (28, 'Zeplin');
---

@@ -9,6 +9,8 @@ import jambo.repository.NoteRepository;
 import jambo.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
@@ -31,9 +33,11 @@ public class NoteService {
     /**
      * 받은 쪽지함
      */
-    public List<Note> selectAll(String email) {
-
-        return noteRepository.findNotesByReceiveUser(email);
+    public Page<Note> selectAll(String email, Pageable page) {
+        if(email ==null){
+            return noteRepository.findAllByOrderBySentTimeDesc(email, page);
+        }
+        return noteRepository.findNotesByReceiveUser(email, page);
     }
 
     /**

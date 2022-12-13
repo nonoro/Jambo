@@ -18,7 +18,7 @@ public class Admin {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_admin")
     @SequenceGenerator(name = "seq_admin", sequenceName = "seq_admin", allocationSize = 1)
-    @Column(name = "amdin_id")
+    @Column(name = "admin_id")
     private Long id;
     // 이름, 아이디, 비밀번호, 닉네임, 가입일
 

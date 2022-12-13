@@ -2,6 +2,7 @@ package jambo.dto;
 
 import jambo.domain.admin.Admin;
 import jambo.domain.user.User;
+import jambo.domain.user.type.MBTI;
 import lombok.*;
 
 import java.util.List;
@@ -24,5 +25,29 @@ public class AdminJoinDTO {
                 name,
                 nickName
                 );
+    }
+
+    public User toUser(){
+        return new User(
+                email,
+                password,
+                name,
+                nickName,
+                null,
+                "NOTHING"
+        );
+    }
+
+    public UserJoinDTO toUserJoinDTO(){
+        return new UserJoinDTO(
+                email,
+                password,
+                name,
+                nickName,
+                null,
+                "NOTHING",
+                null
+        );
+
     }
 }

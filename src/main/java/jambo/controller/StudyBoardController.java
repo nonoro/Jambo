@@ -1,11 +1,16 @@
 package jambo.controller;
 
 
+import jambo.domain.Comment;
 import jambo.domain.board.Board;
 import jambo.domain.board.StudyBoard;
 import jambo.domain.user.User;
 import jambo.dto.StudyBoardDTO;
+import jambo.service.BoardService;
+import jambo.service.CommentService;
+import jambo.service.FileService;
 import jambo.service.StudyBoardService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -17,17 +22,22 @@ import java.io.IOException;
 import java.util.List;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/StudyBoard")
 public class StudyBoardController {
 
-    @Autowired
-    private StudyBoardService service;
+    private final StudyBoardService service;
+
+    private final CommentService commentService;
+
+    private final FileService fileService;
+
 
     @RequestMapping("/StudyBoardMain")
     public String main(Model model) {
         List<StudyBoard> boards = service.selectAll();
         model.addAttribute("list", boards);
-
+        model.addAttribute("savePath", fileService.getUrlPath());
         return "StudyBoard/StudyBoardMain";
     }
 
@@ -38,19 +48,39 @@ public class StudyBoardController {
     }
 
     @RequestMapping("/insert")
-    public String studyBoardInsert(StudyBoardDTO studyBoardDTO, @AuthenticationPrincipal User user) throws IOException {
+    public String studyBoardInsert(StudyBoardDTO studyBoardDTO, @AuthenticationPrincipal User user, Model model) throws IOException {
 
         service.insert(studyBoardDTO, user);
         System.out.println("con studyBoardDTO = " + studyBoardDTO);
 
-        return "StudyBoard/StudyBoardMain";
+        return "redirect:/StudyBoard/StudyBoardMain";
     }
 
     @RequestMapping("/read/{id}")
-    public ModelAndView read(@PathVariable Long id, String flag) {
+    public String read(@PathVariable Long id, String flag, Model model, @AuthenticationPrincipal User user) {
         boolean state = flag == null ? true : false;
-        StudyBoard dbBoard = service.read(id, state);
-        return new ModelAndView("StudyBoard/StudyBoardRead", "board", dbBoard);
+//        Board dbBoard = boardService.findBoardById(id);
+        StudyBoard dbStudyBoard = service.read(id, state);
+//        List<StudyBoard> boards = service.selectAll();
 
+        List<Comment> commentsByBoardId = commentService.findCommentsByBoardId(id);
+        model.addAttribute("comments", commentsByBoardId);
+        model.addAttribute("savePath", fileService.getUrlPath());
+        model.addAttribute("authUser", user);
+        model.addAttribute("board", dbStudyBoard);
+//        model.addAttribute("studyboard", dbStudyBoard);
+//        model.addAttribute("boardStacks", boards);
+
+        return "StudyBoard/StudyBoardRead";
+    }
+
+    @GetMapping("/finishedRecruiting")
+    @ResponseBody
+    public int finishedRecruiting(Long id){
+        System.out.println("id 들어왓니? = " + id);
+        service.finishedRecruiting(id);
+
+        return 0;
+//        return "redirect:/StudyBoard/StudyBoardMain";
     }
 }

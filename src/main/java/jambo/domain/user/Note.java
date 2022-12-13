@@ -21,8 +21,8 @@ public class Note {
     @SequenceGenerator(name = "note_seq", sequenceName = "note_seq", allocationSize = 1)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY) //이게 없으면 조인이 안된다고 함, 왜 ManyToOne인가요
-    @JoinColumn(name = "user_id") //name을 왜 user_id로 줬을까 sendUser도 있는뎅
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User sendUser;
     private String receiveUser;
 

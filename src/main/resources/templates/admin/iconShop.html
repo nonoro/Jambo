@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <title>Jambo AdminPage</title>
+   <!-- HTML5 Shim and Respond.js IE9 support of HTML5 elements and media queries -->
+   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+   <!--[if lt IE 9]>
+     <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+     <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+     <![endif]-->
+
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+   <!-- Favicon icon -->
+   <link rel="shortcut icon" href="/assets/img/jamboLogo.ico" type="image/x-icon">
+   <link rel="icon" href="/assets/img/jamboLogo.ico" type="image/x-icon">
+
+   <!-- Google font-->
+   <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700" rel="stylesheet">
+
+   <!-- themify -->
+   <link rel="stylesheet" type="text/css" href="/admin/icon/themify-icons/themify-icons.css">
+
+   <!-- iconfont -->
+   <link rel="stylesheet" type="text/css" href="/admin/icon/icofont/css/icofont.css">
+
+   <!-- simple line icon -->
+   <link rel="stylesheet" type="text/css" href="/admin/icon/simple-line-icons/css/simple-line-icons.css">
+
+   <!-- Required Fremwork -->
+   <link rel="stylesheet" type="text/css" href="/admin/plugins/bootstrap/css/bootstrap.min.css">
+
+   <!-- Chartlist chart css -->
+   <link rel="stylesheet" href="/admin/plugins/chartist/dist/chartist.css" type="text/css" media="all">
+
+   <!-- Weather css -->
+   <link href="/admin/css/svg-weather.css" rel="stylesheet">
+
+
+   <!-- Style.css -->
+   <link rel="stylesheet" type="text/css" href="/admin/css/main.css">
+
+   <!-- Responsive.css-->
+   <link rel="stylesheet" type="text/css" href="/admin/css/responsive.css">
+
+    <style type="text/css">
+        .join {
+            width: 300px;
+            height: 50px;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: 3px solid black;
+        }
+        .shadowbox {
+            width: 15em;
+            margin: 10px 10px 10px 10px;
+            box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+            padding: 10px 10px 10px 10px
+        }
+    </style>
+
+</head>
+
+<body class="sidebar-mini fixed">
+   <div class="loader-bg">
+      <div class="loader-bar">
+      </div>
+   </div>
+   <div class="wrapper">
+      <!-- Navbar-->
+      <header class="main-header-top hidden-print">
+          <a th:href="@{/admin/adminMain}" class="logo"><img class="img-fluid able-logo" src="/assets/img/jamboLogo.ico" alt="Theme-logo" style="width: 30px; height: 30px"> 관리자 페이지 </a>
+         <nav class="navbar navbar-static-top">
+            <!-- Sidebar toggle button-->
+            <a href="#!" data-toggle="offcanvas" class="sidebar-toggle"></a>
+            <ul class="top-nav lft-nav">
+
+            </ul>
+            <!-- Navbar Right Menu-->
+            <div class="navbar-custom-menu f-right">
+              <div class="upgrade-button">
+                <a th:href="@{/}" class="icon-circle txt-white btn btn-sm btn-danger upgrade-button">
+                    <span>관리자페이지 나가기</span>
+                </a>
+              </div>
+
+               <!-- search end -->
+            </div>
+         </nav>
+      </header>
+      <!-- Side-Nav-->
+      <aside class="main-sidebar hidden-print ">
+         <section class="sidebar" id="sidebar-scroll">
+            <!-- Sidebar Menu-->
+            <ul class="sidebar-menu">
+
+                <li class="nav-level">--- 관리자 메뉴</li>
+                <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-briefcase"></i><span> 아이콘 샵 </span><i
+                        class="icon-arrow-down"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a class="waves-effect waves-dark" th:href="@{/admin/iconRegister}"><i
+                                class="icon-arrow-right"></i> 아이콘 등록하기 </a></li>
+                        <li><a class="waves-effect waves-dark" th:href="@{/icon/adminShop}"><i class="icon-arrow-right"></i>
+                            등록된 아이콘 리스트 보기 </a></li>
+                    </ul>
+                </li>
+
+
+                <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-cup"></i><span> 관리자 회원가입 </span><i
+                        class="icon-arrow-down"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a class="waves-effect waves-dark" th:href="@{/admin/joinForm}"><i
+                                class="icon-arrow-right"></i> 관리자 회원 가입</a></li>
+                    </ul>
+                </li>
+
+                <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-book-open"></i><span> 공지사항 & 소작모 작성</span><i
+                        class="icon-arrow-down"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a class="waves-effect waves-dark" th:href="@{/admin/openWriteForm}"><i
+                                class="icon-arrow-right"></i> 공지사항 작성하기 </a></li>
+                        <li><a class="waves-effect waves-dark" th:href="@{/admin/openWriteForm}"><i
+                                class="icon-arrow-right"></i> 소작모 글 작성하기 </a></li>
+                    </ul>
+                </li>
+
+                <li class="treeview"><a class="waves-effect waves-dark" href="#!"><i class="icon-ban"></i><span> 신고된 게시글 관리 </span><i
+                        class="icon-arrow-down"></i></a>
+                    <ul class="treeview-menu">
+                        <li><a class="waves-effect waves-dark" th:href="@{/admin/ReportPage}"><i class="icon-arrow-right"></i>
+                            신고된 게시글 보기</a></li>
+                    </ul>
+                </li>
+
+
+
+            </ul>
+         </section>
+      </aside>
+
+
+      <div class="content-wrapper">
+         <!-- Container-fluid starts -->
+         <!-- Main content starts -->
+         <div class="container-fluid">
+            <div class="row">
+               <div class="main-header">
+                  <h4>Jambo Admin Page</h4>
+               </div>
+            </div>
+
+               <div class="col-lg-8">
+                  <div class="card">
+                     <div class="card-header">
+                        <h5 class="card-header-text">아이콘 리스트</h5>
+                     </div>
+                      <form class="d-flex" role="search" th:action="@{/icon/adminShop}">
+                          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="keyWord">
+                          <input class="btn btn-outline-success p-2" type="submit" value="검색"></button>
+                      </form>
+
+                      <div class="shadowbox" th:each="icon : ${icons}">
+                          <form>
+                              <div class="img" >
+                                  <img th:src="@{${savePath} + '/' + ${icon.fileName}}" name="fileName" style="width: 30px">
+                                  <span class="name" th:text="${icon.name}"></span>
+                              </div>
+                              <div class="describe">
+                                  가격 : <span th:text="${icon.price}"></span>&nbsp;&nbsp;&nbsp;수량 : <span th:text="${icon.quantity}"></span><br>
+                              </div>
+                              등록일 : <span th:text="${#temporals.format(icon.saveDate, 'yyyy-MM-dd HH:mm')}" name="saveDate"></span><br>
+                          </form>
+                      </div>
+
+
+                     <div class="card-block">
+<!--                        <div id="barchart" style="min-width: 250px; height: 330px; margin: 0 auto"></div>-->
+                     </div>
+                      <nav aria-label="..." style="margin-top: 20px; margin-left: 350px;">
+                          <ul class="pagination justify-content-center">
+                              <li th:class="'page-item' + (${icons.number} <= 0 ? ' disabled' : '')">
+                                  <a class="page-link"
+                                     th:href="@{shop(page=${icons.number - 1})}"
+                                     th:text="'&laquo;'"></a>
+                              </li>
+                              <th:block th:each="pageNumber : ${pageNumbers}">
+                                  <li th:class="'page-item' + (${icons.number} == ${pageNumber} ? ' active' : '')"><a class="page-link" th:href="@{/icon/adminShop(page = ${pageNumber})}" th:text="${pageNumber + 1}"></a></li>
+                              </th:block>
+                              <li th:class="'page-item' + (${icons.number} >= ${icons.totalPages - 1} ? ' disabled' : '')">
+                                  <a class="page-link"
+                                     th:text="'&raquo;'"
+                                     th:href="@{shop(page=${icons.number + 1})}"></a>
+                              </li>
+                          </ul>
+                      </nav>
+                  </div>
+               </div>
+
+         </div>
+         <!-- Main content ends -->
+         <!-- Container-fluid ends -->
+         <div class="fixed-button">
+            <a href="#!" class="btn btn-md btn-primary">
+              <i class="fa fa-shopping-cart" aria-hidden="true"></i> 관리자 페이지 나가기
+            </a>
+         </div>
+      </div>
+   </div>
+
+
+   <!-- Warning Section Starts -->
+   <!-- Older IE warning message -->
+   <!--[if lt IE 9]>
+      <div class="ie-warning">
+          <h1>Warning!!</h1>
+          <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
+          <div class="iew-container">
+              <ul class="iew-download">
+                  <li>
+                      <a href="http://www.google.com/chrome/">
+                          <img src="/admin/images/browser/chrome.png" alt="Chrome">
+                          <div>Chrome</div>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="https://www.mozilla.org/en-US/firefox/new/">
+                          <img src="/admin/images/browser/firefox.png" alt="Firefox">
+                          <div>Firefox</div>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="http://www.opera.com">
+                          <img src="/admin/images/browser/opera.png" alt="Opera">
+                          <div>Opera</div>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="https://www.apple.com/safari/">
+                          <img src="/admin/images/browser/safari.png" alt="Safari">
+                          <div>Safari</div>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
+                          <img src="/admin/images/browser/ie.png" alt="">
+                          <div>IE (9 & above)</div>
+                      </a>
+                  </li>
+              </ul>
+          </div>
+          <p>Sorry for the inconvenience!</p>
+      </div>
+      <![endif]-->
+   <!-- Warning Section Ends -->
+
+   <!-- Required Jqurey -->
+   <script src="/admin/plugins/Jquery/dist/jquery.min.js"></script>
+   <script src="/admin/plugins/jquery-ui/jquery-ui.min.js"></script>
+   <script src="/admin/plugins/tether/dist/js/tether.min.js"></script>
+
+   <!-- Required Fremwork -->
+   <script src="/admin/plugins/bootstrap/js/bootstrap.min.js"></script>
+
+   <!-- Scrollbar JS-->
+   <script src="/admin/plugins/jquery-slimscroll/jquery.slimscroll.js"></script>
+   <script src="/admin/plugins/jquery.nicescroll/jquery.nicescroll.min.js"></script>
+
+   <!--classic JS-->
+   <script src="/admin/plugins/classie/classie.js"></script>
+
+   <!-- notification -->
+   <script src="/admin/plugins/notification/js/bootstrap-growl.min.js"></script>
+
+   <!-- Sparkline charts -->
+   <script src="/admin/plugins/jquery-sparkline/dist/jquery.sparkline.js"></script>
+
+   <!-- Counter js  -->
+   <script src="/admin/plugins/waypoints/jquery.waypoints.min.js"></script>
+   <script src="/admin/plugins/countdown/js/jquery.counterup.js"></script>
+
+   <!-- Echart js -->
+   <script src="/admin/plugins/charts/echarts/js/echarts-all.js"></script>
+
+   <script src="https://code.highcharts.com/highcharts.js"></script>
+   <script src="https://code.highcharts.com/modules/exporting.js"></script>
+   <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+
+   <!-- custom js -->
+   <script type="text/javascript" src="/admin/js/main.min.js"></script>
+   <script type="text/javascript" src="/admin/pages/dashboard.js"></script>
+   <script type="text/javascript" src="/admin/pages/elements.js"></script>
+   <script src="/admin/js/menu.min.js"></script>
+<script>
+var $window = $(window);
+var nav = $('.fixed-button');
+$window.scroll(function(){
+    if ($window.scrollTop() >= 200) {
+       nav.addClass('active');
+    }
+    else {
+       nav.removeClass('active');
+    }
+});
+</script>
+
+</body>
+
+</html>

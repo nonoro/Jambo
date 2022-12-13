@@ -18,31 +18,28 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
-import org.springframework.security.web.server.authentication.logout.SecurityContextServerLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.transaction.Transactional;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.method.annotation.SseEmitter;
 
-import java.io.IOException;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArraySet;
 
-@RequiredArgsConstructor
 @Controller
+@RequiredArgsConstructor
 @RequestMapping("/user")
 @Slf4j
+@Transactional
 public class UserController {
 
     private static final long SSE_SESSION_TIMEOUT = 30 * 60 * 1000L;
@@ -55,7 +52,6 @@ public class UserController {
 
     private final StudyBoardService studyBoardService;
 
-    private final SseEmitters sseEmitters;
 
     @RequestMapping("/preJoinForm")
     public void preJoinForm() {
@@ -83,13 +79,6 @@ public class UserController {
 
     @RequestMapping("/myPage")
     public String myPage(Model model, @AuthenticationPrincipal User user) {
-//      String userEmail = "test@test.com";
-//      List<String> userRequestTechStacks = List.of("C", "Java", "Python");
-//      String dbEmail = user.getEmail();//로그인한 유저의 이메일
-//      System.out.println("🤬🤬🤬🤬dbEmail🤬🤬🤬🤬  = " + dbEmail);
-//      List<UserTechStack> dbTechStaks = user.getUserTechStacks();
-//      System.out.println("🤬🤬⚙️⚙️️dbTechStaks⚙️⚙️🤬🤬🤬  = " + dbTechStaks);
-//      User dbMyPage = userService.myPage(dbEmail);//여기에 정보 다 들어있다.
 
         Long id = user.getId();
         User dbUser = userService.myPage(id);
@@ -101,18 +90,8 @@ public class UserController {
 
         int nomalBoardListSize = normalBoardList.size();
         int studyBoardListSize = studyBoardList.size();
-        System.out.println("🤬studyBoardListSize🤬 = " + studyBoardListSize);
 
         UserMyPageResponseDTO responseMyPage = UserMyPageResponseDTO.from(dbUser); //이게 무슨 뜻이었지... ㅇㅅ 히
-
-        System.out.println("🤬🤬⚙️⚙getNickName⚙️⚙️🤬🤬🤬  = " + responseMyPage.getNickName());
-        System.out.println("🤬🤬⚙️⚙getName⚙️⚙️🤬🤬🤬  = " + responseMyPage.getName());
-        System.out.println("🤬🤬⚙️⚙getEmail⚙️⚙️🤬🤬🤬  = " + responseMyPage.getEmail());
-        System.out.println("🤬🤬⚙️⚙getPhone⚙️⚙️🤬🤬🤬  = " + responseMyPage.getPhone());
-        System.out.println("🤬🤬⚙️⚙getMbti⚙️⚙️🤬🤬🤬  = " + responseMyPage.getMbti());
-        System.out.println("🤬🤬⚙️⚙getUserTechStacks⚙️⚙️🤬🤬🤬  = " + responseMyPage.getUserTechStacks());
-        System.out.println("🤬🤬⚙️⚙getLevel⚙️⚙️🤬🤬🤬  = " + responseMyPage.getLevel());
-        System.out.println("🤬🤬⚙️⚙getPoint⚙️⚙️🤬🤬🤬  = " + responseMyPage.getPoint());
 
         for (NormalBoard normalBoard : normalBoardList) {
             log.debug("normalBoard = {}", normalBoard);
@@ -126,7 +105,40 @@ public class UserController {
         model.addAttribute("studyBoardListSize", studyBoardListSize);
         model.addAttribute("studyBoardList", studyBoardList);
 
-        return "user/MyPage";
+        return "user/myPage";
+    }
+
+    @RequestMapping("/profile/{id}")
+    public String profile(Model model, @PathVariable Long id){
+        User dbUser = userService.myPage(id);
+        String dbFile = fileService.getUrlPath();
+        UserMyPageResponseDTO userMyPageResponseDTO = UserMyPageResponseDTO.from(dbUser);
+
+        model.addAttribute("profile", dbUser);
+        model.addAttribute("savePath", dbFile);
+        System.out.println("userResponseDTO = " + userMyPageResponseDTO);
+        
+        return "/user/profile";
+    }
+
+    /**
+     * 회원정보 수정 폼 열기
+     */
+    @RequestMapping("/openUpdateForm")
+    public String updateForm(@AuthenticationPrincipal User user, Model model) {
+        User dbUser = userService.findUser(user);
+        model.addAttribute("userInfo", dbUser);
+
+        return "/user/updateMyInfo";
+    }
+
+    /**
+     * 회원정보 수정 DB 수정
+     */
+    @RequestMapping("/update")
+    public String update(UserJoinDTO userJoinDTO, @AuthenticationPrincipal User user) {
+        userService.update(userJoinDTO, user);
+        return "redirect:/user/myPage";
     }
 
     @RequestMapping("/loginForm")

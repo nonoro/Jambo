@@ -30,6 +30,8 @@ public class RecommendService {
 
         Recommendation recommendation = new Recommendation(user,board);
         recommendRepository.save(recommendation);
+        /*게시글 작성자가 추천 받으면 포인트 5점 획득*/
+        board.getUser().addPoint(5);
 
     }
 
@@ -37,8 +39,9 @@ public class RecommendService {
 
         User dbUser = userRepository.findById(userId).get();
         Board dbBoard = boardRepository.findBoardById(boardId);
-
         recommendRepository.deleteByUserAndBoard(dbUser, dbBoard);
+        /*게시글 작성자가 추천 받은걸 다른사람이 취소 누르면 포인트 5점 감소*/
+        dbBoard.getUser().addPoint(-5);
     }
 
     public int countRecommendation(Board board){

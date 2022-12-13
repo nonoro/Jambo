@@ -68,12 +68,10 @@ public abstract class Board {
         this.category = category;
     }
 
-    //추가해도 되나?
     @JsonIgnoreProperties({"board"})
     @OneToMany(mappedBy = "board", cascade = CascadeType.ALL)
     private List<Comment> commentList;
 
-    //생성자 하나도 추가함.
     public Board(Long id, User user, String title, String content, List<Recommendation> recommendation, LocalDateTime writeDate, int views, boolean isReported, Category category) {
     }
 }

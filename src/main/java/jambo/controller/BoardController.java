@@ -1,6 +1,7 @@
 package jambo.controller;
 
 import jambo.domain.Comment;
+import jambo.domain.admin.Admin;
 import jambo.domain.board.Board;
 import jambo.domain.board.NormalBoard;
 import jambo.domain.board.Recommendation;
@@ -28,10 +29,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -53,7 +51,6 @@ public class BoardController {
 
     private final UserService userService;
     private final CommentService commentService;
-
 
     private final ReportService reportService;
 
@@ -90,7 +87,7 @@ public class BoardController {
         /*신고하기 유무체크*/
         Report report = reportService.checkReport(user, dbBoard);
         model.addAttribute("report", report);
-        return "Board/BoardRead";
+        return "/Board/BoardRead";
     }
     /**
      * 게시글 작성폼 열기
@@ -105,6 +102,7 @@ public class BoardController {
      * */
     @RequestMapping("/insert")
     public String studyBoardInsert(NormalBoardDTO normalBoardDTO, @AuthenticationPrincipal User user) throws IOException {
+        System.out.println("normalBoardDTO = " + normalBoardDTO + ", user = " + user);
         boardService.insert(normalBoardDTO, user);
 
         return "redirect:/board/list?category="+normalBoardDTO.getCategory();
@@ -121,8 +119,27 @@ public class BoardController {
     }
 
     /**
-     * 수정하기 (예정)
+     * 수정하기 폼 열기
      * */
+    @GetMapping("/update/{id}")
+    public String openUpdateForm(@PathVariable Long id,Model model, @AuthenticationPrincipal User user){
+        NormalBoard dbBoard = boardService.read(id, false);
+        model.addAttribute("board", dbBoard);
+        model.addAttribute("savePath", fileService.getUrlPath());
+        model.addAttribute("authUser", user);
+
+        return "/Board/BoardUpdateForm";
+    }
+
+    /**
+     * 게시글 수정 DB에 넣기
+     * */
+    @PostMapping("/update/{id}")
+    public String boardUpdate(@PathVariable Long id, NormalBoardDTO normalBoardDTO) throws IOException {
+        boardService.update(normalBoardDTO, id);
+
+        return "redirect:/board/list?category="+normalBoardDTO.getCategory();
+    }
 
     /**
      * 추천수 증가
@@ -156,5 +173,4 @@ public class BoardController {
         reportService.reportBoardByUser(id, user, ReportType.mapping(report));
         return "redirect:/board/read/" + id +"?flag=1";
     }
-
 }
