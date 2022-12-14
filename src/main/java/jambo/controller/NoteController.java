@@ -61,9 +61,9 @@ public class NoteController {
     /**
      * 쪽지 상세보기
      */
-    @RequestMapping("/read/{noteId}")
-    public String read(Model model, @PathVariable Long noteId, Boolean isRead) {
-        Note note = noteService.selectBy(noteId);
+    @RequestMapping("/read/{noteId}/{isRead}")
+    public String read(Model model, @PathVariable Long noteId, @PathVariable int isRead) {
+        Note note = noteService.selectBy(noteId, isRead);
         model.addAttribute("note", note);
 
         return "note/read";

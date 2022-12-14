@@ -70,7 +70,7 @@ public class Alarm {
                 AlarmListResponseDTO alarmNote = new AlarmListResponseDTO(alarm.getId(), alarm.getNote().getId(), alarm.getNote().getSendUser(), alarm.getReceivedTime());
                 alarmListResponseDTOS.add(alarmNote);
             } else {
-                AlarmListResponseDTO alarmComment = new AlarmListResponseDTO(alarm.getId(), alarm.getComment().getBoard().getId(), alarm.getReceivedTime());
+                AlarmListResponseDTO alarmComment = new AlarmListResponseDTO(alarm.getId(), alarm.getComment().getBoard().getId(), alarm.getComment().getId(), alarm.getReceivedTime());
                 alarmListResponseDTOS.add(alarmComment);
             }
         }

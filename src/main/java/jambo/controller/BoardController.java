@@ -57,10 +57,11 @@ public class BoardController {
     /**
      * 게시글 상세보기 + 조회수 증가
      * */
-    @RequestMapping("/read/{id}")
-    public String read(@PathVariable Long id, String flag, Model model, @AuthenticationPrincipal User user) {
+    @RequestMapping("/read/{id}/{isRead}/{commentId}")
+    public String read(@PathVariable Long id, String flag, Model model, @AuthenticationPrincipal User user, @PathVariable int isRead, @PathVariable Long commentId) {
+        log.info(">>>>>>>>>>>>>>>>>>>>>>>>> isRead = {}", isRead);
         boolean state = flag == null ? true : false;
-        NormalBoard dbBoard = boardService.read(id, state);
+        NormalBoard dbBoard = boardService.read(id, state, isRead, commentId);
         model.addAttribute("board", dbBoard);
         model.addAttribute("savePath", fileService.getUrlPath());
         model.addAttribute("authUser", user);
@@ -115,8 +116,8 @@ public class BoardController {
      * 수정하기 폼 열기
      * */
     @GetMapping("/update/{id}")
-    public String openUpdateForm(@PathVariable Long id,Model model, @AuthenticationPrincipal User user){
-        NormalBoard dbBoard = boardService.read(id, false);
+    public String openUpdateForm(@PathVariable Long id,Model model, @AuthenticationPrincipal User user, int isRead){
+        NormalBoard dbBoard = boardService.read(id, false, isRead, 1L);
         model.addAttribute("board", dbBoard);
         model.addAttribute("savePath", fileService.getUrlPath());
         model.addAttribute("authUser", user);

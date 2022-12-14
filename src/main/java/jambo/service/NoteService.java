@@ -39,8 +39,14 @@ public class NoteService {
     /**
      * 상세보기
      */
-    public Note selectBy(Long id) {
+    public Note selectBy(Long id, int isRead) {
         Note note = noteRepository.findById(id).get();
+
+        if (isRead == 1) {
+            Alarm alarm = alarmRepository.findByNote(note).get();
+            alarm.setRead(true);
+        }
+
         return note;
     }
 

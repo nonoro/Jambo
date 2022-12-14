@@ -67,6 +67,9 @@ public class UserService {
 
     public List<Alarm> findAlarm(User user) {
         List<Alarm> byUser = alarmRepository.findByUserAndIsReadOrderByReceivedTimeDesc(user, false);
+        for (Alarm alarm : byUser) {
+            System.out.println(">>>>>>>>>>>>>>>>>>>>" + alarm.isRead());
+        }
         return byUser;
     }
 

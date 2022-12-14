@@ -17,6 +17,8 @@ public class AlarmListResponseDTO {
 
     private Long noteId;
 
+    private Long commentId;
+
     private String sendUser;
 
     private String alarmType;
@@ -25,9 +27,10 @@ public class AlarmListResponseDTO {
 
     private boolean isRead;
 
-    public AlarmListResponseDTO(Long userId, Long boardId, LocalDateTime receivedTime) {
+    public AlarmListResponseDTO(Long userId, Long boardId, Long commentId, LocalDateTime receivedTime) {
         this.userId = userId;
         this.boardId = boardId;
+        this.commentId = commentId;
         this.alarmType = "댓글";
         this.receivedTime = receivedTime;
     }
