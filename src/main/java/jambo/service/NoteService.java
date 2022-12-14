@@ -13,8 +13,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Service
 @RequiredArgsConstructor
+@Transactional
 public class NoteService {
     private final NoteRepository noteRepository;
 
@@ -45,7 +48,8 @@ public class NoteService {
      * 쪽지 전송
      */
     public void insert(Note note, User user) {
-        note.setSendUser(user);
+        note.setSendUser(user.getEmail());
+        note.setNickName(user.getNickName());
         noteRepository.save(note);
 
         String receiveUser = note.getReceiveUser();
@@ -66,7 +70,12 @@ public class NoteService {
      * 삭제
      */
     public void delete(Long id) {
+        Note note = noteRepository.findById(id).get();
+        alarmRepository.deleteByNote(note);
+        System.out.println("여기여기여기에~~~~~~~~~~~~~~₩");
         noteRepository.deleteById(id);
+
+
     }
 
 }

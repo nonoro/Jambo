@@ -1,5 +1,6 @@
 package jambo.domain.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jambo.domain.Alarm;
 import jambo.domain.TechStack;
 import jambo.domain.board.Recommendation;
@@ -54,6 +55,7 @@ public class User {
 //    @OneToMany(mappedBy = "sendUser", cascade = CascadeType.ALL)
 //    private List<Note> notes;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Alarm> alarms;
 

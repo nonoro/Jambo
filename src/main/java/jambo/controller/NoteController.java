@@ -4,7 +4,6 @@ import jambo.domain.user.Note;
 import jambo.domain.user.User;
 import jambo.service.NoteService;
 import jambo.service.PaginationService;
-import jambo.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -13,9 +12,9 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -62,8 +61,8 @@ public class NoteController {
     /**
      * 쪽지 상세보기
      */
-    @RequestMapping("/read")
-    public String read(Model model, Long noteId, Boolean isRead) {
+    @RequestMapping("/read/{noteId}")
+    public String read(Model model, @PathVariable Long noteId, Boolean isRead) {
         Note note = noteService.selectBy(noteId);
         model.addAttribute("note", note);
         return "note/read";
