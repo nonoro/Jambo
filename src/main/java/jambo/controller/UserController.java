@@ -62,8 +62,6 @@ public class UserController {
     @RequestMapping("/idcheckAjax")
     @ResponseBody
     public HashMap<String, Object> idCheckAjax(String email) {
-        System.out.println("con : " + email);
-
         return userService.userEmailOverlap(email);
     }
 
@@ -112,7 +110,6 @@ public class UserController {
 
         model.addAttribute("profile", dbUser);
         model.addAttribute("savePath", dbFile);
-        System.out.println("userResponseDTO = " + userMyPageResponseDTO);
         
         return "user/profile";
     }
@@ -157,11 +154,6 @@ public class UserController {
     public List<AlarmListResponseDTO> findAlarm(@AuthenticationPrincipal User user) {
         List<Alarm> alarm = userService.findAlarm(user);
         List<AlarmListResponseDTO> alarmResponses = Alarm.toAlarmListResponseDTOS(alarm);
-
-        for (AlarmListResponseDTO alarmRespons : alarmResponses) {
-            log.info(">>>>>>> alarm = {}", alarmRespons);
-        }
-
         return alarmResponses;
     }
 }

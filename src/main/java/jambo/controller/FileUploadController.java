@@ -4,7 +4,6 @@ import com.google.gson.JsonObject;
 import jambo.config.WebConfig;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FileUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -26,7 +25,6 @@ public class FileUploadController {
     @RequestMapping(value = "/uploadSummernoteImageFile", produces = "application/json; charset=utf8", method = RequestMethod.POST)
     @ResponseBody
     public String uploadSummernoteImageFile(@RequestParam("file") MultipartFile multipartFile, HttpServletRequest request) {
-        System.out.println("사진 들우옴!" + multipartFile.getSize());
         JsonObject jsonObject = new JsonObject();
         String fileRoot = webConfig.getFilePath(); // 외부경로로 저장을 희망할때.
         String originalFileName = multipartFile.getOriginalFilename();    //오리지날 파일명
@@ -45,6 +43,7 @@ public class FileUploadController {
             jsonObject.addProperty("responseCode", "error");
             e.printStackTrace();
         }
+
         return jsonObject.toString();
     }
 }

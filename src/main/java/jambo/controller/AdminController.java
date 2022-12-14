@@ -79,8 +79,8 @@ public class AdminController {
         List<Integer> pageNumbers = paginationService.pagination(pageable.getPageNumber(), reports.getTotalPages());
         model.addAttribute("list", reports);
         model.addAttribute("pageNumbers", pageNumbers);
-
     }
+
     @GetMapping("/joinForm")
     public String openAdminJoinForm(){
         return "admin/adminJoin";
@@ -89,6 +89,7 @@ public class AdminController {
     @PostMapping("/join")
     public String join(AdminJoinDTO adminJoinDTO){
         adminService.join(adminJoinDTO);
+
         return "redirect:/admin/adminMain";
     }
 
@@ -107,6 +108,7 @@ public class AdminController {
     @GetMapping("/hideBoard/{id}")
     private String hideReportedBoard(@PathVariable Long id){
         boardService.hideReportedBoard(id);
+
         return "redirect:/admin/ReportPage";
     }
 
@@ -117,8 +119,7 @@ public class AdminController {
     @GetMapping("/liveBoard/{id}")
     private String liveReportedBoard(@PathVariable Long id){
         boardService.liveReportedBoard(id);
+
         return "redirect:/admin/ReportPage";
     }
-
-
 }

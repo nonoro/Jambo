@@ -1,7 +1,6 @@
 package jambo.controller;
 
 import jambo.domain.Comment;
-import jambo.domain.admin.Admin;
 import jambo.domain.board.Board;
 import jambo.domain.board.NormalBoard;
 import jambo.domain.board.Recommendation;
@@ -9,18 +8,10 @@ import jambo.domain.board.Report;
 import jambo.domain.board.type.Category;
 import jambo.domain.board.type.ReportType;
 import jambo.domain.user.User;
-import jambo.domain.user.type.MBTI;
 import jambo.dto.NormalBoardDTO;
-
 import jambo.service.*;
-
-import jambo.service.BoardService;
-import jambo.service.CommentService;
-import jambo.service.FileService;
-import jambo.service.PaginationService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -28,7 +19,6 @@ import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-
 import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
@@ -56,12 +46,12 @@ public class BoardController {
 
     @RequestMapping("/list")
     private String list(@RequestParam Category category, Model model, @PageableDefault(size = 10, direction = Sort.Direction.DESC) Pageable pageable){
-
         Page<Board> boards = boardService.findAll(category, pageable);
         List<Integer> pageNumbers = paginationService.pagination(pageable.getPageNumber(), boards.getTotalPages());
         model.addAttribute("list", boards);
         model.addAttribute("pageNumbers", pageNumbers);
         model.addAttribute("savePath", fileService.getUrlPath());
+
         return "Board/"+category;
     }
     /**
@@ -87,7 +77,8 @@ public class BoardController {
         /*신고하기 유무체크*/
         Report report = reportService.checkReport(user, dbBoard);
         model.addAttribute("report", report);
-        return "/Board/BoardRead";
+
+        return "Board/BoardRead";
     }
     /**
      * 게시글 작성폼 열기
@@ -128,7 +119,7 @@ public class BoardController {
         model.addAttribute("savePath", fileService.getUrlPath());
         model.addAttribute("authUser", user);
 
-        return "/Board/BoardUpdateForm";
+        return "Board/BoardUpdateForm";
     }
 
     /**
@@ -159,6 +150,7 @@ public class BoardController {
     @GetMapping("/recommendDown/{id}")
     public String recommendDown(@PathVariable Long id, @AuthenticationPrincipal User user){
         recommendService.recommendDown(user.getId(), id);
+
         return "redirect:/board/read/" + id+"?flag=1";
     }
 
@@ -167,10 +159,9 @@ public class BoardController {
      * */
 
     @RequestMapping("/report/{id}")
-    public String report(@PathVariable Long id, @AuthenticationPrincipal User user, String report)
-    {
-        System.out.println("report = " + report);
+    public String report(@PathVariable Long id, @AuthenticationPrincipal User user, String report) {
         reportService.reportBoardByUser(id, user, ReportType.mapping(report));
+
         return "redirect:/board/read/" + id +"?flag=1";
     }
 }

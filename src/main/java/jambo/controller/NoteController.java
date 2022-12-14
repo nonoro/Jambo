@@ -36,7 +36,8 @@ public class NoteController {
         List<Integer> pageNumbers = paginationService.pagination(pageable.getPageNumber(), notes.getTotalPages());
         model.addAttribute("notes", notes);
         model.addAttribute("pageNumbers", pageNumbers);
-        return "note/list";//뷰리턴
+
+        return "note/list";
     }
 
     /**
@@ -52,7 +53,6 @@ public class NoteController {
      */
     @PostMapping("/insert")
     public String insert(Note note, @AuthenticationPrincipal User user){
-        //보내는 사람은 로그인한 나인거지 그치...
         noteService.insert(note, user);
 
         return "redirect:/note/list";//url리턴 - 리다이렉트 or 포워드(모델)
@@ -65,6 +65,7 @@ public class NoteController {
     public String read(Model model, @PathVariable Long noteId, Boolean isRead) {
         Note note = noteService.selectBy(noteId);
         model.addAttribute("note", note);
+
         return "note/read";
     }
 
@@ -74,7 +75,7 @@ public class NoteController {
     @RequestMapping("/delete")
     public String delete(Long noteId){
         noteService.delete(noteId);
-        System.out.println("noteId = " + noteId);
+
         return "redirect:/note/list";
     }
 }

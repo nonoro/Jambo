@@ -61,6 +61,7 @@ public class CommentService {
     public Comment delete(Long id) {
         Comment comment = commentRepository.findCommentById(id);
         comment.getUser().addPoint(-5);
+        alarmRepository.deleteByComment(comment);
         commentRepository.deleteById(id);
         return comment;
     }
