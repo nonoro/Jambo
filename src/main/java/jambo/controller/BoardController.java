@@ -78,6 +78,8 @@ public class BoardController {
         Report report = reportService.checkReport(user, dbBoard);
         model.addAttribute("report", report);
 
+        model.addAttribute("category", dbBoard.getCategory());
+
         return "Board/BoardRead";
     }
     /**
