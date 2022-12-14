@@ -1,14 +1,12 @@
 package jambo.service;
 
+import jambo.domain.Alarm;
 import jambo.domain.Comment;
 import jambo.domain.board.Board;
 import jambo.domain.board.StudyBoard;
 import jambo.domain.user.User;
 import jambo.dto.AlarmResponse;
-import jambo.repository.BoardRepository;
-import jambo.repository.CommentRepository;
-import jambo.repository.StudyBoardRepository;
-import jambo.repository.UserRepository;
+import jambo.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +24,8 @@ public class CommentService {
     private final UserRepository userRepository;
     private final AlarmService alarmService;
 
+    private final AlarmRepository alarmRepository;
+
     public List<Comment> findCommentsByBoardId(Long id) {
         return commentRepository.findCommentsByBoardIdOrderByRegDate(id);
     }
@@ -33,12 +33,14 @@ public class CommentService {
     public void saveComment(Long boardId, Comment comment, User user) {
         Board board = boardRepository.findById(boardId).orElseThrow();
         comment.save(board, user);
-        commentRepository.save(comment);
+        Comment saveComment = commentRepository.save(comment);
         /*댓글단 유저에게 포인트 5점 추가*/
         userRepository
                 .findById(user.getId())
                 .orElse(null)
                 .addPoint(5);
+
+        alarmRepository.save(new Alarm(board.getUser(), saveComment));
 
         User writer = board.getUser();
         AlarmResponse response = AlarmResponse.comment(boardId + "번 게시글에 댓글이 달렸습니다.");

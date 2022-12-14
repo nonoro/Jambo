@@ -5,6 +5,7 @@ import jambo.domain.Alarm;
 import jambo.domain.board.NormalBoard;
 import jambo.domain.board.StudyBoard;
 import jambo.domain.user.User;
+import jambo.dto.AlarmListResponseDTO;
 import jambo.dto.UserJoinDTO;
 import jambo.dto.UserMyPageResponseDTO;
 import jambo.service.BoardService;
@@ -152,22 +153,15 @@ public class UserController {
     }
 
     @RequestMapping("/alarm")
-//    @ResponseBody
-    public String findAlarm(@AuthenticationPrincipal User user, Model model) {
-        System.out.println("나왔다");
+    @ResponseBody
+    public List<AlarmListResponseDTO> findAlarm(@AuthenticationPrincipal User user) {
         List<Alarm> alarm = userService.findAlarm(user);
+        List<AlarmListResponseDTO> alarmResponses = Alarm.toAlarmListResponseDTOS(alarm);
 
-        for (Alarm alarm1 : alarm) {
-            if (alarm1.getNote() == null) {
-                System.out.println("alarm1.getAlarmType() = " + alarm1.getAlarmType() + alarm1.getComment());
-            } else {
-                System.out.println("alarm1.getAlarmType() = " + alarm1.getAlarmType() + alarm1.getNote());
-            }
+        for (AlarmListResponseDTO alarmRespons : alarmResponses) {
+            log.info(">>>>>>> alarm = {}", alarmRespons);
         }
 
-        model.addAttribute("alarmList", alarm);
-
-        return "Baker/common/header";
-//        return alarm;
+        return alarmResponses;
     }
 }
