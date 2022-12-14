@@ -1,7 +1,9 @@
 package jambo.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jambo.domain.user.Note;
 import jambo.domain.user.User;
+import jambo.dto.AlarmListResponseDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,6 +13,8 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -25,14 +29,17 @@ public class Alarm {
     @SequenceGenerator(name = "alarm_seq", sequenceName = "alarm_seq", allocationSize = 1)
     private Long id;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "comment_id")
     private Comment comment;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "note_id")
     private Note note;
@@ -54,5 +61,19 @@ public class Alarm {
         this.user = user;
         this.note = note;
         this.alarmType = "쪽지";
+    }
+
+    public static List<AlarmListResponseDTO> toAlarmListResponseDTOS(List<Alarm> alarms) {
+        List<AlarmListResponseDTO> alarmListResponseDTOS = new ArrayList<>();
+        for (Alarm alarm : alarms) {
+            if (alarm.getComment() == null) {
+                AlarmListResponseDTO alarmNote = new AlarmListResponseDTO(alarm.getId(), alarm.getNote().getId(), alarm.getNote().getSendUser(), alarm.getReceivedTime());
+                alarmListResponseDTOS.add(alarmNote);
+            } else {
+                AlarmListResponseDTO alarmComment = new AlarmListResponseDTO(alarm.getId(), alarm.getComment().getBoard().getId(), alarm.getReceivedTime());
+                alarmListResponseDTOS.add(alarmComment);
+            }
+        }
+        return alarmListResponseDTOS;
     }
 }

@@ -4,7 +4,6 @@
           xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <head>
         <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js" rel="stylesheet">
         <script src="/js/jquery-3.2.1.min.js"></script>
 
         <th:block sec:authorize="isAuthenticated()">
@@ -42,6 +41,38 @@
                         $(".toast-container").append(toastDiv);
                         $(".toast").toast('show');
                     });
+
+
+                    $(document).on("mouseover", "#dropAlarm", function () {
+                        $.ajax({
+                            type: "get",
+                            url: "/user/alarm",
+                            dataType: "JSON",
+                            success: function (result) {
+                                console.log(result);
+                                let alarmList = "";
+                                for (let alarmListElement of result) {
+                                    console.log(alarmListElement);
+                                    console.log(alarmListElement.noteId)
+                                    console.log(alarmListElement.boardId)
+                                    console.log(alarmListElement.alarmType)
+                                    console.log(alarmListElement.sendUser)
+                                    if (alarmListElement.noteId == null) {
+                                        alarmList += '<li><a href="/board/read/' + alarmListElement.boardId + '">' + '[' + alarmListElement.alarmType + '] ' + alarmListElement.boardId + ' 번 게시물에 댓글이 달렸습니다! </a></li>';
+                                    } else {
+                                        alarmList += '<li><a href="/note/read/' + alarmListElement.noteId + '">' + '[' + alarmListElement.alarmType + '] ' + alarmListElement.sendUser + ' 님에게 쪽지가 왔습니다! </a></li>';
+                                    }
+                                }
+                                $("#alarmList").html(alarmList);
+                            },
+                            error: function (request, status, error) {
+                                alert("ajax 실행 실패");
+                                alert("code:" + request.status + "\n" + "error :" + error);
+                            }
+                        });
+                    });
+
+
                 });
             </script>
         </th:block>
@@ -76,8 +107,14 @@
                 </th:block>
                 <th:block sec:authorize="isAuthenticated()">
                     <input type="hidden" th:value="${#authentication.name}" id="userName">
-                    <li><a class="nav-link scrollto" href="#about"><img src="/assets/img/bell.png" alt="bell"
-                                                                        style="height: 40px; width: 40px"></a></li>
+                    <li class="dropdown"><a href="#" id="dropAlarm"><img src="/assets/img/bell.png" alt="bell"
+                                                                         style="height: 40px; width: 40px">
+                        <i class="bi bi-chevron-down"></i></a>
+                        <ul id="alarmList">
+
+                        </ul>
+                    </li>
+
                     <li class="dropdown"><a href="#"><img src="/assets/img/footprint.png" alt=""
                                                           style="height: 40px; width: 40px">
                         <i class="bi bi-chevron-down"></i></a>

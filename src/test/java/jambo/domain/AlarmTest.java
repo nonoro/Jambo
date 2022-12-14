@@ -48,7 +48,7 @@ public class AlarmTest {
         Comment comment = new Comment(normalBoard, user2, "너무좋아요!!");
         commentRepository.save(comment);
 
-        Note note = new Note(user2, user1.getEmail(), "안녕");
+        Note note = new Note(user2.getEmail(), user1.getEmail(), "안녕");
         noteRepository.save(note);
 
 
