@@ -258,7 +258,7 @@
                                     </td>
                                     <td class="n_td">
                                         <img th:src="@{${savePath} + '/' + ${board.user.getMainEmotion()}}" style="width: 30px; height: 30px">
-                                        <a th:href="@{'/user/prifile/'+${board.id}}" class="n_a"><span th:text="${board.user.getNickName()}"></span></a>
+                                        <a th:href="@{'/user/profile/'+${board.id}}" class="n_a"><span th:text="${board.user.getNickName()}"></span></a>
                                     </td>
                                     <td class="n_td">
                                         <span th:text="${#temporals.format(board.writeDate, 'yyyy-MM-dd HH:mm')}"></span>
