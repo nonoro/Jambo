@@ -61,7 +61,7 @@ public class StudyBoardController {
         boolean state = flag == null ? true : false;
 //        Board dbBoard = boardService.findBoardById(id);
         StudyBoard dbStudyBoard = service.read(id, state);
-//        List<StudyBoard> boards = service.selectAll();
+        List<StudyBoard> boards = service.selectAll();
 
         List<Comment> commentsByBoardId = commentService.findCommentsByBoardId(id);
         model.addAttribute("comments", commentsByBoardId);
@@ -69,7 +69,7 @@ public class StudyBoardController {
         model.addAttribute("authUser", user);
         model.addAttribute("board", dbStudyBoard);
 //        model.addAttribute("studyboard", dbStudyBoard);
-//        model.addAttribute("boardStacks", boards);
+        model.addAttribute("boardStacks", boards);
 
         return "StudyBoard/StudyBoardRead";
     }

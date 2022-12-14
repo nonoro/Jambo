@@ -122,13 +122,13 @@
             padding-left: 8%;
         }
         div#rating{
-            border: 2px solid #c2c3c2;
+            /*border: 2px solid #c2c3c2;*/
             margin-bottom: 10px;
-            padding: 10px;
+            /*padding: 10px;*/
         }
         div#tag{
-            border: 2px solid #c2c3c2;
-            padding: 10px;
+            /*border: 2px solid #c2c3c2;*/
+            /*padding: 10px;*/
             width: 150px;
         }
         .n_btn {
@@ -288,18 +288,14 @@
             <!--side 부분-->
             <div id="aside">
                 <div id="rating">
-                    <b>Top Lv.회원</b>
-                    <p class="np">권규정</p>
-                    <p class="np">고종영</p>
-                    <p class="np">안효경</p>
-                    <p class="np">엄용식</p>
-                    <p class="np">강연아</p>
+                    <a th:href="@{/icon/shop}">
+                        <img src="/banner/ad.png" alt="광고영상">
+                    </a>
                 </div>
                 <div id="tag">
-                    <b>인기 태그</b>
-                    <p class="np">#Java</p>
-                    <p class="np">#Spring</p>
-                    <p class="np">#Javascript</p>
+                    <a href="https://www.kosta.or.kr/">
+                        <img src="/banner/ad2.gif" alt="코딩 광고영상">
+                    </a>
                 </div>
             </div>
 

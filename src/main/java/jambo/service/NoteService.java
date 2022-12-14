@@ -30,10 +30,7 @@ public class NoteService {
      * 받은 쪽지함
      */
     public Page<Note> selectAll(String email, Pageable page) {
-        if(email ==null){
-            return noteRepository.findAllByOrderBySentTimeDesc(email, page);
-        }
-        return noteRepository.findNotesByReceiveUser(email, page);
+        return noteRepository.findNotesByReceiveUserOrderBySentTimeDesc(email, page);
     }
 
     /**

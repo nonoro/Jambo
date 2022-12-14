@@ -459,6 +459,9 @@
                         <dl>
                             <dt>프로젝트<br>기술스택</dt>
                             <dt>
+                                <span class="studyList_techStacks" th:each="boardStack : ${board.studyBoardTechStacks}">
+                                    #<span th:text="${boardStack.techStack.getTechStackName()}"></span>
+                                </span>
                             </dt>
                         </dl>
                         <dl>

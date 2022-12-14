@@ -14,8 +14,5 @@ import java.util.List;
 public interface NoteRepository extends JpaRepository<Note, Long> {
 
 
-    @Query("select n from Note n order by n.sentTime DESC")
-    Page<Note> findNotesByReceiveUser(@Param("email")String email, Pageable page); //받은 사람
-
-    Page<Note> findAllByOrderBySentTimeDesc(String email, Pageable page);
+    Page<Note> findNotesByReceiveUserOrderBySentTimeDesc(String email, Pageable page);
 }
