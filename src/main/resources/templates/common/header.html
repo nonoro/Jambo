@@ -56,8 +56,8 @@
         <h1 class="logo"><a th:href="@{/}"><img src="/assets/img/logo.png" alt="" class="img-fluid"></a></h1>
         <nav id="navbar" class="navbar">
             <ul>
-                <li class="we"><a class="nav-link scrollto active" href="#hero">WHO WE WRE</a></li>
-                <li><a class="nav-link scrollto active" href="/StudyBoard/StudyBoardMain">스터디</a></li>
+                <li class="we"><a class="nav-link scrollto active" th:href="@{/whoWeAre}">WHO WE WRE</a></li>
+                <li><a class="nav-link scrollto active" th:href="@{/StudyBoard/StudyBoardMain}">스터디</a></li>
                 <li class="dropdown"><a href="#">게시판&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
                     <ul>
                         <li><a th:href="@{/board/list(category='FREE_BOARD')}">자유 게시판</a></li>
