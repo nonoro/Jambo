@@ -59,9 +59,12 @@ public class BoardController {
      * */
     @RequestMapping("/read/{id}/{isRead}/{commentId}")
     public String read(@PathVariable Long id, String flag, Model model, @AuthenticationPrincipal User user, @PathVariable int isRead, @PathVariable Long commentId) {
-        log.info(">>>>>>>>>>>>>>>>>>>>>>>>> isRead = {}", isRead);
+
         boolean state = flag == null ? true : false;
         NormalBoard dbBoard = boardService.read(id, state, isRead, commentId);
+        if (dbBoard == null) {
+            return "redirect:/StudyBoard/read/" + id;
+        }
         model.addAttribute("board", dbBoard);
         model.addAttribute("savePath", fileService.getUrlPath());
         model.addAttribute("authUser", user);
@@ -80,6 +83,8 @@ public class BoardController {
         model.addAttribute("report", report);
 
         model.addAttribute("category", dbBoard.getCategory());
+
+
 
         return "Board/BoardRead";
     }

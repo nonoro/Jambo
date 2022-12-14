@@ -51,11 +51,20 @@ public class CommentService {
         StudyBoard studyBoardById = studyBoardRepository.findStudyBoardById(id);
         comment.save(studyBoardById, user);
         commentRepository.save(comment);
+        Comment saveComment = commentRepository.save(comment);
         /*댓글단 유저에게 포인트 5점 추가*/
         userRepository
                 .findById(user.getId())
                 .orElse(null)
                 .addPoint(5);
+
+
+        alarmRepository.save(new Alarm(studyBoardById.getUser(), saveComment));
+
+
+        User writer = studyBoardById.getUser();
+        AlarmResponse response = AlarmResponse.comment(studyBoardById + "번 게시글에 댓글이 달렸습니다.");
+        alarmService.send(writer.getId(), response);
     }
 
     public Comment delete(Long id) {

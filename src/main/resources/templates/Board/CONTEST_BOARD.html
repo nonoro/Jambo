@@ -252,7 +252,7 @@
                             <tr class="n_tr" th:each="board : ${list}">
                                 <th:block th:unless="${board.isReported}">
                                     <td>
-                                        <a th:href="@{'/board/read/'+${board.id}}" class="n_a">
+                                        <a th:href="@{'/board/read/' + ${board.id} + '/0/0'}" class="n_a">
                                             <div class="overflow"><span th:text="${board.title}"></span></div>
                                         </a>
                                     </td>

@@ -23,7 +23,7 @@ public class CommentController {
     @RequestMapping("/insert")
     public String saveComment( Comment comment,  Long parentId, @AuthenticationPrincipal User user){
         commentService.saveComment(parentId, comment, user);
-        return "redirect:/board/read/"+parentId+"?flag=1";
+        return "redirect:/board/read/"+parentId+"/0/0?flag=1";
     }
 
     /**

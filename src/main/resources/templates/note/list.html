@@ -324,10 +324,10 @@
                     <span th:hidden="${note.id}"></span>
                   </svg>
                 </td>
-                <td class="n_td"><a th:href="@{'/note/read/' + ${note.id}}" class="n_a"><span th:text="${note.sendUser}"></span></a></td>
+                <td class="n_td"><a th:href="@{'/note/read/' + ${note.id} + '/0'}" class="n_a"><span th:text="${note.sendUser}"></span></a></td>
                 <td class="n_td">
                   <div class="overflow">
-                    <a th:href="@{'/note/read/' + ${note.id}}" class="n_a">
+                    <a th:href="@{'/note/read/' + ${note.id} + '/0'}" class="n_a">
                       <span th:text="${note.content}"></span>
                     </a>
                   </div>
