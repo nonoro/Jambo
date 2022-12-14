@@ -92,7 +92,7 @@
 }
 
 body {
-  background: var(--bg);
+  /*background: var(--bg);*/
   display: -webkit-box;
   display: flex;
   place-content: center;
@@ -114,9 +114,9 @@ h1.QnA_mo {
 
 #bbooddyy {
   width: 1000vw;
-  height: 540vh;
+  /*height: 540vh;*/
   width: 100vw;
-  background: #1a1e2d;
+  background: #161820;
 }
 
 .container {
