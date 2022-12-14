@@ -41,7 +41,7 @@ public class User {
     @CreatedDate
     private LocalDateTime joinDate;
 
-    private String mainEmotion = "66b9eb3.gif";
+    private String mainEmotion = "elephant1.gif";
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.PERSIST)
     private List<UserTechStack> userTechStacks = new ArrayList<>();
