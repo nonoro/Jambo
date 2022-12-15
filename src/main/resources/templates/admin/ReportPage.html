@@ -173,7 +173,7 @@
                                     <tbody>
                                     <tr th:each="report : ${list}">
                                         <td>
-                                            <a th:href="@{'/board/read/'+${report.board.getId()}}" class="n_a">
+                                            <a th:href="@{'/board/read/'+${report.board.getId()} + '/0/0'}" class="n_a">
                                             <span th:text="${report.board.getTitle()}"></span>
                                             </a>
                                         </td>

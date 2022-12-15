@@ -33,7 +33,7 @@ public class CommentController {
     public String saveStudyBoardComment(Comment comment,  Long idForStudyBoard, @AuthenticationPrincipal User user){
         commentService.saveStudyBoardComment(idForStudyBoard, comment, user);
 
-        return "redirect:/StudyBoard/read/"+idForStudyBoard+"?flag=1";
+        return "redirect:/StudyBoard/read/"+idForStudyBoard+"/0/0?flag=1";
     }
 
     /**
@@ -43,14 +43,14 @@ public class CommentController {
     public String delete(@PathVariable Long id){
         Comment comment = commentService.delete(id);
 
-        return "redirect:/board/read/"+comment.getBoard().getId()+"?flag=1";
+        return "redirect:/board/read/"+comment.getBoard().getId()+"/0/0?flag=1";
     }
 
     @RequestMapping("/deleteStudyBoard/{id}")
     public String deleteStudyBoard(@PathVariable Long id){
         Comment comment = commentService.delete(id);
 
-        return "redirect:/StudyBoard/read/"+comment.getBoard().getId()+"?flag=1";
+        return "redirect:/StudyBoard/read/"+comment.getBoard().getId()+"/0/0?flag=1";
     }
 }
 

@@ -120,8 +120,8 @@ public class BoardController {
     /**
      * 수정하기 폼 열기
      * */
-    @GetMapping("/update/{id}")
-    public String openUpdateForm(@PathVariable Long id,Model model, @AuthenticationPrincipal User user, int isRead){
+    @GetMapping("/update/{id}/{isRead}/{commentId}")
+    public String openUpdateForm(@PathVariable Long id,Model model, @AuthenticationPrincipal User user, @PathVariable int isRead){
         NormalBoard dbBoard = boardService.read(id, false, isRead, 1L);
         model.addAttribute("board", dbBoard);
         model.addAttribute("savePath", fileService.getUrlPath());
@@ -149,7 +149,7 @@ public class BoardController {
         Board dbBoard = boardService.findBoardById(id);
         recommendService.recommendUp(dbUser, dbBoard);
 
-        return "redirect:/board/read/" + id+"?flag=1";
+        return "redirect:/board/read/" + id+"/0/0?flag=1";
     }
 
     /**
@@ -159,7 +159,7 @@ public class BoardController {
     public String recommendDown(@PathVariable Long id, @AuthenticationPrincipal User user){
         recommendService.recommendDown(user.getId(), id);
 
-        return "redirect:/board/read/" + id+"?flag=1";
+        return "redirect:/board/read/" + id+"/0/0?flag=1";
     }
 
     /**
@@ -170,6 +170,6 @@ public class BoardController {
     public String report(@PathVariable Long id, @AuthenticationPrincipal User user, String report) {
         reportService.reportBoardByUser(id, user, ReportType.mapping(report));
 
-        return "redirect:/board/read/" + id +"?flag=1";
+        return "redirect:/board/read/" + id +"/0/0?flag=1";
     }
 }
