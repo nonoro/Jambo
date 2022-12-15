@@ -2,9 +2,6 @@ package jambo.service;
 
 
 import jambo.domain.TechStack;
-import jambo.domain.board.Board;
-
-
 import jambo.domain.board.StudyBoard;
 import jambo.domain.user.User;
 import jambo.dto.StudyBoardDTO;
@@ -12,7 +9,6 @@ import jambo.repository.BoardRepository;
 import jambo.repository.StudyBoardRepository;
 import jambo.repository.TechStackRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -47,7 +43,7 @@ public class StudyBoardService {
         return studyBoardRepository.findAllByOrderByWriteDateDesc();
     }
 
-    public StudyBoard read(Long id, boolean state){
+    public StudyBoard read(Long id, boolean state, int isRead, Long commendId){
         if(state) {//조회수 증가
             boardRepository.updateViews(id);
         }

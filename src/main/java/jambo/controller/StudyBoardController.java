@@ -55,11 +55,11 @@ public class StudyBoardController {
         return "redirect:/StudyBoard/StudyBoardMain";
     }
 
-    @RequestMapping("/read/{id}")
-    public String read(@PathVariable Long id, String flag, Model model, @AuthenticationPrincipal User user) {
+    @RequestMapping("/read/{id}/{isRead}/{commentId}")
+    public String read(@PathVariable Long id, String flag, Model model, @AuthenticationPrincipal User user, @PathVariable int isRead, @PathVariable Long commentId) {
         boolean state = flag == null ? true : false;
 //        Board dbBoard = boardService.findBoardById(id);
-        StudyBoard dbStudyBoard = service.read(id, state);
+        StudyBoard dbStudyBoard = service.read(id, state, isRead, commentId);
         List<StudyBoard> boards = service.selectAll();
 
         List<Comment> commentsByBoardId = commentService.findCommentsByBoardId(id);

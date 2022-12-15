@@ -441,15 +441,15 @@
             <div class="row">
 
                 <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100" th:each="board : ${list}">
-                    <a th:href="@{'/StudyBoard/read/'+${board.id}}" style="text-decoration: none">
+                    <a th:href="@{'/StudyBoard/read/'+${board.id} + '/0/0'}" style="text-decoration: none">
                     <div class="icon-box iconbox-blue">
                         <span class="studyList_startDate" th:text="'시작예정일 | ' + ${board.startDate}"></span>
 
-                        <a th:href="@{'/StudyBoard/read/'+${board.id}}">
+                        <a th:href="@{'/StudyBoard/read/'+${board.id} + '/0/0'}">
                             <h4><span th:text="${board.title}"></span></h4></a>
                         <th:block th:unless="${board.isRecruiting}">
                         <div style="align-items:center; display: flex; justify-content:center;">
-                            <a th:href="@{'/StudyBoard/read/'+${board.id}}" style="text-decoration: none">
+                            <a th:href="@{'/StudyBoard/read/'+ ${board.id} + '/0/0'}" style="text-decoration: none">
                             <img src="/board/img/stamp.png" id="stamp" style="position: absolute; height: 250px">
                             </a>
                         </div>
