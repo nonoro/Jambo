@@ -259,7 +259,7 @@
                                           <a th:href="@{/board/list(category=${normalBoard.category})}"><span th:text="${normalBoard.category.getName()}"></span></a>
                                        </td>
                                        <td>
-                                          <a th:href="@{'/board/read/'+${normalBoard.id}}"><span th:text="${normalBoard.title}"></span></a>
+                                          <a th:href="@{'/board/read/'+${normalBoard.id} + '/0/0'}"><span th:text="${normalBoard.title}"></span></a>
                                        </td>
                                        <td>
                                           <span th:text="${#temporals.format(normalBoard.writeDate, 'yyyy-MM-dd')}"></span>
