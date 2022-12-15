@@ -17,7 +17,7 @@ public class UserResponseDTO {
     private Integer level;
 
     public static UserResponseDTO from(User user) {
-        int level = user.getPoint().getTotalPoint() / 5;
+        int level = user.getPoint().getTotalPoint() / 123;
 
         return new UserResponseDTO(user.getMainEmotion(), user.getNickName(), user.getAvailablePoint(), level);
     }
