@@ -326,7 +326,7 @@
         <ul class="pagination justify-content-center">
             <li th:class="'page-item' + (${list.number} <= 0 ? ' disabled' : '')">
                 <a class="page-link"
-                   th:href="@{list(page=${list.number - 1}, category='CONTEST_BOARD')}"
+                   th:href="@{list(page=${list.number - 1}, category='EVENT_BOARD')}"
                    th:text="'&laquo;'"></a>
             </li>
             <th:block th:each="pageNumber : ${pageNumbers}">
@@ -338,7 +338,7 @@
             <li th:class="'page-item' + (${list.number} >= ${list.totalPages - 1} ? ' disabled' : '')">
                 <a class="page-link"
                    th:text="'&raquo;'"
-                   th:href="@{list(page=${list.number + 1}, category='CONTEST_BOARD')}"></a>
+                   th:href="@{list(page=${list.number + 1}, category='EVENT_BOARD')}"></a>
             </li>
         </ul>
     </nav>
