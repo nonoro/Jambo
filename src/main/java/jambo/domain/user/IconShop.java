@@ -1,8 +1,6 @@
 package jambo.domain.user;
 
 import lombok.*;
-import org.hibernate.annotations.Where;
-import org.springframework.core.annotation.Order;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
@@ -13,7 +11,6 @@ import java.util.List;
 @Entity
 @Getter
 @Setter
-@Where(clause = "quantity > 0")
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString

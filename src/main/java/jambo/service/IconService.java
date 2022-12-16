@@ -4,7 +4,6 @@ import jambo.domain.user.Icon;
 import jambo.domain.user.IconShop;
 import jambo.domain.user.User;
 import jambo.dto.IconShopDTO;
-import jambo.dto.UserResponseDTO;
 import jambo.repository.IconRepository;
 import jambo.repository.IconShopRepository;
 import jambo.repository.UserRepository;
@@ -61,7 +60,7 @@ public class IconService {
     public List<IconShop> getIcons(User user) {
         User referenceById = userRepository.getReferenceById(user.getId());
         List<Icon> icons = iconRepository.findAllByUser(referenceById);
-
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>> = " + icons.size());
         return iconShopRepository.findByIconsIn(icons);
     }
 

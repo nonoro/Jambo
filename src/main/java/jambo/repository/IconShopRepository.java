@@ -2,7 +2,6 @@ package jambo.repository;
 
 import jambo.domain.user.Icon;
 import jambo.domain.user.IconShop;
-import jambo.domain.user.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -18,6 +17,7 @@ public interface IconShopRepository extends JpaRepository<IconShop, Long> {
 
     Optional<IconShop> findByName(String name);
 
+    @Query("select i from IconShop i where i.quantity > 0 order by i.saveDate desc")
     Page<IconShop> findAllByOrderBySaveDateDesc(Pageable page);
 
     List<IconShop> findByIconsIn(List<Icon> icons);

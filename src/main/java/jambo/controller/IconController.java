@@ -19,7 +19,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -38,12 +37,6 @@ public class IconController {
     @GetMapping("/shop")
     public String showIconShop(Model model, String keyWord, @PageableDefault(size = 6, direction = Sort.Direction.DESC) Pageable pageable, @AuthenticationPrincipal User securityUser) {
         int state = 1;
-
-//        if (securityUser == null) {
-//            state = 0;
-//        }
-
-//        if (securityUser != null) {
         User user = userRepository.findById(securityUser.getId()).get();
         UserResponseDTO userResponseDTO = UserResponseDTO.from(user);
         Page<IconShop> icons = iconService.showIconShop(keyWord, pageable);
