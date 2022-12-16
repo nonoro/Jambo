@@ -276,7 +276,7 @@
                                           <a th:href="@{/StudyBoard/StudyBoardMain}"><span>스터디</span></a>
                                        </td>
                                        <td>
-                                          <a th:href="@{'/StudyBoard/read/' +${studyBoard.id}}"><span th:text="${studyBoard.title}"></span></a>
+                                          <a th:href="@{'/StudyBoard/read/' +${studyBoard.id} +'/0/0'}"><span th:text="${studyBoard.title}"></span></a>
                                        </td>
                                        <td>
                                           <span th:text="${#temporals.format(studyBoard.writeDate, 'yyyy-MM-dd')}"></span>
