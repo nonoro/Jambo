@@ -280,8 +280,7 @@
                 <div class="board_write">
                 <div class="title">
                     <dl>
-                        <dt style="width: 970px; margin-bottom: 10px">
-
+                        <dt style="width: 970px; margin-bottom: 10px;">
                             <span th:utext="${board.content}"></span>
                         </dt>
                         </dl>
@@ -313,7 +312,7 @@
         </div>
         <main class="form-signin" style="width: 1000px; ">
 
-            <div class="card">
+            <div class="card" style="margin-top: 30px; font-size: 15px">
                 <div class="card-header">댓글</div><p/>
                 <ul id="reply--box" class="list-group" th:each="comment:${comments}">
                     <li id="reply--1" class="list-group-item d-flex justify-content-between">
@@ -340,7 +339,7 @@
             </div>
             <br/>
             <th:block th:if="${authUser!=null}">
-                <div class="card mb-2 mt-5">
+                <div class="card mb-2 mt-5" style="font-size: 15px">
                     <div class="card-header bg-light">
                         <i class="fa fa-comment fa"></i> 댓글쓰기
                     </div>
@@ -349,8 +348,8 @@
                             <input type="hidden" id="id" th:value="${id}" name="parentId"> <!--boardId, ${board.id}-->
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item">
-                                    <textarea class="form-control" id="comment-content" rows="1" name="content" required></textarea>
-                                    <button type="submit" id="comment-btn-save" class="btn btn-dark mt-3">등록</button>
+                                    <textarea class="form-control" id="comment-content" rows="1" name="content" required style="font-size: 15px"></textarea>
+                                    <button type="submit" id="comment-btn-save" class="btn btn-dark mt-3" style="font-size: 15px">등록</button>
                                 </li>
                             </ul>
                         </form>
