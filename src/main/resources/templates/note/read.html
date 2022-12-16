@@ -167,7 +167,7 @@
         /*    width: 200px;*/
         /*}*/
 
-        .letter2{
+        .letter2 {
             width: 550px;
             margin-left: 32%;
             margin-top: 64px;
@@ -177,25 +177,25 @@
             position: absolute;
             top: 38%;
             left: 52%;
-            transform: translate( -50%, -50% );
+            transform: translate(-50%, -50%);
             word-wrap: break-word;
             width: 400px;
         }
 
-        .sentTime{
+        .sentTime {
             position: absolute;
             top: 44%;
             left: 52%;
-            transform: translate( -50%, -50% );
+            transform: translate(-50%, -50%);
             word-wrap: break-word;
             width: 400px;
         }
 
-        .content{
+        .content {
             position: absolute;
             top: 53%;
             left: 52%;
-            transform: translate( -50%, -50% );
+            transform: translate(-50%, -50%);
             word-wrap: break-word;
             width: 400px;
         }
@@ -208,9 +208,152 @@
             margin-left: 48%;
             margin-top: -13%;
         }
+    </style>
+    <style type="text/css">
+        a {
+            text-decoration: none;
+            color: #666;
+        }
 
+        /* btn */
 
-</style>
+        /* modal */
+        #modal {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            transform: scale(0);
+        }
+
+        #modal .modal-bg {
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        #modal .modal-bg .modal-cont {
+            position: relative;
+            background: #fff;
+            padding: 40px;
+            max-width: 500px;
+            display: inline-block;
+        }
+
+        #modal .modal-bg .modal-cont h2 {
+            font-size: 30px;
+            margin: 0;
+        }
+
+        #modal .modal-bg .modal-cont p {
+            font-size: 18px;
+        }
+
+        #modal .modal-bg .modal-cont .close {
+            position: absolute;
+            top: 0;
+            right: 0;
+            margin: 20px;
+            padding: 10px;
+            background: #000;
+            border-radius: 50%;
+        }
+
+        #modal .modal-bg .modal-cont .close svg {
+            width: 24px;
+            fill: #fff;
+            vertical-align: top;
+        }
+
+        #modal.four {
+            transform: scale(1);
+        }
+
+        #modal.four .modal-bg {
+            background: rgba(0, 0, 0, 0);
+            animation: fadeIn 0.5s cubic-bezier(0.165, 0.85, 0.44, 1) forwards;
+        }
+
+        #modal.four .modal-bg .modal-cont {
+            transform: translatex(-1500px);
+            animation: roadRunnerIn 0.3s cubic-bezier(0.165, 0.85, 0.44, 1) forwards;
+        }
+
+        #modal.out.four {
+            animation: quickScaleDown 0s .5s linear forwards;
+        }
+
+        #modal.out.four .modal-bg {
+            background: rgba(0, 0, 0, 0);
+            animation: fadeOut 0.5s cubic-bezier(0.165, 0.85, 0.44, 1) forwards;
+        }
+
+        #modal.out.four .modal-bg .modal-cont {
+            animation: roadRunnerOut 0.5s cubic-bezier(0.165, 0.85, 0.44, 1) forwards;
+        }
+
+        @keyframes roadRunnerIn {
+            0% {
+                transform: translatex(-1500px) skew(30deg) scalex(1.3);
+            }
+            70% {
+                transform: translatex(30px) skew(0deg) scalex(0.9);
+            }
+            100% {
+                transform: translatex(0px) skew(0deg) scalex(1);
+            }
+        }
+
+        @keyframes roadRunnerOut {
+            0% {
+                transform: translatex(0px) skew(0deg) scalex(1);
+            }
+            70% {
+                transform: translatex(-30px) skew(-5deg) scalex(0.9);
+            }
+            100% {
+                transform: translatex(1500px) skew(30deg) scalex(1.3);
+            }
+        }
+
+        @keyframes fadeIn {
+            0% {
+                background: rgba(0, 0, 0, 0)
+            }
+            100% {
+                background: rgba(0, 0, 0, 0.7)
+            }
+        }
+
+        @keyframes fadeOut {
+            0% {
+                background: rgba(0, 0, 0, 0.7)
+            }
+            100% {
+                background: rgba(0, 0, 0, 0)
+            }
+        }
+
+        @keyframes quickScaleDown {
+            0% {
+                transform: scale(1);
+            }
+            99.9% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(0);
+            }
+        }
+
+    </style>
+    <!--쪽지전송 layer popup 처리-->
+    <script src="https://code.jquery.com/jquery-3.6.1.js"
+            integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+
 
 </head>
 
@@ -243,24 +386,27 @@
         </div>
     </div>
 
+<div style="margin-bottom: 100px">
     <!--========== 쪽지 상세보기  ==========-->
-<!--    <section id="contact" class="contact">-->
-<!--        <div class="container">-->
-<!--            -->
-<!--    <img class="letter1" src="/assets/img/BoardLogo/letter1.png">-->
-    <img class="letter2" src="/assets/img/BoardLogo/letter2.png">
+    <!--    <section id="contact" class="contact">-->
+    <!--        <div class="container">-->
+    <!--            -->
+    <!--    <img class="letter1" src="/assets/img/BoardLogo/letter1.png">-->
+    <img class="letter2" src="/assets/img/BoardLogo/letter2.png" style="height: 450px">
     <form th:action="@{/note/read}" method="post" role="form" class="php-email-form">
         <div>
             <table style="margin-left: auto; margin-right: auto;">
                 <tr>
                     <td>
                         <div class="sendUser">
-                            <span th:text="${note.nickName}"></span>(<span th:text="${note.sendUser}"></span>) 님이 내게 쓴 쪽지
+                            <span th:text="${note.nickName}"></span>(<span th:text="${note.sendUser}"></span>) 님이 내게 쓴
+                            쪽지
                         </div>
                     </td>
                     <td>
                         <div>
-                            <span class="sentTime" th:text="${#temporals.format(note.sentTime, 'yyyy-MM-dd HH:mm')}"></span>
+                            <span class="sentTime"
+                                  th:text="${#temporals.format(note.sentTime, 'yyyy-MM-dd HH:mm')}"></span>
                         </div>
                     </td>
                 </tr>
@@ -274,74 +420,125 @@
             </table>
         </div>
     </form>
-    <button id="back" class="btn btn-success">
-        <a href="javascript:history.back()">돌아가기</a>
-    </button>
-    <!--========== 쪽지 상세보기  ==========-->
 
+    <span style="margin-left: 750px;">
+    <button type="button" class="btn btn-primary waves-effect waves-light text-uppercase"
+            style="display: inline; clear: none">
+        <a href="#" class="on" id="btn" style="text-decoration: none">답장하기</a>
+    </button>
+         <button type="button" class="btn btn-primary waves-effect waves-light text-uppercase"
+                 style="display: inline; clear: none;">
+        <a href="javascript:history.back()" class="on" id="nononono" style="text-decoration: none">뒤로가기</a>
+    </button>
+    </span>
+<!--    <span>-->
+<!--    <button id="back" class="btn btn-success">-->
+<!--        <a href="javascript:history.back()">돌아가기</a>-->
+<!--    </button>-->
+<!--        </span>-->
+    <!--========== 쪽지 상세보기  ==========-->
+</div>
 
 </main><!-- End #main -->
+
+<div id="modal">
+    <div class="modal-bg">
+        <div class="modal-cont">
+            <h2 style="margin: 0px 0px 20px 0px">Message😉&nbsp;&nbsp;&nbsp;</h2>
+            <form th:action="@{/note/insert}" method="post">
+                <div>
+                    <input type="text" name="receiveUser" class="form-control" placeholder="받는 사람"
+                           style="margin: 0px 0px 10px 0px;" th:value="${note.sendUser}">
+                </div>
+                <div class="form-outline">
+                    <textarea name="content" class="form-control" id="textAreaExample1" rows="4" placeholder="내용"
+                              style="width: 400px;"></textarea>
+                </div>
+                <button type="submit" class="btn btn-warning" style=" margin:10px 0px 0px 152px">쪽지 전송</button>
+            </form>
+
+            <a href="#" class="close close1">
+                <svg viewBox="0 0 24 24">
+                    <path d="M14.1,12L22,4.1c0.6-0.6,0.6-1.5,0-2.1c-0.6-0.6-1.5-0.6-2.1,0L12,9.9L4.1,2C3.5,1.4,2.5,1.4,2,2C1.4,2.5,1.4,3.5,2,4.1
+    L9.9,12L2,19.9c-0.6,0.6-0.6,1.5,0,2.1c0.3,0.3,0.7,0.4,1.1,0.4s0.8-0.1,1.1-0.4l7.9-7.9l7.9,7.9c0.3,0.3,0.7,0.4,1.1,0.4
+    s0.8-0.1,1.1-0.4c0.6-0.6,0.6-1.5,0-2.1L14.1,12z"/>
+                </svg>
+            </a>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#btn").click(function () {
+        $("#modal").removeAttr("class").addClass("four");
+    });
+
+    $(".close").click(function () {
+        $("#modal").addClass("out");
+    });
+</script>
+
 
 <!-- ======= Footer ======= -->
 <footer th:replace="../templates/common/footer.html ::footer">
 </footer>
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center">
-        <i class="bi bi-arrow-up-short"></i>
-    </a>
+<a href="#" class="back-to-top d-flex align-items-center justify-content-center">
+    <i class="bi bi-arrow-up-short"></i>
+</a>
 
-    <!-- Vendor JS Files -->
-    <script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="/assets/vendor/php-email-form/validate.js"></script>
+<!-- Vendor JS Files -->
+<script src="/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+<script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
+<script src="/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+<script src="/assets/vendor/swiper/swiper-bundle.min.js"></script>
+<script src="/assets/vendor/php-email-form/validate.js"></script>
 
-    <!--Slideshow header-->
-    <script>
-        let slideIndex = 1;
-        showSlides(slideIndex);
+<!--Slideshow header-->
+<script>
+    let slideIndex = 1;
+    showSlides(slideIndex);
 
-        function plusSlides(n) {
-            showSlides(slideIndex += n);
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+        let slides = document.getElementsByClassName("mySlides");
+        let dots = document.getElementsByClassName("demo");
+        let captionText = document.getElementById("caption");
+        if (n > slides.length) {
+            slideIndex = 1
         }
-
-        function currentSlide(n) {
-            showSlides(slideIndex = n);
+        if (n < 1) {
+            slideIndex = slides.length
         }
-
-        function showSlides(n) {
-            let i;
-            let slides = document.getElementsByClassName("mySlides");
-            let dots = document.getElementsByClassName("demo");
-            let captionText = document.getElementById("caption");
-            if (n > slides.length) {
-                slideIndex = 1
-            }
-            if (n < 1) {
-                slideIndex = slides.length
-            }
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex - 1].style.display = "block";
-            dots[slideIndex - 1].className += " active";
-            captionText.innerHTML = dots[slideIndex - 1].alt;
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
         }
-    </script>
-
-    <!-- Template Main JS File -->
-    <script src="/assets/js/main.js"></script>
-
-    <script>
-        function myFunction() {
-            var element = document.body;
-            element.classList.toggle("dark-mode");
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
         }
-    </script>
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+        captionText.innerHTML = dots[slideIndex - 1].alt;
+    }
+</script>
+
+<!-- Template Main JS File -->
+<script src="/assets/js/main.js"></script>
+
+<script>
+    function myFunction() {
+        var element = document.body;
+        element.classList.toggle("dark-mode");
+    }
+</script>
 
 </body>
 
