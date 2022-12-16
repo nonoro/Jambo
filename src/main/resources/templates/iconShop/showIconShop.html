@@ -351,9 +351,9 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            게시글 작성 + 30.J<br>
-                            내 게시글 추천받으면 + 5.J<br>
-                            댓글 작성 + 5.J<br>
+                            게시글 작성 + 30J<br>
+                            내 게시글 추천받으면 + 5J<br>
+                            댓글 작성 + 5J<br>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -403,7 +403,7 @@
                                     <img th:src="@{${savePath} + '/' + ${icon.fileName}}" name="fileName"><span class="name" name="name" th:text="${icon.name}"></span>
                                 </div>
                                 <div class="describe">
-                                    JANBO : <span th:text="${icon.price}" name="price"></span>&nbsp;&nbsp;&nbsp;수량 : <span th:text="${icon.quantity}" name="quantity"></span>J<br>
+                                    JANBO : <span th:text="${icon.price}" name="price">J</span>&nbsp;&nbsp;&nbsp;수량 : <span th:text="${icon.quantity}" name="quantity"></span><br>
                                     <span>시간 : 무제한</span>
                                 </div>
                                 등록일 : <span th:text="${#temporals.format(icon.saveDate, 'yyyy-MM-dd HH:mm')}" name="saveDate"></span><br>
