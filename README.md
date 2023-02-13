@@ -52,6 +52,4 @@ IT 업계의 화두 중 하나는 소위 ‘개발자 구하기 전쟁’이다.
 [![Video Label](http://img.youtube.com/vi/zw9jMcjHMfQ/0.jpg)](https://youtu.be/zw9jMcjHMfQ)
 
 </div>
-<div align="right">
-written By JongYoung
-</div>
+
