@@ -1,0 +1,27 @@
+version: '3' # 버전 설정
+services: # 컨테이너 설정
+  jambo: # 컨테이너 이름
+    # 만약 image 이름을 지정하지 않는다면 현재 이 프로젝트명이 projectJambo이므로 image 이름이 프로젝트명-컨테이너명 이렇게 만들어진다
+    # jambo:1.0 = image 이름 -> jambo = REPOSITORY 이름, 1.0 = tag
+    image: kwongyujung/jambo:1.0
+    build:  # docker image 빌드
+      context: ./ # dockerfile의 위치 (현재 도커파일이 프로젝트 최상위에 위치하므로 ./ (현재디렉토리)로 지정)
+      dockerfile: Dockerfile # dockerfile의 이름
+    depends_on: # 이 컨테이너가 의존하고 있는 컨테이너(이 컨테이너가 실행되기전 실행되어야 할 컨테이너)
+      - mysql  # 의존하고 있는 컨테이너 이름
+    environment: # 컨테이너 안의 환경변수 설정
+      SPRING_PROFILES_ACTIVE: docker # 컨테이너 안의 환경변수 설정 (나는 현재 docker컨테이너에서 구동시 환경설정 파일을 application-docker.yml로 이용할 것이여서 docker로 설정)
+    ports: # 컨테이너 포트번호 설정
+      - "8080:8080"
+  mysql: # 컨테이너 이름
+    image: mysql:8.0.33 # 이미지 이름:태그
+    restart: always # 컨테이너 다운시 항상 재시작
+    ports: # 컨테이너 포트번호설정
+      - "3306:9980"
+    environment: # 컨테이너 환경
+      MYSQL_ROOT_PASSWORD: jambo1234
+      TZ: Asia/Seoul
+    volumes: # 컨테이너의 데이터를 나의 로컬에도 저장하기 위한 옵션
+      - '~/project/mysql/data:/var/lib/mysql' # 내 로컬 디렉토리 경로:컨테이너의 데이터 저장 디렉토리 경로
+      - '~/project/mysql/init:/docker-entrypoint-initdb.d'
+    platform: linux/arm64/v8
